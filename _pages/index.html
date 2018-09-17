@@ -13,16 +13,17 @@ layout: page
 import { CollectionService } from "services";
 
 CollectionService.GetTagged("Kill").forEach(obj => {
-if (obj instanceof BasePart) {
-  obj.Touched.Connect(part => {
-    const character = part.Parent as Model;
-    const humanoid = character.FindFirstChild<Humanoid>("Humanoid");
+  if (obj instanceof BasePart) {
+    obj.Touched.Connect(part => {
+      const character = part.Parent as Model;
+      const humanoid = 
+        character.FindFirstChild&lt;Humanoid&gt;("Humanoid");
 
-    if (humanoid) {
-      humanoid.TakeDamage(100);
-    }
-  });
-}
+      if (humanoid) {
+        humanoid.TakeDamage(100);
+      }
+    });
+  }
 });
       </code></pre>
     </div>
@@ -50,5 +51,7 @@ if (obj instanceof BasePart) {
   </div>
 </section>
 
+<!-- Add "See Lua" to code sample -->
 <!-- Next section: Lua interop, Automatically generated Roblox typings, Readable transpiled code, Runtime library and PROMISES -->
+<!-- Next Section: Who's Behind the project -->
 <!-- Next section: Join us on our journey to v1, CTA get started -->
