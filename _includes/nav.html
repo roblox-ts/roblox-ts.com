@@ -1,0 +1,9 @@
+{% comment %}
+
+This needs to be on one line due to whitespace causing gaps
+
+{% endcomment %}
+
+<ul>
+  {% for link in site.data.nav %}<li><a href="{{ link.href }}"{% if link.href contains "//" %} target="_blank"{% endif %}{% if page.url contains link.href %} class="active"{% endif %}>{{ link.text }}</a></li>{% endfor %}
+</ul>

@@ -1,0 +1,54 @@
+---
+title: "roblox-ts"
+layout: page
+---
+
+<section class="red">
+  <div class="inner">
+    <h1 class="major center">Write Roblox Games with <a target="_blank" href="https://www.typescriptlang.org/" style="display: inline-block; padding-bottom: 4px">TypeScript</a>.</h1>
+  </div>
+  <div class="code-sample">
+    <div>
+      <pre><code class="ts">
+import { CollectionService } from "services";
+
+CollectionService.GetTagged("Kill").forEach(obj => {
+if (obj instanceof BasePart) {
+  obj.Touched.Connect(part => {
+    const character = part.Parent as Model;
+    const humanoid = character.FindFirstChild<Humanoid>("Humanoid");
+
+    if (humanoid) {
+      humanoid.TakeDamage(100);
+    }
+  });
+}
+});
+      </code></pre>
+    </div>
+  </div>
+</section>
+<section class="points">
+  <div class="point">
+    <h2>Enter Type Safety</h2>
+    <code><span class="hljs-keyword">protected</span> name?: <span class="hljs-number">string</span></code>
+    <p>Catch a large class of errors immediately as you type them instead of 30 seconds after you hit Play. Get intelligent autocompletion for parameter types for the Roblox API and your own code. Refactor with confidence and get rudimentary documentation for free.</p>
+    <p>Static types will guide your development and save you immense amounts of time. You'll never want to go back.</p>
+  </div>
+  <div class="point">
+    <h2>Modern Syntax</h2>
+    <code>x.<span class="hljs-string">filter</span>(i => i > <span class="hljs-number">5</span>).<span class="hljs-string">map</span>(i => i * <span class="hljs-number">2</span>)</code>
+    <p>Lua is simple. That's great for beginners, but not for people who want to <em>get stuff done</em>. TypeScript rocks an elegant and modern feature set with a tool for every job.</p>
+    <p>Arrow functions, object destructuring, functional data manipulation, and proper OOP structures is just a handful of what TypeScript has to offer.</p>
+    <p></p>
+  </div>
+  <div class="point">
+    <h2>Unparalleled Tooling</h2>
+    <code><span class="hljs-keyword">const</span> <span style="color: gray" class="err warn">unused</span> = { name<span class="err">}&nbsp;</span></code>
+    <p>Instantly have access to the development tools that millions of professionals use every day. Insightful static analysis with <a href="https://code.visualstudio.com/">VS Code</a>, intelligent linting from <a href="https://palantir.github.io/tslint/">TSLint</a>, and backed by a real <a href="https://www.npmjs.com/">package manager</a> with versioned dependencies.</p>
+    <p>Welcome to the present.</p>
+  </div>
+</section>
+
+<!-- Next section: Lua interop, Automatically generated Roblox typings, Readable transpiled code, Runtime library and PROMISES -->
+<!-- Next section: Join us on our journey to v1, CTA get started -->

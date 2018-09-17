@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% if page.title contains "roblox-ts" %}
+	  <title>{{ page.title }}</title>
+    {% else %}
+    <title>{{ page.title }} | roblox-ts</title>
+    {% endif %}
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta charset="utf-8">
+    <link rel="icon" href="/images/roblox-ts.png">
+  	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	  <link rel="stylesheet" href="/css/style.css?v={{site.time | date: '%s%N'}}">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/10.2.1/js/smooth-scroll.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/0.3.6/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="/css/atom-one-dark.css">
+    <script src="/js/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+    {{ content }}
+</body>
+</html>

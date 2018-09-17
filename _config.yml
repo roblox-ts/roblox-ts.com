@@ -1,0 +1,11 @@
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "content"
+encoding: 'utf-8'
+collections:
+  pages:
+    output: true
+    permalink: /:name
