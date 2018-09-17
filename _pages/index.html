@@ -10,13 +10,13 @@ layout: page
   <div class="code-sample">
     <div>
       <pre><code class="ts">
-import { CollectionService } from "services";
+import { CollectionService } from "rbx-services";
 
 CollectionService.GetTagged("Kill").forEach(obj => {
   if (obj instanceof BasePart) {
     obj.Touched.Connect(part => {
       const character = part.Parent as Model;
-      const humanoid = 
+      const humanoid =
         character.FindFirstChild&lt;Humanoid&gt;("Humanoid");
 
       if (humanoid) {
