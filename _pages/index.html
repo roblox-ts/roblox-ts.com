@@ -5,7 +5,8 @@ layout: page
 
 <section class="red">
   <div class="inner">
-    <h1 class="major center">Write Roblox Games with <a target="_blank" href="https://www.typescriptlang.org/docs/handbook/basic-types.html" style="display: inline-block; padding-bottom: 4px">TypeScript</a>.</h1>
+    <h1 class="major center">Write Roblox Games with <a target="_blank" href="https://www.typescriptlang.org/docs/handbook/basic-types.html"
+        style="display: inline-block; padding-bottom: 4px">TypeScript</a>.</h1>
   </div>
   <div class="code-sample">
     <div>
@@ -32,26 +33,145 @@ CollectionService.GetTagged("Lava").forEach(obj => {
   <div class="point">
     <h2>Enter Type Safety</h2>
     <code><span class="hljs-keyword">protected</span> name?: <span class="hljs-number">string</span></code>
-    <p>Catch a large class of errors immediately as you type them instead of 30 seconds after you hit Play. Get intelligent autocompletion for parameter types for the Roblox API and your own code. Refactor with confidence and get rudimentary documentation for free.</p>
+    <p>Catch a large class of errors immediately as you type them instead of 30 seconds after you hit Play. Get
+      intelligent autocompletion for parameter types for the Roblox API and your own code. Refactor with confidence and
+      get rudimentary documentation for free.</p>
     <p>Static types will guide your development and save you immense amounts of time. You'll never want to go back.</p>
   </div>
   <div class="point">
     <h2>Modern Syntax</h2>
-    <code>x.<span class="hljs-string">filter</span>(i => i > <span class="hljs-number">5</span>).<span class="hljs-string">map</span>(i => i * <span class="hljs-number">2</span>)</code>
-    <p>Lua is simple. That's great for beginners, but not for people who want to <em>get stuff done</em>. TypeScript rocks an elegant and modern feature set with a tool for every job.</p>
-    <p>Arrow functions, object destructuring, functional data manipulation, and proper OOP structures is just a handful of what TypeScript has to offer.</p>
+    <code>x.<span class="hljs-string">filter</span>(i => i > <span class="hljs-number">5</span>).<span class="hljs-string">map</span>(i
+      => i * <span class="hljs-number">2</span>)</code>
+    <p>Lua is simple. That's great for beginners, but not for people who want to <em>get stuff done</em>. TypeScript
+      rocks an elegant and modern feature set with a tool for every job.</p>
+    <p>Arrow functions, object destructuring, functional data manipulation, and proper OOP structures is just a handful
+      of what TypeScript has to offer.</p>
     <p></p>
   </div>
   <div class="point">
     <h2>Unparalleled Tooling</h2>
-    <code><span class="hljs-keyword">const</span> <span style="color: gray" class="err warn">unused</span> = { name<span class="err">}&nbsp;</span></code>
-    <p>Instantly have access to the development tools that millions of professionals use every day. Insightful static analysis with <a href="https://code.visualstudio.com/">VS Code</a>, intelligent linting from <a href="https://palantir.github.io/tslint/">TSLint</a>, and backed by a real <a href="https://www.npmjs.com/">package manager</a> with versioned dependencies.</p>
+    <code><span class="hljs-keyword">let</span> <span style="color: gray" class="err warn">unused</span> = { name<span
+        class="err">}&nbsp;</span></code>
+    <p>Instantly have access to the development tools that millions of professionals use every day. Insightful static
+      analysis with <a href="https://code.visualstudio.com/">VS Code</a>, intelligent linting from <a href="https://palantir.github.io/tslint/">TSLint</a>,
+      and backed by a real <a href="https://www.npmjs.com/">package manager</a> with versioned dependencies.</p>
     <p>Welcome to the present.</p>
   </div>
 </section>
+<section class="dark h-points">
+  <div class="point img" style="grid: 1fr 1fr / 1fr 1fr">
+    <div style="grid-area: image">
+      <img src="/images/lua-interop.png" alt="Lua Interoperability" class="point-image">
+    </div>
+    <div style="grid-area: desc">
+      <h1>Lua Interoperability</h1>
+      <p>Have an existing Lua code base? Don't worry. roblox-ts makes it easy to interop with existing Lua code by means of declaration files&mdash;just pair your Lua files with a special file that denotes what types it expects, and you're in action.</p>
+      <p>On the flip side, calling into TypeScript code from Lua is completely transparent and requires no extra effort or configuration.</p>
+    </div>
+  </div>
+  <div class="point">
+    <div style="grid-area: image">
+        <pre><code class="ts">
+interface BasePart extends PVInstance {
+  Anchored: boolean;
+  BrickColor: BrickColor;
+  CFrame: CFrame;
+  CanCollide: boolean;
+  readonly CenterOfMass: Vector3;
+  CollisionGroupId: number;
+  Color: Color3;
+  CustomPhysicalProperties: PhysicalProperties;
+  Massless: boolean;
+  Material: Enum.Material;
+  Position: Vector3;
+}
+      </code></pre>
+    </div>
+    <div style="grid-area: desc">
+      <h1>Typed Roblox API with Automatic Updates</h1>
+      <p>roblox-ts offers TypeScript typings for the entire Roblox API, a hybrid of machine-generated types and hand-crafted overrides, enabling smart IntelliSense docs as you type. And whenever Roblox updates, a new version of <a href="https://github.com/roblox-ts/rbx-types" target="_blank">rbx-types</a> is automatically built and deployed, so you'll never have to wait for a human to start using new features.</p>
+    </div>
+  </div>
+  <div class="point img small">
+    <div style="grid-area: image">
+      <img src="/images/npm.svg" alt="NPM" class="point-image" style="width: 50%">
+    </div>
+    <div style="grid-area: desc">
+      <h1>Fostering an ecosystem of Roblox TypeScript packages</h1>
+      <p>roblox-ts is backed by <a href="https://www.npmjs.com/" target="_blank">NPM</a>, a trusted package manager with versioned dependencies. Your projects can rely on community-driven resources, and creating your own libraries is as easy as publishing a package that begins with "rbx-".</p>
+      <p>Gone are the days of submodules and half-baked Studio plugins that not everyone wants to install just to grab your library -- a centralized package manager ensures that every roblox-ts developer is on the same page.</p>
+    </div>
+  </div>
+  <div class="point">
+    <div style="grid-area: image">
+        <pre><code class="ts">
+function returnsAPromise() {
+  return new Promise((resolve, reject, onCancel) => {
+    spawn(() => {
+      let cancelled = false;
+
+      onCancel(() => cancelled = true);
+  
+      while (!cancelled) {
+        print("An async, cancellable operation!");
+        wait(1);
+      }
+    })
+  });
+}
+
+const promise = returnsAPromise();
+wait(3);
+promise.cancel();
+      </code></pre>
+    </div>
+    <div style="grid-area: desc">
+      <h1>Native Promises</h1>
+      <p>Yielding sucks. With Promises baked in to the language, roblox-ts puts a modern async primitive at your fingertips. Promises give us a way to model any asynchronous operation without blocking, and make for easy handling when things fail.</p>
+      <p>Our Promises boast modern features like Promise inspection, <code>finally</code>, and cancellation with optional abort semantics.</p>
+    </div>
+  </div>
+  <div class="point">
+      <div style="grid-area: image">
+        <pre><code class="ts">
+async function getPage() {
+  return HttpService.GetAsync("https://example.com")
+}
+
+async function example() {
+  const html = await getPage();
+  return html.gsub("rep", "lace");
+}
+
+const promise = example()
+promise.then(html => html.gsub("lace", "rep"))
+  .then(html => print(html))
+      </code></pre>
+    </div>
+    <div style="grid-area: desc">
+      <h1>async/await</h1>
+      <p>Async functions are special functions that implicitly create and return a Promise when you call them. Need to yield when calling a Roblox API or a library that doesn't use Promises? No problem&mdash;you can do so safely inside of an async function. Upon calling an async function, you get a Promise back instantly which resolves when the async function returns.</p>
+      <p>When working with a lot of Promises, the `.then`'s can really add up. <code>await</code> is a special keyword that will yield until a Promise resolves. Since <code>await</code> only works inside of async functions, you'll never unintentionally block the thread.</p>
+    </div>
+  </div>
+  <div class="point img small">
+    <div style="grid-area: image">
+      <img src="/images/rojo.png" alt="Rojo" class="point-image" style="filter: brightness(140%)">
+    </div>
+    <div style="grid-area: desc">
+      <h1>Pairs with Popular Syncing Tools</h1>
+      <p>The roblox-ts compiler pairs with popular syncing tools like Rojo in order to intelligently compile imports. If you change where your code will end up in your sync configuration, roblox-ts will automatically adapt on the next compile.</p>
+    </div>
+  </div>
+
+  <p class="center" style="margin-top: 80px;"><a href="https://github.com/roblox-ts/roblox-ts/wiki/Notable-Supported-Features">More Features</a></p>
+</section>
+<section class="pattern center">
+  <h1 class="center">Join us on our journey to v1.</h1>
+  <p style="padding: 20px; max-width: 1000px; margin: 0 auto;">Right now, roblox-ts is only suitable for experimental projects because things are changing quickly. Help us shape the future this project by giving your feedback so that we can make roblox-ts the best it can be!</p>
+
+  <p><a href="{{ site.data.nav[0].href }}">Get Started</a></p>
+</section>
 
 <!-- Add "See Lua" to code sample -->
-<!-- Change const to let in tooling section -->
-<!-- Next section: Lua interop, Automatically generated Roblox typings, Readable transpiled code, Runtime library and PROMISES, undefined NO NULL -->
-<!-- Next Section: Who's Behind the project -->
 <!-- Next section: Join us on our journey to v1, CTA get started -->

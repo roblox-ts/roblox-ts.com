@@ -2,6 +2,10 @@
   position: relative;
   margin: 0 auto;
   min-height: 250px;
+
+  @media screen and (max-width: $break-phone + 45) {
+    margin-bottom: 100px;
+  }
   
   & > div {
     top: 40px;
@@ -13,14 +17,15 @@
     background: #282c34;
     border-radius: 10px;
     padding: 10px 25px;
-    // padding-top: 30px;
-    // border: 1px solid silver;
+    max-width: 80%;
   
     pre {
       margin: 0;
       display: inline-block;
       background: $white;
       width: 100%;
+      white-space: pre-wrap;
+      word-wrap: break-word;
 
       code {
         padding: 0;
@@ -35,9 +40,18 @@
   flex-direction: row;
   justify-content: center;
 
+  @media screen and (max-width: $break-pc) {
+    flex-direction: column;
+  }
+
   .point {
     margin: 20px;
     max-width: 20%;
+
+    @media screen and (max-width: $break-pc) {
+      max-width: 80%;
+      margin: 20px auto;
+    }
 
     code {
       display: block;
@@ -76,6 +90,64 @@
 
     p {
       
+    }
+  }
+}
+
+.h-points {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+  .point {
+    margin: 20px auto;
+    max-width: 80%;
+    display: grid;
+    grid: 1fr 1fr 1fr / 1fr 1fr;
+    grid-template-areas: "image desc" "image desc" "image desc";
+    justify-items: center;
+    align-items: center;
+    grid-gap: 40px;
+    
+    &.img > div:first-of-type {
+      text-align: center;
+
+      .point-image {
+        max-width: 75%;
+      }
+    }
+
+    &.small {
+      grid: 1fr 1fr / 1fr 1fr;
+    }
+
+    @media screen and (min-width: $break-pc + 1) {
+      &:nth-child(2n) {
+        grid-template-areas: "desc image" "desc image" "desc image";
+      }
+    }
+    
+    @media screen and (max-width: $break-pc) {
+      grid-template-areas: "image image" "image image" "desc desc";
+      grid-gap: 0;
+
+
+      & > div {
+        max-width: 90%;
+      }
+    }
+
+    .point-image {
+      width: 100%;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+
+      .hljs {
+        background: none;
+      }
     }
   }
 }
