@@ -27,7 +27,7 @@ h1.major {
 a {
   color: $red;
   position: relative;
-  display: inline-block;
+  // display: inline-block;
   text-decoration: none;
   transition: all .6s ease;
 
@@ -233,6 +233,10 @@ section {
 
 main {
   position: relative;
+}
+
+pre {
+  tab-size: 4;
 }
 
 section.content {

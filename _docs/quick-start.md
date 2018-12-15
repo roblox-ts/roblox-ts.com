@@ -15,7 +15,7 @@ _(On Unix systems, you may need to prefix this command with `sudo`)_
 
 You can now run roblox-ts with the command `rbxtsc`.
 
-```plaintext
+```
 Usage: rbxtsc [options]
 
 Options:
@@ -41,7 +41,7 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 
 4. Create a file named `tsconfig.json` in your project folder. The contents should look like this:
 
-```JSON
+```json
 {
 	"compilerOptions": {
 		"outDir": "out",
@@ -62,7 +62,8 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 _**(warning: do not change these values unless you know what you are doing!)**_
 
 5. Create a file for syncing your compiled .lua files to Roblox Studio. If you're using Rojo, this should be a `rojo.json` file and look like:
-```JSON
+
+```json
 {
 	"name": "my-project-name",
 	"servePort": 8000,

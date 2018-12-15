@@ -18,11 +18,11 @@
 
     {% if page.path contains "_pages/" %}
     <link rel="stylesheet" href="/css/atom-one-dark.css">
-    {% else %}
-    {% comment %} <link rel="stylesheet" href="/css/default.css"> {% endcomment %}
-    {% endif %}
     <script src="/js/highlight.pack.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    {% else %}
+    <link rel="stylesheet" href="/css/highlight-github.css">
+    {% endif %}
 </head>
 <body>
     {{ content }}
