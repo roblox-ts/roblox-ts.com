@@ -1,0 +1,23 @@
+---
+layout: page
+---
+<section class="content">
+  <h1>{{ page.title }}</h1>
+  <div class="inner">
+    <nav>
+      <h3>Docs</h3>
+      <ul>
+      {% for doc in site.docs %}
+        {% if page.url == doc.url %}
+        <li class="active">{{ doc.title }}</li>
+        {% else %}
+        <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+    </nav>
+    <article>
+      {{ content }}
+    </article>
+  </div>
+</section>

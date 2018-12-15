@@ -9,3 +9,10 @@ collections:
   pages:
     output: true
     permalink: /:name
+  docs:
+    output: true
+    permalink: /docs/:name
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
