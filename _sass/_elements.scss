@@ -239,13 +239,6 @@ main {
   position: relative;
 }
 
-pre {
-  tab-size: 4;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  word-break: break-all;
-}
-
 :not(pre) > code {
   background-color: #f8f8f8;
   border: 1px solid #ccc;
@@ -300,6 +293,13 @@ section.content {
 
       p {
         line-height: 1.7em;
+      }
+
+      pre {
+        tab-size: 4;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        word-break: break-all;
       }
     }
   }
