@@ -239,6 +239,13 @@ pre {
   tab-size: 4;
 }
 
+:not(pre) > code {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
 section.content {
   padding-top: 0;
 
