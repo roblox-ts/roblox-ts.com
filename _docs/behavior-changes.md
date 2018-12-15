@@ -26,4 +26,4 @@ Because roblox-ts compiles down to Lua and in the Roblox API we have functions t
 
 ## Removed Features
 Some features from traditional TypeScript have been removed intentionally or not yet supported.
-[You can find a list of them here.](https://github.com/roblox-ts/roblox-ts/wiki/Known-Unsupported-Features)
+[You can find a list of them here.](/docs/unsupported-features)

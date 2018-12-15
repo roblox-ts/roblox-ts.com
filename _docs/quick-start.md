@@ -89,4 +89,4 @@ You should add more partitions for the subfolders of your `out` folder.
 
 9. Write code!
 
-More detailed documentation can be found on the [wiki](https://github.com/roblox-ts/roblox-ts/wiki). It is recommended that you peruse through all of the wiki pages as you get started!
+It is recommended that you peruse through all of the docs to the left as you get started!
