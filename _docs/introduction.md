@@ -2,7 +2,7 @@
 title: Introduction
 order: 1
 ---
-Welcome to the **roblox-ts** wiki!
+Welcome to the **roblox-ts** docs!
 
 **roblox-ts** aims to have feature parity with [TypeScript](http://www.typescriptlang.org/) where possible. However, a few features are not supported due to constraints when compiling to Lua.
 
