@@ -13,6 +13,4 @@ collections:
     output: true
     permalink: /docs/:name
 markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
+highlighter: rouge

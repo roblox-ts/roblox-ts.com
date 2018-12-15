@@ -7,7 +7,8 @@ layout: page
     <nav>
       <h3>Docs</h3>
       <ul>
-      {% for doc in site.docs %}
+      {% assign docs = site.docs | sort: 'order' %}
+      {% for doc in docs %}
         {% if page.url == doc.url %}
         <li class="active">{{ doc.title }}</li>
         {% else %}

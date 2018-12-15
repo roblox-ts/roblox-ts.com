@@ -40,6 +40,7 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 3. Create a folder called `src` to contain your TypeScript files.
 
 4. Create a file named `tsconfig.json` in your project folder. The contents should look like this:
+
 ```JSON
 {
 	"compilerOptions": {
