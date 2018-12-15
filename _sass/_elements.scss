@@ -73,6 +73,10 @@ header {
   height: $header-height;
   color: white;
 
+  @media screen and (max-width: $break-tablet) {
+    height: auto;
+  }
+
   .inner {
     display: grid;
     grid: auto / 1fr 1fr 2fr;
@@ -237,6 +241,9 @@ main {
 
 pre {
   tab-size: 4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 :not(pre) > code {
@@ -255,6 +262,10 @@ section.content {
     grid-template-areas: "left right";
     margin-top: 75px;
 
+    @media screen and (max-width: $break-phone) {
+      display: block;
+    }
+
     nav {
       grid-area: left;
 
@@ -262,8 +273,12 @@ section.content {
         list-style-type: none;
         padding-left: 20px;
 
-        li.active {
-          font-weight: bold;
+        li {
+          margin-bottom: 10px;
+
+          .active {
+            font-weight: bold;
+          }
         }
       }
     }
