@@ -19,14 +19,14 @@ You can now run roblox-ts with the command `rbxtsc`.
 Usage: rbxtsc [options]
 
 Options:
-  -w, --watch        enable watch mode                                 [boolean]
-  -p, --project      project path                                 [default: "."]
-  -s, --strict       ensure compiled code is type safe (slower)        [boolean]
-  -i, --includePath  folder to copy runtime files to        [default: "include"]
-  --noInclude        do not copy runtime files                  [default: false]
-  --modulesPath      folder to copy modules to              [default: "modules"]
-  -v, --version      show version information                          [boolean]
-  -h, --help         show help                                         [boolean]
+  -w, --watch        enable watch mode                          [boolean]
+  -p, --project      project path                          [default: "."]
+  -s, --strict       ensure compiled code is type safe (slower) [boolean]
+  -i, --includePath  folder to copy runtime files to [default: "include"]
+  --noInclude        do not copy runtime files           [default: false]
+  --modulesPath      folder to copy modules to       [default: "modules"]
+  -v, --version      show version information                   [boolean]
+  -h, --help         show help                                  [boolean]
 ```
 
 ## Project Folder Setup
