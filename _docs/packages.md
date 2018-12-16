@@ -7,7 +7,7 @@ order: 3
 ## Package Installation
 To install packages, use `npm install` followed by the name of the package within your project directory.
 
-Your `rojo.json` file should have a partition to sync modules into studio. Refer to the roblox-ts [quick start guide](https://roblox-ts.github.io/docs/quick-start) for more information.
+Your `rojo.json` file should have a partition to sync modules into studio. Refer to the roblox-ts [quick start guide](/docs/quick-start) for more information.
 
 ## Package Creation
 Creating your own package is easy.
@@ -24,7 +24,7 @@ For example, `rbx-my-awesome-package`.
 *If your package will contain TypeScript code follow these steps, otherwise skip to the "Lua Packages" section.*<br>
 For an example of how a TypeScript-based package might look, check out [rbx-services](https://github.com/roblox-ts/rbx-services).
 
-1. Create a `src` folder and copy the `tsconfig.json` from the roblox-ts [quick start guide](https://roblox-ts.github.io/docs/quick-start).
+1. Create a `src` folder and copy the `tsconfig.json` from the roblox-ts [quick start guide](/docs/quick-start).
 
 2. Inside of your `tsconfig.json` file, you should:
     - Add the following under "compilerOptions": 
