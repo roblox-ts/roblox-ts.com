@@ -245,7 +245,9 @@ class Clock extends Roact.Component<ClockState, ClockProps> {
 		spawn(() => {
 			while (this.running) {
 				this.setState(state => {
-					return { currentTime: state.currentTime + 1 };
+					return {
+						currentTime: state.currentTime + 1,
+					};
 				});
 			}
 			wait(1);
