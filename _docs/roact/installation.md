@@ -1,8 +1,8 @@
 ---
-title: Installation - Roact
+title: Installation
 order: 2
 category: roact
-description: A manual for using the view management library Roact with roblox-ts.
+description: Installation of Roact
 ---
 Typescript Roact requires that you have [roblox-ts](https://github.com/roblox-ts/roblox-ts) as well as [rbx-types](https://github.com/roblox-ts/rbx-types) installed.
 

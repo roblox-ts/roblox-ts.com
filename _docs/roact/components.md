@@ -1,8 +1,8 @@
 ---
-title: Components - Roact
+title: Components
 order: 3
 category: roact
-description: A manual for using the view management library Roact with roblox-ts.
+description: Using Components in Roact
 ---
 _( This is a typescript adapted version of https://roblox.github.io/roact/guide/components/ )_
 
@@ -67,6 +67,60 @@ class Greeting extends Roact.Component<GreetingProps> {
 	public render(): Roact.Element {
 		return <textlabel Text={`Hello, ${this.props.name}`}/>;
 	}
+}
+```
+{% endcapture %}
+{% include tabs.html sync="jsx" tabs="Vanilla,JSX" content=code %}
+
+# Using Components
+In our previous examples, we passed strings to `Roact.createElement` or element tags to create elements that represented Roblox Instances.
+
+We can also pass our custom components to create elements that represent them:
+
+{% capture code %}
+```ts
+const hello = Roact.createElement(Greeting, {name: "Rick James"});
+```
+***
+```jsx
+const hello = <Greeting name="Rick James"/>;
+```
+{% endcapture %}
+{% include tabs.html sync="jsx" tabs="Vanilla,JSX" content=code %}
+
+The `name` value is passed to our component as props, which we can reference as the `props` argument in our functional component or `this.props` in our stateful component.
+
+# Components in Components
+Components are designed to make it easy to re-use pieces of UI, so naturally, we can use components inside other components!
+
+{% capture code %}
+```ts
+function Greeting(props: {name: string}) {
+	return Roact.createElement("TextLabel", {
+		Text: `Hello, ${props.name}`
+	});
+}
+
+function GreetEveryone() {
+	return Roact.createElement("ScreenGui", {}, {
+		Layout: Roact.createElement("UIListLayout"),
+		HelloJoe: Roact.createElement(Greeting, {name: "Joe"}),
+		HelloMary: Roact.createElement(Greeting, {name: "Mary"}),
+	});
+}
+```
+***
+```jsx
+function Greeting(props: {name: string, Key?: string}) {
+	return <textlabel Text={`Hello, ${props.name}`}/>;
+}
+
+function GreetEveryone() {
+	return <screengui>
+		<uilistlayout Key="Layout"/>
+		<Greeting Key="HelloJoe" name="Joe"/>
+		<Greeting Key="HelloMary" name="Mary"/>
+	</screengui>;
 }
 ```
 {% endcapture %}
