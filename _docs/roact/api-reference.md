@@ -155,9 +155,11 @@ The constructor is called exactly once when a new instance of a component is cre
 {% capture code %}
 ```ts
 class HelloWorldComponent extends Roact.Component {
-    public render(): Roact.Element {
-        return Roact.createElement("TextLabel", {Text: "Hello, World!"});
-    }
+	public render(): Roact.Element {
+		return Roact.createElement("TextLabel", {
+			Text: "Hello, World!",
+		});
+	}
 }
 ```
 ***
