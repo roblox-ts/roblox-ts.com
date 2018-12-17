@@ -8,12 +8,14 @@
     <span>{{ category_name | capitalize }}</span>
     <ul>
     {% for doc in items %}
-      {% if page.url == doc.url %}
-      <li class="active">{{ doc.title }}</li>
-        {% include toc.html html=content class="small" sanitize=true %}
-      {% else %}
-      <li><a href="{{ doc.url | replace: "/index", "/" }}">{{ doc.title }}</a></li>
-      {% endif %}
+      {% unless doc.hidden %}
+        {% if page.url == doc.url %}
+        <li class="active">{{ doc.title }}</li>
+          {% include toc.html html=content class="small" sanitize=true %}
+        {% else %}
+        <li><a href="{{ doc.url | replace: "/index", "/" }}">{{ doc.title }}</a></li>
+        {% endif %}
+      {% endunless %}
     {% endfor %}
     </ul>
   {% else %}
