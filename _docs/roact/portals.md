@@ -5,11 +5,11 @@ category: roact
 description: A guide on how to use portals using the Roact library with roblox-ts.
 ---
 
-_typescript adaptation of (https://roblox.github.io/roact/advanced/portals/)_
+_TypeScript adaptation of [Roact Portals](https://roblox.github.io/roact/advanced/portals/)_
 
 ---
 
-_Portals_ are a special kind of component provided by Roact that enable components to render objects into a separate, non-Roact Instance.
+*Portals* are a special kind of component provided by Roact that enable components to render objects into a separate, non-Roact Instance.
 
 To create a portal, use the `Roact.Portal` component with `createElement` or in JSX use `<Roact.Portal/>`.
 
