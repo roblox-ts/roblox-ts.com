@@ -43,15 +43,25 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 ```json
 {
 	"compilerOptions": {
-		"outDir": "out",
-		"rootDir": "src",
-		"module": "commonjs",
-		"strict": true,
-		"noLib": true,
+		// required
 		"downlevelIteration": true,
-		"declaration": false,
+		"module": "commonjs",
+		"noLib": true,
+		"strict": true,
 		"target": "es6",
-		"types": [ "rbx-types" ]
+		"types": [ "rbx-types" ],
+
+		// required, configurable
+		"rootDir": "src",
+		"outDir": "out",
+
+		// optional
+		"baseUrl": "src",
+		"declaration": false,
+
+		// optional, non-configurable
+		"jsx": "react",
+		"jsxFactory": "Roact.createElement"
 	},
 	"typeAcquisition": {
 		"enable": true
