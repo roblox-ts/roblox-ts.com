@@ -265,10 +265,31 @@ section.content {
         list-style-type: none;
         padding-left: 10px;
         padding-right: 15px;
+        margin-top: 15px;
+        color: $red;
+        font-weight: bold;
+        font-size: 0.95em;
+
+        span {
+          color: #222;
+        }
+
+        a {
+          color: #666;
+          font-weight: initial;
+          transition: none;
+          &::before, &::after {
+            display: none;
+            content: none;
+          }
+
+          &:hover {
+            color: #222;
+          }
+        }
 
         li {
           margin-bottom: 15px;
-          font-size: 1rem;
 
           .active {
             font-weight: bold;

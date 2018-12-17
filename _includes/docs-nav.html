@@ -1,0 +1,24 @@
+<ul>
+{% assign docs = site.docs | group_by: 'category' %}
+{% for category in docs %}
+{% assign items = category.items | sort: 'order' %}
+<li>
+  {% assign category_name = category.name | default: items[0].title %}
+  {% if page.category == items[0].category %}
+    <span>{{ category_name | capitalize }}</span>
+    <ul>
+    {% for doc in items %}
+      {% if page.url == doc.url %}
+      <li class="active">{{ doc.title }}</li>
+        {% include toc.html html=content class="small" sanitize=true %}
+      {% else %}
+      <li><a href="{{ doc.url | replace: "/index", "/" }}">{{ doc.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  {% else %}
+    <a href="{{ items[0].url | replace: "/index", "/" }}">{{ category_name | capitalize }}</a>
+  {% endif %}
+  </li>
+{% endfor %}
+</ul>

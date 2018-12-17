@@ -11,7 +11,7 @@ collections:
     permalink: /:name
   docs:
     output: true
-    permalink: /docs/:name
+    permalink: /docs/:categories/:name
 markdown: kramdown
 highlighter: rouge
 kramdown:
