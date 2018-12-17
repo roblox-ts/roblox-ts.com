@@ -192,12 +192,14 @@ class ModalButtonTSX extends Roact.Component<{}, ModalButtonState> {
 			<textbutton
 				Size={new UDim2(0, 400, 0, 300)}
 				Text="Click me to open modal dialog!"
+{% raw %}
 				Event={{
 					Activated: () =>
 						this.setState({
 							dialogOpen: true,
 						}),
 				}}
+{% endraw %}
 			>
 				{dialog!}
 			</textbutton>
