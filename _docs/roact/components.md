@@ -2,7 +2,7 @@
 title: Components
 order: 3
 category: roact
-description: Using Components in Roact
+description: A guide on how to use functional components using the Roact library with roblox-ts.
 ---
 _( This is a typescript adapted version of https://roblox.github.io/roact/guide/components/ )_
 

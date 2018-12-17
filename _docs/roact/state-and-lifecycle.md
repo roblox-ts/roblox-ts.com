@@ -2,7 +2,7 @@
 title: State And Lifecycle
 order: 4
 category: roact
-description: Guide on stateful components
+description: A guide on how to use stateful components using the Roact library with roblox-ts.
 ---
 
 _Typescript adaptation of (https://roblox.github.io/roact/guide/state-and-lifecycle/)_

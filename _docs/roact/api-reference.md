@@ -2,7 +2,7 @@
 title: API Reference
 order: 7
 category: roact
-description: The API Reference
+description: An API reference for the Roact library for roblox-ts.
 ---
 
 # Methods
