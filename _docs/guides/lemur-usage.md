@@ -1,6 +1,8 @@
 ---
 title: Usage with Lemur
 order: 3
+category: guides
+description: Learn how to use Lemur with roblox-ts and set up a continuous integration testing suite.
 ---
 You can use **roblox-ts** without Roblox Studio through the use of [LPGHatGuy's lemur](https://github.com/LPGhatguy/lemur).
 

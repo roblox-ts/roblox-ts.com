@@ -7,7 +7,7 @@ Here's a list of useful npm packages that are compatible with **roblox-ts**.
 
 ## [rbx-services](https://www.npmjs.com/package/rbx-services)
 Exports most commonly used Roblox services. This makes them really easy to use.
-```TS
+```ts
 import { Players } from "rbx-services";
 Players.PlayerAdded.Connect(player => print("Player was added!", player.Name));
 ```
@@ -15,7 +15,7 @@ Players.PlayerAdded.Connect(player => print("Player was added!", player.Name));
 ## [rbx-event](https://www.npmjs.com/package/rbx-event)
 A type safe implementation of BindableEvents written in TypeScript
 
-```TS
+```ts
 import { Event } from "rbx-event";
 const e = new Event<[number, string]>();
 e.connect((a, b) => print(a, b));
@@ -28,14 +28,14 @@ while (true) {
 
 ## [rbx-inspect](https://www.npmjs.com/package/rbx-inspect)
 A copy of [kikito's inspect.lua library](https://github.com/kikito/inspect.lua) with type definitions.
-```TS
+```ts
 import inspect = require("rbx-inspect");
 print(inspect([1, 2, 3]));
 ```
 
 ## [rbx-datastore2](https://www.npmjs.com/package/rbx-datastore2)
 A copy of [Kampfkarren's DataStore2 library](https://devforum.roblox.com/t/how-to-use-datastore2-data-store-caching-and-data-loss-prevention/136317) with type definitions.
-```TS
+```ts
 import { ReplicatedStorage, Players } from "rbx-services";
 import DataStore2 = require("rbx-datastore2");
 

@@ -1,5 +1,5 @@
 ---
-title: Data Class Math
+title: Data Type Math
 order: 2
 ---
 One of the few downsides to using TypeScript is that it does not support operator overloading.

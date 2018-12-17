@@ -1,5 +1,5 @@
 ---
-title: Known Workflow Issues
+title: Workflow Issues
 order: 2
 ---
 

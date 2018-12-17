@@ -1,6 +1,8 @@
 ---
 title: Installing from GitHub
 order: 5
+category: guides
+description: Learn how to install roblox-ts from GitHub instead of NPM to be on the bleeding edge of new features and fixes.
 ---
 
 If you'd like to use the latest features of **roblox-ts** before they get published to npm or you'd like to set up **roblox-ts** for local development, this guide can help.

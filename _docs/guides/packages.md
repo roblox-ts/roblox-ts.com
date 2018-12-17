@@ -1,6 +1,8 @@
 ---
 title: Packages
 order: 3
+category: guides
+description: Learn how to create your own roblox-ts TypeScript package and publish it to NPM.
 ---
 **roblox-ts supports npm packages!**
 

@@ -1,5 +1,5 @@
 ---
-title: Changes in Behavior From Traditional TypeScript
+title: Changes in Behavior
 order: 2
 ---
 This page serves as a list of _intentional_ changes in behavior from traditional TypeScript functionality.
