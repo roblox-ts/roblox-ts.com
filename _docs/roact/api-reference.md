@@ -91,7 +91,7 @@ function createRef<T extends Rbx_Instance>: Roact.Ref<T>;
 The base component instance that can be extended to make stateful components.
 
 ```ts
-class ... extends Roact.Component<P, S>
+class MyComponent extends Roact.Component<P, S>
 ```
 - `P` is the type of the `props`.
 - `S` is the type of the `state`.
@@ -102,14 +102,14 @@ Both can be omitted if not required. If you want to use `props` but not `state`,
 ## class Roact.PureComponent
 Exactly like `Roact.Component` except `shouldUpdate` is handled differently.
 ```ts
-class ... extends Roact.PureComponent<P, S>
+class MyPureCompopnent extends Roact.PureComponent<P, S>
 ```
 
 
 ## class Roact.Portal
 ```ts
 interface PortalProps { instance: Instance; }
-class Roact.Portal extends Roact.Component<PortalProps, {}>
+class Roact.Portal extends Roact.Component<PortalProps>
 ```
 Used in [Portals](Portals).
 > ⚠️ This class cannot be inherited
@@ -117,17 +117,22 @@ Used in [Portals](Portals).
 # Component API
 ## defaultProps
 ```ts
-class ... extends Roact.Component<P, S> {
-    static defaultProps: P = {
-        // ...
+interface DefaultProps {
+	value?: number;
+}
+class DefaultPropsExample extends Roact.Component<DefaultProps> {
+    static defaultProps: DefaultProps = {
+        value: 10,
     };
 }
 ```
 If `defaultProps` is defined on a stateful component, any props that aren't specified when a component is created will be taken from there.
 
+This is useful for setting props that can be `undefined` to a value.
+
 ## props[Roact.Children]
 ```ts
-class ... extends Roact.Component<P, S> {
+class SingleChildComponent extends Roact.Component {
     public render(): Roact.Element {
         return Roact.oneChild(this.props[Roact.Children]);
     }
@@ -136,7 +141,7 @@ class ... extends Roact.Component<P, S> {
 This contains any child elements that have been passed to this component.
 ## constructor
 ```ts
-class ... extends Roact.Component<P, S> {
+class MyComponent extends Roact.Component {
     constructor(props: P) {
         super(props);
         // ...
@@ -146,13 +151,26 @@ class ... extends Roact.Component<P, S> {
 The constructor is called exactly once when a new instance of a component is created. It can be used to set up the initial `state` as well as any non-`render` related values directly on the component.
 
 ## render
+
+{% capture code %}
 ```ts
-class ... extends Roact.Component<P, S>{
+class HelloWorldComponent extends Roact.Component {
     public render(): Roact.Element {
-        // return Roact.Element here.
+        return Roact.createElement("TextLabel", {Text: "Hello, World!"});
     }
 }
 ```
+***
+```jsx
+class HelloWorldComponent extends Roact.Component {
+    public render(): Roact.Element {
+        return <textlabel Text="Hello, World!"/>;
+    }
+}
+```
+{% endcapture %}
+{% include tabs.html sync="jsx" tabs="Vanilla,JSX" content=code %}
+
 `render` describes what a component should display at the current instant in time.
 
 > ℹ️ Roact assumes that `render` act likes a pure function: the result of `render` must depend only on `props` and `state`, and it must not have side-effects.
@@ -161,7 +179,7 @@ class ... extends Roact.Component<P, S>{
 
 ## setState
 ```ts
-class ... extends Roact.Component<P, S>{
+class MyComponent extends Roact.Component<P, S>{
     public setState(
         stateFn: (prevState: Readonly<S>, props: P): AnyKeyValueOf<S>,
     ): void;
