@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% if page.title contains "roblox-ts" %}
+	{% if page.title contains "roblox-ts" %}
 	  <title>{{ page.title }}</title>
-    {% else %}
-    <title>{{ page.title }} | roblox-ts</title>
-    {% endif %}
+	{% else %}
+	<title>{{ page.title }} | roblox-ts</title>
+	{% endif %}
+
 	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 	<meta charset="utf-8">
 	<meta name="theme-color" content="#e2241a">
-    <link rel="icon" href="/images/roblox-ts.png">
+	<meta name="description" content="{{ page.description }}">
+	<meta name="og:title" content="{{ page.title }}">
+	<meta name="og:description" content="{{ page.description }}">
+	<meta name="og:site_name" content="roblox-ts">
+	<meta name="og:image" content="/images/roblox-ts-128.png">
+
+	<link rel="icon" href="/images/roblox-ts.png">
   	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 	  <link rel="stylesheet" href="/css/style.css?v={{site.time | date: '%s%N'}}">
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14/dist/smooth-scroll.polyfills.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14/dist/smooth-scroll.polyfills.min.js"></script>
 
-    {% if page.path contains "_pages/" %}
-    <link rel="stylesheet" href="/css/atom-one-dark.css">
-    <script src="/js/highlight.pack.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    {% else %}
-    <link rel="stylesheet" href="/css/highlight-github.css">
-    {% endif %}
+	{% if page.path contains "_pages/" %}
+	<link rel="stylesheet" href="/css/atom-one-dark.css">
+	<script src="/js/highlight.pack.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	{% else %}
+	<link rel="stylesheet" href="/css/highlight-github.css">
+	{% endif %}
 </head>
 <body>
-    {{ content }}
-    <script>
-        new SmoothScroll('a[href*="#"]', {
-            speed: 300,
-            header: 'header'
-        });
-    </script>
+	{{ content }}
+	<script>
+		new SmoothScroll('a[href*="#"]', {
+			speed: 300,
+			header: 'header'
+		});
+	</script>
 </body>
 </html>
