@@ -1,0 +1,9 @@
+<div>
+{% assign docs = site.docs | sort: "order" %}
+{% for doc in docs %}
+  {% if doc.category == page.category and doc.hidden != true %}
+    <h3><a href="{{ doc.url | replace: "/index", "/" }}">{{ doc.title }}</a></h3>
+    <p>{{ doc.description }}</p>
+  {% endif %}
+{% endfor %}
+</div>
