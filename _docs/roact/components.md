@@ -21,16 +21,16 @@ Functional components are the simplest: they're just functions that accept props
 
 {% capture code %}
 ```ts
-function MyComponent(props: {name: string}) {
+function MyComponent(props: { name: string }) {
 	return Roact.createElement("TextLabel", {
-		Text: `Hello, ${props.name}`
+		Text: `Hello, ${props.name}`,
 	});
 }
 ```
 ***
 ```jsx
-function MyComponent(props: {name: string}) {
-	return <textlabel Text={`Hello, ${props.name}`}/>;
+function MyComponent(props: { name: string }) {
+	return <textlabel Text={`Hello, ${props.name}`} />;
 }
 ```
 {% endcapture %}
@@ -52,7 +52,7 @@ interface GreetingProps {
 class Greeting extends Roact.Component<GreetingProps> {
 	public render(): Roact.Element {
 		return Roact.createElement("TextLabel", {
-			Text: `Hello, ${this.props.name}`
+			Text: `Hello, ${this.props.name}`,
 		});
 	}
 }
@@ -65,7 +65,7 @@ interface GreetingProps {
 
 class Greeting extends Roact.Component<GreetingProps> {
 	public render(): Roact.Element {
-		return <textlabel Text={`Hello, ${this.props.name}`}/>;
+		return <textlabel Text={`Hello, ${this.props.name}`} />;
 	}
 }
 ```
@@ -79,11 +79,13 @@ We can also pass our custom components to create elements that represent them:
 
 {% capture code %}
 ```ts
-const hello = Roact.createElement(Greeting, {name: "Rick James"});
+const hello = Roact.createElement(Greeting, {
+	name: "Rick James",
+});
 ```
 ***
 ```jsx
-const hello = <Greeting name="Rick James"/>;
+const hello = <Greeting name="Rick James" />;
 ```
 {% endcapture %}
 {% include tabs.html sync="jsx" tabs="Vanilla,JSX" content=code %}
@@ -95,32 +97,42 @@ Components are designed to make it easy to re-use pieces of UI, so naturally, we
 
 {% capture code %}
 ```ts
-function Greeting(props: {name: string}) {
+function Greeting(props: { name: string }) {
 	return Roact.createElement("TextLabel", {
-		Text: `Hello, ${props.name}`
+		Text: `Hello, ${props.name}`,
 	});
 }
 
 function GreetEveryone() {
-	return Roact.createElement("ScreenGui", {}, {
-		Layout: Roact.createElement("UIListLayout"),
-		HelloJoe: Roact.createElement(Greeting, {name: "Joe"}),
-		HelloMary: Roact.createElement(Greeting, {name: "Mary"}),
-	});
+	return Roact.createElement(
+		"ScreenGui",
+		{},
+		{
+			Layout: Roact.createElement("UIListLayout"),
+			HelloJoe: Roact.createElement(Greeting, {
+				name: "Joe",
+			}),
+			HelloMary: Roact.createElement(Greeting, {
+				name: "Mary",
+			}),
+		},
+	);
 }
 ```
 ***
 ```jsx
-function Greeting(props: {name: string, Key?: string}) {
-	return <textlabel Text={`Hello, ${props.name}`}/>;
+function Greeting(props: { name: string; Key?: string }) {
+	return <textlabel Text={`Hello, ${props.name}`} />;
 }
 
 function GreetEveryone() {
-	return <screengui>
-		<uilistlayout Key="Layout"/>
-		<Greeting Key="HelloJoe" name="Joe"/>
-		<Greeting Key="HelloMary" name="Mary"/>
-	</screengui>;
+	return (
+		<screengui>
+			<uilistlayout Key="Layout" />
+			<Greeting Key="HelloJoe" name="Joe" />
+			<Greeting Key="HelloMary" name="Mary" />
+		</screengui>
+	);
 }
 ```
 {% endcapture %}
@@ -138,18 +150,24 @@ We can revisit the incrementing counter example from the previous section, now u
 import * as Roact from "rbx-roact";
 const Players = game.GetService("Players");
 
-function Clock(props: {currentTime: number}) {
-	const {currentTime} = props;
+function Clock(props: { currentTime: number }) {
+	const { currentTime } = props;
 
-	return Roact.createElement("ScreenGui", {}, {
-		TimeLabel: Roact.createElement("TextLabel", {
-			Size: new UDim2(1, 0, 1, 0),
-			Text: `Time Elapsed: ${currentTime}`
-		}),
-	});
+	return Roact.createElement(
+		"ScreenGui",
+		{},
+		{
+			TimeLabel: Roact.createElement("TextLabel", {
+				Size: new UDim2(1, 0, 1, 0),
+				Text: `Time Elapsed: ${currentTime}`,
+			}),
+		},
+	);
 }
 
-const PlayerGui = Players.LocalPlayer!.FindFirstChildOfClass("PlayerGui");
+const PlayerGui = Players.LocalPlayer!.FindFirstChildOfClass(
+	"PlayerGui",
+);
 
 let currentTime = 0;
 
@@ -162,10 +180,13 @@ let handle = Roact.mount(clockElement, PlayerGui, "Clock UI");
 while (true) {
 	wait(1);
 
-	currentTime ++;
-	handle = Roact.reconcile(handle, Roact.createElement(Clock, {
-		currentTime: currentTime
-	}));
+	currentTime++;
+	handle = Roact.reconcile(
+		handle,
+		Roact.createElement(Clock, {
+			currentTime: currentTime,
+		}),
+	);
 }
 ```
 ***
@@ -173,28 +194,38 @@ while (true) {
 import * as Roact from "rbx-roact";
 const Players = game.GetService("Players");
 
-function Clock(props: {currentTime: number}) {
-	const {currentTime} = props;
+function Clock(props: { currentTime: number }) {
+	const { currentTime } = props;
 
-	return <screengui>
-		<textlabel Key="TimeLabel" Size={new UDim2(1, 0, 1, 0)} 
-			Text={`Time Elapsed: ${currentTime}`}/>
-	</screengui>;
+	return (
+		<screengui>
+			<textlabel
+				Key="TimeLabel"
+				Size={new UDim2(1, 0, 1, 0)}
+				Text={`Time Elapsed: ${currentTime}`}
+			/>
+		</screengui>
+	);
 }
 
-const PlayerGui = Players.LocalPlayer!.FindFirstChildOfClass("PlayerGui");
+const PlayerGui = Players.LocalPlayer!.FindFirstChildOfClass(
+	"PlayerGui",
+);
 
 let currentTime = 0;
 
-const clockElement = <Clock currentTime={currentTime}/>;
+const clockElement = <Clock currentTime={currentTime} />;
 
 let handle = Roact.mount(clockElement, PlayerGui, "Clock UI");
 
 while (true) {
 	wait(1);
 
-	currentTime ++;
-	handle = Roact.reconcile(handle, <Clock currentTime={currentTime}/>);
+	currentTime++;
+	handle = Roact.reconcile(
+		handle,
+		<Clock currentTime={currentTime} />,
+	);
 }
 ```
 {% endcapture %}

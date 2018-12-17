@@ -25,7 +25,9 @@ Roact in `roblox-ts` has two ways of being written. There is the traditional typ
 import * as Roact from "rbx-roact";
 const Players = game.GetService("Players");
 const LocalPlayer = Players.LocalPlayer!;
-const PlayerGui = LocalPlayer.FindFirstChildOfClass("PlayerGui");
+const PlayerGui = LocalPlayer.FindFirstChildOfClass(
+	"PlayerGui",
+);
 
 const helloWorld = Roact.createElement(
 	"ScreenGui",
@@ -45,7 +47,9 @@ Roact.mount(helloWorld, PlayerGui, "helloWorldGui");
 import * as Roact from "rbx-roact";
 const Players = game.GetService("Players");
 const LocalPlayer = Players.LocalPlayer!;
-const PlayerGui = LocalPlayer.FindFirstChildOfClass("PlayerGui");
+const PlayerGui = LocalPlayer.FindFirstChildOfClass(
+	"PlayerGui",
+);
 
 const helloWorld = (
 	<screengui>
@@ -71,7 +75,9 @@ Creating a component in `roblox-ts` for Roact is like creating another class in 
 import * as Roact from "rbx-roact";
 const Players = game.GetService("Players");
 const LocalPlayer = Players.LocalPlayer!;
-const PlayerGui = LocalPlayer.FindFirstChildOfClass("PlayerGui");
+const PlayerGui = LocalPlayer.FindFirstChildOfClass(
+	"PlayerGui",
+);
 
 interface HelloWorldState {}
 interface HelloWorldProps {
@@ -106,7 +112,9 @@ Roact.mount(
 import * as Roact from "rbx-roact";
 const Players = game.GetService("Players");
 const LocalPlayer = Players.LocalPlayer!;
-const PlayerGui = LocalPlayer.FindFirstChildOfClass("PlayerGui");
+const PlayerGui = LocalPlayer.FindFirstChildOfClass(
+	"PlayerGui",
+);
 
 interface HelloWorldState {}
 interface HelloWorldProps {
@@ -183,7 +191,9 @@ class Clock extends Roact.Component<ClockState, ClockProps> {
 		spawn(() => {
 			while (this.running) {
 				this.setState(state => {
-					return { currentTime: state.currentTime + 1 };
+					return {
+						currentTime: state.currentTime + 1,
+					};
 				});
 			}
 			wait(1);
