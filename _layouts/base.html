@@ -40,7 +40,7 @@
 		});
 
 		document.querySelectorAll('a').forEach(a => {
-			if (a.href.indexOf('https://roblox-ts.github.io') === -1) {
+			if (a.href.indexOf('https://roblox-ts.github.io') === -1 && a.href.indexOf('http://127.0.0.1') === -1 && a.href.indexOf('http://localhost') === -1) {
 				a.target = '_blank'
 			}
 		})
