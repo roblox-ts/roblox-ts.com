@@ -125,3 +125,77 @@ function GreetEveryone() {
 ```
 {% endcapture %}
 {% include tabs.html sync="jsx" tabs="Vanilla,JSX" content=code %}
+
+
+Applications built using Roact usually have one component at the top of the tree, and include all other pieces as children.
+
+# Incrementing Counter, Part Two
+We can revisit the incrementing counter example from the previous section, now using a functional component. Changed sections are highlighted.
+
+
+{% capture code %}
+```ts
+import * as Roact from "rbx-roact";
+const Players = game.GetService("Players");
+
+function Clock(props: {currentTime: number}) {
+	const {currentTime} = props;
+
+	return Roact.createElement("ScreenGui", {}, {
+		TimeLabel: Roact.createElement("TextLabel", {
+			Size: new UDim2(1, 0, 1, 0),
+			Text: `Time Elapsed: ${currentTime}`
+		}),
+	});
+}
+
+const PlayerGui = Players.LocalPlayer!.FindFirstChildOfClass("PlayerGui");
+
+let currentTime = 0;
+
+const clockElement = Roact.createElement(Clock, {
+	currentTime: currentTime,
+});
+
+let handle = Roact.mount(clockElement, PlayerGui, "Clock UI");
+
+while (true) {
+	wait(1);
+
+	currentTime ++;
+	handle = Roact.reconcile(handle, Roact.createElement(Clock, {
+		currentTime: currentTime
+	}));
+}
+```
+***
+```jsx
+import * as Roact from "rbx-roact";
+const Players = game.GetService("Players");
+
+function Clock(props: {currentTime: number}) {
+	const {currentTime} = props;
+
+	return <screengui>
+		<textlabel Key="TimeLabel" Size={new UDim2(1, 0, 1, 0)} 
+			Text={`Time Elapsed: ${currentTime}`}/>
+	</screengui>;
+}
+
+const PlayerGui = Players.LocalPlayer!.FindFirstChildOfClass("PlayerGui");
+
+let currentTime = 0;
+
+const clockElement = <Clock currentTime={currentTime}/>;
+
+let handle = Roact.mount(clockElement, PlayerGui, "Clock UI");
+
+while (true) {
+	wait(1);
+
+	currentTime ++;
+	handle = Roact.reconcile(handle, <Clock currentTime={currentTime}/>);
+}
+```
+{% endcapture %}
+{% include tabs.html sync="jsx" tabs="Vanilla,JSX" content=code %}
