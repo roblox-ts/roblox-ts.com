@@ -38,6 +38,12 @@
 			speed: 300,
 			header: 'header'
 		});
+
+		document.querySelectorAll('a').forEach(a => {
+			if (a.href.indexOf('https://roblox-ts.github.io') === -1) {
+				a.target = '_blank'
+			}
+		})
 	</script>
 </body>
 </html>
