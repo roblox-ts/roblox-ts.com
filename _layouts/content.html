@@ -4,9 +4,14 @@ layout: page
 <section class="content">
   <h1>{{ page.title }}</h1>
   <div class="inner">
-    <nav>
+    <nav id="docs-nav">
       {% include docs-nav.html %}
     </nav>
+    <script>
+      $("#docs-nav").sticky({
+        topSpacing: 50
+      })
+    </script>
     <article>
       {{ content }}
     </article>
