@@ -12,8 +12,6 @@ In order to start using roblox-ts, you'll need to have NodeJS and npm installed.
 
 Next, from your command line install roblox-ts: `npm install -g roblox-ts`
 
-_(On Unix systems, you may need to prefix this command with `sudo`)_
-
 You can now run roblox-ts with the command `rbxtsc`.
 
 ```
