@@ -1,0 +1,30 @@
+<div class="tabs">
+  {% assign tabs = include.tabs | split: "," %}
+  {% assign sections = include.content | markdownify | split: "<hr />" %}
+  {% capture id %}{% increment tabs %}{% endcapture %}
+  {% for tab in tabs %}
+    <input type="radio" class="tab-hidden" data-sync-id="{{ include.sync }}" value="{{ forloop.index }}" name="tab-{{ id }}" id="tab-{{ id }}-{{ forloop.index }}"{% if forloop.index == 1 %} checked{% endif %}>
+  {% endfor %}
+  <ul>
+    {% for tab in tabs %}
+      <li>
+        <label for="tab-{{ id }}-{{ forloop.index }}">{{ tab }}</label>
+      </li>
+    {% endfor %}
+  </ul>
+  {% for section in sections %}
+    <div class="tab-hidden" id="tab-content-{{ id }}-{{ forloop.index }}">
+      {{ section }}
+    </div>
+    <style>
+      #tab-{{ id }}-{{ forloop.index }}:checked ~ #tab-content-{{ id }}-{{ forloop.index }} {
+        display: block;
+      }
+
+      #tab-{{ id }}-{{ forloop.index }}:checked ~ ul label[for="tab-{{ id }}-{{ forloop.index }}"] {
+        border-bottom: 2px solid #e2241a;
+        color: #222;
+      }
+    </style>
+  {% endfor %}
+</div>

@@ -32,3 +32,8 @@ layout: page
     </article>
   </div>
 </section>
+<script>
+  $("input[data-sync-id]").change(function(){
+    $("input[data-sync-id=\"" + $(this).data("sync-id") +"\"][value=\"" + $(this).val() + "\"]").prop("checked", true)
+  })
+</script>
