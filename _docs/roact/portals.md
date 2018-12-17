@@ -136,7 +136,7 @@ class ModalButtonTS extends Roact.Component<
 ```
 
 ---
-
+{% raw %}
 ```jsx
 const playerGui = game
 	.GetService("Players")
@@ -192,14 +192,12 @@ class ModalButtonTSX extends Roact.Component<{}, ModalButtonState> {
 			<textbutton
 				Size={new UDim2(0, 400, 0, 300)}
 				Text="Click me to open modal dialog!"
-{% raw %}
 				Event={{
 					Activated: () =>
 						this.setState({
 							dialogOpen: true,
 						}),
 				}}
-{% endraw %}
 			>
 				{dialog!}
 			</textbutton>
@@ -207,7 +205,7 @@ class ModalButtonTSX extends Roact.Component<{}, ModalButtonState> {
 	}
 }
 ```
-
+{% endraw %}
 {% endcapture %}
 
 {% include tabs.html sync="jsx" tabs="Vanilla,JSX" content=code %}
