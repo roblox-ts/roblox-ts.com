@@ -11,7 +11,8 @@ layout: page
       (function () {
         function stick() {
           $("#docs-nav").sticky({
-            topSpacing: 50
+            topSpacing: 50,
+            bottomSpacing: 100
           })
         }
 
@@ -20,10 +21,12 @@ layout: page
         }
 
         function updateStick() {
-          return $(window).width() >= 500 ? stick() : unstick()
+          return $(window).width() >= 500 && $(window).height() - $("footer").height() - 100 > $("#docs-nav").height() ? 
+            stick() : unstick()
         }
 
         $(window).resize(updateStick)
+        $(document).ready(updateStick)
         updateStick()
       })()
     </script>
