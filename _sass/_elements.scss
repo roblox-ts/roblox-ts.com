@@ -260,6 +260,7 @@ section.content {
 
     nav {
       grid-area: left;
+      font-size: 1.1rem;
 
       ul {
         list-style-type: none;
@@ -269,6 +270,10 @@ section.content {
         color: $red;
         font-weight: bold;
         font-size: 0.95em;
+
+        &.small {
+          font-size: 0.9em;
+        }
 
         span {
           color: #222;
