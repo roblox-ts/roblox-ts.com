@@ -8,9 +8,24 @@ layout: page
       {% include docs-nav.html %}
     </nav>
     <script>
-      $("#docs-nav").sticky({
-        topSpacing: 50
-      })
+      (function () {
+        function stick() {
+          $("#docs-nav").sticky({
+            topSpacing: 50
+          })
+        }
+
+        function unstick() {
+          $("#docs-nav").unstick()
+        }
+
+        function updateStick() {
+          return $(window).width() >= 500 ? stick() : unstick()
+        }
+
+        $(window).resize(updateStick)
+        updateStick()
+      })()
     </script>
     <article>
       {{ content }}
