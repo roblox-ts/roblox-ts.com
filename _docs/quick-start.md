@@ -1,6 +1,7 @@
 ---
 title: Quick Start
 order: 1
+description: A guide for getting up and going with roblox-ts.
 ---
 
 # Getting Started

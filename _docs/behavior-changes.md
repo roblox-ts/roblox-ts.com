@@ -1,6 +1,7 @@
 ---
 title: Changes in Behavior
 order: 2
+description: This page lists intentional changes in behavior from traditional TypeScript functionality.
 ---
 This page serves as a list of _intentional_ changes in behavior from traditional TypeScript functionality.
 

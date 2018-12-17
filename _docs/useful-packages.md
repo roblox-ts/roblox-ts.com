@@ -1,6 +1,7 @@
 ---
 title: Useful Packages
 order: 4
+description: A list of useful NPM packages created specifically for roblox-ts.
 ---
 
 Here's a list of useful npm packages that are compatible with **roblox-ts**.

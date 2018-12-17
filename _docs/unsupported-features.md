@@ -1,6 +1,7 @@
 ---
 title: Unsupported Features
 order: 2
+description: A list of intentional unsupported TypeScript features when using roblox-ts.
 ---
 
 This page will keep track of TypeScript features that are unsupported within roblox-ts.

@@ -1,6 +1,7 @@
 ---
 title: Notable Supported Features
 order: 2
+description: A list of some of the more notable and useful features supported by roblox-ts right now.
 ---
 
 Here are some of the more notable and useful features of roblox-ts that are supported right now:

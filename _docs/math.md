@@ -1,6 +1,7 @@
 ---
 title: Data Type Math
 order: 2
+description: This page explains how to represent operator overloading in TypeScript for Roblox data types.
 ---
 One of the few downsides to using TypeScript is that it does not support operator overloading.
 

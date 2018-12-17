@@ -1,6 +1,7 @@
 ---
 title: Introduction
 order: 1
+description: The roblox-ts docs.
 ---
 Welcome to the **roblox-ts** docs!
 

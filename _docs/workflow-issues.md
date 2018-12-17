@@ -1,6 +1,7 @@
 ---
 title: Workflow Issues
 order: 2
+description: This page lists known workflow issues when using roblox-ts.
 ---
 
 This page lists known workflow issues with **roblox-ts**.
