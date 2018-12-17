@@ -2,7 +2,7 @@
 title: Portals
 order: 5
 category: roact
-description: Guide on using Portals
+description: A guide on how to use portals using the Roact library with roblox-ts.
 ---
 
 _typescript adaptation of (https://roblox.github.io/roact/advanced/portals/)_

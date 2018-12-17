@@ -2,7 +2,7 @@
 title: Unsupported Features
 order: 6
 category: roact
-description: Guide on unsupported features
+description: A list of limitations and unsupported features with the Roact library and roblox-ts.
 ---
 
 These are the parts of JSX that arent supported by `roblox-ts/rbx-roact` right now, either due to limitations of Roact or due to not yet being implemented.
