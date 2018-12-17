@@ -325,6 +325,7 @@ section.content {
       :not(pre) > code {
         background-color: #f8f8f8;
         border: 1px solid #ccc;
+        color: #222;
         padding: 0 5px;
         border-radius: 3px;
       }
@@ -339,6 +340,11 @@ section.content {
     margin-top: 0;
   }
 }
+
+h1 small, h2 small, h3 small {
+  font-size: 0.6em;
+  font-style: italic;
+} 
 
 .center {
   text-align: center;
