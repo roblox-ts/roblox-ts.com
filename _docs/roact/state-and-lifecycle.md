@@ -22,15 +22,18 @@ We can set up the initial state of a stateful component inside of the constructo
 
 ```ts
 interface MyComponentState {
-    currentTime: number;
+	currentTime: number;
 }
-class MyComponent extends Roact.Component<{}, MyComponentState> {
-    constructor() {
-        super({});
-        this.setState({
-            currentTime: 0,
-        });
-    }
+class MyComponent extends Roact.Component<
+	{},
+	MyComponentState
+> {
+	constructor() {
+		super({});
+		this.setState({
+			currentTime: 0,
+		});
+	}
 }
 ```
 
@@ -40,13 +43,16 @@ There's another form of `setState` we can use. When the new state we want our co
 
 ```ts
 // ...
-class MyComponent extends Roact.Component<{}, MyComponentState> {
-    // ...
-    public didMount() { 
-        self.setState(state => {
-            return {currentTime: state.currentTime + 1};
-        });
-    }
+class MyComponent extends Roact.Component<
+	{},
+	MyComponentState
+> {
+	// ...
+	public didMount() {
+		self.setState(state => {
+			return { currentTime: state.currentTime + 1 };
+		});
+	}
 }
 ```
 
@@ -75,7 +81,7 @@ Generally, this ticking clock demonstrates how many stateful components are stru
 const Players = game.GetService("Players");
 
 interface ClockState {
-    currentTime: number,
+	currentTime: number;
 }
 
 class Clock extends Roact.Component<{}, ClockState> {
@@ -86,18 +92,22 @@ class Clock extends Roact.Component<{}, ClockState> {
 
 		this.setState({
 			currentTime: 0,
-		})
+		});
 	}
 
 	public render(): Roact.Element {
-		const {currentTime} = this.state;
+		const { currentTime } = this.state;
 
-		return Roact.createElement("ScreenGui", {}, {
-			TimeLabel: Roact.createElement("TextLabel", {
-				Size: new UDim2(1, 0, 1, 0),
-				Text: `Time Elapsed: ${currentTime}`
-			}),
-		});
+		return Roact.createElement(
+			"ScreenGui",
+			{},
+			{
+				TimeLabel: Roact.createElement("TextLabel", {
+					Size: new UDim2(1, 0, 1, 0),
+					Text: `Time Elapsed: ${currentTime}`,
+				}),
+			},
+		);
 	}
 
 	public didMount() {
@@ -105,8 +115,10 @@ class Clock extends Roact.Component<{}, ClockState> {
 
 		spawn(() => {
 			while (this.running) {
-				self.setState(state => {
-					return {currentTime: state.currentTime + 1};
+				this.setState(state => {
+					return {
+						currentTime: state.currentTime + 1,
+					};
 				});
 
 				wait(1);
@@ -119,10 +131,12 @@ class Clock extends Roact.Component<{}, ClockState> {
 	}
 }
 
-const PlayerGui = Players.LocalPlayer!.FindFirstChildOfClass("PlayerGui");
-const handle = Roact.mount(<Clock/>, PlayerGui, "Clock UI");
+const PlayerGui = Players.LocalPlayer!.FindFirstChildOfClass(
+	"PlayerGui",
+);
+const handle = Roact.mount(<Clock />, PlayerGui, "Clock UI");
 
-wait(10):
+wait(10);
 Roact.unmount(handle);
 ```
 ***
@@ -130,7 +144,7 @@ Roact.unmount(handle);
 const Players = game.GetService("Players");
 
 interface ClockState {
-    currentTime: number,
+	currentTime: number;
 }
 
 class Clock extends Roact.Component<{}, ClockState> {
@@ -141,18 +155,21 @@ class Clock extends Roact.Component<{}, ClockState> {
 
 		this.setState({
 			currentTime: 0,
-		})
+		});
 	}
 
 	public render(): Roact.Element {
-		const {currentTime} = this.state;
+		const { currentTime } = this.state;
 
-		return <screengui>
-			<textlabel 
-				Key="TimeLabel" 
-				Size={new UDim2(1, 0, 1, 0)}
-				Text={`Time Elapsed: ${currentTime}`}/>
-		</screengui>;
+		return (
+			<screengui>
+				<textlabel
+					Key="TimeLabel"
+					Size={new UDim2(1, 0, 1, 0)}
+					Text={`Time Elapsed: ${currentTime}`}
+				/>
+			</screengui>
+		);
 	}
 
 	public didMount() {
@@ -160,8 +177,10 @@ class Clock extends Roact.Component<{}, ClockState> {
 
 		spawn(() => {
 			while (this.running) {
-				self.setState(state => {
-					return {currentTime: state.currentTime + 1};
+				this.setState(state => {
+					return {
+						currentTime: state.currentTime + 1,
+					};
 				});
 
 				wait(1);
@@ -174,10 +193,12 @@ class Clock extends Roact.Component<{}, ClockState> {
 	}
 }
 
-const PlayerGui = Players.LocalPlayer!.FindFirstChildOfClass("PlayerGui");
-const handle = Roact.mount(<Clock/>, PlayerGui, "Clock UI");
+const PlayerGui = Players.LocalPlayer!.FindFirstChildOfClass(
+	"PlayerGui",
+);
+const handle = Roact.mount(<Clock />, PlayerGui, "Clock UI");
 
-wait(10):
+wait(10);
 Roact.unmount(handle);
 ```
 {% endcapture %}

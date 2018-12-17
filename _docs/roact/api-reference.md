@@ -9,9 +9,13 @@ description: The API Reference
 ## Roact.createElement
 ```ts
 function createElement(
-    component: string | typeof Roact.Component, 
-    props?: Dictionary<string, any> | Properties<Roact.Component>,
-    children?: Roact.Element[] | Dictionary<string, Roact.Element[]>
+	component: string | typeof Roact.Component,
+	props?:
+		| Dictionary<string, any>
+		| Properties<Roact.Component>,
+	children?:
+		| Roact.Element[]
+		| Dictionary<string, Roact.Element[]>,
 ): Roact.Element;
 ```
 Creates a new Roact element representing the given `component`. Elements are lightweight descriptions about what a Roblox Instance should look like, like a blueprint!
@@ -39,7 +43,7 @@ The result is a `ComponentInstanceHandle`, which is an opaque handle that repres
 ```ts
 function reconcile(
     instanceHandle: ComponentInstanceHandle,
-    element: Roact.Element
+    element: Roact.Element,
 ): ComponentInstanceHandle;
 ```
 Updates an existing instance handle with a new element, returning a new handle. This can be used to update a UI created with `Roact.mount` by passing in a new element with new props.
@@ -51,16 +55,14 @@ Updates an existing instance handle with a new element, returning a new handle. 
 
 ## Roact.unmount
 ```ts
-function unmount(
-    instanceHandle: ComponentInstanceHandle
-): void;
+function unmount(instanceHandle: ComponentInstanceHandle): void;
 ```
 Destroys the given `ComponentInstanceHandle` and all of its descendents. Does not operate on a Roblox Instance -- this must be given a handle that was returned by `Roact.mount`.
 
 ## Roact.oneChild
 ```ts
 function oneChild(
-    children?: Roact.Element[]
+    children?: Roact.Element[],
 ): Roact.Element | undefined;
 ```
 Given a dictionary of children, returns a single child element.
@@ -73,10 +75,12 @@ If `children` is `undefined` or contains no children, `oneChild` will return und
 
 ## Roact.createRef
 ```ts
-function createRef(): Roact.Ref; // implictly defined as typeof Instance reference
+// implictly defined as typeof Instance reference
+function createRef(): Roact.Ref;
 ```
 ```ts
-function createRef<T extends Rbx_Instance>: Roact.Ref<T>; // explicit type reference
+// explicit type reference
+function createRef<T extends Rbx_Instance>: Roact.Ref<T>;
 ```
 
 
@@ -92,7 +96,7 @@ class ... extends Roact.Component<P, S>
 - `P` is the type of the `props`.
 - `S` is the type of the `state`.
 
-Both can be omitted if not required. If you want to use `props` but not `state`, simply omit `S`. If you want to use `state` but not `props`, set your props as `{}`. 
+Both can be omitted if not required. If you want to use `props` but not `state`, simply omit `S`. If you want to use `state` but not `props`, set your props as `{}`.
 
 
 ## class Roact.PureComponent
@@ -102,7 +106,7 @@ class ... extends Roact.PureComponent<P, S>
 ```
 
 
-## class Roact.Portal 
+## class Roact.Portal
 ```ts
 interface PortalProps { instance: Instance; }
 class Roact.Portal extends Roact.Component<PortalProps, {}>
@@ -171,11 +175,11 @@ class ... extends Roact.Component<P, S>{
 >
 > Lifecycle hooks: `willUnmount`
 > Pure functions: `render`, `shouldUpdate`
-> 
+>
 > Calling `setState` inside of `init` or `willUpdate` has special behavior. Because Roact is already going to update component in these cases, that update will be replaced instead of another being scheduled.
-> 
+>
 > Roact may support calling `setState` in currently-disallowed places in the future.
 
 > ⚠️ `setState` **does not always resolve synchronously**! Roact may batch and reschedule state updates in order to reduce the number of total renders.
-> 
+>
 > When depending on the previous value of state, like when incrementing a counter, use the functional form to guarantee that all state updates occur!

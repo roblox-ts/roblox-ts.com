@@ -58,37 +58,51 @@ One particularly good use for portals is full-screen modal dialogs. When we rend
 {% capture code %}
 
 ```ts
-const PlayerGui = game.GetService("Players").LocalPlayer!.FindFirstChildOfClass("PlayerGui");
+const PlayerGui = game
+	.GetService("Players")
+	.LocalPlayer!.FindFirstChildOfClass("PlayerGui");
 
 interface ModalProps {
 	onClose: () => void;
 }
 
 function ModalTS(props: ModalProps) {
-	return Roact.createElement(Roact.Portal, {
-		target = PlayerGui,
-	}, {
-		Modal: Roact.createElement("ScreenGui", {}, {
-			Label: Roact.createElement("TextButton", {
-				Size: new UDim2(1, 0, 1, 0),
-				Text: "Click me to close!",
+	return Roact.createElement(
+		Roact.Portal,
+		{
+			target: PlayerGui,
+		},
+		{
+			Modal: Roact.createElement(
+				"ScreenGui",
+				{},
+				{
+					Label: Roact.createElement("TextButton", {
+						Size: new UDim2(1, 0, 1, 0),
+						Text: "Click me to close!",
 
-				[Roact.Event.Activated] = () => {
-					props.onClose();
+						[Roact.Event.Activated]: () => {
+							props.onClose();
+						},
+					}),
 				},
-			})
-		})
-	})
+			),
+		},
+	);
 }
 
 interface ModalButtonState {
 	dialogOpen: boolean;
 }
-class ModalButtonTS extends Roact.Component<ModalButtonState> {
+
+class ModalButtonTS extends Roact.Component<
+	{},
+	ModalButtonState
+> {
 	constructor() {
 		super();
 		this.state = {
-			dialogOpen = true,
+			dialogOpen: true,
 		};
 	}
 
@@ -98,55 +112,66 @@ class ModalButtonTS extends Roact.Component<ModalButtonState> {
 		if (this.state.dialogOpen) {
 			dialog = Roact.createElement(ModalTS, {
 				onClose: () => {
-					this.setState({dialogOpen: false});
-				}
+					this.setState({ dialogOpen: false });
+				},
 			});
 		}
 
-		return Roact.createElement("TextButton", {
-			Size: new UDim2(0, 400, 0, 300),
-			Text: "Click me to open modal dialog!",
+		return Roact.createElement(
+			"TextButton",
+			{
+				Size: new UDim2(0, 400, 0, 300),
+				Text: "Click me to open modal dialog!",
 
-			[Roact.Event.Activated] = () => {
-				this.setState({dialogOpen: true});
+				[Roact.Event.Activated]: () => {
+					this.setState({ dialogOpen: true });
+				},
 			},
-		}, {
-			Dialog: dialog,
-		});
+			{
+				Dialog: dialog,
+			},
+		);
 	}
+}
 ```
 
 ---
 
 ```jsx
-const PlayerGui = game.GetService("Players").LocalPlayer!.FindFirstChildOfClass("PlayerGui");
+const playerGui = game
+	.GetService("Players")
+	.LocalPlayer!.FindFirstChildOfClass("PlayerGui")!;
 
 interface ModalProps {
 	onClose: () => void;
 }
 
 function ModalTSX(props: ModalProps) {
-	return <Roact.Portal target={PlayerGui}>
-		<screengui Key="Modal">
-			<textbutton Key="Label" Size={new UDim2(1, 0, 1, 0)}
-				Text="Click me to close!"
-				Event={ {
-					Activated: () => props.onClose()
-				} }
+	return (
+		<Roact.Portal target={playerGui}>
+			<screengui Key="Modal">
+				<textbutton
+					Key="Label"
+					Size={new UDim2(1, 0, 1, 0)}
+					Text="Click me to close!"
+					Event={{
+						Activated: () => props.onClose(),
+					}}
 				/>
-		</screengui>
-	</Roact.Portal>;
+			</screengui>
+		</Roact.Portal>
+	);
 }
 
 interface ModalButtonState {
 	dialogOpen: boolean;
 }
 
-class ModalButtonTSX extends Roact.Component<ModalButtonState> {
+class ModalButtonTSX extends Roact.Component<{}, ModalButtonState> {
 	constructor() {
-		super();
+		super({});
 		this.state = {
-			dialogOpen = true,
+			dialogOpen: true,
 		};
 	}
 
@@ -154,21 +179,29 @@ class ModalButtonTSX extends Roact.Component<ModalButtonState> {
 		let dialog: Roact.Element;
 
 		if (this.state.dialogOpen) {
-			dialog = <ModalTSX onClose={() => this.setState({dialogOpen: false})}/>;
+			dialog = (
+				<ModalTSX
+					onClose={() =>
+						this.setState({ dialogOpen: false })
+					}
+				/>
+			);
 		}
 
-		return <textbutton
-			Size={new UDim2(0, 400, 0, 300)}
-			Text="Click me to open modal dialog!"
-			Event={
-				{
-					Activated: () => this.setState({
-						dialogOpen: true
-					})
-				}
-			}>
-			{dialog}
-		</textbutton>;
+		return (
+			<textbutton
+				Size={new UDim2(0, 400, 0, 300)}
+				Text="Click me to open modal dialog!"
+				Event={{
+					Activated: () =>
+						this.setState({
+							dialogOpen: true,
+						}),
+				}}
+			>
+				{dialog!}
+			</textbutton>
+		);
 	}
 }
 ```
