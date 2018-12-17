@@ -4,7 +4,7 @@ order: 1
 category: roact
 description: A manual for using the view management library Roact with roblox-ts.
 ---
-Roact is a library that is natively supported by `roblox-ts`. 
+Roact is a library that is natively supported by `roblox-ts`.
 
 # Requirements
 Roact requires you have the `rbx-roact` package installed.
@@ -27,12 +27,16 @@ const Players = game.GetService("Players");
 const LocalPlayer = Players.LocalPlayer!;
 const PlayerGui = LocalPlayer.FindFirstChildOfClass("PlayerGui");
 
-const helloWorld = Roact.createElement("ScreenGui", {}, {
-	HelloWorld: Roact.createElement("TextLabel", {
-		Size: new UDim2(0, 400, 0, 300),
-		Text: "Hello, Roact!",
-	}),
-});
+const helloWorld = Roact.createElement(
+	"ScreenGui",
+	{},
+	{
+		HelloWorld: Roact.createElement("TextLabel", {
+			Size: new UDim2(0, 400, 0, 300),
+			Text: "Hello, Roact!",
+		}),
+	},
+);
 
 Roact.mount(helloWorld, PlayerGui, "helloWorldGui");
 ```
@@ -43,9 +47,15 @@ const Players = game.GetService("Players");
 const LocalPlayer = Players.LocalPlayer!;
 const PlayerGui = LocalPlayer.FindFirstChildOfClass("PlayerGui");
 
-const helloWorld = <screengui>
-	<textlabel Key="HelloWorld" Size={new UDim2(0, 400, 0, 300)} Text="Hello, Roact!"/>
-</screengui>;
+const helloWorld = (
+	<screengui>
+		<textlabel
+			Key="HelloWorld"
+			Size={new UDim2(0, 400, 0, 300)}
+			Text="Hello, Roact!"
+		/>
+	</screengui>
+);
 
 Roact.mount(helloWorld, PlayerGui, "helloWorldGui");
 ```
@@ -63,22 +73,33 @@ const Players = game.GetService("Players");
 const LocalPlayer = Players.LocalPlayer!;
 const PlayerGui = LocalPlayer.FindFirstChildOfClass("PlayerGui");
 
-interface HelloWorldState { }
+interface HelloWorldState {}
 interface HelloWorldProps {
 	name: string;
 }
-class HelloWorld extends Roact.Component<HelloWorldState, HelloWorldProps> {
+class HelloWorld extends Roact.Component<
+	HelloWorldState,
+	HelloWorldProps
+> {
 	render(): Roact.Element {
-		return Roact.createElement("ScreenGui", {}, {
-			HelloWorld: Roact.createElement("TextLabel", {
-				Size: new UDim2(0, 400, 0, 300),
-				Text: `Hello, ${this.props.name}!`,
-			}),
-		})
+		return Roact.createElement(
+			"ScreenGui",
+			{},
+			{
+				HelloWorld: Roact.createElement("TextLabel", {
+					Size: new UDim2(0, 400, 0, 300),
+					Text: `Hello, ${this.props.name}!`,
+				}),
+			},
+		);
 	}
 }
 
-Roact.mount(Roact.createElement(HelloWorld, {name: "Roact"}), PlayerGui, "helloWorldGui");
+Roact.mount(
+	Roact.createElement(HelloWorld, { name: "Roact" }),
+	PlayerGui,
+	"helloWorldGui",
+);
 ```
 ***
 ```jsx
@@ -87,19 +108,32 @@ const Players = game.GetService("Players");
 const LocalPlayer = Players.LocalPlayer!;
 const PlayerGui = LocalPlayer.FindFirstChildOfClass("PlayerGui");
 
-interface HelloWorldState { }
+interface HelloWorldState {}
 interface HelloWorldProps {
 	name: string;
 }
-class HelloWorld extends Roact.Component<HelloWorldState, HelloWorldProps> {
+class HelloWorld extends Roact.Component<
+	HelloWorldState,
+	HelloWorldProps
+> {
 	render(): Roact.Element {
-		return <screengui>
-			<textlabel Key="HelloWorld" Size={new UDim2(0, 400, 0, 300)} Text={`Hello, ${this.props.name}!`}/>
-		</screengui>;
+		return (
+			<screengui>
+				<textlabel
+					Key="HelloWorld"
+					Size={new UDim2(0, 400, 0, 300)}
+					Text={`Hello, ${this.props.name}!`}
+				/>
+			</screengui>
+		);
 	}
 }
 
-Roact.mount(<HelloWorld name="React"/>, PlayerGui, "helloWorldGui");
+Roact.mount(
+	<HelloWorld name="React" />,
+	PlayerGui,
+	"helloWorldGui",
+);
 ```
 {% endcapture %}
 {% include tabs.html sync="jsx" tabs="Vanilla,JSX" content=code %}
@@ -111,11 +145,11 @@ Everything in <https://roblox.github.io/roact/guide/state-and-lifecycle/> can be
 ```ts
 // ... import, PlayerGui, etc.
 
-interface ClockState { 
+interface ClockState {
 	currentTime: number;
 }
 
-interface ClockProps { }
+interface ClockProps {}
 
 class Clock extends Roact.Component<ClockState, ClockProps> {
 	running: boolean = false;
@@ -125,18 +159,22 @@ class Clock extends Roact.Component<ClockState, ClockProps> {
 
 		// initialize the state of this component
 		this.state = {
-			currentTime: 0
-		}
+			currentTime: 0,
+		};
 	}
 
 	render(): Roact.Element {
-		const {currentTime} = this.state;
-		return Roact.createElement("ScreenGui", {}, {
-			TimeLabel: Roact.createElement("TextLabel", {
-				Size: new UDim2(1, 0, 1, 0),
-				Text: `Time Elapsed: ${currentTime}`, 
-			}),
-		});
+		const { currentTime } = this.state;
+		return Roact.createElement(
+			"ScreenGui",
+			{},
+			{
+				TimeLabel: Roact.createElement("TextLabel", {
+					Size: new UDim2(1, 0, 1, 0),
+					Text: `Time Elapsed: ${currentTime}`,
+				}),
+			},
+		);
 	}
 
 	didMount() {
@@ -145,7 +183,7 @@ class Clock extends Roact.Component<ClockState, ClockProps> {
 		spawn(() => {
 			while (this.running) {
 				this.setState(state => {
-					return {currentTime: state.currentTime + 1};
+					return { currentTime: state.currentTime + 1 };
 				});
 			}
 			wait(1);
@@ -157,7 +195,11 @@ class Clock extends Roact.Component<ClockState, ClockProps> {
 	}
 }
 
-const handle = Roact.mount(Roact.createElement(Clock), PlayerGui, "Clock UI");
+const handle = Roact.mount(
+	Roact.createElement(Clock),
+	PlayerGui,
+	"Clock UI",
+);
 
 wait(10);
 Roact.unmount(handle);
@@ -166,11 +208,11 @@ Roact.unmount(handle);
 ```jsx
 // ... import, PlayerGui, etc.
 
-interface ClockState { 
+interface ClockState {
 	currentTime: number;
 }
 
-interface ClockProps { }
+interface ClockProps {}
 
 class Clock extends Roact.Component<ClockState, ClockProps> {
 	running: boolean = false;
@@ -180,17 +222,21 @@ class Clock extends Roact.Component<ClockState, ClockProps> {
 
 		// initialize the state of this component
 		this.state = {
-			currentTime: 0
-		}
+			currentTime: 0,
+		};
 	}
 
 	render(): Roact.Element {
-		const {currentTime} = this.state;
-		return <screengui>
-			<textlabel Key="TimeLabel" 
-				Size={new UDim2(1, 0, 1, 0)} 
-				Text={`Time Elapsed: ${currentTime}`} />
-		</screengui>;
+		const { currentTime } = this.state;
+		return (
+			<screengui>
+				<textlabel
+					Key="TimeLabel"
+					Size={new UDim2(1, 0, 1, 0)}
+					Text={`Time Elapsed: ${currentTime}`}
+				/>
+			</screengui>
+		);
 	}
 
 	didMount() {
@@ -199,7 +245,7 @@ class Clock extends Roact.Component<ClockState, ClockProps> {
 		spawn(() => {
 			while (this.running) {
 				this.setState(state => {
-					return {currentTime: state.currentTime + 1};
+					return { currentTime: state.currentTime + 1 };
 				});
 			}
 			wait(1);
@@ -211,7 +257,7 @@ class Clock extends Roact.Component<ClockState, ClockProps> {
 	}
 }
 
-const handle = Roact.mount(<Clock/>, PlayerGui, "Clock UI");
+const handle = Roact.mount(<Clock />, PlayerGui, "Clock UI");
 
 wait(10);
 Roact.unmount(handle);
