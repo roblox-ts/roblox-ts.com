@@ -7,7 +7,7 @@ description: A list of limitations and unsupported features with the Roact libra
 
 These are the parts of JSX that arent supported by `roblox-ts/rbx-roact` right now, either due to limitations of Roact or due to not yet being implemented.
 
-## Text between elements (⚠️ Roact Limitation)
+## Text between elements <small>Roact Limitation</small>
 `roblox-ts` will explicitly show an error message about this during compilation.
 ```jsx
 const element = <frame>Text here is not supported</frame>;
@@ -19,7 +19,7 @@ const element = <frame>Text here is not supported</frame>;
 const element = <frame Active/>;
 ```
 
-## Expressions (Most, ⚠️ Roact Limitation)
+## Expressions <small>Roact Limitation</small>
 ### Disallowed
 `roblox-ts` will explicitly error if you try and use literal expressions
 
@@ -33,7 +33,8 @@ const element = <frame>{10}</frame>;
 ```
 Variable 
 
-> In later versions of `roblox-ts` (`> 0.0.18`), Variables of type `Roact.Element[]` or `Roact.Element` are allowed.
+In later versions of `roblox-ts` (`> 0.0.18`), Variables of type `Roact.Element[]` or `Roact.Element` are allowed.
+{:.info}
 
 ```jsx
 const element = <frame>{variable}</frame>;
@@ -54,7 +55,8 @@ function test(): Roact.Element {
 const element = <screengui>{test()}</screengui>;
 ```
 
-> ⚠️ The features below are only available `> 0.0.18`!
+The features below are only available `> 0.0.18`!
+{:.warn}
 
 Function/Variable that returns `Roact.Element[]`
 ```jsx

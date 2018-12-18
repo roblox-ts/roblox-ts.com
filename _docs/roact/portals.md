@@ -9,11 +9,12 @@ _TypeScript adaptation of [Roact Portals](https://roblox.github.io/roact/advance
 
 ---
 
-*Portals* are a special kind of component provided by Roact that enable components to render objects into a separate, non-Roact Instance.
+**Portals** are a special kind of component provided by Roact that enable components to render objects into a separate, non-Roact Instance.
 
 To create a portal, use the `Roact.Portal` component with `createElement` or in JSX use `<Roact.Portal/>`.
 
-> ⚠️ Parts are not native JSX elements in `roblox-ts`. This is by design as Roact is intended for UI use. To get around that, you will have to use `Roact.createElement`.
+Parts are not native JSX elements in `roblox-ts`. This is by design as Roact is intended for UI use. To get around that, you will have to use `Roact.createElement`.
+{:.warn}
 
 {% capture code %}
 
@@ -51,7 +52,8 @@ function PartInWorkspace() {
 
 When we create `PartInWorkspace`, even if it's deep into our Roact tree, a `Part` Instance named SomePart will be created in Workspace.
 
-> ⚠️ Portals should only be created to objects that aren't managed by Roact!
+Portals should only be created to objects that aren't managed by Roact!
+{:.warn}
 
 One particularly good use for portals is full-screen modal dialogs. When we render a modal dialog, we want it to take over the entire screen, but we want components deep in the tree to be able to create them!
 

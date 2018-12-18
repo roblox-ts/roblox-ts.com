@@ -24,7 +24,8 @@ The children argument should be specified as a dictionary of names to elements.
 
 `component` can be a string, a function, or a component class created by `class MyComponentClass extends Roact.Component`.
 
-> _⚠️ Once props or children are passed into the createElement, make sure not to modify them! ⚠️_
+Once props or children are passed into the createElement, make sure you don't modify them!
+{:.warn}
 
 ## Roact.mount
 ```ts
@@ -50,8 +51,11 @@ Updates an existing instance handle with a new element, returning a new handle. 
 
 `reconcile` can be used to change the props of a component instance created with `mount` and is useful for putting Roact content into non-Roact applications.
 
-> _⚠️ `Roact.reconcile` takes ownership of the `instanceHandle` passed into it and may unmount it and mount a new tree!_
-> _Make sure to use the handle that `reconcile` returns in any operations after reconcile, including `unmount`. ⚠️_
+`Roact.reconcile` takes ownership of the `instanceHandle` passed into it and may unmount it and mount a new tree!
+{:.warn}
+
+Make sure to use the handle that `reconcile` returns in any operations after reconcile, including `unmount`.
+{:.warn}
 
 ## Roact.unmount
 ```ts
@@ -71,7 +75,8 @@ If `children` contains more than one child, `oneChild` function will throw an er
 
 If `children` is `undefined` or contains no children, `oneChild` will return undefined.
 
-> _⚠️ You should ensure that the returned result is not `undefined` before returning it via the `render()` method. ⚠️_
+You should ensure that the returned result is not `undefined` before returning it via the `render()` method.
+{:.warn}
 
 ## Roact.createRef
 ```ts
@@ -82,8 +87,6 @@ function createRef(): Roact.Ref;
 // explicit type reference
 function createRef<T extends Rbx_Instance>: Roact.Ref<T>;
 ```
-
-
 
 # Component Classes
 
@@ -105,14 +108,15 @@ Exactly like `Roact.Component` except `shouldUpdate` is handled differently.
 class MyPureCompopnent extends Roact.PureComponent<P, S>
 ```
 
-
 ## class Roact.Portal
 ```ts
 interface PortalProps { instance: Instance; }
 class Roact.Portal extends Roact.Component<PortalProps>
 ```
 Used in [Portals](Portals).
-> ⚠️ This class cannot be inherited
+
+This class cannot be inherited
+{:.warn}
 
 # Component API
 ## defaultProps
@@ -175,9 +179,11 @@ class HelloWorldComponent extends Roact.Component {
 
 `render` describes what a component should display at the current instant in time.
 
-> ℹ️ Roact assumes that `render` act likes a pure function: the result of `render` must depend only on `props` and `state`, and it must not have side-effects.
+Roact assumes that `render` act likes a pure function: the result of `render` must depend only on `props` and `state`, and it must not have side-effects.
+{:.info}
 
-> ⚠️ rbx-roact will not compile without `render` being defined.
+rbx-roact will not compile without `render` being defined.
+{:.warn}
 
 ## setState
 ```ts
@@ -191,15 +197,17 @@ class MyComponent extends Roact.Component<P, S>{
 }
 ```
 
-> ⚠️ `setState` can be called from anywhere except:
->
-> Lifecycle hooks: `willUnmount`
-> Pure functions: `render`, `shouldUpdate`
->
-> Calling `setState` inside of `init` or `willUpdate` has special behavior. Because Roact is already going to update component in these cases, that update will be replaced instead of another being scheduled.
->
-> Roact may support calling `setState` in currently-disallowed places in the future.
+`setState` can be called from anywhere except:\\
+\\
+Lifecycle hooks: `willUnmount`\\
+Pure functions: `render`, `shouldUpdate`\\
+\\
+Calling `setState` inside of `init` or `willUpdate` has special behavior. Because Roact is already going to update component in these cases, that update will be replaced instead of another being scheduled.\\
+\\
+Roact may support calling `setState` in currently-disallowed places in the future.
+{:.warn}
 
-> ⚠️ `setState` **does not always resolve synchronously**! Roact may batch and reschedule state updates in order to reduce the number of total renders.
->
-> When depending on the previous value of state, like when incrementing a counter, use the functional form to guarantee that all state updates occur!
+`setState` **does not always resolve synchronously**! Roact may batch and reschedule state updates in order to reduce the number of total renders.\\
+\\
+When depending on the previous value of state, like when incrementing a counter, use the functional form to guarantee that all state updates occur!
+{:.alert}

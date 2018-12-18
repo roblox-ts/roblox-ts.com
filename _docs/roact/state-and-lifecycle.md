@@ -5,7 +5,7 @@ category: roact
 description: A guide on how to use stateful components using the Roact library with roblox-ts.
 ---
 
-_Typescript adaptation of (https://roblox.github.io/roact/guide/state-and-lifecycle/)_
+_Typescript adaptation of [Roact State  and Lifecycle](https://roblox.github.io/roact/guide/state-and-lifecycle/)_
 
 -----
 
