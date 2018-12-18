@@ -138,9 +138,9 @@ class ModalButtonTS extends Roact.Component<
 ---
 {% raw %}
 ```jsx
-const playerGui = game
+const PlayerGui = game
 	.GetService("Players")
-	.LocalPlayer!.FindFirstChildOfClass("PlayerGui")!;
+	.LocalPlayer!.FindFirstChildOfClass("PlayerGui");
 
 interface ModalProps {
 	onClose: () => void;
@@ -148,7 +148,7 @@ interface ModalProps {
 
 function ModalTSX(props: ModalProps) {
 	return (
-		<Roact.Portal target={playerGui}>
+		<Roact.Portal target={PlayerGui}>
 			<screengui Key="Modal">
 				<textbutton
 					Key="Label"
