@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 630 630">
-<!-- https://github.com/remojansen/logo.ts -->
 <!--
 The MIT License (MIT)
 Copyright (c) 2015 Remo H. Jansen <remo.jansen@wolksoftware.com>
@@ -19,7 +18,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
-<g transform="translate(42, 589) rotate(15, 315, -315) scale(0.0815, -0.0815)"
+<g transform="translate(71, 589) rotate(15, 315, -315) scale(0.0815, -0.0815)"
 fill="#E2241A" stroke="none">
 <path d="M0 3150 l0 -3150 3150 0 3150 0 0 3150 0 3150 -3150 0 -3150 0 0
 -3150z m5077 251 c160 -40 282 -111 394 -227 58 -62 144 -175 151 -202 2 -8
