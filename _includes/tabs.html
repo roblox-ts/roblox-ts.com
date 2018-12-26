@@ -5,6 +5,18 @@
   {% for tab in tabs %}
     <input type="radio" class="tab-hidden" data-sync-id="{{ include.sync }}" value="{{ forloop.index }}" name="tab-{{ id }}" id="tab-{{ id }}-{{ forloop.index }}"{% if forloop.index == 1 %} checked{% endif %}>
   {% endfor %}
+  <script>
+    var useJsx = localStorage.getItem("useJSX");
+    if (useJsx !== undefined) {
+      var jsxRadio = $('[data-sync-id="jsx"][value="2"]');
+      jsxRadio.checked = useJsx;
+      //jsxRadio.button("refresh");
+      jsxRadio.change(function() {
+        console.log(jsxRadio.checked, jsxRadio.val("checked"));
+        localStorage.setItem("useJSX", jsxRadio.checked);
+      });
+    }
+  </script>
   <ul>
     {% for tab in tabs %}
       <li>
