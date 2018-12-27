@@ -11,5 +11,5 @@ Typescript Roact requires that you have [roblox-ts](https://github.com/roblox-ts
 
 You're done. You can now use it by importing Roact in files you wish to use it in:
 ```ts
-import * as Roact from "Roact";
+import * as Roact from "rbx-roact";
 ```
