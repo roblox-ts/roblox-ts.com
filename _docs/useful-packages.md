@@ -187,7 +187,7 @@ Net.WaitForClientEventAsync("EventName").then(event => {
 myRemote.SendToServer("Hi server! :D");
 ```
 {% endcapture %}
-{% include tabs.html sync="ts" tabs="Server,Client" content=code %}
+{% include tabs.html tabs="Server,Client" content=code %}
 
 ### Functions
 
@@ -245,4 +245,4 @@ myFunction.Callback = () => {
 };
 ```
 {% endcapture %}
-{% include tabs.html sync="ts" tabs="Server,Client" content=code %}
+{% include tabs.html tabs="Server,Client" content=code %}
