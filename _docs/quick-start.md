@@ -20,10 +20,11 @@ Usage: rbxtsc [options]
 Options:
   -w, --watch        enable watch mode
   -p, --project      project path
-  -s, --strict       ensure compiled code is type safe (slower)
   -i, --includePath  folder to copy runtime files to
+  --noStrict         disable diagnostic checks (faster, unsafe)
   --noInclude        do not copy runtime files
   --modulesPath      folder to copy modules to
+  --noHeuristics     disables api restriction heuristics
   -v, --version      show version information
   -h, --help         show help
 ```
