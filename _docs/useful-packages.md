@@ -100,3 +100,33 @@ Great for admin commands, but does much more.
 - Intelligent autocompletion and instant validation.
 - Run commands programmatically on behalf of the local user.
 - Bind commands to user input.
+
+## [rbx-t](https://github.com/osyrisrblx/rbx-t)
+t enables you to write complex type definitions and use them either at runtime or statically.
+Provides a robust set of tools to sanitize unknown data.
+Useful for making sure your remote events give the right data!
+
+```TS
+// complex type definition
+const tPlayer = t.interface({
+    name: t.string,
+    score: t.number,
+    data: t.interface({
+        inventory: t.array(t.number),
+        inventorySize: t.number,
+    })
+});
+
+// runtime usage
+function bar(player: unknown) {
+    if (tPlayer(player)) {
+        print(player.data.inventorySize);
+    }
+}
+
+// static usage
+type tPlayer = t.static<typeof tPlayer>;
+function foo(player: tPlayer) {
+    print(player.data.inventorySize);
+}
+```
