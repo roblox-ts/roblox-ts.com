@@ -40,7 +40,7 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 
 4. Create a file named `tsconfig.json` in your project folder. The contents should look like this:
 
-```json
+```js
 {
 	"compilerOptions": {
 		// required
@@ -72,7 +72,7 @@ _**(warning: do not change these values unless you know what you are doing!)**_
 
 5. Create a file for syncing your compiled .lua files to Roblox Studio. If you're using Rojo, this should be a `rojo.json` file and look like:
 
-```json
+```js
 {
 	"name": "my-project-name",
 	"servePort": 8000,

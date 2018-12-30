@@ -29,10 +29,10 @@ For an example of how a TypeScript-based package might look, check out [rbx-serv
 1. Create a `src` folder and copy the `tsconfig.json` from the roblox-ts [quick start guide](/docs/quick-start).
 
 2. Inside of your `tsconfig.json` file, you should:
-    - Add the following under "compilerOptions": 
+    - Add the following under "compilerOptions":
     `"declaration": true,`
     - And the following in the root of your tsconfig.json:
-      ```json
+      ```js
       "include": [
 		"./src/**/*"
       ]
@@ -69,8 +69,8 @@ This includes stuff like author, description, repository, and version fields.
 
 2. If your package is a TypeScript-based package, be sure to run `rbxtsc --noInclude` to make sure everything is compiled before publishing.
 
-3. Use `npm adduser` to login with npm. 
+3. Use `npm adduser` to login with npm.
 
 4. `npm publish` *(need to run this using root!)*
 
-5. Share! 🎉 
+5. Share! 🎉
