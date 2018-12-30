@@ -106,7 +106,7 @@ t enables you to write complex type definitions and use them either at runtime o
 Provides a robust set of tools to sanitize unknown data.
 Useful for making sure your remote events give the right data!
 
-```TS
+```ts
 // complex type definition
 const tPlayer = t.interface({
     name: t.string,
