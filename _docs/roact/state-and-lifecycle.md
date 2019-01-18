@@ -49,7 +49,7 @@ class MyComponent extends Roact.Component<
 > {
 	// ...
 	public didMount() {
-		self.setState(state => {
+		this.setState(state => {
 			return { currentTime: state.currentTime + 1 };
 		});
 	}
