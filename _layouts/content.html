@@ -36,7 +36,7 @@ layout: page
   </div>
 </section>
 <script>
-  $("input[data-sync-id]").change(function(){
+  $("input[data-sync-id]:not([data-sync-id=\"\"])").change(function(){
     $("input[data-sync-id=\"" + $(this).data("sync-id") +"\"][value=\"" + $(this).val() + "\"]").prop("checked", true)
   })
 </script>

@@ -130,3 +130,119 @@ function foo(player: tPlayer) {
     print(player.data.inventorySize);
 }
 ```
+
+## [rbx-net](https://github.com/roblox-aurora/rbx-net)
+Roblox Networking Library (rbx-net) is a useful library for abstracting Roblox networking.
+Not only does it make networking simpler, it also adds more functionality to remotes such as asynchronous function calls, result caching, invoking/calling groups of clients and much more.
+
+### Events
+
+{% capture code %}
+```ts
+import Net from "rbx-net";
+
+// Create an Event
+const myRemote = Net.CreateEvent("EventName");
+
+// Create an event OOP style
+const myRemote = new Net.ServerEvent("EventName");
+
+// Connect events to listeners
+function onMyRemoteEvent(player: Player) {
+	print(player, "called me! :D");
+}
+myRemote.Connect(onMyRemoteEvent);
+
+// Fire an event to a client
+myRemote.SendToPlayer(game.Players.Vorlias, "Hello, World!");
+
+// Fire an event to multiple clients
+myRemote.SendToPlayers([game.Players.Vorlias, game.Players.Osyris], "Hello, World!");
+
+// Fire an event to all clients
+myRemote.SendToAllPlayers("Hello, World!");
+```
+***
+```ts
+import Net from "rbx-net";
+
+function onClientMyRemoteEvent() {
+	print("The server called me!")
+}
+
+// await for client event, then connect
+const myRemote = await Net.WaitForClientEventAsync("EventName");
+myRemote.Connect(onClientMyRemoteEvent);
+
+// Get an event OOP style (Will error if doesn't exist, use Async methods!)
+const myRemote = new Net.ClientEvent("EventName");
+
+// wait for event (promise), then connect or if timeout - display message
+Net.WaitForClientEventAsync("EventName").then(event => {
+	// connect the event
+	event.Connect(onClientMyRemoteEvent);
+}, failMsg => warn(failMsg));
+
+// Send an event to the server!
+myRemote.SendToServer("Hi server! :D");
+```
+{% endcapture %}
+{% include tabs.html tabs="Server,Client" content=code %}
+
+### Functions
+
+{% capture code %}
+```ts
+import Net from "rbx-net";
+
+// Create a function
+const myFunction = Net.CreateFunction("FunctionName");
+
+// Create a function OOP style
+const myFunction = new Net.ServerFunction("FunctionName");
+
+// Call a client (await)
+const result = await myFunction.CallPlayerAsync("Hello?");
+
+// Call a client (promise)
+myFunction.CallPlayerAsync("Hello?").then(
+	result => print(result), 
+	errorMsg => warn(errorMsg)
+);
+
+// Create a callback for when clients call the server
+myFunction.Callback = (player: Player) => {
+	return player.Name:reverse(); // will return username reversed
+};
+
+// Set the amount of seconds the remote caches a return value when retrieved by client
+myFunction.ClientCache = 10; // 10 seconds
+```
+***
+```ts
+import Net from "rbx-net";
+
+// Get a function OOP style (Will error if doesn't exist, use Async methods!)
+const myRemote = new Net.ClientFunction("EventName");
+
+// Get function (await)
+const myFunction = await Net.WaitForFunctionAsync("FunctionName");
+myFunction.Callback = () => {
+	return "Hi from the server!";
+};
+
+// Get function (promise)
+const myFunction = Net.WaitForFunctionAsync("FunctionName").then(func => {
+	// callback inside promise
+	func.Callback = () => {
+		return "Hi from the server!";
+	};
+}, errorMsg => warn(errorMsg));
+
+// Create a callback for when the server calls the client
+myFunction.Callback = () => {
+	return "hi I'm the client " + game.Players.LocalPlayer!.Name;
+};
+```
+{% endcapture %}
+{% include tabs.html tabs="Server,Client" content=code %}
