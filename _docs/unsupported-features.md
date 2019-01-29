@@ -15,4 +15,5 @@ Some of these are intended removals, others may be added in the future!
 - loop labels (used by `continue` and `break`)
 - class or function prototypes
 - class expressions
-- Regular Expressions
+- regular Expressions
+- dynamic import expressions
