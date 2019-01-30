@@ -17,3 +17,4 @@ Some of these are intended removals, others may be added in the future!
 - class expressions
 - regular Expressions
 - dynamic import expressions
+- arrays with holes in them (nils/undefineds in between valid elements)
