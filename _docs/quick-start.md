@@ -45,6 +45,7 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 {
 	"compilerOptions": {
 		// required
+		"allowSyntheticDefaultImports": true,
 		"downlevelIteration": true,
 		"module": "commonjs",
 		"noLib": true,
