@@ -93,6 +93,8 @@ promise.cancel();
 // Prints: "`finally` is always called at the end, regardless!"
 ```
 
+This cancellation pattern is modelled after [Bluebird's cancellation feature](http://bluebirdjs.com/docs/api/cancellation.html).
+
 ### Cancellation timing
 If a Promise is already cancelled at the time of calling its onCancel hook, the
 hook will be called immediately.

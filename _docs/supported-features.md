@@ -7,8 +7,9 @@ description: A list of some of the more notable and useful features supported by
 Here are some of the more notable and useful features of roblox-ts that are supported right now:
 
 - The entire Roblox API is available and has type definitions, with automated generation and releases with Roblox updates.
-- [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) with `new Promise` (uses [roblox-lua-promise](https://github.com/lpghatguy/roblox-lua-promise) internally)
-- async/await with promises
+- [Promises](/docs/guides/promises) with `new Promise`.
+- async/await with promises.
+- Promise cancellation.
 - [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) (Also WeakMap)
 - [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) (Also WeakSet)
 - Array methods (.map, .filter, etc.)
