@@ -47,7 +47,7 @@ This is an anti-pattern for numerous reasons:
   extraneous machinery.
 - When an asynchronous operation fails or an error is encountered, Lua functions
   usually either raise an error or return a success value followed by the actual
-  value. Both of these patterns lead to repeating the same tired patterns many
+  value. Both of these methods lead to repeating the same tired patterns many
   times over for checking if the operation was successful.
 - Yielding lacks easy access to introspection and the ability to cancel an
   operation if the value is no longer needed.
@@ -92,6 +92,35 @@ wait(5);
 promise.cancel();
 // Prints: "`finally` is always called at the end, regardless!"
 ```
+
+### Cancellation timing
+If a Promise is already cancelled at the time of calling its onCancel hook, the
+hook will be called immediately.
+
+If you attach a `.then` or `.catch` handler to a Promise after it's been
+cancelled, the chained Promise will be instantly rejected with the error
+"Promise is cancelled".
+
+If you cancel a Promise immediately after creating it in the same Lua cycle, the
+fate of the Promise is dependent on if the Promise handler yields or not. If the
+Promise handler resolves without yielding, then the Promise will already be
+settled by the time you are able to cancel it, thus any consumers of the Promise
+will have already been called. If the Promise does yield, then cancelling it
+immediately *will* prevent its resolution.
+
+Attempting to cancel an already-settled Promise is ignored, but this may change
+to throw an error in the future.
+
+### Cancellation propagation
+When you cancel a Promise, the cancellation propagates up the Promise chain.
+Promises keep track of the number of consumers that they have, and when the
+upwards propagation encounters a Promise that no longer has any consumers, that
+Promise is cancelled as well.
+
+It's important to note that cancellation does **not** propagate downstream, so
+if you get a handle to a Promise earlier in the chain and cancel it directly,
+Promises that are consuming the cancelled Promise will remain in an unsettled
+state forever.
 
 ## Async Functions and `await`
 
