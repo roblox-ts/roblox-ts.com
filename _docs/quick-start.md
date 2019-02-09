@@ -72,7 +72,7 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 ```
 _**(warning: do not change these values unless you know what you are doing!)**_
 
-5. Create a file for syncing your compiled .lua files to Roblox Studio. If you're using Rojo, this should be a `rojo.json` file and look like:
+5\. Create a file for syncing your compiled .lua files to Roblox Studio. If you're using Rojo, this should be a `rojo.json` file and look like:
 
 ```js
 {
@@ -92,12 +92,15 @@ _**(warning: do not change these values unless you know what you are doing!)**_
 ```
 You should add more partitions for the subfolders of your `out` folder.
 
-6. Run `npm install rbx-types` to install the Roblox API type definitions.
+6\. Run `npm install rbx-types` to install the Roblox API type definitions.
 
-7. Start roblox-ts in watch mode `rbxtsc -w`
+7\. Start roblox-ts in watch mode `rbxtsc -w`
 
-8. Run your sync program. If you're using Rojo, this is `rojo serve`
+8\. Run your sync program. If you're using Rojo, this is `rojo serve`
 
-9. Write code!
+9\. Write code!
 
 It is recommended that you peruse through all of the docs to the left as you get started!
+
+roblox-ts is still in development and you may run into situations where invalid Lua is emitted. **Please report these cases to us** either by [creating an issue](https://github.com/roblox-ts/roblox-ts/issues) or joining our Discord server (link above).
+{:.warn}
