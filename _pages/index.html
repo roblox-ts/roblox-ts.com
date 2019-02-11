@@ -14,13 +14,14 @@ layout: page
 import { CollectionService } from "rbx-services";
 
 CollectionService.GetTagged("Lava").forEach(obj => {
-  if (obj instanceof BasePart) {
+  if (obj.IsA("BasePart")) {
     obj.Touched.Connect(part => {
-      const character = part.Parent as Model;
-      const humanoid =
-        character.FindFirstChildOfClass("Humanoid");
-      if (humanoid) {
-        humanoid.TakeDamage(100);
+      const character = part.Parent;
+      if (character) {
+        const humanoid = character.FindFirstChild("Humanoid");
+        if (humanoid && humanoid.IsA("Humanoid")) {
+          humanoid.TakeDamage(100);
+        }
       }
     });
   }
@@ -111,7 +112,7 @@ function returnsAPromise() {
       let cancelled = false;
 
       onCancel(() => cancelled = true);
-  
+
       while (!cancelled) {
         print("An async, cancellable operation!");
         wait(1);
