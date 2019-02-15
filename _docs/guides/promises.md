@@ -22,7 +22,7 @@ occurred (known as *rejecting*).
 ```ts
 function returnsAPromise(): Promise<string> {
   return new Promise((resolve, reject) => {
-    spawn(() => {
+    Promise.spawn(() => {
       wait(5);
       resolve("foo");
     })
@@ -62,7 +62,7 @@ hook in the Promise to abort any ongoing operations:
 ```ts
 function returnsACancellablePromise(seconds: number): Promise<string> {
   return new Promise((resolve, reject, onCancel) => {
-    spawn(() => {
+    Promise.spawn(() => {
       let cancelled = false;
 
       // Call `onCancel` with a function. Passed function is called if Promise is cancelled.
