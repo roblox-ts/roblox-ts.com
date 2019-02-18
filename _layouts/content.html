@@ -10,24 +10,24 @@ layout: page
     <script>
       (function () {
         function stick() {
+          const pos = $(window).scrollTop()
+          const offset = $("main .inner").offset().top
+          const height = $("main .inner").height()
+          const vph = $(window).height()
+
+          const topOffset = -Math.min(pos - offset, -50)
+          const bottomOffset = Math.max(pos + vph - (offset + height), 0)
+
           $("#docs-nav").sticky({
             topSpacing: 50,
             bottomSpacing: 100
-          })
+          }).height(vph - topOffset - bottomOffset)
         }
-
-        function unstick() {
-          $("#docs-nav").unstick()
-        }
-
-        function updateStick() {
-          return $(window).width() >= 500 && $(window).height() - $("footer").height() - 100 > $("#docs-nav").height() ? 
-            stick() : unstick()
-        }
-
-        $(window).resize(updateStick)
-        $(document).ready(updateStick)
-        updateStick()
+        
+        $(window).resize(stick)
+        $(document).scroll(stick)
+        $(document).ready(stick)
+        stick()
       })()
     </script>
     <article>
