@@ -100,7 +100,7 @@ You should add more partitions for the subfolders of your `out` folder.
 
 9\. Write code!
 
-It is recommended that you peruse through all of the docs to the left as you get started!
+It is recommended that you peruse through the [Usage](/docs/usage/) and [Guides](/docs/guides/) sections as you get started.
 
 roblox-ts is still in development and you may run into situations where invalid Lua is emitted. **Please report these cases to us** either by [creating an issue](https://github.com/roblox-ts/roblox-ts/issues) or joining our Discord server (link above).
 {:.warn}
