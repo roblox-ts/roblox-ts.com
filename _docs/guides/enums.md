@@ -1,5 +1,5 @@
 ---
-title: Types
+title: Roblox Enums
 order: 3
 category: guides
 description: Usage information for Roblox Enums in roblox-ts
