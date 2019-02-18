@@ -1,5 +1,6 @@
 ---
 title: Data Type Math
+category: usage
 order: 2
 description: This page explains how to represent operator overloading in TypeScript for Roblox data types.
 ---

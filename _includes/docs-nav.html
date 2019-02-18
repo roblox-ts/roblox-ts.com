@@ -1,26 +1,43 @@
-<ul>
+{% assign category_order = ',usage,guides,*' | split: ',' %}
 {% assign docs = site.docs | group_by: 'category' %}
-{% for category in docs %}
-{% assign items = category.items | sort: 'order' %}
-<li>
-  {% assign category_name = category.name | default: items[0].title %}
-  {% if page.category == items[0].category %}
-    <span>{{ category_name | capitalize }}</span>
-    <ul>
-    {% for doc in items %}
-      {% unless doc.hidden %}
-        {% if page.url == doc.url %}
-        <li class="active">{{ doc.title }}</li>
-          {% include toc.html html=content class="small" sanitize=true %}
-        {% else %}
-        <li><a href="{{ doc.url | replace: "/index", "/" }}">{{ doc.title }}</a></li>
-        {% endif %}
-      {% endunless %}
-    {% endfor %}
-    </ul>
-  {% else %}
-    <a href="{{ items[0].url | replace: "/index", "/" }}">{{ category_name | capitalize }}</a>
+
+{% for target_category in category_order %}
+<ul>
+  {% for category in docs %}
+
+  {% assign display = false %}
+
+  {% if target_category == '*' %}
+    {% unless category_order contains category.name %}
+      {% assign display = true %}
+    {% endunless %}
+  {% elsif category.name == target_category %}  
+      {% assign display = true %}
   {% endif %}
-  </li>
+
+  {% if display == true %}
+    {% assign items = category.items | sort: 'order' %}
+    <li>
+      {% assign category_name = category.name | default: items[0].title %}
+      {% if page.category == items[0].category %}
+        <span>{{ category_name | capitalize }}</span>
+        <ul>
+        {% for doc in items %}
+          {% unless doc.hidden %}
+            {% if page.url == doc.url %}
+            <li class="active">{{ doc.title }}</li>
+              {% include toc.html html=content class="small" sanitize=true %}
+            {% else %}
+            <li><a href="{{ doc.url | replace: "/index", "/" }}">{{ doc.title }}</a></li>
+            {% endif %}
+          {% endunless %}
+        {% endfor %}
+        </ul>
+      {% else %}
+        <a href="{{ items[0].url | replace: "/index", "/" }}">{{ category_name | capitalize }}</a>
+      {% endif %}
+      </li>
+    {% endif %}
+  {% endfor %}
+  </ul>
 {% endfor %}
-</ul>

@@ -1,5 +1,6 @@
 ---
 title: Unsupported Features
+category: usage
 order: 2
 description: A list of intentional unsupported TypeScript features when using roblox-ts.
 ---

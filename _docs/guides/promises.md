@@ -126,6 +126,9 @@ Creates an immediately rejected Promise with the given value.
 ## Promise.all
 Accepts an array of Promises and returns a new Promise that is resolved when all input Promises resolve, or rejects if any of the input Promises reject.
 
+## Promise.spawn
+Spawns a function on a new thread, but begins running it immediately instead of being deferred. This is sometimes known as a "fast spawn". Should generally be preferred over `spawn` in Promises for more predictable timing.
+
 ## promise.then
 Attaches callbacks for the resolution and/or rejection of the Promise. Accepts two parameters: The callback to execute when the Promise is resolved, and The callback to execute when the Promise is rejected.
 

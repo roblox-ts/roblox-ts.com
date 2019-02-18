@@ -1,5 +1,6 @@
 ---
 title: Changes in Behavior
+category: usage
 order: 2
 description: This page lists intentional changes in behavior from traditional TypeScript functionality.
 ---
