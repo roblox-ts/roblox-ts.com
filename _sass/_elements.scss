@@ -248,21 +248,22 @@ hr {
 
 section.content {
   padding-top: 0;
-
+  
   .inner {
     display: grid;
     grid: 1fr / 3fr 1fr;
     grid-template-areas: "right left";
     margin-top: 75px;
+    // overflow: hidden;
     max-width: $break-pc;
 
     @media screen and (max-width: $break-phone) {
       display: block;
     }
 
-    @media screen and (max-width: $width) {
-      grid: 1fr / 1fr 3fr;
-    }
+    // @media screen and (max-width: $width) {
+    //   grid: 1fr / 1fr 3fr;
+    // }
 
     nav {
       grid-area: left;
@@ -333,6 +334,15 @@ section.content {
       pre {
         tab-size: 4;
         overflow: auto;
+        // display: inline-block;
+      }
+
+      @media screen and (max-width: $width) {
+        pre {
+          white-space: pre-line;
+          word-wrap: break-word;
+          word-break: break-all;
+        }
       }
 
       :not(pre) > code {
