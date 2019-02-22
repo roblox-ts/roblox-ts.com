@@ -54,7 +54,7 @@ const part = workspace.FindFirstChild<Part>("Baseplate")!
 ```
 
 # Type Narrowing
-TypeScript has a feature called *type narrowing* which allows TypeScript to intelligently narrow the possible type of a value when you use a *type guard* inside of a conditional. For example, the `typeof` operator is a type guard:
+TypeScript has a feature called *type narrowing* which allows TypeScript to intelligently narrow the possible type of a value when you use a *type guard* inside of a conditional. For example, in vanilla TypeScript, the `typeof` operator is a type guard:
 
 ```ts
 const x = "hello" as unknown; // hovering over x indicates "any"
@@ -64,10 +64,7 @@ if (typeof x === "string") {
 }
 ```
 
-This works because TypeScript has special rules for statically analyzing `typeof` and `instanceof` when used inside of a conditional. However, the `typeof` operator is not compatible with Lua or Roblox types.
-
-Support for the `typeof` operator as a value may be [removed soon](https://github.com/roblox-ts/roblox-ts/issues/250).
-{:.warn}
+This works because TypeScript has special rules for statically analyzing `typeof` and `instanceof` when used inside of a conditional. However, the `typeof` operator is not compatible with Lua or Roblox types, thus it is not allowed in roblox-ts code in the context of *values*. (The `typeof` operator in *types* is still valid: when `typeof` is used in a type, it converts a value into a type.)
 
 ## `typeIs`
 To solve this problem, roblox-ts adds a new global function `typeIs` to narrow types. `typeIs` is compatible with any type that Lua's `typeof` is compatible with.
@@ -82,7 +79,4 @@ if (typeIs(x, "Vector3")) {
 
 ## `typeOf`
 
-This feature is [coming soon](https://github.com/roblox-ts/roblox-ts/issues/250).
-{:.warn}
-
-If you instead want access to the return value of Roblox Lua's `typeof` function, you can use `typeOf`. `typeOf` is compiled to `typeof` in Lua. The reason for the difference in name is because `typeof` is an operator in TypeScript.
+If you instead want access to the return value of Roblox Lua's `typeof` function, you can use `typeOf`. `typeOf` is compiled to `typeof` in Lua. The reason for the difference in name is because `typeof` is an operator in TypeScript. However, this function does **not** provide type narrowing like `typeIs` does.
