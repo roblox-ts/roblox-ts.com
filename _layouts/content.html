@@ -39,8 +39,18 @@ layout: page
     </article>
   </div>
 </section>
-<script>
+<script>  
   $("input[data-sync-id]:not([data-sync-id=\"\"])").change(function(){
     $("input[data-sync-id=\"" + $(this).data("sync-id") +"\"][value=\"" + $(this).val() + "\"]").prop("checked", true)
+
+    localStorage.setItem("code-tabs-" + $(this).data("sync-id"), $(this).val())
+  })
+
+  $("input[data-sync-id]:not([data-sync-id=\"\"])").each(function(){
+    var item = localStorage.getItem("code-tabs-" + $(this).data("sync-id"))
+
+    if (item) {
+      $("input[data-sync-id=\"" + $(this).data("sync-id") +"\"][value=\"" + $(this).val() + "\"]").prop("checked", true)
+    }
   })
 </script>
