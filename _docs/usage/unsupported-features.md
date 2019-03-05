@@ -16,6 +16,6 @@ Some of these are intended removals, others may be added in the future!
 - loop labels (used by `continue` and `break`)
 - class or function prototypes
 - class expressions
-- regular Expressions
+- regular expressions
 - dynamic import expressions
-- arrays with holes in them (nils/undefineds in between valid elements)
+- sparse arrays (`nil`/`undefined` in between valid elements)
