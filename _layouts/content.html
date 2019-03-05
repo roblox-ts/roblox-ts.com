@@ -50,7 +50,7 @@ layout: page
     var item = localStorage.getItem("code-tabs-" + $(this).data("sync-id"))
 
     if (item) {
-      $("input[data-sync-id=\"" + $(this).data("sync-id") +"\"][value=\"" + $(this).val() + "\"]").prop("checked", true)
+      $("input[data-sync-id=\"" + $(this).data("sync-id") +"\"][value=\"" + item + "\"]").prop("checked", true)
     }
   })
 </script>
