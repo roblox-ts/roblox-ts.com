@@ -12,7 +12,7 @@ In order to start using roblox-ts, you'll need to have NodeJS and npm installed.
 
 Next, from your command line install roblox-ts: `npm install -g roblox-ts`
 
-You can now run roblox-ts with the command `rbxtsc`.
+You can now run roblox-ts with the command `rbxtsc -h`.
 
 ```
 Usage: rbxtsc [options]
@@ -70,7 +70,8 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 	}
 }
 ```
-_**(warning: do not change these values unless you know what you are doing!)**_
+Do not change these values unless you know what you are doing!
+{:.warn}
 
 5\. Create a file for syncing your compiled .lua files to Roblox Studio. If you're using Rojo, this should be a `rojo.json` file and look like:
 
@@ -90,7 +91,7 @@ _**(warning: do not change these values unless you know what you are doing!)**_
 	}
 }
 ```
-You should add more partitions for the subfolders of your `out` folder.
+You should add more partitions for the sub-folders of your `out` folder.
 
 6\. Run `npm install rbx-types` to install the Roblox API type definitions.
 
