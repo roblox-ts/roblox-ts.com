@@ -32,4 +32,4 @@ Almost always, yielding should be avoided completely in favor of Promises in you
 
 ## Removed Features
 Some features from traditional TypeScript have been removed intentionally or not yet supported.
-[You can find a list of them here.](/docs/usage/unsupported-features)
+[You can find a list of them here.](/docs/usage/workflow-issues#objects-may-only-have-string-keys)
