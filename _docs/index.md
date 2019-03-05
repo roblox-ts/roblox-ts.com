@@ -5,16 +5,16 @@ description: The roblox-ts docs.
 ---
 Welcome to the **roblox-ts** docs!
 
-**roblox-ts** aims to have feature parity with [TypeScript](http://www.typescriptlang.org/) where possible. However, a few features are not supported due to constraints when compiling to Lua.
+roblox-ts aims to have feature parity with [TypeScript](http://www.typescriptlang.org/) where possible. However, a few features are not supported due to constraints when compiling to Lua.
 
-When writing code with **roblox-ts**, all Lua built-in functions and APIs are available as well as the entire Roblox API.
+When writing code with roblox-ts, all Lua built-in functions and APIs are available as well as the entire Roblox API.
 
-These docs contain a list of articles specific to **roblox-ts** usage. If you're looking for more general TypeScript information, please refer to the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html).
+These docs contain a list of articles specific to roblox-ts usage. If you're looking for more general TypeScript information, please refer to the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html).
 
 ## Motivation
 As Roblox games become increasingly complex and larger in scope, efficiently writing safe code becomes challenging with Lua. In addition, Lua is difficult to make tooling for. Roblox Studio attempts to provide things like intellisense and autocomplete, but it's mostly just guessing.
 
-**roblox-ts** is designed to solve these problems by compiling TypeScript code directly into Lua, tuned for use in Roblox specifically.
+roblox-ts is designed to solve these problems by compiling TypeScript code directly into Lua, tuned for use in Roblox specifically.
 
 ## Why TypeScript?
 TypeScript is a type system that was built for a language without types (JavaScript). Because of the generic way that TypeScript is implemented, it's easy to use it for our purposes as well with Lua. TypeScript is also reasonably similar to Lua and already has ways to model many of the problems we need to solve.
