@@ -21,6 +21,12 @@ h1, h2, h3, h4, h5 {
   margin-top: 40px;
 }
 
+h1 > code, h2 > code, h3 > code, h4 > code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
 h1.major {
   font-size: 3.2rem;
 }
