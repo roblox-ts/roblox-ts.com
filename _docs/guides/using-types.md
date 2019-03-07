@@ -4,6 +4,56 @@ order: 2
 category: guides
 description: A guide on how to validate and use types within roblox-ts.
 ---
+# Method vs. Member Function Call Syntax
+In Lua, there is a distinction between a standard member function call (`obj.func()`) and a method function call (`obj:method()`). The Lua method syntax implicitly passes the object itself as the first parameter in the call. Usually, this is used in combination with the function declaration shorthand which implicitly assigns the first parameter to the name `self` inside the function.
+
+But in TypeScript, all member functions are indexed with a dot, as JavaScript has other rules on handling how `this` is set inside of a function. TypeScript also has two types of functions: *function declarations/expressions*, and *arrow functions*.
+
+To reconcile the patterns found in the two languages when compiling to Lua, we assume that **arrow functions inside of objects are called as a regular function call**, and **function declarations/expressions are called with the method call syntax**. Arrow functions do not have a `this` binding in JavaScript, so it's reasonable to assume that this conceptually maps to a function called without a `self` value in Lua.
+
+```ts
+interface Example {
+	calledWithMethodSyntax(): void
+	
+	calledWithDotSyntax: () => void
+}
+```
+This feature of roblox-ts relies on **type information** to determine the correct Lua to emit, thus the types regarding calling related functions must be statically known at compile time. In other words, attempting to create a union type of a method-syntax and dot-syntax function will result in an error.
+{:.warn}
+
+## Overriding Method Call Behavior
+
+As detailed above, by default function expressions/declarations are called with *method call syntax*. However, it is possible to override this behavior using a [`this` parameter](https://www.typescriptlang.org/docs/handbook/functions.html#this-parameters).
+
+```ts
+interface Example {
+	calledWithDotSyntax(this: void): void;
+	calledWithMethodSyntax(): void;
+
+	// Arrow function called with method syntax (opposite)
+	arrowCalledWithMethodSyntax: (this: this) => void;
+}
+```
+Above, we can see that the `this: void` annotation will override the default behavior, telling roblox-ts to call the function with the dot syntax.
+
+Likewise, using `this: this` has the inverse effect: the function will be called with the method syntax. 
+
+# Multiple Return Values
+One of Lua's famous quirks is that its functions can return multiple values. Most languages, including TypeScript, do not have this capability, and model those situations with other constructs. In TypeScript, we generally use a [*tuple*](https://www.typescriptlang.org/docs/handbook/basic-types.html#tuple), which is just a fancy name for an array which has a set of known types in each of its indexes.
+
+When writing type declarations for interacting with Lua code from TypeScript, it is often necessary to interface with functions that return multiple values. This is where the `LuaTuple<T>` type helper comes in: This is a generic type that tells the compiler to treat the given tuple as a *multiple return* instead of an array. If a function is typed as returning a `LuaTuple<T>`, its return values will be grouped into a TypeScript array/tuple automatically.
+
+```ts
+declare function returnsMultipleValues(): LuaTuple<[string, number]>;
+
+// Result is wrapped in a Lua table, becoming an array:
+const values = returnsMultipleValues(); // [string, number]
+
+// Result is *not* wrapped in a table since it is destructured immediately:
+const [theString, theNumber] = returnsMultipleValues();
+```
+
+You can also have your regular (non-declared) functions return a `LuaTuple<T>`, which functions semantically identically if you wish to write a function that returns multiple values with TypeScript.
 
 # Type Assertions
 Type assertions are a way to override the type of any value in TypeScript. Type assertions are an "escape hatch" from the type system, and by that nature are dangerous if used incorrectly. Asserting a value's type does **not** do anything to the value itself, it only overrides the type that the compiler treats the value as. For example:
@@ -80,3 +130,6 @@ if (typeIs(x, "Vector3")) {
 ## `typeOf`
 
 If you instead want access to the return value of Roblox Lua's `typeof` function, you can use `typeOf`. `typeOf` is compiled to `typeof` in Lua. The reason for the difference in name is because `typeof` is an operator in TypeScript. However, this function does **not** provide type narrowing like `typeIs` does.
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTUyMzkzMTQ5OF19
+-->
