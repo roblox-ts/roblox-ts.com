@@ -7,7 +7,7 @@ description: A guide on how to validate and use types within roblox-ts.
 # Method vs. Member Function Call Syntax
 In Lua, there is a distinction between a standard member function call (`obj.func()`) and a method function call (`obj:method()`). The Lua method syntax implicitly passes the object itself as the first parameter in the call. Usually, this is used in combination with the function declaration shorthand which implicitly assigns the first parameter to the name `self` inside the function.
 
-But in TypeScript, all member functions are indexed with a dot, as JavaScript has other rules on handling how `this` is set inside of a function. TypeScript also has two types of functions: *function declarations/expressions*, and *arrow functions*.
+But in TypeScript, all member functions are indexed with a dot, as JavaScript has other rules on handling how `this` is set inside of a function. Additionally, TypeScript has two types of functions: *function declarations/expressions*, and *arrow functions*.
 
 To reconcile the patterns found in the two languages when compiling to Lua, we assume that **arrow functions inside of objects are called as a regular function call**, and **function declarations/expressions are called with the method call syntax**. Arrow functions do not have a `this` binding in JavaScript, so it's reasonable to assume that this conceptually maps to a function called without a `self` value in Lua.
 
@@ -121,5 +121,5 @@ if (typeIs(x, "Vector3")) {
 
 If you instead want access to the return value of Roblox Lua's `typeof` function, you can use `typeOf`. `typeOf` is compiled to `typeof` in Lua. The reason for the difference in name is because `typeof` is an operator in TypeScript. However, this function does **not** provide type narrowing like `typeIs` does.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDU0MjEwNDE5XX0=
+eyJoaXN0b3J5IjpbLTE4MTc1MTk0MzhdfQ==
 -->
