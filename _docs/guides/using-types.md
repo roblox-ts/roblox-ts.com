@@ -104,17 +104,7 @@ const part = workspace.FindFirstChild<Part>("Baseplate")!
 ```
 
 # Type Narrowing
-TypeScript has a feature called *type narrowing* which allows TypeScript to intelligently narrow the possible type of a value when you use a *type guard* inside of a conditional. For example, in vanilla TypeScript, the `typeof` operator is a type guard:
-
-```ts
-const x = "hello" as unknown; // hovering over x indicates "any"
-
-if (typeof x === "string") {
-  x; // hovering over X indicates "string"
-}
-```
-
-This works because TypeScript has special rules for statically analyzing `typeof` and `instanceof` when used inside of a conditional. However, the `typeof` operator is not compatible with Lua or Roblox types, thus it is not allowed in roblox-ts code in the context of *values*. (The `typeof` operator in *types* is still valid: when `typeof` is used in a type, it converts a value into a type.)
+TypeScript has a feature called *type narrowing* which allows TypeScript to intelligently narrow the possible type of a value when you use a *type guard* inside of a conditional. In vanilla TypeScript, the `typeof` operator can be used to narrow types. However, the `typeof` operator is not compatible with Lua or Roblox types, thus it is not allowed in roblox-ts code in the context of *values*. (The `typeof` operator in *types* is still valid: when `typeof` is used in a type, it converts a value into a type.) 
 
 ## `typeIs`
 To solve this problem, roblox-ts adds a new global function `typeIs` to narrow types. `typeIs` is compatible with any type that Lua's `typeof` is compatible with.
@@ -131,5 +121,5 @@ if (typeIs(x, "Vector3")) {
 
 If you instead want access to the return value of Roblox Lua's `typeof` function, you can use `typeOf`. `typeOf` is compiled to `typeof` in Lua. The reason for the difference in name is because `typeof` is an operator in TypeScript. However, this function does **not** provide type narrowing like `typeIs` does.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyMzkzMTQ5OF19
+eyJoaXN0b3J5IjpbNDU0MjEwNDE5XX0=
 -->
