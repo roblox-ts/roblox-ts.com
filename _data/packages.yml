@@ -1,3 +1,8 @@
+# Want to add your own roblox-ts package to this listing?
+# 
+# Create a Pull Request adding your package as an entry to the bottom of this file,
+# using the existing packages as an example of the expected format.
+
 - name: rbx-services
   author: roblox-ts
   keywords: services import autoimport
