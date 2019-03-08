@@ -80,23 +80,20 @@ header {
   height: $header-height;
   color: white;
 
-  @media screen and (max-width: $break-tablet) {
+  @media screen and (max-width: $break-pc) and (min-width: $break-tablet) {
     height: auto;
+    padding-top: 0;
   }
 
   .inner {
     display: grid;
-    grid: auto / 1fr 1fr 2fr;
-    grid-template-areas: "left none right";
+    grid: auto auto / 1fr 2fr;
+    grid-template-areas: "left right" ". .";
 
-    @media screen and (max-width: $break-pc + 40) {
-      grid-template-areas: "left right right";
-    }
-
-    @media screen and (max-width: $break-tablet) {
-      grid-template-areas: "left left left";
+    @media screen and (max-width: $break-pc) {
+      grid-template-areas: "right right" "left left";
       justify-items: center;
-      margin-top: 30px;
+      // margin-top: 30px;
     }
     
     a {
@@ -111,7 +108,6 @@ header {
       .logo {
         height: 64px;
         width: 64px;
-        // margin-top: 3px;
         vertical-align: -17px;
       }
       
@@ -133,6 +129,10 @@ header {
       @media screen and (max-width: $break-tablet) {
         display: none;
       }
+
+      @media screen and (max-width: $break-pc) {
+        margin-top: 0;
+      }
   
       li {
         display: inline-block;
@@ -143,6 +143,12 @@ header {
           padding-top: 7px;
           border-bottom: 1px solid rgba(255, 255, 255, 0.6);
           transition: none;
+          
+          @media screen and (max-width: $break-pc) {
+            border-bottom: none;
+            border-top: 2px solid rgba(255, 255, 255, 0.6);
+            padding-top: 25px;
+          }
 
           &:hover, &.active {
             // border-width: 2px;
