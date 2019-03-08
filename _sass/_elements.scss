@@ -41,7 +41,9 @@ a {
   &:hover{
     color: darken($red, 10%);
   }
+}
 
+a:not(.no-fx) {
   &:before, &:after {
     content: '';
     background: $red;
@@ -260,6 +262,28 @@ hr {
 
 section.content {
   padding-top: 0;
+
+  pre {
+    tab-size: 4;
+    overflow: auto;
+    // display: inline-block;
+  }
+
+  @media screen and (max-width: $width) {
+    pre {
+      white-space: pre-line;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+  }
+
+  :not(pre) > code {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    color: #222;
+    padding: 0 5px;
+    border-radius: 3px;
+  }
   
   .inner {
     display: grid;
@@ -342,37 +366,23 @@ section.content {
       p {
         line-height: 1.7em;
       }
-
-      pre {
-        tab-size: 4;
-        overflow: auto;
-        // display: inline-block;
-      }
-
-      @media screen and (max-width: $width) {
-        pre {
-          white-space: pre-line;
-          word-wrap: break-word;
-          word-break: break-all;
-        }
-      }
-
-      :not(pre) > code {
-        background-color: #f8f8f8;
-        border: 1px solid #ccc;
-        color: #222;
-        padding: 0 5px;
-        border-radius: 3px;
-      }
     }
   }
   
-  & > h1:first-of-type {
+  & > div:first-of-type {
     background: $red;
     padding: 50px 0;
     text-align: center;
     color: white;
     margin-top: 0;
+
+    h1 {
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
   }
 }
 

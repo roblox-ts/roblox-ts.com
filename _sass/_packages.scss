@@ -1,0 +1,87 @@
+.packages-right-corner {
+  text-align: center;
+  margin-top: 40px;
+
+  @media screen and (min-width: $break-pc) {
+    position: absolute;
+    right: 30px;
+    margin: 60px 30px;
+  }
+}
+
+.package-search {
+  text-align: center;
+  margin-top: 45px;
+
+  input {
+    padding: 15px 18px;
+    width: 80%;
+    max-width: 490px;
+    border-radius: 8px;
+    border: 1px solid lighten($red, 40%);
+    background: lighten($white, 1%);
+    font-size: 1.5rem;
+
+    transition: all 350ms ease;
+
+    &:focus {
+      outline: none;
+
+      border-color: lighten($red, 20%);
+      background: white;
+    }
+  }
+}
+
+.package-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media screen and (max-width: $break-tablet) {
+    justify-content: left;
+  }
+
+  & > div {
+    margin: 50px;
+    flex-basis: 490px;
+
+    @media screen and (max-width: $break-pc + 300) {
+      flex-basis: calc(30% - 50px);
+    }
+
+    @media screen and (max-width: $break-tablet) {
+      flex-basis: auto;
+    }
+
+    .package-meta {
+      margin-bottom: 0;
+
+      .package-title {
+        font-weight: bold;
+        font-size: 2rem;
+      }
+  
+      .package-author {
+        color: #333;
+        font-size: 0.9rem;
+        margin-left: 6px;
+  
+        a {
+          border-bottom: 1px dotted #666;
+          color: #333;
+        }
+      }
+    }
+
+    pre {
+      white-space: pre-line;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .tabs-select {
+      margin-top: 5px;
+    }
+  }
+}
