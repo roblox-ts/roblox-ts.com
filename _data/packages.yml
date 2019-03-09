@@ -290,3 +290,49 @@
       return "hi I'm the client " + game.Players.LocalPlayer!.Name;
     };
     ```
+
+- name: rbx-datastore-light
+  author: Dog2puppy
+  keywords: datastore data store storage
+  tabs: demo
+  description: |-
+    A simple data store wrapper with automatic retry and types support. 
+
+    ***
+
+    ```ts
+    import { DataStore } from "rbx-datastore-light";
+
+    let MainStore = new DataStore<string>("Main", "MyScope", math.huge); // Creates a new DataStore object with the type 'string', the name 'main', the scope 'MyScope' and an infinite amount of retries
+
+    MainStore.set("hello", "hi");
+    MainStore.get("hello"); // hi
+    MainStore.remove("hello");
+    ```
+
+- name: rbx-engine.io
+  author: Dog2puppy
+  keywords: websockets web sockets
+  tabs: demo
+  description: |-
+    An engine.io client for Roblox with type definitions. 
+
+    ***
+
+    ```ts
+    import Engine from "rbx-engine.io";
+    const Socket = new Engine<string>(); // Connects to localhost
+
+    Socket.On("open", () => {
+      print("Connected");
+      Socket.Send("test");
+    });
+
+    Socket.On("message", (data) => {
+      print(`Message recieved: ${data}`);
+    });
+
+    Socket.On('close', (data) => {
+      print('Disconnected');
+    });
+    ```
