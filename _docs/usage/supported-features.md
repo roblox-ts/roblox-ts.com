@@ -18,7 +18,7 @@ Here are some of the more notable and useful features of roblox-ts that are supp
 - String methods
 - Rest/spread syntax in objects and arrays
 - Try/catch and object throws
-- Bitwise operations (except `~` and `>>>`)
+- Bitwise operations
 - TSX for Roact with the [rbx-roact](https://github.com/roblox-ts/rbx-roact) package
 - Files named `index.ts` will be transpiled as `init.lua` in order to align with conventional [syncing plugin details](https://lpghatguy.github.io/rojo/sync-details/), allowing you to have scripts inside of other scripts in the game tree.
 - All functions are called with a `.` as there is no `:` method syntax in TypeScript. Emitted Lua will call functions with `:` or `.` depending on its type definition (as members of objects, arrow functions are called with `.`, normal functions with `:`).
