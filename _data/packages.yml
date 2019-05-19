@@ -442,14 +442,25 @@
 
     ```ts
     import BitBuffer from "rbx-bitbuffer";
-    // Save data
-    const buffer = BitBuffer.create();
-    buffer.writeString('Example data');
-    buffer.writeBool(false);
-    const data = buffer:toBase64();
-    // Load data
-    const buffer = BitBuffer.create();
-    buffer:fromBase64(data);
-    const exampleString = buffer.readString();
-    const exampleBool = buffer.readBool();
+   
+    let savedString: string;
+ 
+    public saveData(wins: number, money: number, title: string, wasAlive: boolean) {
+      const buffer = BitBuffer.create();
+      buffer.writeUnsigned(32, wins);
+      buffer.writeSigned(32, money);
+      buffer.writeString(title);
+      buffer.writeBool(wasAlive);
+      this.savedString = buffer:toBase64()
+    }
+
+    public loadData() {
+      const buffer = BitBuffer.create();
+      buffer:fromBase64(this.savedString);
+      const wins = buffer.readUnsigned(32);
+      const money = buffer.readSigned(32);
+      const title = buffer.readString();
+      const wasAlive = buffer.readBool();
+    }
+
     ```
