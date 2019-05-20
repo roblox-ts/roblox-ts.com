@@ -1,5 +1,5 @@
 # Want to add your own roblox-ts package to this listing?
-# 
+#
 # Create a Pull Request adding your package as an entry to the bottom of this file,
 # using the existing packages as an example of the expected format.
 
@@ -336,7 +336,7 @@
       print('Disconnected');
     });
     ```
-    
+
 - name: rbx-date
   author: Validark
   keywords: date, time, formatter
@@ -357,11 +357,11 @@
 
     // Date:
     print(Date("%D")); // 01/12/20
-    
+
     // Also adds the ability to toggle padding by inserting a '#' like so:
     print(Date("%#x", os.time()));
     ```
-   
+
 - name: rbx-signal
   author: Validark
   keywords: Signal BindableEvent Bindable Bind
@@ -384,7 +384,7 @@
 
 - name: rbx-tween
   author: Validark
-  keywords: bezier cubic-bezier curve interpolation interpolate easing ease lerp tween 
+  keywords: bezier cubic-bezier curve interpolation interpolate easing ease lerp tween
   tabs: demo
   description: |-
     A library for writing efficient, simple interpolation code
@@ -392,7 +392,7 @@
     ***
 
     Here is the simplest form:
-    
+
     This will return a Tween object. x will be a number along the Standard curve [0, 1]. The interpolation will last 2 seconds. Standard is the EasingFunction, which is the curve along which this interpolation will animate.   
     ```ts
     Tween(2, Standard, x => print(x));
@@ -426,7 +426,41 @@
 
     export const SFOTH = getMap("SFOTH");
     export const City = getMap("City");
-    
+
     // Then you can easily import the needed resources into another library
     import { Chatted, Cleanup } from "ReplicatedStorage/RemoteEventDefinitions";
+    ```
+
+- name: rbx-bitbuffer
+  author: BinaryProvider
+  keywords: data store binary storage compression
+  tabs: demo
+  description: |-
+    The BitBuffer module is a module that was created by Stravant that allows for the reading and manipulation of binary based data storage, which is an essential module if you have a lot of data you need to store compactly.
+
+    ***
+
+    ```ts
+    import BitBuffer from "rbx-bitbuffer";
+   
+    let savedString: string;
+ 
+    public saveData(wins: number, money: number, title: string, wasAlive: boolean): void {
+      const buffer = BitBuffer.create();
+      buffer.writeUnsigned(32, wins);
+      buffer.writeSigned(32, money);
+      buffer.writeString(title);
+      buffer.writeBool(wasAlive);
+      this.savedString = buffer.toBase64();
+    }
+
+    public loadData(): void {
+      const buffer = BitBuffer.create();
+      buffer.fromBase64(this.savedString);
+      const wins = buffer.readUnsigned(32);
+      const money = buffer.readSigned(32);
+      const title = buffer.readString();
+      const wasAlive = buffer.readBool();
+    }
+
     ```
