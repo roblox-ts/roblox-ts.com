@@ -451,12 +451,12 @@
       buffer.writeSigned(32, money);
       buffer.writeString(title);
       buffer.writeBool(wasAlive);
-      this.savedString = buffer:toBase64();
+      this.savedString = buffer.toBase64();
     }
 
     public loadData(): void {
       const buffer = BitBuffer.create();
-      buffer:fromBase64(this.savedString);
+      buffer.fromBase64(this.savedString);
       const wins = buffer.readUnsigned(32);
       const money = buffer.readSigned(32);
       const title = buffer.readString();
