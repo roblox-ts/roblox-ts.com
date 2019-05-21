@@ -14,7 +14,6 @@ Some of these are intended removals, others may be added in the future!
 - `null` (use `undefined` instead!)
 - loop labels (used by `continue` and `break`)
 - class or function prototypes
-- class expressions
 - regular expressions
 - dynamic import expressions
 - sparse arrays (`nil`/`undefined` in between valid elements)
