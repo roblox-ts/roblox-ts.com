@@ -464,3 +464,69 @@
     }
 
     ```
+
+- name: rbx-remoteevent
+  author: karikera
+  keywords: remoteevent remotefunction
+  tabs: common.ts server.ts client.ts
+  description: |-
+    The rbx-remote module will create function sets from remote call type definations
+
+    ***
+
+    ```ts
+    export const remoteEventDefinations = {
+        s2c:{ // Server to Client
+            youAre(a:number, b:string, c:boolean, name:string){},
+            someoneJoined(a: number, b:string, c:boolean, name:string){},
+        },
+        c2s:{ // Client to Server
+            whoAmI(a:number, b:string, c:boolean){}
+        }
+    };
+    ```
+
+    ***
+
+    ```ts
+    import { createClientRemoteEvents } from "rbx-remoteevent";
+    import { remoteEventDefinations } from "./common";
+    
+    const {s2c, c2s} = createClientRemoteEvents(remoteEventDefinations);
+    
+    
+    // Receive from Server
+    s2c.youAre((a, b, c, name)=>{
+        print(`I'm ${name} (${a}, ${b}, ${tostring(c)})`);
+    });
+    
+    // Send to Server
+    c2s.whoAmI(math.random(), 'string', true);
+    ```
+
+    ***
+
+    ```ts
+    import { createServerRemoteEvents } from "rbx-remoteevent";
+    import { remoteEventDefinations } from "./common";
+    
+    const {c2s, s2c} = createServerRemoteEvents(remoteEventDefinations);
+    
+    
+    // Receive from Client
+    c2s.whoAmI((player, a, b, c)=>{
+    
+        // Send to 'player'
+        s2c.youAre.fire(player, a, b, c, player.Name);
+    
+        // Send to All
+        s2c.someoneJoined.fireAll(a, b, c, player.Name);
+    
+        // Send to partial players
+        const [p1, p2, p3] = game.GetService('Players').GetChildren();
+        s2c.someoneJoined.fires([p1, p2, p3], a, b, c, player.Name);
+    
+        // Send to All without 'player'
+        s2c.someoneJoined.fireWithout(player, a, b, c, player.Name);
+    });
+    ```
