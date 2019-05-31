@@ -25,7 +25,7 @@ if (typeIs(x, "Vector3")) {
 
 ## `classIs`
 
-`classIs` is similar to `typeIs`, but provides type narrowing for Instances via the `ClassName` property. Comparing the ClassName property by hand does not provide such narrowing, because TypeScript's structural typing makes implementation difficult and complex. The `classIs` function is a compromise that keeps things simple while still offering `ClassName` narrowing: 
+`classIs` is similar to `typeIs`, but provides type narrowing for Instances via the `ClassName` property. Comparing the `ClassName` property by hand does not provide such narrowing, because TypeScript's structural typing makes implementation difficult and complex. The `classIs` function is a compromise that keeps things simple while still offering `ClassName` narrowing: 
 
 ```ts
 const x = game.FindFirstChild("X");

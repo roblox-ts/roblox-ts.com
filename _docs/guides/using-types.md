@@ -117,7 +117,7 @@ if (typeIs(x, "Vector3")) {
 }
 ```
 
-See also: [Compiler Built-ins](/usage/compiler-builtins)
+See also: [Compiler Built-ins](/docs/usage/compiler-builtins)
 {:.info}
 
 <!--stackedit_data:
