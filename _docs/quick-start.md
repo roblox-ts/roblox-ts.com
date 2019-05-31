@@ -104,7 +104,7 @@ roblox-ts requires [Rojo 0.5.x](https://lpghatguy.github.io/rojo/0.5.x/)
 			"StarterPlayerScripts": {
 				"$className": "StarterPlayerScripts",
 				"TS": {
-					"$path": "out/shared"
+					"$path": "out/client"
 				}
 			}
 		}
