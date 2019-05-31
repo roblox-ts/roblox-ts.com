@@ -117,9 +117,9 @@ if (typeIs(x, "Vector3")) {
 }
 ```
 
-## `typeOf`
+See also: [Compiler Built-ins](/usage/compiler-builtins)
+{:.info}
 
-If you instead want access to the return value of Roblox Lua's `typeof` function, you can use `typeOf`. `typeOf` is compiled to `typeof` in Lua. The reason for the difference in name is because `typeof` is an operator in TypeScript. However, this function does **not** provide type narrowing like `typeIs` does.
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTE4MTc1MTk0MzhdfQ==
 -->
