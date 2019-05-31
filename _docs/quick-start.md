@@ -108,7 +108,7 @@ Do not change these values unless you know what you are doing!
 	}
 }
 ```
-You should add more partitions for the sub-folders of your `out` folder.\
+You should add more partitions for the sub-folders of your `out` folder.
 The `include` folder should be placed in a shared container that can be accessed from anywhere like `ReplicatedStorage`.
 
 6\. Run `npm install rbx-types` to install the Roblox API type definitions.
