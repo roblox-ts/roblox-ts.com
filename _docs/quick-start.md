@@ -113,6 +113,7 @@ roblox-ts requires [Rojo 0.5.x](https://lpghatguy.github.io/rojo/0.5.x/)
 
 ```
 You should add more partitions for the sub-folders of your `out` folder.
+
 The `include` folder should be placed in a shared container that can be accessed from anywhere like `ReplicatedStorage`.
 
 6\. Run `npm install rbx-types` to install the Roblox API type definitions.
