@@ -83,15 +83,15 @@ Do not change these values unless you know what you are doing!
 		"$className": "DataModel",
 		"ServerScriptService": {
 			"$className": "ServerScriptService",
-			"rbxts_include": {
-				"$path": "include"
-			},
 			"TS": {
 				"$path": "out/server"
 			}
 		},
 		"ReplicatedStorage": {
 			"$className": "ReplicatedStorage",
+			"rbxts_include": {
+				"$path": "include"
+			},
 			"TS": {
 				"$path": "out/shared"
 			}
@@ -107,6 +107,7 @@ Do not change these values unless you know what you are doing!
 		}
 	}
 }
+
 ```
 You should add more partitions for the sub-folders of your `out` folder.
 The `include` folder should be placed in a shared container that can be accessed from anywhere like `ReplicatedStorage`.
