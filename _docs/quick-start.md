@@ -74,31 +74,53 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 Do not change these values unless you know what you are doing!
 {:.warn}
 
-5\. Create a file for syncing your compiled .lua files to Roblox Studio. If you're using Rojo, this should be a `rojo.json` file and look like:
+5\. Create Rojo project file for syncing your compiled .lua files to Roblox Studio. This should be a `default.project.json` file and look like:
+
+roblox-ts requires [Rojo 0.5.x](https://lpghatguy.github.io/rojo/0.5.x/)
+{:.warn}
 
 ```js
 {
-	"name": "my-project-name",
-	"servePort": 8000,
-	"partitions": {
-		"include": {
-			"path": "include",
-			"target": "ReplicatedStorage.RobloxTS.Include"
+	"name": "roblox-ts-demo",
+	"tree": {
+		"$className": "DataModel",
+		"ServerScriptService": {
+			"$className": "ServerScriptService",
+			"TS": {
+				"$path": "out/server"
+			}
 		},
-		"modules": {
-			"path": "modules",
-			"target": "ReplicatedStorage.RobloxTS.Modules"
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+			"rbxts_include": {
+				"$path": "include"
+			},
+			"TS": {
+				"$path": "out/shared"
+			}
+		},
+		"StarterPlayer": {
+			"$className": "StarterPlayer",
+			"StarterPlayerScripts": {
+				"$className": "StarterPlayerScripts",
+				"TS": {
+					"$path": "out/client"
+				}
+			}
 		}
 	}
 }
+
 ```
 You should add more partitions for the sub-folders of your `out` folder.
+
+The `include` folder should be placed in a shared container that can be accessed from anywhere like `ReplicatedStorage`.
 
 6\. Run `npm install rbx-types` to install the Roblox API type definitions.
 
 7\. Start roblox-ts in watch mode `rbxtsc -w`
 
-8\. Run your sync program. If you're using Rojo, this is `rojo serve`
+8\. Start Rojo `rojo serve`
 
 9\. Write code!
 
