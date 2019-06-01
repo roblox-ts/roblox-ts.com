@@ -123,3 +123,52 @@ See also: [Compiler Built-ins](/docs/usage/compiler-builtins)
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTE4MTc1MTk0MzhdfQ==
 -->
+
+# Utility Types
+
+The following utility types exists globally:
+
+- `Instances`
+	- An interface containing all Instances mapped from name to type.
+- `CreatableInstances`
+	- Same as `Instances`, except only instantiable classes are included.
+- `Services`
+	- Same as `Instances`, except only services are included.
+- `GetProperties<T>`
+	- Returns a union of all possible properties of the Instance
+- `GetWritableProperties`
+	- Same as `GetProperties`, but only writable properties are included.
+- `StrictInstanceByName`
+	Returns an Instance with its ClassName field set to its literal type.
+- `FunctionArguments<T>`
+	- Returns the types of the arguments that the given function expects.
+- `Callback`
+	- Any callback.
+- `PresentFields`
+	- Similar to Pick, but instead turns excluded values to undefined (so they can still be browsed)
+- `FieldsPresentWhen`
+	- When a member (M) of T is a particular Value (E), Pick<K> 
+- `Tweenable`
+	- Any type that is tweenable with TweenService.
+- `FilterMembers`
+- `BrickColorsByNumber`
+	- An interface of BrickColors by their number ID.
+- `CheckablePrimitives`
+	An interface containing possible results from Lua's `type` function.
+- `CheckableTypes`
+	An interface containing possible results from Lua's `typeof` function.
+- `PromiseLike`
+- `ArrayLike`
+- `ReadonlyArray`
+- `ReadonlyMap`
+- `ReadonlySet`
+- `Partial`
+- `Required`
+- `Readonly`
+- `Writable`
+- `Pick`
+- `Record`
+- `NonNullable`
+- `ReturnType`
+- `InstanceType`
+- `Unpick`
