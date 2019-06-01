@@ -56,7 +56,7 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 		"strict": true,
 		"target": "es6",
 		"types": [ "@rbxts/types" ],
-		"paths": { "*": ["../node_modules/@rbxts/*"] }
+		"paths": { "*": ["../node_modules/@rbxts/*"] },
 
 		// required, configurable
 		"rootDir": "src",
