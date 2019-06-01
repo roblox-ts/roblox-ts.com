@@ -10,7 +10,7 @@ This page serves as a list of _intentional_ changes in behavior from traditional
 
 ## Strings and Arrays are Zero-Indexed
 
-When indexing arrays and strings, indexes now begin at `0` rather than `1` as in Lua. This means that members like `str.sub` begin at zero.
+When indexing arrays and strings, indexes now begin at `0` rather than `1` as in Lua. This means that when using methods like `str.sub`, your indexes must begin at zero.
 
 ## New globals
 
