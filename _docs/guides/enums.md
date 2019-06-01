@@ -5,6 +5,9 @@ category: guides
 description: Usage information for Roblox Enums in roblox-ts
 ---
 
+This information may only apply to older versions.
+{:.alert}
+
 TypeScript has its own enum construct which is not directly compatible with Roblox Enums. Therefore, we generate Roblox Enums as TypeScript enums and convert them back to Roblox Enums in the compile step.
 
 Roblox Enums differ from TypeScript enums in that Roblox Enums are objects that have properties whereas TypeScript enums are just stand-ins for primitive values. This is why TypeScript enums are assignable to number or string values (depending on how the enum is defined).
