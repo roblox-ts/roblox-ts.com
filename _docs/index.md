@@ -30,7 +30,6 @@ From the user side of things, TypeScript already has *amazing* tooling support, 
 - Mirror data type APIs where there is missing functionality in Lua -- and augment data types in the spirit of JavaScript.
 - Enable and encourage efficient development workflows.
 - Optimize emitted Lua depending on context, but not at the cost of stability.
-- Do not introduce unexpected members in the global scope or on user-defined objects.
 
 ## Pillars
 *(How we'll do it)*
