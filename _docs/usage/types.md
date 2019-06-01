@@ -1,7 +1,7 @@
 ---
 title: Types
 order: 2
-category: guides
+category: usage
 description: A guide on how to validate and use types within roblox-ts.
 ---
 # Method vs. Member Function Call Syntax
