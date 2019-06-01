@@ -82,22 +82,13 @@ TypeScript provides a `!` operator to assert that a value's type is non-null (no
 const part = workspace.FindFirstChild<Part>("Baseplate")!; // Part
 ```
 
-# Instances and Roblox data types
+# Constructors
 
 In general, anywhere that you use `X.new()` in Lua, you can use `new X()` in TypeScript.
 
-For Instances, accessing any untyped index (not a property or method) will result in `Instance` to represent direct child access from Instances in Lua. However, just as in Lua, blindly indexing into an Instance can be unsafe if the requested child doesn't actually exist.
+# Indexing Instance Children as Members
 
-Indexing a child results in `Instance`. If you want a more specific type, you can either use a type assertion:
-
-```ts
-const part = workspace.Baseplate as Part
-```
-
-Type assertions are a dangerous feature and should generally be avoided outside of trivial cases like this. For more information, see [Type Assertions](#type-assertions).
-{:.alert}
-
-...or you can use a generic form of `FindFirstChild`:
+Dot-notation for indexing into Instances to get children (e.g. `workspace.Baseplate`) is unsupported. Please use `FindFirstChild` instead:
 
 ```ts
 const part = workspace.FindFirstChild<Part>("Baseplate")!
