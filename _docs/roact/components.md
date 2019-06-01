@@ -147,7 +147,7 @@ We can revisit the incrementing counter example from the previous section, now u
 
 {% capture code %}
 ```ts
-import * as Roact from "rbx-roact";
+import * as Roact from "roact";
 const Players = game.GetService("Players");
 
 function Clock(props: { currentTime: number }) {
@@ -191,7 +191,7 @@ while (true) {
 ```
 ***
 ```jsx
-import * as Roact from "rbx-roact";
+import * as Roact from "roact";
 const Players = game.GetService("Players");
 
 function Clock(props: { currentTime: number }) {

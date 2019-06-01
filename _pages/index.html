@@ -12,7 +12,7 @@ layout: page
   <div class="code-sample">
     <div>
       <pre><code class="ts">
-import { CollectionService } from "rbx-services";
+import { CollectionService } from "services";
 
 CollectionService.GetTagged("Lava").forEach(obj => {
   if (obj.IsA("BasePart")) {
@@ -90,7 +90,7 @@ interface BasePart extends PVInstance {
     </div>
     <div style="grid-area: desc">
       <h1>Typed Roblox API with Automatic Updates</h1>
-      <p>roblox-ts offers TypeScript typings for the entire Roblox API, a hybrid of machine-generated types and hand-crafted overrides, enabling smart IntelliSense docs as you type. And whenever Roblox updates, a new version of <a href="https://github.com/roblox-ts/rbx-types" target="_blank">rbx-types</a> is automatically built and deployed, so you'll never have to wait for a human to start using new features.</p>
+      <p>roblox-ts offers TypeScript typings for the entire Roblox API, a hybrid of machine-generated types and hand-crafted overrides, enabling smart IntelliSense docs as you type. And whenever Roblox updates, a new version of <a href="https://github.com/roblox-ts/rbx-types" target="_blank">@rbxts/types</a> is automatically built and deployed, so you'll never have to wait for a human to start using new features.</p>
     </div>
   </div>
   <div class="point img small">
@@ -99,7 +99,7 @@ interface BasePart extends PVInstance {
     </div>
     <div style="grid-area: desc">
       <h1>Fostering an ecosystem of Roblox TypeScript packages</h1>
-      <p>roblox-ts is backed by <a href="https://www.npmjs.com/" target="_blank">NPM</a>, a trusted package manager with versioned dependencies. Your projects can rely on community-driven resources, and creating your own libraries is as easy as publishing a package that begins with "rbx-".</p>
+      <p>roblox-ts is backed by <a href="https://www.npmjs.com/" target="_blank">NPM</a>, a trusted package manager with versioned dependencies. Your projects can rely on community-driven resources.</p>
       <p>A centralized package manager ensures that every roblox-ts developer is on the same page.</p>
       <p>Take a look at some of our <a href="/docs/useful-packages" target="_blank">favorite packages.</a></p>
     </div>
