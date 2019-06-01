@@ -46,33 +46,36 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 
 ```js
 {
-	"compilerOptions": {
-		// required
-		"allowSyntheticDefaultImports": true,
-		"isolatedModules": true,
-		"downlevelIteration": true,
-		"module": "commonjs",
-		"noLib": true,
-		"strict": true,
-		"target": "es6",
-		"types": [ "@rbxts/types" ],
-		"paths": { "*": ["../node_modules/@rbxts/*"] },
+    "compilerOptions": {
+        // required
+        "allowSyntheticDefaultImports": true,
+        "isolatedModules": true,
+        "downlevelIteration": true,
+        "module": "commonjs",
+        "noLib": true,
+        "strict": true,
+        "target": "es6",
+        "typeRoots": [ "node_modules/@rbxts" ],
 
-		// required, configurable
-		"rootDir": "src",
-		"outDir": "out",
+        // required, configurable
+        "rootDir": "src",
+        "outDir": "out",
 
-		// optional
-		"baseUrl": "src",
-		"declaration": false,
+        // optional
+        "baseUrl": "src",
+        "declaration": false,
 
-		// optional, non-configurable
-		"jsx": "react",
-		"jsxFactory": "Roact.createElement"
-	},
-	"typeAcquisition": {
-		"enable": true
-	}
+        // optional, non-configurable
+        "jsx": "react",
+        "jsxFactory": "Roact.createElement",
+
+        "paths": {
+            "*": ["../node_modules/@rbxts/*"],
+            "@server/*": ["server/*"],
+            "@client/*": ["client/*"],
+            "@shared/*": ["shared/*"]
+        }
+    }
 }
 ```
 Do not change these values unless you know what you are doing!
