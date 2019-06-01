@@ -55,8 +55,7 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 		"noLib": true,
 		"strict": true,
 		"target": "es6",
-		"types": [ "@rbxts/types" ],
-		"paths": { "*": ["../node_modules/@rbxts/*"] },
+		"typeRoots": [ "node_modules/@rbxts" ],
 
 		// required, configurable
 		"rootDir": "src",
@@ -68,10 +67,8 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 
 		// optional, non-configurable
 		"jsx": "react",
-		"jsxFactory": "Roact.createElement"
-	},
-	"typeAcquisition": {
-		"enable": true
+		"jsxFactory": "Roact.createElement",
+		"paths": { "*": ["../node_modules/@rbxts/*"] }
 	}
 }
 ```
