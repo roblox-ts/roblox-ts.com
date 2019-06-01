@@ -2,13 +2,21 @@
 title: Changes in Behavior
 category: usage
 order: 2
-description: This page lists intentional changes in behavior from traditional TypeScript functionality.
+description: This page lists intentional changes in behavior from traditional TypeScript and Roblox Lua.
 ---
-This page serves as a list of _intentional_ changes in behavior from traditional TypeScript functionality.
+This page serves as a list of _intentional_ changes in behavior from traditional TypeScript and Roblox Lua.
 
-In general, these changes are made to remove bad behavior that TypeScript inherits from JavaScript.
+# Changes from Roblox Lua
 
-***
+## Strings and Arrays are Zero-Indexed
+
+When indexing arrays and strings, indexes now begin at `0` rather than `1` as in Lua. This means that members like `str.sub` begin at zero.
+
+## New globals
+
+A number of new members are present in the global scope when using roblox-ts. You can find a list of them [here](/docs/usage/compiler-builtins).
+
+# Changes from TypeScript
 
 ## Conditional Truthiness of Empty Strings and 0
 In general, conditionals in **roblox-ts** evaluate as you'd expect them to in Lua.
@@ -18,7 +26,7 @@ This means that `0`, `NaN`, and empty strings (`""`) are now truthy.
 The only falsy values are `false` and `undefined`.
 
 ## Map and Set Values Are Not Ordered by Insertion
-In TypeScript and JavaScript, `Map` and `Set` object values are kept in order by time of insertion when accessed. However, in roblox-ts, this is not the case for performance reasons, as [Maps are the only way we can represent all of the features of Lua tables](/docs/workflow-issues#objects-may-only-have-string-keys).
+In TypeScript and JavaScript, `Map` and `Set` object values are kept in order by time of insertion when accessed. However, in roblox-ts, this is not the case for performance reasons, as [Maps are the only way we can represent all of the features of Lua tables](/docs/usage/workflow-issues#objects-may-only-have-string-keys).
 
 ## Yielding
 Because roblox-ts compiles down to Lua and in the Roblox API we have functions that can yield, it is possible to yield Lua the thread when writing roblox-ts code. This contrasts with JavaScript's concurrency model, where every function is non-blocking, using either callbacks or Promises for async operations.
