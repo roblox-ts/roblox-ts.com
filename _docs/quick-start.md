@@ -31,6 +31,9 @@ Options:
 
 ## Project Folder Setup
 
+Want an example? Check out our [demo project](https://github.com/roblox-ts/demo).
+{:.info}
+
 We recommend that you write your TypeScript in [VS Code](https://code.visualstudio.com/) for the best experience. However, other editors like [Sublime Text](https://www.sublimetext.com/) and [Atom](https://atom.io/) are supported.
 
 1. Create a new folder and name it whatever you'd like. For example: `MyCoolProject`
