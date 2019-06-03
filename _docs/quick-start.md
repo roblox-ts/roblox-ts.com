@@ -67,8 +67,7 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 
 		// optional, non-configurable
 		"jsx": "react",
-		"jsxFactory": "Roact.createElement",
-		"paths": { "*": ["../node_modules/@rbxts/*"] }
+		"jsxFactory": "Roact.createElement"
 	}
 }
 ```
