@@ -16,6 +16,16 @@ When indexing arrays and strings, indexes now begin at `0` rather than `1` as in
 
 A number of new members are present in the global scope when using roblox-ts. You can find a list of them [here](/docs/usage/compiler-builtins).
 
+## Removed API
+
+In order to ensure a sound type-safe type system which is easy to use, 3 members of Roblox Instances have been removed. These are: `Workspace:BreakJoints()`, `Workspace:MakeJoints()` and `Instance.Changed`. The first two roblox-ts does not support because they are plugin-only and easily substited by a for-loop. `Instance.Changed` was removed to maintain a sound type system with the `ValueBase` objects. However, Roblox-ts does support using `Instance.Changed` unsafely by intersecting Instance types with the `ChangedSignal` type. Example:
+
+```ts
+function f(p: Part) {
+	(p as Part & ChangedSignal).Changed.Connect(() => {})
+}
+ ```
+
 # Changes from TypeScript
 
 ## Conditional Truthiness of Empty Strings and 0
