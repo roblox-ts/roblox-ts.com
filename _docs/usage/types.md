@@ -162,4 +162,6 @@ The following utility types exists globally:
 - `NonNullable`
 - `ReturnType`
 - `InstanceType`
-- `Unpick`
+- `Omit`
+- `ChangedSignal`
+	- Intersect with an Instance to gain access to the `Changed` event.
