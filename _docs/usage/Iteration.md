@@ -43,7 +43,7 @@ for (const x of [0, 1]);
 for (const x of "Hello, world");
 for (const x of new Set(["a", "b", "c", "d", "e"]));
 for (const [i, x] of new Map([["a", 1], ["b", 2], ["c", 3]]));
-for (const x of "I am so cool".gmatch("%S+"));
+for (const [x] of "I am so cool".gmatch("%S+"));
 for (const x of {
 	*[Symbol.iterator]() {
 		yield 1;
