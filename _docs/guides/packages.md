@@ -9,7 +9,7 @@ description: Learn how to create your own roblox-ts TypeScript package and publi
 ## Package Installation
 To install packages, use `npm install` followed by the name of the package within your project directory.
 
-Your `rojo.json` file should have a partition to sync modules into studio. Refer to the roblox-ts [quick start guide](/docs/quick-start) for more information.
+Your `default.project.json` file should have a partition to sync the `include` folder into studio. Refer to the roblox-ts [quick start guide](/docs/quick-start) for more information.
 
 ## Package Creation
 Creating your own package is easy.

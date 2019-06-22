@@ -76,7 +76,7 @@ Do not change these values unless you know what you are doing!
 
 5\. Create Rojo project file for syncing your compiled .lua files to Roblox Studio. This should be a `default.project.json` file and look like:
 
-roblox-ts requires [Rojo 0.5.x](https://lpghatguy.github.io/rojo/0.5.x/)
+roblox-ts requires [Rojo 0.5.x](https://rojo.space/docs/latest/)
 {:.warn}
 
 ```js
