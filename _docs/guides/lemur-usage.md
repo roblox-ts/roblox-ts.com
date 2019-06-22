@@ -10,9 +10,7 @@ This is only really useful for testing new changes to the compiler and only supp
 
 [Please refer to the lemur project README for installation instructions.](https://github.com/LPGhatguy/lemur#readme)
 
-It's easiest to copy the `lib` folder and `init.lua` into a folder called `lemur` within your project directory.
-
-![image](https://i.imgur.com/1ot41M6.png)
+It's easiest to copy the `lib` folder into your project directory and rename it to `lemur`.
 
 From here, you can create a file called `test.lua` at the root of your project directory. It should look something like this:
 
@@ -24,25 +22,43 @@ local habitat = lemur.Habitat.new()
 
 local ReplicatedStorage = habitat.game:GetService("ReplicatedStorage")
 
-local robloxTsFolder = lemur.Instance.new("Folder")
-robloxTsFolder.Name = "RobloxTS"
-robloxTsFolder.Parent = ReplicatedStorage
-
 local includeFolder = habitat:loadFromFs("include")
-includeFolder.Name = "Include"
-includeFolder.Parent = robloxTsFolder
+includeFolder.Name = "include"
+includeFolder.Parent = ReplicatedStorage
 
-local moduleFolder = habitat:loadFromFs("modules")
-moduleFolder.Name = "Modules"
-moduleFolder.Parent = robloxTsFolder
+pcall(function()
+	local moduleFolder = habitat:loadFromFs("include/node_modules")
+	moduleFolder.Name = "node_modules"
+	moduleFolder.Parent = includeFolder
+end)
 
 local out = habitat:loadFromFs("out")
 out.Name = "out"
+out.Parent = ReplicatedStorage
 
 habitat:require(out.main)
 ```
 
 You may need to edit that file based on your project needs.
 
+You will also need a suitable `default.project.json` Rojo file to describe where your code is in Roblox (or Lemur in this case).
+
+```JSON
+{
+	"name": "lemur-test",
+	"tree": {
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+			"include": {
+				"$path": "include"
+			},
+			"out": {
+				"$path": "out"
+			}
+		}
+	}
+}
+```
+
 Finally, just compile and run with:<br>
-`rbxtsc && lua5.1 test.lua`
+`rbxtsc && lua test.lua`
