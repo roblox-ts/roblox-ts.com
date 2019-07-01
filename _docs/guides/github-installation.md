@@ -21,7 +21,6 @@ If you'd like to use the latest features of **roblox-ts** before they get publis
 
 5. Install TypeScript<br>
 `npm install -g typescript`<br>
-(use `sudo` if needed)
 
 6. Install project dependencies<br>
 `npm install`
@@ -31,7 +30,6 @@ If you'd like to use the latest features of **roblox-ts** before they get publis
 
 8. Link to npm
 `npm link`<br>
-(use `sudo` if needed)
 
 9. You can now run `rbxtsc` anywhere!
 
