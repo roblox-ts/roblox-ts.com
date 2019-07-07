@@ -126,7 +126,7 @@ The following utility types exists globally:
 - `Services`
 	- Same as `Instances`, except only services are included.
 - `StrictInstances`
-	Similar to `Instances` but its ClassName field is set to its literal type. e.g. `Part & { ClassName: "Part" }`
+	Similar to `Instances` but its ClassName field is set to its literal type. E.g. `Part & { ClassName: "Part" }`
 - `GetProperties<T>`
 	- Returns a union of all possible properties of the Instance
 - `GetWritableProperties`
