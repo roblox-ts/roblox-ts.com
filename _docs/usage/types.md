@@ -125,12 +125,12 @@ The following utility types exists globally:
 	- Same as `Instances`, except only instantiable classes are included.
 - `Services`
 	- Same as `Instances`, except only services are included.
+- `StrictInstances`
+	Similar to `Instances` but its ClassName field is set to its literal type. e.g. `Part & { ClassName: "Part" }`
 - `GetProperties<T>`
 	- Returns a union of all possible properties of the Instance
 - `GetWritableProperties`
 	- Same as `GetProperties`, but only writable properties are included.
-- `StrictInstanceByName`
-	Returns an Instance with its ClassName field set to its literal type.
 - `FunctionArguments<T>`
 	- Returns the types of the arguments that the given function expects.
 - `Callback`
