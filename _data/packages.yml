@@ -3,7 +3,7 @@
 # Create a Pull Request adding your package as an entry to the bottom of this file,
 # using the existing packages as an example of the expected format.
 
-- name: @rbxts/services
+- name: "@rbxts/services"
   author: roblox-ts
   keywords: services import autoimport
   tabs: demo
@@ -19,7 +19,7 @@
     );
     ```
 
-- name: @rbxts/inspect
+- name: "@rbxts/inspect"
   author: roblox-ts
   keywords: inspect debug display print
   tabs: demo
@@ -33,7 +33,7 @@
     print(inspect([1, 2, 3]));
     ```
 
-- name: @rbxts/datastore2
+- name: "@rbxts/datastore2"
   author: roblox-ts
   keywords: datastore data store storage
   tabs: demo
@@ -63,7 +63,7 @@
     });
     ```
 
-- name: @rbxts/resources
+- name: "@rbxts/resources"
   author: evaera
   keywords: assets resources load model models resource
   tabs: demo
@@ -78,7 +78,7 @@
     const bindable = getLocalResource(BindableEvent, "FooBarBaz");
     ```
 
-- name: @rbxts/roact
+- name: "@rbxts/roact"
   author: roblox-ts
   keywords: roact ui react view layer
   tabs: demo
@@ -109,7 +109,7 @@
     Roact.mount(tree, PlayerGui, "HelloWorld");
     ```
 
-- name: @rbxts/t
+- name: "@rbxts/t"
   author: osyrisrblx
   keywords: validation type checking user input
   tabs: demo
@@ -145,7 +145,7 @@
     }
     ```
 
-- name: @rbxts/net
+- name: "@rbxts/net"
   author: Vorlias
   keywords: net networking remoteevent remotefunction data
   tabs: server events,client events,server functions,client functions
@@ -220,7 +220,7 @@
 
     // Call a client (promise)
     myFunction.CallPlayerAsync("Hello?").then(
-      result => print(result), 
+      result => print(result),
       errorMsg => warn(errorMsg)
     );
 
@@ -259,12 +259,12 @@
     };
     ```
 
-- name: @rbxts/datastore-light
+- name: "@rbxts/datastore-light"
   author: Dog2puppy
   keywords: datastore data store storage
   tabs: demo
   description: |-
-    A simple data store wrapper with automatic retry and types support. 
+    A simple data store wrapper with automatic retry and types support.
 
     ***
 
@@ -278,7 +278,7 @@
     MainStore.remove("hello");
     ```
 
-- name: @rbxts/date
+- name: "@rbxts/date"
   author: Validark
   keywords: date, time, formatter
   tabs: demo
@@ -303,7 +303,7 @@
     print(Date("%#x", os.time()));
     ```
 
-- name: @rbxts/signal
+- name: "@rbxts/signal"
   author: Validark
   keywords: Signal BindableEvent Bindable Bind
 
@@ -323,7 +323,7 @@
     signal.Fire(strings) // table: 2BC04578
     ```
 
-- name: @rbxts/tween
+- name: "@rbxts/tween"
   author: Validark
   keywords: bezier cubic-bezier curve interpolation interpolate easing ease lerp tween
   tabs: demo
@@ -334,13 +334,13 @@
 
     Here is the simplest form:
 
-    This will return a Tween object. x will be a number along the Standard curve [0, 1]. The interpolation will last 2 seconds. Standard is the EasingFunction, which is the curve along which this interpolation will animate.   
+    This will return a Tween object. x will be a number along the Standard curve [0, 1]. The interpolation will last 2 seconds. Standard is the EasingFunction, which is the curve along which this interpolation will animate.
     ```ts
     Tween(2, Standard, x => print(x));
     ```
     More examples [here](https://github.com/Validark/Roblox-TS-Libraries/blob/master/rbx-tween/README.md)
 
-- name: @rbxts/extendable-resources
+- name: "@rbxts/extendable-resources"
   author: Validark
   keywords: resources RemoteEvents RemoteFunctions Remotes Folder Manager FolderManager
   tabs: demo
@@ -371,8 +371,8 @@
     // Then you can easily import the needed resources into another library
     import { Chatted, Cleanup } from "ReplicatedStorage/RemoteEventDefinitions";
     ```
-    
-- name: @rbxts/remoteevent
+
+- name: "@rbxts/remoteevent"
   author: karikera
   keywords: remoteevent remotefunction
   tabs: common.ts server.ts client.ts
