@@ -55,6 +55,8 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 		"noLib": true,
 		"strict": true,
 		"target": "es6",
+
+		// required, semi-configurable
 		"typeRoots": [ "node_modules/@rbxts" ],
 
 		// required, configurable
@@ -71,6 +73,9 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 	}
 }
 ```
+The `typeRoots` field must end in "node_modules/@rbxts". For example: "../node_modules/@rbxts" is valid, but "../node_modules/@roblox-ts" is not!
+{:.warn}
+
 Do not change these values unless you know what you are doing!
 {:.warn}
 
