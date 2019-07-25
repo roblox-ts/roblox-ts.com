@@ -52,6 +52,8 @@ It's recommended that you don't run `rbxtsc --init` in a non-empty folder, as in
 
 <p align="center"><img src=https://i.imgur.com/hNPk82S.png></p>
 
+At the moment, we can ignore the files `package.json` and `package-lock.json`.
+
 4. Open the file named `tsconfig.json` in your project folder. The contents should look similar to this:
 
 ```js
