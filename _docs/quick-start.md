@@ -43,14 +43,14 @@ We recommend that you write your TypeScript in [VS Code](https://code.visualstud
 
 2. Run `rbxtsc --init game` inside your folder. This will create the required files to get you started:
 
-<p align="center"><img src=https://i.imgur.com/Rlrw534.png></p>
+<p align="center"><img src="https://i.imgur.com/Rlrw534.png"></p>
 
 It's recommended that you don't run `rbxtsc --init` in a non-empty folder, as in the worst case it might lead to loss of data!
 {:.alert}
 
 3. After generation, your directory should look like this:
 
-<p align="center"><img src=https://i.imgur.com/GZlTGWc.png></p>
+<p align="center"><img src="https://i.imgur.com/GZlTGWc.png"></p>
 
 At the moment, we can ignore the files `package.json` and `package-lock.json`.
 
