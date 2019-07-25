@@ -50,7 +50,7 @@ It's recommended that you don't run `rbxtsc --init` in a non-empty folder, as in
 
 3. After generation, your directory should look like this:
 
-<p align="center"><img src=https://i.imgur.com/hNPk82S.png></p>
+<p align="center"><img src=https://i.imgur.com/GZlTGWc.png></p>
 
 At the moment, we can ignore the files `package.json` and `package-lock.json`.
 
