@@ -27,7 +27,7 @@ Options:
   --minify, --min    minify emitted Lua code          [boolean] [default: false]
   --onSuccess        Command to run on watch success               [default: ""]
   --rojo, -r         Manually select Rojo configuration file       [default: ""]
-  --init                         [string] [choices: "game", "bundle", "package"]
+  --init                [string] [choices: "game", "model", "plugin", "package"]
   -v, --version      show version information                          [boolean]
   -h, --help         show help information                             [boolean]
 ```
@@ -139,7 +139,7 @@ The `include` folder should be placed in a shared container that can be accessed
 If you changed the `include` folder location, instead run `rbxtsc -w -i <path-to-include>` and make sure that path exists in the rojo filesystem.
 {:.warn}
 
-7\. Start Rojo (`rojo serve`)
+7\. Start Rojo `rojo serve`
 
 8\. Write code!
 
