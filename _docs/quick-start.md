@@ -84,7 +84,7 @@ At the moment, we can ignore the files `package.json` and `package-lock.json`.
 }
 ```
 The `typeRoots` field must end in "node_modules/@rbxts". For example: "../node_modules/@rbxts" is valid, but "../node_modules/@roblox-ts" is not!
-{:.warn}
+{:.info}
 
 Do not change these values unless you know what you are doing!
 {:.warn}
