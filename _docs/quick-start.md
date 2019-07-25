@@ -67,9 +67,6 @@ At the moment, we can ignore the files `package.json` and `package-lock.json`.
 		"noLib": true,
 		"strict": true,
 		"target": "es6",
-
-		// required, semi-configurable
-		// (must end in "node_modules/@rbxts")
 		"typeRoots": [ "node_modules/@rbxts" ],
 
 		// required, configurable
@@ -137,16 +134,14 @@ You should add more partitions for the sub-folders of your `out` folder. For mor
 
 The `include` folder should be placed in a shared container that can be accessed from anywhere like `ReplicatedStorage`.
 
-6. Add the folders `src`, `out` and `include` in your workspace.
-
-7. Start roblox-ts in watch mode `rbxtsc -w`
+6. Start roblox-ts in watch mode `rbxtsc -w`
 
 If you changed the `include` folder location, instead run `rbxtsc -w -i <path-to-include>` and make sure that path exists in the rojo filesystem.
 {:.warn}
 
-8. Start Rojo (`rojo serve`)
+7. Start Rojo (`rojo serve`)
 
-9. Write code!
+8. Write code!
 
 It is recommended that you peruse through the [Usage](/docs/usage/) and [Guides](/docs/guides/) sections as you get started.
 
