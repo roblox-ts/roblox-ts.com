@@ -39,22 +39,22 @@ Want an example? Check out our [demo project](https://github.com/roblox-ts/demo)
 
 We recommend that you write your TypeScript in [VS Code](https://code.visualstudio.com/) for the best experience. However, other editors like [Sublime Text](https://www.sublimetext.com/) and [Atom](https://atom.io/) are supported.
 
-1. Create a new folder and name it whatever you'd like. For example: `MyCoolProject`
+1\. Create a new folder and name it whatever you'd like. For example: `MyCoolProject`
 
-2. Run `rbxtsc --init game` inside your folder. This will create the required files to get you started:
+2\. Run `rbxtsc --init game` inside your folder. This will create the required files to get you started:
 
 <p align="center"><img src="https://i.imgur.com/Rlrw534.png"></p>
 
 It's recommended that you don't run `rbxtsc --init` in a non-empty folder, as in the worst case it might lead to loss of data!
 {:.alert}
 
-3. After generation, your directory should look like this:
+3\. After generation, your directory should look like this:
 
 <p align="center"><img src="https://i.imgur.com/GZlTGWc.png"></p>
 
 At the moment, we can ignore the files `package.json` and `package-lock.json`.
 
-4. Open the file named `tsconfig.json` in your project folder. The contents should look similar to this:
+4\. Open the file named `tsconfig.json` in your project folder. The contents should look similar to this:
 
 ```js
 {
@@ -92,7 +92,7 @@ Do not change these values unless you know what you are doing!
 The `rootDir` and `outDir` specify, respectively, the folders where roblox-ts will fetch your `.ts` files and place the compiled `.lua` files. You can change them if you want, but for now we'll stick with those.
 {:.info}
 
-5. Open the file named `default.project.json`. It's contents should look like this:
+5\. Open the file named `default.project.json`. It's contents should look like this:
 
 roblox-ts requires [Rojo 0.5.x](https://rojo.space/docs/latest/)
 {:.warn}
@@ -134,14 +134,14 @@ You should add more partitions for the sub-folders of your `out` folder. For mor
 
 The `include` folder should be placed in a shared container that can be accessed from anywhere like `ReplicatedStorage`.
 
-6. Start roblox-ts in watch mode `rbxtsc -w`
+6\. Start roblox-ts in watch mode `rbxtsc -w`
 
 If you changed the `include` folder location, instead run `rbxtsc -w -i <path-to-include>` and make sure that path exists in the rojo filesystem.
 {:.warn}
 
-7. Start Rojo (`rojo serve`)
+7\. Start Rojo (`rojo serve`)
 
-8. Write code!
+8\. Write code!
 
 It is recommended that you peruse through the [Usage](/docs/usage/) and [Guides](/docs/guides/) sections as you get started.
 
