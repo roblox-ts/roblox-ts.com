@@ -3,7 +3,7 @@
 # Create a Pull Request adding your package as an entry to the bottom of this file,
 # using the existing packages as an example of the expected format.
 
-- name: rbx-services
+- name: @rbxts/services
   author: roblox-ts
   keywords: services import autoimport
   tabs: demo
@@ -13,33 +13,13 @@
     ***
 
     ```ts
-    import { Players } from "rbx-services";
+    import { Players } from "@rbxts/services";
     Players.PlayerAdded.Connect(player =>
       print("Player was added!", player.Name),
     );
     ```
 
-- name: rbx-event
-  author: roblox-ts
-  keywords: event signal bindableevent bindable
-  tabs: demo
-  description: |-
-    A type safe implementation of BindableEvents written in TypeScript
-
-    ***
-
-    ```ts
-    import { Event } from "rbx-event";
-    const e = new Event<[number, string]>();
-    e.connect((a, b) => print(a, b));
-    let n = 0;
-    while (true) {
-        wait(1);
-        e.fire(++n, "test");
-    }
-    ```
-
-- name: rbx-inspect
+- name: @rbxts/inspect
   author: roblox-ts
   keywords: inspect debug display print
   tabs: demo
@@ -49,11 +29,11 @@
     ***
 
     ```ts
-    import inspect = require("rbx-inspect");
+    import inspect = require("@rbxts/inspect");
     print(inspect([1, 2, 3]));
     ```
 
-- name: rbx-datastore2
+- name: @rbxts/datastore2
   author: roblox-ts
   keywords: datastore data store storage
   tabs: demo
@@ -63,8 +43,8 @@
     ***
 
     ```ts
-    import { ReplicatedStorage, Players } from "rbx-services";
-    import DataStore2 = require("rbx-datastore2");
+    import { ReplicatedStorage, Players } from "@rbxts/services";
+    import DataStore2 = require("@rbxts/datastore2");
 
     Players.PlayerAdded.Connect(player => {
       const coinsStore = DataStore2<number>("coins", player);
@@ -83,7 +63,7 @@
     });
     ```
 
-- name: rbx-resources
+- name: @rbxts/resources
   author: evaera
   keywords: assets resources load model models resource
   tabs: demo
@@ -98,7 +78,7 @@
     const bindable = getLocalResource(BindableEvent, "FooBarBaz");
     ```
 
-- name: rbx-roact
+- name: @rbxts/roact
   author: roblox-ts
   keywords: roact ui react view layer
   tabs: demo
@@ -108,7 +88,7 @@
     ***
 
     ```tsx
-    import * as Roact from "rbx-roact";
+    import * as Roact from "@rbxts/roact";
 
     const LocalPlayer = game.GetService("Players")
       .LocalPlayer as Player;
@@ -129,19 +109,7 @@
     Roact.mount(tree, PlayerGui, "HelloWorld");
     ```
 
-- name: rbx-cmdr
-  author: evaera
-  keywords: admin commands gui interface panel customizable
-  description: |-
-    Cmdr is a fully extensible and type safe command console for Roblox developers.
-
-    Great for admin commands, but does much more.
-    - Make commands that tie in specifically with your game systems.
-    - Intelligent autocompletion and instant validation.
-    - Run commands programmatically on behalf of the local user.
-    - Bind commands to user input.
-
-- name: rbx-t
+- name: @rbxts/t
   author: osyrisrblx
   keywords: validation type checking user input
   tabs: demo
@@ -177,7 +145,7 @@
     }
     ```
 
-- name: rbx-net
+- name: @rbxts/net
   author: Vorlias
   keywords: net networking remoteevent remotefunction data
   tabs: server events,client events,server functions,client functions
@@ -188,7 +156,7 @@
     ***
 
     ```ts
-    import Net from "rbx-net";
+    import Net from "@rbxts/net";
 
     // Create an Event
     const myRemote = Net.CreateEvent("EventName");
@@ -213,7 +181,7 @@
     ```
     ***
     ```ts
-    import Net from "rbx-net";
+    import Net from "@rbxts/net";
 
     function onClientMyRemoteEvent() {
       print("The server called me!")
@@ -239,7 +207,7 @@
     ***
 
     ```ts
-    import Net from "rbx-net";
+    import Net from "@rbxts/net";
 
     // Create a function
     const myFunction = Net.CreateFunction("FunctionName");
@@ -266,7 +234,7 @@
     ```
     ***
     ```ts
-    import Net from "rbx-net";
+    import Net from "@rbxts/net";
 
     // Get a function OOP style (Will error if doesn't exist, use Async methods!)
     const myRemote = new Net.ClientFunction("EventName");
@@ -291,7 +259,7 @@
     };
     ```
 
-- name: rbx-datastore-light
+- name: @rbxts/datastore-light
   author: Dog2puppy
   keywords: datastore data store storage
   tabs: demo
@@ -301,7 +269,7 @@
     ***
 
     ```ts
-    import { DataStore } from "rbx-datastore-light";
+    import { DataStore } from "@rbxts/datastore-light";
 
     let MainStore = new DataStore<string>("Main", "MyScope", math.huge); // Creates a new DataStore object with the type 'string', the name 'main', the scope 'MyScope' and an infinite amount of retries
 
@@ -310,34 +278,7 @@
     MainStore.remove("hello");
     ```
 
-- name: rbx-engine.io
-  author: Dog2puppy
-  keywords: websockets web sockets
-  tabs: demo
-  description: |-
-    An engine.io client for Roblox with type definitions. 
-
-    ***
-
-    ```ts
-    import Engine from "rbx-engine.io";
-    const Socket = new Engine<string>(); // Connects to localhost
-
-    Socket.On("open", () => {
-      print("Connected");
-      Socket.Send("test");
-    });
-
-    Socket.On("message", (data) => {
-      print(`Message recieved: ${data}`);
-    });
-
-    Socket.On('close', (data) => {
-      print('Disconnected');
-    });
-    ```
-
-- name: rbx-date
+- name: @rbxts/date
   author: Validark
   keywords: date, time, formatter
   tabs: demo
@@ -362,7 +303,7 @@
     print(Date("%#x", os.time()));
     ```
 
-- name: rbx-signal
+- name: @rbxts/signal
   author: Validark
   keywords: Signal BindableEvent Bindable Bind
 
@@ -382,7 +323,7 @@
     signal.Fire(strings) // table: 2BC04578
     ```
 
-- name: rbx-tween
+- name: @rbxts/tween
   author: Validark
   keywords: bezier cubic-bezier curve interpolation interpolate easing ease lerp tween
   tabs: demo
@@ -399,7 +340,7 @@
     ```
     More examples [here](https://github.com/Validark/Roblox-TS-Libraries/blob/master/rbx-tween/README.md)
 
-- name: rbx-extendable-resources
+- name: @rbxts/extendable-resources
   author: Validark
   keywords: resources RemoteEvents RemoteFunctions Remotes Folder Manager FolderManager
   tabs: demo
@@ -409,8 +350,8 @@
     ***
 
     ```ts
-    import { ReplicatedStorage } from "rbx-services";
-    import makeFolderManager from "rbx-extendable-resources";
+    import { ReplicatedStorage } from "@rbxts/services";
+    import makeFolderManager from "@rbxts/extendable-resources";
 
     // creates/finds a folder named "RemoteEvents" in ReplicatedStorage
     // if it can't find a particular object, it will instantiate a RemoteEvent with the proper name
@@ -430,42 +371,8 @@
     // Then you can easily import the needed resources into another library
     import { Chatted, Cleanup } from "ReplicatedStorage/RemoteEventDefinitions";
     ```
-
-- name: rbx-bitbuffer
-  author: BinaryProvider
-  keywords: data store binary storage compression
-  tabs: demo
-  description: |-
-    The BitBuffer module is a module that was created by Stravant that allows for the reading and manipulation of binary based data storage, which is an essential module if you have a lot of data you need to store compactly.
-
-    ***
-
-    ```ts
-    import BitBuffer from "rbx-bitbuffer";
-   
-    let savedString: string;
- 
-    public saveData(wins: number, money: number, title: string, wasAlive: boolean): void {
-      const buffer = BitBuffer.create();
-      buffer.writeUnsigned(32, wins);
-      buffer.writeSigned(32, money);
-      buffer.writeString(title);
-      buffer.writeBool(wasAlive);
-      this.savedString = buffer.toBase64();
-    }
-
-    public loadData(): void {
-      const buffer = BitBuffer.create();
-      buffer.fromBase64(this.savedString);
-      const wins = buffer.readUnsigned(32);
-      const money = buffer.readSigned(32);
-      const title = buffer.readString();
-      const wasAlive = buffer.readBool();
-    }
-
-    ```
     
-- name: rbx-remoteevent
+- name: @rbxts/remoteevent
   author: karikera
   keywords: remoteevent remotefunction
   tabs: common.ts server.ts client.ts
@@ -485,7 +392,7 @@
     ```
     ***
     ```ts
-    import { createClientRemoteEvents } from "rbx-remoteevent";
+    import { createClientRemoteEvents } from "@rbxts/remoteevent";
     import { remoteEventDefinations } from "./common";
 
     const remoteEvent = createClientRemoteEvents(remoteEventDefinations);
@@ -501,7 +408,7 @@
     ```
     ***
     ```ts
-    import { createServerRemoteEvents } from "rbx-remoteevent";
+    import { createServerRemoteEvents } from "@rbxts/remoteevent";
     import { remoteEventDefinations } from "./common";
 
     const remoteEvent = createServerRemoteEvents(remoteEventDefinations);

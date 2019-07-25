@@ -84,6 +84,9 @@ It's recommended that you don't run `rbxtsc --init` in a non-empty folder, as in
 	}
 }
 ```
+The `typeRoots` field must end in "node_modules/@rbxts". For example: "../node_modules/@rbxts" is valid, but "../node_modules/@roblox-ts" is not!
+{:.warn}
+
 Do not change these values unless you know what you are doing!
 {:.warn}
 
