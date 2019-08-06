@@ -62,7 +62,7 @@ To start using roblox-ts to create a game project, follow these steps:
 
 Otherwise, open a new terminal and in it start Rojo via `rojo serve`. In VSCode a new terminal can be opened by pressing the `+` button.
 
-<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62504363-ba12b180-b7bd-11e9-9bfa-aa474ba6ee24.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62530992-25cd3c80-b807-11e9-96e4-ac024afbd8e2.png"></p>
 
 6\. Write code!
 
