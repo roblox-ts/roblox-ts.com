@@ -6,13 +6,23 @@ description: A guide for getting up and going with roblox-ts.
 
 # Getting Started
 
-## Installation & Usage
+## Installation
 
-In order to start using roblox-ts, you'll need to have NodeJS and npm installed. [You can download both from here.](https://nodejs.org/)
+In order to start using roblox-ts, you'll need to have the following installed:
 
-You will also need to install [Rojo 0.5.x](https://rojo.space/docs/latest/guide/installation/).
+- [NodeJS](https://nodejs.org/).
+- A code editor. We recommend [VSCode](https://code.visualstudio.com/).
+- [Rojo 0.5.x](https://rojo.space/docs/latest/guide/installation/). The easiest way to install it is through the [Rojo VSCode plugin](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo). Make sure in your settings (`Ctrl + ,`) the "Rojo: Release Type" is set to "pre-release" if you install Rojo via the plugin.
 
-Next, from your command line install roblox-ts: `npm install -g roblox-ts`
+![](https://user-images.githubusercontent.com/15217173/62523590-bdc42980-b7f9-11e9-84af-fc615f1e0a62.png)
+
+After installing NodeJS, you can install roblox-ts from the command line with:
+
+```
+npm install -g roblox-ts
+```
+
+## Usage
 
 You can now run roblox-ts with the command `rbxtsc -h`.
 
@@ -37,107 +47,36 @@ Options:
 Want an example? Check out our [demo project](https://github.com/roblox-ts/demo).
 {:.info}
 
-We recommend that you write your TypeScript in [VS Code](https://code.visualstudio.com/) for the best experience. However, other editors like [Sublime Text](https://www.sublimetext.com/) and [Atom](https://atom.io/) are supported.
+1\. Create a new folder and name it whatever you'd like. For example: `my-project`
 
-1\. Create a new folder and name it whatever you'd like. For example: `MyCoolProject`
+2\. Open a terminal with the working directory set to your created folder. VSCode automatically does this when you `Open with Code`.
 
-2\. Run `rbxtsc --init game` inside your folder. This will create the required files to get you started:
+<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62526363-b81d1280-b7fe-11e9-908e-8d476603c4e0.png"></p>
 
-<p align="center"><img src="https://i.imgur.com/Rlrw534.png"></p>
+3\. Run `rbxtsc --init game` inside your folder. This will create the required files to get you started:
+
+<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62526796-92dcd400-b7ff-11e9-89cb-9a8ce31d818a.png"></p>
 
 It's recommended that you don't run `rbxtsc --init` in a non-empty folder, as in the worst case it might lead to loss of data!
 {:.alert}
 
-3\. After generation, your directory should look like this:
-
-<p align="center"><img src="https://i.imgur.com/GZlTGWc.png"></p>
-
-At the moment, we can ignore the files `package.json` and `package-lock.json`.
-
-4\. Open the file named `tsconfig.json` in your project folder. The contents should look similar to this:
-
-```js
-{
-	"compilerOptions": {
-		// required
-		"allowSyntheticDefaultImports": true,
-		"isolatedModules": true,
-		"downlevelIteration": true,
-		"module": "commonjs",
-		"noLib": true,
-		"strict": true,
-		"target": "es6",
-		"typeRoots": [ "node_modules/@rbxts" ],
-
-		// required, configurable
-		"rootDir": "src",
-		"outDir": "out",
-
-		// optional
-		"baseUrl": "src",
-		"declaration": false,
-
-		// optional, non-configurable
-		"jsx": "react",
-		"jsxFactory": "Roact.createElement"
-	}
-}
-```
-Do not change these values unless you know what you are doing!
-{:.warn}
-
-The `typeRoots` field must end in "node_modules/@rbxts". For example: "../node_modules/@rbxts" is valid, but "../node_modules/@roblox-ts" is not!
+4\. Open the file named `default.project.json`. This is where you can specify where the sub-folders of your `out` folder will sync into Studio. For more information, please read [Rojo's documentation](https://rojo.space/docs/latest/guide/new-game/).
 {:.info}
 
-The `rootDir` and `outDir` specify, respectively, the folders where roblox-ts will fetch your `.ts` files and place the compiled `.lua` files. You can change them if you want, but for now we'll stick with those.
+The `include` folder should be placed in a shared container inside `ReplicatedStorage`.
 {:.info}
 
-5\. Open the file named `default.project.json`. It's contents should look like this:
+5\. Start roblox-ts in watch mode via `rbxtsc -w`. You can exit watch mode later by clicking on the console and pressing `Ctrl+C` on your keyboard.
 
-```js
-{
-	"name": "roblox-ts-game",
-	"tree": {
-		"$className": "DataModel",
-		"ServerScriptService": {
-			"$className": "ServerScriptService",
-			"TS": {
-				"$path": "out/server"
-			}
-		},
-		"ReplicatedStorage": {
-			"$className": "ReplicatedStorage",
-			"rbxts_include": {
-				"$path": "include"
-			},
-			"TS": {
-				"$path": "out/shared"
-			}
-		},
-		"StarterPlayer": {
-			"$className": "StarterPlayer",
-			"StarterPlayerScripts": {
-				"$className": "StarterPlayerScripts",
-				"TS": {
-					"$path": "out/client"
-				}
-			}
-		}
-	}
-}
-```
-You should add more partitions for the sub-folders of your `out` folder. For more information, please read [Rojo's documentation](https://rojo.space/docs/latest/guide/new-game/).
-{:.info}
+6\. Next, start up a Rojo server. If you are using the Rojo plugin, simply hit `Ctrl + Shift + P` and select "Start Server"
 
-The `include` folder should be placed in a shared container that can be accessed from anywhere like `ReplicatedStorage`.
+<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62524010-83a75780-b7fa-11e9-8433-a522f06534df.png"></p>
 
-6\. Start roblox-ts in watch mode via `rbxtsc -w`. You can exit watch mode later by clicking on the console and pressing `Ctrl+C` on your keyboard.
+Otherwise, open a new terminal and in it start Rojo via `rojo serve`. In VSCode a new terminal can be opened by pressing the `+` button.
 
-7\. Hit the `+` button to open a new terminal an in it start Rojo via `rojo serve`
+<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62504363-ba12b180-b7bd-11e9-9bfa-aa474ba6ee24.png"></p>
 
-![](https://user-images.githubusercontent.com/15217173/62504363-ba12b180-b7bd-11e9-9bfa-aa474ba6ee24.png)
-
-8\. Write code!
+7\. Write code!
 
 It is recommended that you peruse through the [Usage](/docs/usage/) and [Guides](/docs/guides/) sections as you get started.
 
