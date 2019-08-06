@@ -49,7 +49,7 @@ Want an example? Check out our [demo project](https://github.com/roblox-ts/demo)
 
 1\. Create a new folder and name it whatever you'd like. For example: `my-project`
 
-2\. Open a terminal with the working directory set to your created folder. VSCode automatically does this when you `Open with Code`.
+2\. Open a terminal with the working directory set to your created folder. VSCode automatically does this when you `Open with Code` and press `Ctrl + \`` to open the terminal window.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/15217173/62526363-b81d1280-b7fe-11e9-908e-8d476603c4e0.png"></p>
 
