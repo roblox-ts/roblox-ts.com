@@ -64,7 +64,11 @@ Otherwise, open a new terminal with the same working directory and start Rojo vi
 
 <p align="center"><img src="https://user-images.githubusercontent.com/15217173/62531436-10a4dd80-b808-11e9-9d0b-32a6a6a968a1.png"></p>
 
-6\. Write code!
+6\. Open a place in Studio you wish to sync your code to. Open up the Rojo plugin in Studio and hit `Connect`!
+
+<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62534115-f837c180-b80d-11e9-9852-72fa1dd881d3.png"></p>
+
+7\. Write code!
 
 It is recommended that you peruse through the [Usage](/docs/usage/) and [Guides](/docs/guides/) sections when getting started.
 
