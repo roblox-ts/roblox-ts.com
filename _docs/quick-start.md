@@ -12,7 +12,7 @@ In order to start using roblox-ts, you'll need to have the following installed:
 
 - [NodeJS](https://nodejs.org/).
 - A code editor. We recommend [VSCode](https://code.visualstudio.com/).
-- [Rojo 0.5.x](https://rojo.space/docs/latest/guide/installation/). The easiest way to install it is through the [Rojo VSCode plugin](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo). Make sure in your settings (`Ctrl + ,`) the "Rojo: Release Type" is set to "pre-release" if you install Rojo via the plugin.
+- [Rojo 0.5.x](https://rojo.space/docs/latest/guide/installation/). The easiest way to install it is through the [Rojo VSCode plugin](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo). If you install Rojo via the plugin, make sure in your settings (`Ctrl + ,`) the "Rojo: Release Type" is set to "pre-release" to get the latest `0.5.x` version.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/15217173/62527812-7cd01300-b801-11e9-981a-d97d8016176e.png"></p>
 
