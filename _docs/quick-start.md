@@ -40,7 +40,7 @@ Options:
   -h, --help         show help information                             [boolean]
 ```
 
-## Folder Setup
+## Project Setup
 
 To start using roblox-ts to create a game project, follow these steps:
 
