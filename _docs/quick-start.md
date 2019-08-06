@@ -4,9 +4,7 @@ order: 2
 description: A guide for getting up and going with roblox-ts.
 ---
 
-# Getting Started
-
-## Installation
+# Installation
 
 In order to start using roblox-ts, you'll need to have the following installed:
 
@@ -22,9 +20,9 @@ Once NodeJS is installed, you can install roblox-ts from the command line with:
 npm install -g roblox-ts
 ```
 
-## Usage
+# Usage
 
-You can now run roblox-ts with the command `rbxtsc -h`.
+The following is a reference for how to use the roblox-ts command line interface. This can be displayed by `rbxtsc -h`.
 
 ```
 Usage: rbxtsc [options]
@@ -42,33 +40,23 @@ Options:
   -h, --help         show help information                             [boolean]
 ```
 
-## Project Folder Setup
+## Folder Setup
 
-Want an example? Check out our [demo project](https://github.com/roblox-ts/demo).
-{:.info}
+To start using roblox-ts to create a game project, follow these steps:
 
-1\. Create a new folder and name it whatever you'd like. For example: `my-project`
+1\. Create a new folder and name it whatever you'd like. We are going to name ours `my-project`
 
 2\. Open a terminal with the working directory set to your created folder. VSCode automatically does this when you `Open with Code` and press ``` Ctrl + ` ``` to open the terminal window.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/15217173/62526363-b81d1280-b7fe-11e9-908e-8d476603c4e0.png"></p>
 
-3\. Run `rbxtsc --init game` inside your folder. This will create the required files to get you started:
+3\. Run `rbxtsc --init game` inside your empty folder. This will create the required files to get you started:
 
 <p align="center"><img src="https://user-images.githubusercontent.com/15217173/62526796-92dcd400-b7ff-11e9-89cb-9a8ce31d818a.png"></p>
 
-It's recommended that you don't run `rbxtsc --init` in a non-empty folder, as in the worst case it might lead to loss of data!
-{:.alert}
+4\. Start roblox-ts in watch mode via `rbxtsc -w`. You can exit watch mode later by clicking on the console and pressing `Ctrl+C` on your keyboard.
 
-4\. Open the file named `default.project.json`. This is where you can specify where the sub-folders of your `out` folder will sync into Studio. For more information, please read [Rojo's documentation](https://rojo.space/docs/latest/guide/new-game/).
-{:.info}
-
-The `include` folder should be placed in a shared container inside `ReplicatedStorage`.
-{:.info}
-
-5\. Start roblox-ts in watch mode via `rbxtsc -w`. You can exit watch mode later by clicking on the console and pressing `Ctrl+C` on your keyboard.
-
-6\. Next, start up a Rojo server. If you are using the Rojo plugin, simply hit `Ctrl + Shift + P` and select "Start Server"
+5\. Next, start up a Rojo server. If you are using the Rojo plugin, simply hit `Ctrl + Shift + P` and select "Start Server"
 
 <p align="center"><img src="https://user-images.githubusercontent.com/15217173/62524010-83a75780-b7fa-11e9-8433-a522f06534df.png"></p>
 
@@ -76,7 +64,7 @@ Otherwise, open a new terminal and in it start Rojo via `rojo serve`. In VSCode 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/15217173/62504363-ba12b180-b7bd-11e9-9bfa-aa474ba6ee24.png"></p>
 
-7\. Write code!
+6\. Write code!
 
 It is recommended that you peruse through the [Usage](/docs/usage/) and [Guides](/docs/guides/) sections when getting started.
 
