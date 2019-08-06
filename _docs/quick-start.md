@@ -94,9 +94,6 @@ The `rootDir` and `outDir` specify, respectively, the folders where roblox-ts wi
 
 5\. Open the file named `default.project.json`. It's contents should look like this:
 
-roblox-ts requires [Rojo 0.5.x](https://rojo.space/docs/latest/)
-{:.warn}
-
 ```js
 {
 	"name": "roblox-ts-game",
@@ -134,12 +131,11 @@ You should add more partitions for the sub-folders of your `out` folder. For mor
 
 The `include` folder should be placed in a shared container that can be accessed from anywhere like `ReplicatedStorage`.
 
-6\. Start roblox-ts in watch mode `rbxtsc -w`
+6\. Start roblox-ts in watch mode via `rbxtsc -w`. You can exit watch mode later by clicking on the console and pressing `Ctrl+C` on your keyboard.
 
-If you changed the `include` folder location, instead run `rbxtsc -w -i <path-to-include>` and make sure that path exists in the rojo filesystem.
-{:.warn}
+7\. Hit the `+` button to open a new terminal an in it start Rojo via `rojo serve`
 
-7\. Start Rojo `rojo serve`
+![](https://user-images.githubusercontent.com/15217173/62504363-ba12b180-b7bd-11e9-9bfa-aa474ba6ee24.png)
 
 8\. Write code!
 
