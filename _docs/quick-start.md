@@ -4,17 +4,25 @@ order: 2
 description: A guide for getting up and going with roblox-ts.
 ---
 
-# Getting Started
+# Installation
 
-## Installation & Usage
+In order to start using roblox-ts, you'll need to have the following installed:
 
-In order to start using roblox-ts, you'll need to have NodeJS and npm installed. [You can download both from here.](https://nodejs.org/)
+- [NodeJS](https://nodejs.org/).
+- A code editor. We recommend [VSCode](https://code.visualstudio.com/).
+- [Rojo 0.5.x](https://rojo.space/docs/latest/guide/installation/). The easiest way to install it is through the [Rojo VSCode plugin](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo). If you install Rojo via the plugin, make sure in your settings (`Ctrl + ,`) the "Rojo: Release Type" is set to "pre-release" to get the latest `0.5.x` version.
 
-You will also need to install [Rojo 0.5.x](https://rojo.space/docs/latest/guide/installation/).
+<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62527812-7cd01300-b801-11e9-981a-d97d8016176e.png"></p>
 
-Next, from your command line install roblox-ts: `npm install -g roblox-ts`
+Once NodeJS is installed, you can install roblox-ts from the command line with:
 
-You can now run roblox-ts with the command `rbxtsc -h`.
+```
+npm install -g roblox-ts
+```
+
+# Usage
+
+The following is a reference for how to use the roblox-ts command line interface. This can be displayed by `rbxtsc -h`.
 
 ```
 Usage: rbxtsc [options]
@@ -32,118 +40,37 @@ Options:
   -h, --help         show help information                             [boolean]
 ```
 
-## Project Folder Setup
+## Project Setup
 
-Want an example? Check out our [demo project](https://github.com/roblox-ts/demo).
-{:.info}
+To start using roblox-ts to create a game project, follow these steps:
 
-We recommend that you write your TypeScript in [VS Code](https://code.visualstudio.com/) for the best experience. However, other editors like [Sublime Text](https://www.sublimetext.com/) and [Atom](https://atom.io/) are supported.
+1\. Create a new folder and name it whatever you'd like. We are going to name ours `my-project`
 
-1\. Create a new folder and name it whatever you'd like. For example: `MyCoolProject`
+2\. Open a terminal with the working directory set to your created folder. VSCode automatically does this when you `Open with Code` and press ``` Ctrl + ` ``` in VSCode to open the terminal window.
 
-2\. Run `rbxtsc --init game` inside your folder. This will create the required files to get you started:
+<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62526363-b81d1280-b7fe-11e9-908e-8d476603c4e0.png"></p>
 
-<p align="center"><img src="https://i.imgur.com/Rlrw534.png"></p>
+3\. Run `rbxtsc --init game` inside your empty folder. This will create the required files to get you started:
 
-It's recommended that you don't run `rbxtsc --init` in a non-empty folder, as in the worst case it might lead to loss of data!
-{:.alert}
+<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62526796-92dcd400-b7ff-11e9-89cb-9a8ce31d818a.png"></p>
 
-3\. After generation, your directory should look like this:
+4\. Start roblox-ts in watch mode via `rbxtsc -w`. You can exit watch mode later by clicking on the console and pressing `Ctrl+C` on your keyboard.
 
-<p align="center"><img src="https://i.imgur.com/GZlTGWc.png"></p>
+5\. Next, start up a Rojo server. If you are using the Rojo plugin, simply hit `Ctrl + Shift + P` and select "Start Server"
 
-At the moment, we can ignore the files `package.json` and `package-lock.json`.
+<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62524010-83a75780-b7fa-11e9-8433-a522f06534df.png"></p>
 
-4\. Open the file named `tsconfig.json` in your project folder. The contents should look similar to this:
+Otherwise, open a new terminal with the same working directory and start Rojo via `rojo serve`. In VSCode a new terminal can be opened by pressing the `+` button.
 
-```js
-{
-	"compilerOptions": {
-		// required
-		"allowSyntheticDefaultImports": true,
-		"isolatedModules": true,
-		"downlevelIteration": true,
-		"module": "commonjs",
-		"noLib": true,
-		"strict": true,
-		"target": "es6",
-		"typeRoots": [ "node_modules/@rbxts" ],
+<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62531436-10a4dd80-b808-11e9-9d0b-32a6a6a968a1.png"></p>
 
-		// required, configurable
-		"rootDir": "src",
-		"outDir": "out",
+6\. Open a place in Studio you wish to sync your code to. Open up the Rojo plugin in Studio and hit `Connect`!
 
-		// optional
-		"baseUrl": "src",
-		"declaration": false,
+<p align="center"><img src="https://user-images.githubusercontent.com/15217173/62534115-f837c180-b80d-11e9-9852-72fa1dd881d3.png"></p>
 
-		// optional, non-configurable
-		"jsx": "react",
-		"jsxFactory": "Roact.createElement"
-	}
-}
-```
-Do not change these values unless you know what you are doing!
-{:.warn}
+7\. Write code!
 
-The `typeRoots` field must end in "node_modules/@rbxts". For example: "../node_modules/@rbxts" is valid, but "../node_modules/@roblox-ts" is not!
-{:.info}
-
-The `rootDir` and `outDir` specify, respectively, the folders where roblox-ts will fetch your `.ts` files and place the compiled `.lua` files. You can change them if you want, but for now we'll stick with those.
-{:.info}
-
-5\. Open the file named `default.project.json`. It's contents should look like this:
-
-roblox-ts requires [Rojo 0.5.x](https://rojo.space/docs/latest/)
-{:.warn}
-
-```js
-{
-	"name": "roblox-ts-game",
-	"tree": {
-		"$className": "DataModel",
-		"ServerScriptService": {
-			"$className": "ServerScriptService",
-			"TS": {
-				"$path": "out/server"
-			}
-		},
-		"ReplicatedStorage": {
-			"$className": "ReplicatedStorage",
-			"rbxts_include": {
-				"$path": "include"
-			},
-			"TS": {
-				"$path": "out/shared"
-			}
-		},
-		"StarterPlayer": {
-			"$className": "StarterPlayer",
-			"StarterPlayerScripts": {
-				"$className": "StarterPlayerScripts",
-				"TS": {
-					"$path": "out/client"
-				}
-			}
-		}
-	}
-}
-```
-You should add more partitions for the sub-folders of your `out` folder. For more information, please read [Rojo's documentation](https://rojo.space/docs/latest/guide/new-game/).
-{:.info}
-
-The `include` folder should be placed in a shared container that can be accessed from anywhere like `ReplicatedStorage`.
-
-6\. Start roblox-ts in watch mode `rbxtsc -w`
-
-If you changed the `include` folder location, instead run `rbxtsc -w -i <path-to-include>` and make sure that path exists in the rojo filesystem.
-{:.warn}
-
-7\. Start Rojo `rojo serve`
-
-8\. Write code!
-
-It is recommended that you peruse through the [Usage](/docs/usage/) and [Guides](/docs/guides/) sections as you get started.
+It is recommended that you peruse through the [Usage](/docs/usage/) and [Guides](/docs/guides/) sections when getting started.
 
 roblox-ts is still in development and you may run into situations where invalid Lua is emitted. **Please report these cases to us** either by [creating an issue](https://github.com/roblox-ts/roblox-ts/issues) or joining our [Discord server](https://discord.gg/f6Rn6RY).
 {:.warn}
