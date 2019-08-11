@@ -1,7 +1,7 @@
 ---
 title: Iteration
-order: 2
-category: usage
+order: 5
+category: guides
 description: A guide on how to iterate in roblox-ts.
 ---
 
