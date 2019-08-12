@@ -7,7 +7,7 @@ description: Learn how to create your own roblox-ts TypeScript package and publi
 **roblox-ts supports npm packages!**
 
 All roblox-ts npm packages must be published under the [@rbxts npm org](https://www.npmjs.com/~rbxts). To be automatically added to the org, click [here](/join-org/).
-.
+
 `rbxtsc --init package`
 
 A detailed guide is coming soon.
