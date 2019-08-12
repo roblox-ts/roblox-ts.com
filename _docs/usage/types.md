@@ -86,13 +86,15 @@ const part = workspace.FindFirstChild<Part>("Baseplate")!; // Part
 
 In general, anywhere that you use `X.new()` in Lua, you can use `new X()` in TypeScript.
 
-# Indexing Instance Children as Members
+# Indexing Instance Children as Fields
 
-Dot-notation for indexing into Instances to get children (e.g. `workspace.Baseplate`) is unsupported. Please use `FindFirstChild` instead:
+Dot-notation for indexing into Instances to get children (e.g. `workspace.Baseplate`) is unsupported by default. You can use `FindFirstChild` instead:
 
 ```ts
 const part = workspace.FindFirstChild<Part>("Baseplate")!
 ```
+
+You can also [define a typed instance tree with intersection types](/docs/guides/indexing-children) to enable dot indexing for ergonomic usage.
 
 # Type Narrowing
 TypeScript has a feature called *type narrowing* which allows TypeScript to intelligently narrow the possible type of a value when you use a *type guard* inside of a conditional. In vanilla TypeScript, the `typeof` operator can be used to narrow types. However, the `typeof` operator is not compatible with Lua or Roblox types, thus it is not allowed in roblox-ts code in the context of *values*. (The `typeof` operator in *types* is still valid: when `typeof` is used in a type, it converts a value into a type.) 
