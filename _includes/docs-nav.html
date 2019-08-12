@@ -28,7 +28,7 @@
             <li class="active">{{ doc.title }}</li>
               {% include toc.html html=content class="small" sanitize=true %}
             {% else %}
-            <li><a href="{{ doc.url | replace: "/index", "/" }}">{{ doc.title }}</a></li>
+            <li><a href="{{ doc.url | replace: "/index$", "/" }}">{{ doc.title }}</a></li>
             {% endif %}
           {% endunless %}
         {% endfor %}
