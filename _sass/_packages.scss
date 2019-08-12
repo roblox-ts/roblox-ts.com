@@ -30,6 +30,28 @@
       border-color: lighten($red, 20%);
       background: white;
     }
+
+    &.no-bottom {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  button {
+    width: 80%;
+    max-width: 528px;
+    padding: 5px 18px;
+    background: lighten($red, 3.5%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    &:hover {
+      background: $red;
+      cursor: pointer;
+    }
   }
 }
 

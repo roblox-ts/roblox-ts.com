@@ -1,0 +1,23 @@
+---
+title: Join npm Organization
+layout: content
+description: Publish your own roblox-ts packages
+full: true
+---
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+  function onSubmit(token) {
+    document.getElementById("org-form").submit();
+  }
+</script>
+
+<div class="inner no-grid" style="max-width: 490px; margin-top: 50px;">
+    <p>Enter your npm username below and you will be added to our npm organization. See <a href="/docs/guides/packages">our guide</a> on publishing packages for more information.</p> 
+</div>
+
+<form id="org-form" class="package-search" action="https://us-central1-roblox-ts.cloudfunctions.net/org-invite" method="post">
+  <input type="text" class="no-bottom" name="username" placeholder="npm username..." required />
+  <button class="g-recaptcha" data-sitekey="6LeJpLIUAAAAANNNvHEWfIBZR08Tamp06xD4yIBy" data-callback='onSubmit'>Add me</button>
+</form>

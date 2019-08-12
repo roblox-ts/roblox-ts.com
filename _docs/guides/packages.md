@@ -6,6 +6,9 @@ description: Learn how to create your own roblox-ts TypeScript package and publi
 ---
 **roblox-ts supports npm packages!**
 
+This information is outdated.
+{:.alert}
+
 ## Package Installation
 To install packages, use `npm install` followed by the name of the package within your project directory.
 

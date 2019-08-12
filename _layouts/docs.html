@@ -1,0 +1,53 @@
+---
+layout: content
+---
+
+<nav id="docs-nav">
+  {% include docs-nav.html %}
+</nav>
+<script>
+  (function () {
+    function stick() {
+      if ($(window).width() >= 800) {
+        const pos = $(window).scrollTop()
+        const offset = $("main .inner").offset().top
+        const height = $("main .inner").height()
+        const vph = $(window).height()
+
+        const topOffset = -Math.min(pos - offset, -50)
+        const bottomOffset = Math.max(pos + vph - (offset + height), 0)
+
+        $("#docs-nav").sticky({
+          topSpacing: 50,
+          bottomSpacing: 100
+        }).height(vph - topOffset - bottomOffset)
+      } else {
+        $("#docs-nav").height('auto').unstick()
+      }
+    }
+
+    $(window).resize(stick)
+    $(document).scroll(stick)
+    $(document).ready(stick)
+    stick()
+  })()
+</script>
+<article>
+  {{ content }}
+</article>
+
+<script>
+  $("input[data-sync-id]:not([data-sync-id=\"\"])").change(function(){
+    $("input[data-sync-id=\"" + $(this).data("sync-id") +"\"][value=\"" + $(this).val() + "\"]").prop("checked", true)
+
+    localStorage.setItem("code-tabs-" + $(this).data("sync-id"), $(this).val())
+  })
+
+  $("input[data-sync-id]:not([data-sync-id=\"\"])").each(function(){
+    var item = localStorage.getItem("code-tabs-" + $(this).data("sync-id"))
+
+    if (item) {
+      $("input[data-sync-id=\"" + $(this).data("sync-id") +"\"][value=\"" + item + "\"]").prop("checked", true)
+    }
+  })
+</script>
