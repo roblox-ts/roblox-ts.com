@@ -34,7 +34,7 @@
         {% endfor %}
         </ul>
       {% else %}
-        <a href="{{ items[0].url | replace: "/index", "/" }}">{{ category_name | capitalize }}</a>
+        <a href="{{ items[0].url | replace: "/index$", "/" }}">{{ category_name | capitalize }}</a>
       {% endif %}
       </li>
     {% endif %}
