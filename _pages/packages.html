@@ -17,7 +17,7 @@ layout: page
     {% for package in site.data.packages %}
     <div>
       <p class="package-meta">
-        <a href="https://npmjs.com/package/{{package.name}}" class="package-title">{{ package.name | replace: "rbx-", "" }}</a>
+        <a href="https://npmjs.com/package/{{package.name}}" class="package-title">{{ package.name | replace: "@rbxts/", "" }}</a>
         <span class="package-author">by <a href="https://github.com/{{package.author}}" class="no-fx">{{package.author}}</a></span>
       </p>
       {% assign tabs = package.tabs | prepend: "info," | default: "" %}
