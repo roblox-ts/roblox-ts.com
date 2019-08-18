@@ -9,7 +9,7 @@ roblox-ts aims to have feature parity with [TypeScript](http://www.typescriptlan
 
 When writing code with roblox-ts, all Lua built-in functions and APIs are available as well as the entire Roblox API.
 
-These docs contain a list of articles specific to roblox-ts usage. If you're looking for more general TypeScript information, please refer to the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html).
+These docs contain a list of articles specific to roblox-ts usage. If you're looking for more general TypeScript information, please refer to the [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html) or to our [own documentation](https://roblox-ts.github.io/types/modules/_es_d_.html).
 
 ## Motivation
 As Roblox games become increasingly complex and larger in scope, efficiently writing safe code becomes challenging with Lua. In addition, Lua is difficult to make tooling for. Roblox Studio attempts to provide things like intellisense and autocomplete, but it's mostly just guessing.
