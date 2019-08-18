@@ -9,7 +9,7 @@ It is recommended that you store your game code in a folder called `src`. This f
 
 ## Using Existing Lua code from TypeScript
 
-In order to use Lua files from TypeScript, you can create a type declaration file of the same name replacing `.lua` with `.d.ts` placed in the same directory as your Lua file. This file should contain [type declarations](https://www.typescriptlang.org/docs/handbook/declaration-files/by-example.html) for your Lua module's exported members.
+In order to use Lua files from TypeScript, you can create a type declaration file of the same name replacing `.lua` with `.d.ts` placed in the same directory as your Lua file. This file should contain [type declarations](https://www.typescriptlang.org/docs/handbook/declaration-files/by-example.html) for your Lua module's exported members (read more about typing [here](/docs/usage/types)).
 
 ## Scripts inside scripts
 Most script syncing plugins (such as Rojo) support placing scripts inside of other scripts by naming a Lua file `init.lua` inside the directory, which becomes the parent of all other files in the directory. 
