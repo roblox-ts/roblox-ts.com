@@ -25,6 +25,7 @@ This function maps directly to Roblox's `typeof` function. The reason for this d
 
 This function is a type guard form of `typeOf`, which provides type narrowing. `typeIs` is compatible with any type that Lua's `typeof` function is compatible with. 
 
+{% capture code %}
 ```ts
 const x = new Vector3() as unknown; // "unknown"
 
@@ -32,17 +33,36 @@ if (typeIs(x, "Vector3")) {
   x; // "Vector3"
 }
 ```
+***
+```lua
+local x = Vector3.new()
+if typeof(x) == "Vector3" then
+  -- You can reference Vector3 here without TypeScript complaints
+end
+```
+{% endcapture %}
+{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
 
 ## `classIs`
 
 `classIs` is similar to `typeIs`, but provides type narrowing for Instances via the `ClassName` property. Comparing the `ClassName` property by hand does not provide such narrowing, because TypeScript's structural typing makes implementation difficult and complex. The `classIs` function is a compromise that keeps things simple while still offering `ClassName` narrowing: 
 
+{% capture code %}
 ```ts
 const x = game.FindFirstChild("X");
 if (x && classIs(x, "Model")) {
   x.BreakJoints();
 }
 ```
+***
+```lua
+local x = game:FindFirstChild("X")
+if x and x:IsA("Model") then
+  x:BreakJoints()
+end
+```
+{% endcapture %}
+{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
 
 ## `opcall`
 
@@ -88,6 +108,7 @@ Currently, there is only one well-known symbol:
 - `Symbol.iterator`
   - If this symbol is added as a method of an object or class, that object can then be directly iterated over in spread syntax (`...`) or `for..of` loops.
 
+  {% capture code %}
   ```ts
     const x = {
       [Symbol.iterator]: function*() {
@@ -99,7 +120,34 @@ Currently, there is only one well-known symbol:
 
   print(...x);
   ```
-
+  ***
+  ```lua
+  local x = {
+	  [TS.Symbol_iterator] = function(self)
+		  return {
+			  next = coroutine.wrap(function()
+				  coroutine.yield({
+					  value = 1;
+					  done = false;
+				  });
+				  coroutine.yield({
+					  value = 2;
+					  done = false;
+				  });
+				  coroutine.yield({
+					  value = 3;
+					  done = false;
+				  });
+				  while true do coroutine.yield({ done = true }) end;
+			  end);
+		  };
+	  end;
+  };
+  print(unpack(TS.iterableCache(x[TS.Symbol_iterator](x))));
+  ```
+  {% endcapture %}
+  {% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
+  
 ### Methods
 
 - `Symbol.for`
