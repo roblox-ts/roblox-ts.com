@@ -12,7 +12,7 @@ Any feature that is unsupported but not listed on this page is considered a bug!
 Some of these are intended removals, others may be added in the future!
 
 - `null` (use `undefined` instead!)
-- `delete` operator for dictionary key deletion is not type-safe so not supported (You should use a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) where possible)
+- `delete` operator for dictionary key deletion is not type-safe so not supported (You should use a [Map](https://roblox-ts.github.io/types/interfaces/_es_d_.map.html) where possible)
 - loop labels (used by `continue` and `break`)
 - class or function prototypes
 - regular expressions
