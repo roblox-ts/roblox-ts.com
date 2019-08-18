@@ -21,6 +21,8 @@ interface Example {
 This feature of roblox-ts relies on **type information** to determine the correct Lua to emit, thus the types regarding calling related functions must be statically known at compile time. In other words, attempting to create a union type of a method-syntax and dot-syntax function will result in an error.
 {:.warn}
 
+It is of note that interfaces are not compiled into any form in Lua.
+
 ## Overriding Method Call Behavior
 
 As detailed above, by default function expressions/declarations are called with *method call syntax*. However, it is possible to override this behavior using a [`this` parameter](https://www.typescriptlang.org/docs/handbook/functions.html#this-parameters).
@@ -43,6 +45,7 @@ One of Lua's famous quirks is that its functions can return multiple values. Mos
 
 When writing type declarations for interacting with Lua code from TypeScript, it is often necessary to interface with functions that return multiple values. This is where the `LuaTuple<T>` type helper comes in: This is a generic type that tells the compiler to treat the given tuple as a *multiple return* instead of an array. If a function is typed as returning a `LuaTuple<T>`, its return values will be grouped into a TypeScript array/tuple automatically.
 
+{% capture code %}
 ```ts
 declare function returnsMultipleValues(): LuaTuple<[string, number]>;
 
@@ -52,25 +55,46 @@ const values = returnsMultipleValues(); // [string, number]
 // Result is *not* wrapped in a table since it is destructured immediately:
 const [theString, theNumber] = returnsMultipleValues();
 ```
+***
+```lua
+local values = { returnsMultipleValues() }
+local theString, theNumber = returnsMultipleValues()
+```
+{% endcapture %}
+{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
 
 You can also have your regular (non-declared) functions return a `LuaTuple<T>`, which functions semantically identically if you wish to write a function that returns multiple values with TypeScript.
 
 # Type Assertions
 Type assertions are a way to override the type of any value in TypeScript. Type assertions are an "escape hatch" from the type system, and by that nature are dangerous if used incorrectly. Asserting a value's type does **not** do anything to the value itself, it only overrides the type that the compiler treats the value as. For example:
 
+{% capture code %}
 ```ts
 const x = "not a number" as number;
 
 x; // hovering over X reveals "number", even though it's really a string.
 ```
+***
+```lua
+local x = "not a number" -- This does not have any noticeable effect on the compiled Lua code.
+```
+{% endcapture %}
+{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
 
 Type assertions should be avoided and only used as a last resort when you are unable to express types with any other mechanism. Abuse of type assertions can lead to unexpected behavior and bugs because type soundness will no longer be guaranteed.
 
 Many Roblox API members accept generic parameters to influence the return value of the function. For example, `Instance.FindFirstChild` returns `Instance | undefined` by default, but you can provide a type variable to be more specific than `Instance`:
 
+{% capture code %}
 ```ts
 const maybePart = workspace.FindFirstChild<Part>("Baseplate"); // Part | undefined
 ```
+***
+```lua
+local maybePart = workspace:FindFirstChild("Baseplate")
+```
+{% endcapture %}
+{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
 
 This form is available for many methods in the API, such as `CollectionService.GetTagged`, `GetChildren`, `WaitForChild`, data stores, etc. You should prefer using this generic form instead of using a type assertion.
 
@@ -78,9 +102,16 @@ This form is available for many methods in the API, such as `CollectionService.G
 
 TypeScript provides a `!` operator to assert that a value's type is non-null (not undefined). Sometimes TypeScript will report a type as `T | undefined`, when you know that it's never going to be undefined, such as when using `FindFirstChild` or `Players.LocalPlayer`. In these cases, you can append the `!` operator to a value which will remove `undefined` from the type, only leaving `T`. For example:
 
+{% capture code %}
 ```ts
 const part = workspace.FindFirstChild<Part>("Baseplate")!; // Part
 ```
+***
+```lua
+local part = workspace:FindFirstChild("Baseplate")
+```
+{% endcapture %}
+{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
 
 # Constructors
 
@@ -90,9 +121,16 @@ In general, anywhere that you use `X.new()` in Lua, you can use `new X()` in Typ
 
 Dot-notation for indexing into Instances to get children (e.g. `workspace.Baseplate`) is unsupported by default. You can use `FindFirstChild` instead:
 
+{% capture code %}
 ```ts
-const part = workspace.FindFirstChild<Part>("Baseplate")!
+const part = workspace.FindFirstChild<Part>("Baseplate")!; // Part
 ```
+***
+```lua
+local part = workspace:FindFirstChild("Baseplate")
+```
+{% endcapture %}
+{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
 
 You can also [define a typed instance tree with intersection types](/docs/guides/indexing-children) to enable dot indexing for ergonomic usage.
 
@@ -102,6 +140,7 @@ TypeScript has a feature called *type narrowing* which allows TypeScript to inte
 ## `typeIs`
 To solve this problem, roblox-ts adds a new global function `typeIs` to narrow types. `typeIs` is compatible with any type that Lua's `typeof` is compatible with.
 
+{% capture code %}
 ```ts
 const x = new Vector3() as unknown; // "unknown"
 
@@ -109,6 +148,15 @@ if (typeIs(x, "Vector3")) {
   x; // "Vector3"
 }
 ```
+***
+```lua
+local x = Vector3.new()
+if (typeof(x) == "Vector3") then
+	local _ = x
+end;
+```
+{% endcapture %}
+{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
 
 See also: [Compiler Built-ins](/docs/usage/compiler-builtins)
 {:.info}
