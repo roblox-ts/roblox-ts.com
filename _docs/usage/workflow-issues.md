@@ -29,9 +29,17 @@ However, a `ModuleScript` inside of `game.ServerStorage` should not be accessibl
 ## Objects May Only Have String Keys
 In TypeScript, objects may only have string keys, and arrays may only have numerical keys. This contrasts heavily with the wild west of Lua tables, where the keys can be mixed and of any type. In roblox-ts (and TypeScript), we can solve this problem by using a [`Map`](/types/interfaces/_es_d_.map.html) object. Maps are objects that hold arbitrary key-value pairs of data. They also support generic types:
 
+{% capture code %}
 ```ts
 const playerMap = new Map<Player, number>()
 playerMap.set(somePlayer, 5)
 ```
+***
+```lua
+local playerMap = {}
+playerMap[somePlayer] = 5;
+```
+{% endcapture %}
+{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
 
 [`Set`](/types/interfaces/_es_d_.set.html) is another useful data type that holds a set of unique values. It is akin to an array, but uniqueness is enforced.
