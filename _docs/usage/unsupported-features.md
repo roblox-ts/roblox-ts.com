@@ -12,6 +12,7 @@ Any feature that is unsupported but not listed on this page is considered a bug!
 Some of these are intended removals, others may be added in the future!
 
 - `null` (use `undefined` instead!)
+- `delete` operator for dictionary key deletion is not type-safe so not supported (use ``myDictionary[key] = undefined!;`` instead!)
 - loop labels (used by `continue` and `break`)
 - class or function prototypes
 - regular expressions
