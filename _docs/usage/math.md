@@ -7,13 +7,13 @@ description: This page explains how to represent operator overloading in TypeScr
 One of the few downsides to using TypeScript is that it does not support operator overloading.
 
 Usually this is fine, but with Roblox there are a few built-in classes that require operator overloading to use:
-- CFrame
-- UDim
-- UDim2
-- Vector2
-- Vector2int16
-- Vector3
-- Vector3int16
+- [CFrame](https://roblox-ts.github.io/types/interfaces/_roblox_d_.cframe.html) (used for Instance Translations)
+- [UDim](https://roblox-ts.github.io/types/interfaces/_roblox_d_.udim.html)
+- [UDim2](https://roblox-ts.github.io/types/interfaces/_roblox_d_.udim2.html) (Used for Roblox GUI Translation & Sizing)
+- [Vector2](https://roblox-ts.github.io/types/interfaces/_roblox_d_.vector2.html)
+- [Vector2int16](https://roblox-ts.github.io/types/interfaces/_roblox_d_.vector2int16.html)
+- [Vector3](https://roblox-ts.github.io/types/interfaces/_roblox_d_.vector3int16.html) (Used for Instance Positioning & Velocities)
+- [Vector3int16](https://roblox-ts.github.io/types/interfaces/_roblox_d_.vector3int16.html) 
 
 To get around this, roblox-ts introduces a few macro methods on each of these classes in the form of "add", "sub", "mul", and "div".
 
