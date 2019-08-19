@@ -52,6 +52,7 @@ The result object is in the shape:
 ```ts
 { success: true, value: T } | { success: false, error: string }
 ```
+{:.no-compile}
 
 ## `Object`
 
@@ -89,7 +90,7 @@ Currently, there is only one well-known symbol:
   - If this symbol is added as a method of an object or class, that object can then be directly iterated over in spread syntax (`...`) or `for..of` loops.
 
   ```ts
-    const x = {
+  const x = {
       [Symbol.iterator]: function*() {
           yield 1;
           yield 2;

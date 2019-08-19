@@ -53,7 +53,7 @@ layout: content
     }
   })
 
-  $(".language-ts").each(function() {
+  $(".language-ts:not(.no-compile)").each(function() {
     const el = $(this)
     const text = el.text()
     const compressedText = LZString.compressToEncodedURIComponent(text)
