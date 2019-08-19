@@ -36,6 +36,8 @@ layout: content
   {{ content }}
 </article>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js" integrity="sha256-nRoO8HoupfqozUr7YKBRgHXmdx40Hl/04OSBzv7e7L8=" crossorigin="anonymous"></script>
+
 <script>
   $("input[data-sync-id]:not([data-sync-id=\"\"])").change(function(){
     $("input[data-sync-id=\"" + $(this).data("sync-id") +"\"][value=\"" + $(this).val() + "\"]").prop("checked", true)
@@ -49,5 +51,13 @@ layout: content
     if (item) {
       $("input[data-sync-id=\"" + $(this).data("sync-id") +"\"][value=\"" + item + "\"]").prop("checked", true)
     }
+  })
+
+  $(".language-ts").each(function() {
+    const el = $(this)
+    const text = el.text()
+    const compressedText = LZString.compressToEncodedURIComponent(text)
+
+    console.log(el.prepend(`<a href="/playground/#code/${compressedText}" class="compile-btn" target="_blank">Compile</a>`))
   })
 </script>
