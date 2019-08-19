@@ -38,7 +38,7 @@ let x = cf.mul(v3); // TypeScript knows that `x` is of type `Vector3`
 ```
 
 Additionally, you can chain these calls together and additional parentheses will ensure that the intended order is followed:
-```lua
+```ts
 let x = v0
     .add(v1)
     .mul(v2)
