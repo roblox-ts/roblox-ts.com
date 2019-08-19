@@ -61,7 +61,7 @@ local values = { returnsMultipleValues() }
 local theString, theNumber = returnsMultipleValues()
 ```
 {% endcapture %}
-{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
+{% include tabs.html tabs="TypeScript,Lua" content=code %}
 
 You can also have your regular (non-declared) functions return a `LuaTuple<T>`, which functions semantically identically if you wish to write a function that returns multiple values with TypeScript.
 
@@ -79,7 +79,7 @@ x; // hovering over X reveals "number", even though it's really a string.
 local x = "not a number" -- This does not have any noticeable effect on the compiled Lua code.
 ```
 {% endcapture %}
-{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
+{% include tabs.html tabs="TypeScript,Lua" content=code %}
 
 Type assertions should be avoided and only used as a last resort when you are unable to express types with any other mechanism. Abuse of type assertions can lead to unexpected behavior and bugs because type soundness will no longer be guaranteed.
 
@@ -94,7 +94,7 @@ const maybePart = workspace.FindFirstChild<Part>("Baseplate"); // Part | undefin
 local maybePart = workspace:FindFirstChild("Baseplate")
 ```
 {% endcapture %}
-{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
+{% include tabs.html tabs="TypeScript,Lua" content=code %}
 
 This form is available for many methods in the API, such as `CollectionService.GetTagged`, `GetChildren`, `WaitForChild`, data stores, etc. You should prefer using this generic form instead of using a type assertion.
 
@@ -111,7 +111,7 @@ const part = workspace.FindFirstChild<Part>("Baseplate")!; // Part
 local part = workspace:FindFirstChild("Baseplate")
 ```
 {% endcapture %}
-{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
+{% include tabs.html tabs="TypeScript,Lua" content=code %}
 
 # Constructors
 
@@ -130,7 +130,7 @@ const part = workspace.FindFirstChild<Part>("Baseplate")!; // Part
 local part = workspace:FindFirstChild("Baseplate")
 ```
 {% endcapture %}
-{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
+{% include tabs.html tabs="TypeScript,Lua" content=code %}
 
 You can also [define a typed instance tree with intersection types](/docs/guides/indexing-children) to enable dot indexing for ergonomic usage.
 
@@ -156,7 +156,7 @@ if (typeof(x) == "Vector3") then
 end;
 ```
 {% endcapture %}
-{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
+{% include tabs.html tabs="TypeScript,Lua" content=code %}
 
 See also: [Compiler Built-ins](/docs/usage/compiler-builtins)
 {:.info}

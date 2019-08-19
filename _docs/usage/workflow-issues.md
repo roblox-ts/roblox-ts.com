@@ -40,6 +40,6 @@ local playerMap = {}
 playerMap[somePlayer] = 5;
 ```
 {% endcapture %}
-{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
+{% include tabs.html tabs="TypeScript,Lua" content=code %}
 
 [`Set`](/types/interfaces/_es_d_.set.html) is another useful data type that holds a set of unique values. It is akin to an array, but uniqueness is enforced.

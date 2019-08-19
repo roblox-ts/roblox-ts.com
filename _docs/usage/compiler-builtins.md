@@ -41,7 +41,7 @@ if typeof(x) == "Vector3" then
 end
 ```
 {% endcapture %}
-{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
+{% include tabs.html tabs="TypeScript,Lua" content=code %}
 
 ## `classIs`
 
@@ -62,7 +62,7 @@ if x and x:IsA("Model") then
 end
 ```
 {% endcapture %}
-{% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
+{% include tabs.html tabs="TypeScript,Lua" content=code %}
 
 ## `opcall`
 
@@ -146,7 +146,7 @@ Currently, there is only one well-known symbol:
   print(unpack(TS.iterableCache(x[TS.Symbol_iterator](x))));
   ```
   {% endcapture %}
-  {% include tabs.html sync="lua" tabs="TypeScript,Lua" content=code %}
+  {% include tabs.html tabs="TypeScript,Lua" content=code %}
   
 ### Methods
 
