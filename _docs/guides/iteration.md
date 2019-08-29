@@ -50,3 +50,5 @@ for (const x of {
 	},
 });
 ```
+
+Since `Object.keys`/`Object.values`/`Object.entries`/`Array.entries`/`Array.reverse` are optimized to `pairs` and numeric for loops, these optimized loops may be affected by writing to the object which is being iterated through. It is considered bad practice to write to an object while iterating through it. If the intention is to cache `Object.entries` *and then* iterate through it, simply put it in a variable above the for..of loop instead of having it in-line. {:.warn}
