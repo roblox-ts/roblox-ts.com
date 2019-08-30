@@ -12,9 +12,11 @@ roblox-ts adds extra API that do not exist in Roblox by default, both for conven
 The following names exist as `new`able constructors:
 
 - `Map` ([docs](/types/interfaces/_es_d_.map.html))
-- `WeakMap`
+    - `ReadonlyMap` ([docs](/types/interfaces/_es_d_.readonlymap.html))
+    - `WeakMap` ([docs](/types/interfaces/_es_d_.weakmap.html))
 - `Set` ([docs](/types/interfaces/_es_d_.set.html))
-- `WeakSet`
+    - `ReadonlySet` ([docs](/types/interfaces/_es_d_.readonlyset.html))
+    - `WeakSet` ([docs](/types/interfaces/_es_d_.weakset.html))
 - `Array` ([docs](/types/interfaces/_es_d_.array.html))
 
 ## `typeOf`
