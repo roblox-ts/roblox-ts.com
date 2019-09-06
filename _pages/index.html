@@ -12,9 +12,9 @@ layout: page
   <div class="code-sample">
     <div>
       <pre><code class="ts">
-import { CollectionService } from "services";
+import { CollectionService } from "@rbxts/services";
 
-CollectionService.GetTagged("Lava").forEach(obj => {
+for (const obj of CollectionService.GetTagged("Lava")) {
   if (obj.IsA("BasePart")) {
     obj.Touched.Connect(part => {
       const character = part.Parent;
@@ -26,7 +26,7 @@ CollectionService.GetTagged("Lava").forEach(obj => {
       }
     });
   }
-});
+}
       </code></pre>
     </div>
   </div>
