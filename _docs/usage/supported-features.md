@@ -11,10 +11,10 @@ Here are some of the more notable and useful features of roblox-ts that are supp
 - [Promises](/docs/guides/promises) with `new Promise`.
 - async/await with promises.
 - Promise cancellation.
-- [Map](/types/interfaces/_es_d_.map.html) (Also WeakMap)
-- [Set](/types/interfaces/_es_d_.set.html) (Also WeakSet)
-- [Array methods](/types/interfaces/_es_d_.array.html) (.map, .filter, etc.)
-- [Object methods](/types/interfaces/_es_d_.objectconstructor.html) (.entries, .values, .keys)
+- Map (Also WeakMap)
+- Set (Also WeakSet)
+- Array methods (.map, .filter, etc.)
+- Object methods (.entries, .values, .keys)
 - [String methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#Methods) (.concat, .split, etc.)
 - Rest/spread syntax in objects and arrays
 - [Try/catch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) and object [throws](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw)

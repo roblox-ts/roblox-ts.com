@@ -11,13 +11,13 @@ roblox-ts adds extra API that do not exist in Roblox by default, both for conven
 
 The following names exist as `new`able constructors:
 
-- `Map` ([docs](/types/interfaces/_es_d_.map.html))
-    - `ReadonlyMap` ([docs](/types/interfaces/_es_d_.readonlymap.html))
-    - `WeakMap` ([docs](/types/interfaces/_es_d_.weakmap.html))
-- `Set` ([docs](/types/interfaces/_es_d_.set.html))
-    - `ReadonlySet` ([docs](/types/interfaces/_es_d_.readonlyset.html))
-    - `WeakSet` ([docs](/types/interfaces/_es_d_.weakset.html))
-- `Array` ([docs](/types/interfaces/_es_d_.array.html))
+- `Map`
+    - `ReadonlyMap`
+    - `WeakMap`
+- `Set`
+    - `ReadonlySet`
+    - `WeakSet`
+- `Array`
 
 ## `typeOf`
 
@@ -25,7 +25,7 @@ This function maps directly to Roblox's `typeof` function. The reason for this d
 
 ## `typeIs`
 
-This function is a type guard form of `typeOf`, which provides type narrowing. `typeIs` is compatible with any type that Lua's `typeof` function is compatible with. 
+This function is a type guard form of `typeOf`, which provides type narrowing. `typeIs` is compatible with any type that Lua's `typeof` function is compatible with.
 
 ```ts
 const x = new Vector3() as unknown; // "unknown"
@@ -37,7 +37,7 @@ if (typeIs(x, "Vector3")) {
 
 ## `classIs`
 
-`classIs` is similar to `typeIs`, but provides type narrowing for Instances via the `ClassName` property. Comparing the `ClassName` property by hand does not provide such narrowing, because TypeScript's structural typing makes implementation difficult and complex. The `classIs` function is a compromise that keeps things simple while still offering `ClassName` narrowing: 
+`classIs` is similar to `typeIs`, but provides type narrowing for Instances via the `ClassName` property. Comparing the `ClassName` property by hand does not provide such narrowing, because TypeScript's structural typing makes implementation difficult and complex. The `classIs` function is a compromise that keeps things simple while still offering `ClassName` narrowing:
 
 ```ts
 const x = game.FindFirstChild("X");
