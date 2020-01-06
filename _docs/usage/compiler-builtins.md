@@ -56,6 +56,13 @@ The result object is in the shape:
 ```
 {:.no-compile}
 
+## `PKG_VERSION`
+
+`PKG_VERSION` is a global variable that is replaced with the version property from package.json at compile time.
+
+`PKG_VERSION` is currently only available with `npm i roblox-ts@next`
+{:.warn}
+
 ## `Object`
 
 `Object` is a namespace which contains many utility methods for dealing with objects. These methods may be used on objects, arrays, Maps, and Sets.
