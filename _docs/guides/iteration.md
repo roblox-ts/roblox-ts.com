@@ -21,6 +21,8 @@ for (const [i, num] of fibonacci.entries()) {
 In roblox-ts, our `Array.reverse` method returns a new array (unlike traditional TypeScript). You can also use these in `for..of` loops and expect optimized compiled code:
 
 ```ts
+const fibonacci = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144];
+
 for (const [i, num] of fibonacci.reverse().entries()) {
 	print(i, num);
 }
