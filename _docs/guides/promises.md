@@ -86,7 +86,7 @@ function returnsACancellablePromise(seconds: number): Promise<string> {
   });
 }
 
-const promise = returnsACancellablePromise()
+const promise = returnsACancellablePromise(10)
   .then(() => print("This is never called, because it's cancelled below!"))
   .catch(() => print("This is called if an error were to occur!"))
   .finally(() => print("`finally` is always called at the end, regardless!"));
