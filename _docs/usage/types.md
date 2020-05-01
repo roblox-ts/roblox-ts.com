@@ -66,10 +66,20 @@ x; // hovering over X reveals "number", even though it's really a string.
 
 Type assertions should be avoided and only used as a last resort when you are unable to express types with any other mechanism. Abuse of type assertions can lead to unexpected behavior and bugs because type soundness will no longer be guaranteed.
 
-Many Roblox API members accept generic parameters to influence the return value of the function. For example, `Instance.FindFirstChild` returns `Instance | undefined` by default, but you can provide a type variable to be more specific than `Instance`:
+Many Roblox API methods accept generic parameters to influence the return value of the function. For example, `HttpService.JSONDecode` returns `unknown` by default, but you can provide a type argument to be more specific:
 
 ```ts
-const maybePart = workspace.FindFirstChild<Part>("Baseplate"); // Part | undefined
+const HttpService = game.GetService("HttpService");
+
+interface Vec3 {
+	x: number;
+	y: number;
+	z: number;
+}
+
+const obj = HttpService.JSONDecode<Vec3>(`{"y":2,"z":3,"x":1}`);
+const { x, y, z } = obj;
+print(x, y, z);
 ```
 
 This form is available for many methods in the API, such as `CollectionService.GetTagged`, `GetChildren`, `WaitForChild`, data stores, etc. You should prefer using this generic form instead of using a type assertion.
