@@ -1,4 +1,4 @@
-# roblox-ts.github.io
+# roblox-ts.com
 
 Contributions to the roblox-ts documentation are welcome!
 
