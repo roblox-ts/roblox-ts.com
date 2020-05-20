@@ -13,12 +13,6 @@ These are the parts of JSX that arent supported by `roblox-ts/rbx-roact` right n
 const element = <frame>Text here is not supported</frame>;
 ```
 
-## Boolean attribute defaulting to "true"
-`roblox-ts` will silently fail on this.
-```jsx
-const element = <frame Active/>;
-```
-
 ## Expressions <small>Roact Limitation</small>
 ### Disallowed
 `roblox-ts` will explicitly error if you try and use literal expressions
