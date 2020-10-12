@@ -20,22 +20,24 @@ npm install -g roblox-ts
 
 # Usage
 
-The following is a reference for how to use the roblox-ts command line interface. This can be displayed by `rbxtsc -h`.
+The following is a reference for how to use the roblox-ts command line interface. This can be displayed with `rbxtsc -h`.
 
 ```
-Usage: rbxtsc [options]
+Commands:
+  build                       Build a project                             [default]
+  init                        Create a project from a template
 
 Options:
-  -w, --watch        enable watch mode                                 [boolean]
-  -p, --project      project path                                 [default: "."]
-  --noInclude        do not copy runtime files        [boolean] [default: false]
-  -i, --includePath  folder to copy runtime files to        [default: "include"]
-  --minify, --min    minify emitted Lua code          [boolean] [default: false]
-  --onSuccess        Command to run on watch success               [default: ""]
-  --rojo, -r         Manually select Rojo configuration file       [default: ""]
-  --init                [string] [choices: "game", "model", "plugin", "package"]
-  -v, --version      show version information                          [boolean]
-  -h, --help         show help information                             [boolean]
+  -p,       --project         project path [string]                       [default: "."]
+  -w,       --watch           enable watch mode                           [boolean] [default: false]
+  -w,       --usePolling      use polling for watch mode                  [boolean] [default: false]
+            --verbose         enable verbose logs                         [boolean] [default: false]
+            --noInclude       do not copy include files                   [boolean] [default: false]
+            --type                                                        [choices: "game", "model", "package"]
+  -i,       --includePath     folder to copy runtime files to             [string]
+            --rojo            manually select Rojo configuration file     [string]
+  -h,       --help            show help                                   [boolean] 
+  -v,       --version         show version information                    [boolean]
 ```
 
 ## Project Setup
@@ -44,11 +46,11 @@ To start using roblox-ts to create a game project, follow these steps:
 
 1\. Create a new folder and name it whatever you'd like. We are going to name ours `my-project`
 
-2\. Open a terminal with the working directory set to your created folder. VSCode automatically does this when you `Open with Code` and press ``` Ctrl + ` ``` in VSCode to open the terminal window.
+2\. Open a terminal with the working directory set to your created folder. You can also do this directly inside VSCode by pressing ``` Ctrl + ` ``` while in your project directory.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/15217173/62526363-b81d1280-b7fe-11e9-908e-8d476603c4e0.png"></p>
 
-3\. Run `rbxtsc --init game` inside your empty folder. This will create the required files to get you started:
+3\. Run `rbxtsc init game` inside your empty folder. This will create the required files to get you started:
 
 <p align="center"><img src="https://user-images.githubusercontent.com/15217173/62526796-92dcd400-b7ff-11e9-89cb-9a8ce31d818a.png"></p>
 
