@@ -4,6 +4,14 @@ Contributions to the roblox-ts documentation are welcome!
 
 All docs can be found within the `_docs` folder, which are markdown files with some extra Liquid template syntax sprinkled around.
 
+## Devcontainer
+
+This repository contains a VSCode `devcontainer.json` file.
+
+If you have the VSCode Remote Containers extension installed + Docker, you can simply open the folder inside the container.
+
+Then run `jekyll serve` to preview changes locally.
+
 ## Sections and Front Matter
 
 Docs in the `_docs` folder should be organized into sub-categories. The categories and navigation are automatically generated from the YAML front matter which is present at the top of all markdown files.
