@@ -6,7 +6,7 @@
   @media screen and (max-width: $break-phone + 45) {
     margin-bottom: 100px;
   }
-  
+
   & > div {
     top: 20px;
     position: absolute;
@@ -18,11 +18,10 @@
     border-radius: 10px;
     padding: 10px 25px;
     max-width: 80%;
-  
+
     pre {
       margin: 0;
       display: inline-block;
-      background: $white;
       width: 100%;
       white-space: pre-wrap;
       word-wrap: break-word;
@@ -89,7 +88,7 @@
     }
 
     p {
-      
+
     }
   }
 }
@@ -108,7 +107,7 @@
     justify-items: center;
     align-items: center;
     grid-gap: 40px;
-    
+
     &.img > div:first-of-type {
       text-align: center;
 
@@ -127,7 +126,7 @@
         grid-template-areas: "desc image" "desc image" "desc image";
       }
     }
-    
+
     @media screen and (max-width: $break-pc) {
       grid-template-areas: "image image" "image image" "desc desc";
       grid-gap: 0;
