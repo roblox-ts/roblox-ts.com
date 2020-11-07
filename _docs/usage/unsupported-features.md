@@ -19,6 +19,3 @@ Some of these are intended removals, others may be added in the future!
 - dynamic import expressions
 - sparse arrays (`nil`/`undefined` in between valid elements)
 - `typeof` operator in *values* (the `typeof` operator in *types* is still valid: when `typeof` is used in a type, it converts a value into a type.)
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxMzI4ODg1XX0=
--->

@@ -14,7 +14,7 @@ To reconcile the patterns found in the two languages when compiling to Lua, we a
 ```ts
 interface Example {
 	calledWithMethodSyntax(): void
-	
+
 	calledWithDotSyntax: () => void
 }
 ```
@@ -36,7 +36,7 @@ interface Example {
 ```
 Above, we can see that the `this: void` annotation will override the default behavior, telling roblox-ts to call the function with the dot syntax.
 
-Likewise, using `this: this` has the inverse effect: the function will be called with the method syntax. 
+Likewise, using `this: this` has the inverse effect: the function will be called with the method syntax.
 
 # Multiple Return Values
 One of Lua's famous quirks is that its functions can return multiple values. Most languages, including TypeScript, do not have this capability, and model those situations with other constructs. In TypeScript, we generally use a [*tuple*](https://www.typescriptlang.org/docs/handbook/basic-types.html#tuple), which is just a fancy name for an array which has a set of known types in each of its indexes.
@@ -107,7 +107,7 @@ const part = workspace.FindFirstChild<Part>("Baseplate")!
 You can also [define a typed instance tree with intersection types](/docs/guides/indexing-children) to enable dot indexing for ergonomic usage.
 
 # Type Narrowing
-TypeScript has a feature called *type narrowing* which allows TypeScript to intelligently narrow the possible type of a value when you use a *type guard* inside of a conditional. In vanilla TypeScript, the `typeof` operator can be used to narrow types. However, the `typeof` operator is not compatible with Lua or Roblox types, thus it is not allowed in roblox-ts code in the context of *values*. (The `typeof` operator in *types* is still valid: when `typeof` is used in a type, it converts a value into a type.) 
+TypeScript has a feature called *type narrowing* which allows TypeScript to intelligently narrow the possible type of a value when you use a *type guard* inside of a conditional. In vanilla TypeScript, the `typeof` operator can be used to narrow types. However, the `typeof` operator is not compatible with Lua or Roblox types, thus it is not allowed in roblox-ts code in the context of *values*. (The `typeof` operator in *types* is still valid: when `typeof` is used in a type, it converts a value into a type.)
 
 ## `typeIs`
 To solve this problem, roblox-ts adds a new global function `typeIs` to narrow types. `typeIs` is compatible with any type that Lua's `typeof` is compatible with.
@@ -122,10 +122,6 @@ if (typeIs(x, "Vector3")) {
 
 See also: [Compiler Built-ins](/docs/usage/compiler-builtins)
 {:.info}
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTc1MTk0MzhdfQ==
--->
 
 # Utility Types
 
@@ -150,7 +146,7 @@ The following utility types exists globally:
 - `PresentFields`
 	- Similar to Pick, but instead turns excluded values to undefined (so they can still be browsed)
 - `FieldsPresentWhen`
-	- When a member (M) of T is a particular Value (E), Pick<K> 
+	- When a member (M) of T is a particular Value (E), Pick<K>
 - `Tweenable`
 	- Any type that is tweenable with TweenService.
 - `FilterMembers`
