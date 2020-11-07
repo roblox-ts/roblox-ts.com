@@ -5,6 +5,8 @@
 	},
 	"appPort": ["3000:3000"],
 	"containerUser": "vscode",
-	"extensions": [],
+	"extensions": [
+		"editorconfig.editorconfig",
+	],
 	"forwardPorts": [4000],
 }
