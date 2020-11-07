@@ -1,0 +1,10 @@
+{
+	"name": "roblox-ts.github.io",
+	"build": {
+		"dockerfile": "Dockerfile",
+	},
+	"appPort": ["3000:3000"],
+	"runArgs": [ "-u", "vscode" ],
+	"extensions": [],
+	"forwardPorts": [4000],
+}
