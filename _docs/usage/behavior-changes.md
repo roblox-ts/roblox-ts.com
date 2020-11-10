@@ -36,6 +36,9 @@ This means that `0`, `NaN`, and empty strings (`""`) are falsy, unlike in Lua, w
 ## Map and Set Values Are Not Ordered by Insertion
 In TypeScript and JavaScript, `Map` and `Set` object values are kept in order by time of insertion when accessed. However, in roblox-ts, this is not the case for performance reasons, as [Maps are the only way we can represent all of the features of Lua tables](/docs/usage/workflow-issues#objects-may-only-have-string-keys).
 
+## Strings and arrays use .size() instead of .length
+In **roblox-ts**, to get the length of a string or an array, a `.size()` method is used instead of the `.length` property.
+
 ## Yielding
 Because roblox-ts compiles down to Lua and in the Roblox API we have functions that can yield, it is possible to yield Lua the thread when writing roblox-ts code. This contrasts with JavaScript's concurrency model, where every function is non-blocking, using either callbacks or Promises for async operations.
 
