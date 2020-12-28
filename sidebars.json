@@ -1,0 +1,26 @@
+{
+	"docs": [
+		"introduction",
+		"quick-start",
+		"usage",
+		"setup-guide",
+		{
+			"type": "category",
+			"label": "API",
+			"items": [
+				"api/identifiers",
+				"api/constructors",
+				"api/functions"
+			]
+		},
+		{
+			"type": "category",
+			"label": "Guides",
+			"items": [
+				"guides/indexing-children",
+				"guides/methods-vs-callbacks",
+				"guides/lua-tuple"
+			]
+		}
+	]
+}

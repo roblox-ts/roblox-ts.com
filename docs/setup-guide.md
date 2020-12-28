@@ -1,0 +1,59 @@
+---
+id: setup-guide
+title: Setup Guide
+---
+
+:::note
+This guide assumes you know how to use the command line. You can find tutorials on YouTube for [Windows](https://www.youtube.com/watch?v=FiTZgpRpWv0) or [MacOS](https://www.youtube.com/watch?v=aKRYQsKR46I).
+:::
+
+### Installation
+
+In order to start using roblox-ts, you'll need to have the following software already installed:
+- [NodeJS 14+](https://nodejs.org/)
+- A code editor. We recommend [VSCode](https://code.visualstudio.com/).
+- [Rojo 6+](https://rojo.space/). The easiest way to install it is through the [Rojo VSCode plugin](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo).
+
+### Project Setup
+
+To start using roblox-ts to create a game project, follow these steps:
+
+<!-- Unforunately, we need to explicitly number these steps because there are images between them :( -->
+
+1. Create a new folder and name give it a name. The folder name cannot contain spaces. We are going to name ours `my-project`.
+
+<center><img src={require("../static/img/setup-guide/new-folder.png").default} /></center>
+
+2. Open the folder using your code editor (or your command line if your code editor does not have one integrated).
+
+<center><img src={require("../static/img/setup-guide/open-with-vscode.png").default} /></center>
+
+3. Run `rbxtsc init game` in your command line to start the interactive project setup.
+
+<center><img src={require("../static/img/setup-guide/rbxtsc-init-game.png").default} /></center>
+
+:::caution PowerShell
+If you're using PowerShell for the first time, you may get an error about "running scripts is disabled on this system". You can fix this by running the following in PowerShell as an administrator:
+
+`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+
+[More info here](https://github.com/roblox-ts/roblox-ts/discussions/1173)
+:::
+
+4. Start roblox-ts in watch mode via `rbxtsc -w`. You can exit watch mode later by clicking on the command line and pressing `Ctrl+C` on your keyboard.
+
+<center><img src={require("../static/img/setup-guide/rbxtsc-watch.png").default} /></center>
+
+5. Next, start up a Rojo server. If you are using the Rojo VSCode extension, simply hit `Ctrl+Shift+P` and select `Rojo: Start Server`.
+
+<center><img src={require("../static/img/setup-guide/rojo-extension.png").default} /></center>
+
+Otherwise, open a new terminal with the same working directory and start Rojo via `rojo serve`. In VSCode a new terminal can be opened by pressing the `+` button.
+
+<center><img src={require("../static/img/setup-guide/rojo-serve.png").default} /></center>
+
+6. Open a new place in Roblox Studio where you wish to sync your compiled code into. Open up the Rojo plugin in Studio and hit `Connect`.
+
+<center><img src={require("../static/img/setup-guide/rojo-plugin.png").default} /></center>
+
+7. Write code! :tada:

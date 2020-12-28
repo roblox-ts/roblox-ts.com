@@ -1,0 +1,38 @@
+---
+id: constructors
+title: Constructors
+---
+
+### `new Array<T>(length?: number, value?: T)`
+Creates a new `Array<T>` type with the given preallocated length and pre-filled with `value`.
+
+Compiles to either a table literal or a `table.create()` call in Luau.
+
+### `new Map<K, V>(entries?: Array<[K, V]>)`
+Creates a new `Map<K, V>` type pre-filled with the entries given as the argument if provided.
+
+Compiles to a table literal.
+
+### `new ReadonlyMap<K, V>(entries?: Array<[K, V]>)`
+Same as `new Map<K, V>`, but creates a `ReadonlyMap<K, V>` type instead.
+
+### `new WeakMap<K, V>(entries?: Array<[K, V]>)`
+Same as `new Map<K, V>`, but creates a `WeakMap<K, V>` type instead.
+
+Compiles using `setmetatable({}, { __mode = "k" })`.
+
+### `new Set<V>(values?: Array<T>)`
+Creates a new `Set<V>` type pre-filled with the values given as the argument if provided.
+
+Compiles to a table literal.
+
+### `new ReadonlySet<V>(values?: Array<T>)`
+Same as `new Set<V>`, but creates a `ReadonlySet<V>` type instead.
+
+### `new WeakSet<V>(values?: Array<T>)`
+Same as `new Set<V>`, but creates a `WeakSet<V>` type instead.
+
+Compiles using `setmetatable({}, { __mode = "k" })`.
+
+### `new Promise<T>()`
+Creates a new `Promise<T>` type. You can find documentation for the promise library that comes bundled with roblox-ts [here](https://eryn.io/roblox-lua-promise/).

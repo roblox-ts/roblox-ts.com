@@ -1,0 +1,45 @@
+.title {
+	font-size: 4rem !important;
+}
+
+.heroBanner {
+	background-color: transparent;
+	padding: 2rem 0;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 966px) {
+	.heroBanner {
+		padding: 2rem;
+	}
+}
+
+.buttons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.buttons a {
+	margin: 0 5px;
+}
+
+.codeExample {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+.feature {
+	height: 100%;
+}
+
+.features {
+	display: flex;
+	align-items: center;
+	padding: 2rem 0;
+	width: 100%;
+	height: max-content;
+}
