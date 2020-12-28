@@ -20,7 +20,7 @@ To start using roblox-ts to create a game project, follow these steps:
 
 <!-- Unforunately, we need to explicitly number these steps because there are images between them :( -->
 
-1. Create a new folder and name give it a name. The folder name cannot contain spaces. We are going to name ours `my-project`.
+1. Create a new folder and give it a name. The folder name cannot contain spaces. We are going to name ours `my-project`.
 
 <center><img src={require("../static/img/setup-guide/new-folder.png").default} /></center>
 
