@@ -10,7 +10,7 @@
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
-    "eslint": "eslint \"src/**/*.ts\" --max-warnings 0"
+    "eslint": "npx eslint 'src/**/*.{ts,tsx}' --max-warnings 0"
   },
   "dependencies": {
     "@docusaurus/core": "2.0.0-alpha.70",
