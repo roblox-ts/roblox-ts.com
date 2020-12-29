@@ -13,6 +13,7 @@ import usePrismTheme from "@theme/hooks/usePrismTheme";
 import styles from "./styles.module.css";
 import { useThemeConfig } from "@docusaurus/theme-common";
 import lzstring from "lz-string";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 const highlightLinesRangeRegex = /{([\d,-]+)}/;
 
@@ -175,8 +176,9 @@ export default ({ children, className: languageClassName, metastring }) => {
 		setTimeout(() => setShowCopied(false), 2000);
 	};
 
+	const playgroundPrefix = useBaseUrl("playground/#code/");
 	const handleCompileCode = () => {
-		window.open(`https://roblox-ts.com/playground/#code/${lzstring.compressToEncodedURIComponent(code)}`);
+		window.open(playgroundPrefix + lzstring.compressToEncodedURIComponent(code));
 	};
 
 	return (

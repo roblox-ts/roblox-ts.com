@@ -26,7 +26,7 @@ module.exports = {
 				},
 				{
 					label: "Playground",
-					href: "https://roblox-ts.com/playground",
+					to: "playground/",
 					position: "left",
 				},
 				{
@@ -67,7 +67,8 @@ module.exports = {
 			{
 				docs: {
 					sidebarPath: require.resolve("./sidebars.json"),
-					editUrl: "https://github.com/roblox-ts/roblox-ts.github.io/blob/master/",
+					editUrl:
+						"https://github.com/roblox-ts/roblox-ts.github.io/blob/master/",
 				},
 				theme: {
 					customCss: require.resolve("./src/css/custom.css"),

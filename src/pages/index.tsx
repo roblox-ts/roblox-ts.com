@@ -107,7 +107,7 @@ export default () => {
 						</Link>
 						<Link
 							className={`button button--outline button--secondary button--lg ${styles.getStarted}`}
-							to="https://roblox-ts.com/playground/"
+							to={useBaseUrl("playground/")}
 						>
 							Playground
 						</Link>

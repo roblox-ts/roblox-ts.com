@@ -16,8 +16,10 @@
     "@docusaurus/core": "2.0.0-alpha.70",
     "@docusaurus/preset-classic": "2.0.0-alpha.70",
     "@mdx-js/react": "^1.6.21",
+    "@monaco-editor/react": "^3.7.4",
     "clsx": "^1.1.1",
     "lz-string": "^1.4.4",
+    "monaco-editor": "^0.21.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },
