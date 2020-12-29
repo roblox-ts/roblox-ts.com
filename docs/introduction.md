@@ -18,6 +18,17 @@ roblox-ts works with both **TypeScript** files (`.ts`) _and_ **Lua**/**Luau** fi
 
 Typings for the Roblox API are partially handwritten and partially automatically generated from the Roblox API dump and Developer Hub documentation.
 
+## Features
+
+- Write TypeScript code, run it in Roblox
+- Automatic project structure setup for creating games, models, plugins, and packages
+- Automatically generated type definitions for the Roblox API
+- Infers the structure of your game using your Rojo configuration file
+- Use VSCode's intellisense, autocompletion, and type checking abilities
+- Use industry standard tools for linting and formatting like [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/)
+- [Growing collection of NPM packages](https://www.npmjs.com/org/rbxts)
+- [TypeScript Transformer Plugins](https://github.com/madou/typescript-transformer-handbook)
+
 ## Why should you use roblox-ts?
 
 roblox-ts is great for managing large scale projects. Static types and intellisense allow you and your IDE to understand what your code is doing on a deeper level without having to mentally track what's going on. TypeScript's typing system allows you to clearly describe what each function expects as inputs and gives back as an output.
