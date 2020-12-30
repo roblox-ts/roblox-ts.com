@@ -26,12 +26,31 @@
 	padding-top: inherit;
 }
 
+:root {
+	--playground-navbar-height: 40px;
+}
+
+.subNavBar {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	--ifm-navbar-background-color: var(--ifm-color-emphasis-200);
+	height: var(--playground-navbar-height);
+}
+
 .editorWrapper {
 	display: inline-block;
 	width: 50%;
-	height: calc(100vh - var(--ifm-navbar-height));
+	height: calc(
+		100vh - var(--ifm-navbar-height) - var(--playground-navbar-height)
+	);
 }
 
 .editor {
 	display: inline-block;
+}
+
+.pointer {
+	cursor: pointer;
 }

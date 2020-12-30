@@ -1,0 +1,19 @@
+{
+  "name": "playground-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rbxts/compiler-types": "^1.0.0-beta.11.1",
+    "@rbxts/types": "^1.0.431"
+  },
+  "dependencies": {
+    "@rbxts/services": "^1.1.2"
+  }
+}
