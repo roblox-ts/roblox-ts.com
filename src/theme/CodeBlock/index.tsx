@@ -177,9 +177,7 @@ export default ({ children, className: languageClassName, metastring }) => {
 	};
 
 	const playgroundPrefix = useBaseUrl("playground/");
-	const handleCompileCode = () => {
-		window.open(playgroundPrefix + getHashFromCode(code));
-	};
+	const handleCompileCode = () => open(playgroundPrefix + getHashFromCode(code));
 
 	return (
 		<Highlight {...defaultProps} key={String(mounted)} theme={prismTheme} code={code} language={language}>
