@@ -12,8 +12,8 @@ import rangeParser from "parse-numeric-range";
 import usePrismTheme from "@theme/hooks/usePrismTheme";
 import styles from "./styles.module.css";
 import { useThemeConfig } from "@docusaurus/theme-common";
-import lzstring from "lz-string";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import { getHashFromCode } from "../../utils/hash";
 
 const highlightLinesRangeRegex = /{([\d,-]+)}/;
 
@@ -176,9 +176,9 @@ export default ({ children, className: languageClassName, metastring }) => {
 		setTimeout(() => setShowCopied(false), 2000);
 	};
 
-	const playgroundPrefix = useBaseUrl("playground/#code/");
+	const playgroundPrefix = useBaseUrl("playground/");
 	const handleCompileCode = () => {
-		window.open(playgroundPrefix + lzstring.compressToEncodedURIComponent(code));
+		window.open(playgroundPrefix + getHashFromCode(code));
 	};
 
 	return (

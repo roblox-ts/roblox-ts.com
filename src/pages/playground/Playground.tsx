@@ -1,8 +1,8 @@
 import Editor, { EditorDidMount } from "@monaco-editor/react";
 import useThemeContext from "@theme/hooks/useThemeContext";
-import lzstring from "lz-string";
 import { editor } from "monaco-editor/esm/vs/editor/editor.api";
 import React from "react";
+import { getCodeFromHash, getHashFromCode } from "../../utils/hash";
 import styles from "./styles.module.css";
 
 const SHARED_EDITOR_OPTIONS: editor.IEditorConstructionOptions = {
@@ -13,19 +13,6 @@ const SHARED_EDITOR_OPTIONS: editor.IEditorConstructionOptions = {
 const TS_EDITOR_OPTIONS: editor.IEditorConstructionOptions = { ...SHARED_EDITOR_OPTIONS };
 
 const LUA_EDITOR_OPTIONS: editor.IEditorConstructionOptions = { ...SHARED_EDITOR_OPTIONS, readOnly: true };
-
-function getCodeFromHash(hash: string) {
-	if (hash.startsWith("#code/")) {
-		const decompressed = lzstring.decompressFromEncodedURIComponent(hash.substr(6));
-		if (decompressed) {
-			return decompressed;
-		}
-	}
-}
-
-function getHashFromCode(code: string) {
-	return `#code/${lzstring.compressToEncodedURIComponent(code)}`;
-}
 
 export default () => {
 	const [input, setInput] = React.useState("");
