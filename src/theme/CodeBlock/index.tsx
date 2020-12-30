@@ -92,7 +92,7 @@ export default ({ children, className: languageClassName, metastring }) => {
 	}, []);
 	const copyButton = useRef(null);
 	const compileButton = useRef(null);
-	let highlightLines = [];
+	let highlightLines = new Array<number>();
 	let codeBlockTitle = "";
 	const prismTheme = usePrismTheme(); // In case interleaved Markdown (e.g. when using CodeBlock as standalone component).
 
