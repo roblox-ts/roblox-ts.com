@@ -16,7 +16,7 @@ const TS_EDITOR_OPTIONS: editor.IEditorConstructionOptions = { ...SHARED_EDITOR_
 
 const LUA_EDITOR_OPTIONS: editor.IEditorConstructionOptions = { ...SHARED_EDITOR_OPTIONS, readOnly: true };
 
-const EXAMPLES = ["Lava"];
+const EXAMPLES = ["Lava", "t"];
 
 async function getExampleCode(examplesDir: string, exampleName: string): Promise<string> {
 	return fetch(`${examplesDir}${exampleName}.ts`).then(response => response.text());
@@ -48,9 +48,11 @@ export default () => {
 
 	// update input from url hash on start
 	React.useEffect(() => {
-		const code = getCodeFromHash(location.hash);
-		if (code) {
-			setInput(code);
+		if (location.hash !== "") {
+			const code = getCodeFromHash(location.hash);
+			if (code) {
+				setInput(code);
+			}
 		} else {
 			void setInputToExample(EXAMPLES[0]);
 		}
@@ -71,7 +73,8 @@ export default () => {
 	// update output when input changes
 	React.useEffect(() => setOutput(input), [input]);
 
-	const editorTheme = useThemeContext().isDarkTheme ? "dark" : "light";
+	const { isDarkTheme } = useThemeContext();
+	const editorTheme = isDarkTheme ? "dark" : "light";
 
 	return (
 		<>

@@ -14,6 +14,7 @@
     "@rbxts/types": "^1.0.431"
   },
   "dependencies": {
-    "@rbxts/services": "^1.1.2"
+    "@rbxts/services": "^1.1.2",
+    "@rbxts/t": "^2.1.0"
   }
 }
