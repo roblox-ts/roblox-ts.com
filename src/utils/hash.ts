@@ -5,7 +5,7 @@ const HASH_PREFIX = "#code/";
 export function getCodeFromHash(hash: string) {
 	if (hash.startsWith(HASH_PREFIX)) {
 		const decompressed = lzstring.decompressFromEncodedURIComponent(hash.substr(HASH_PREFIX.length));
-		if (decompressed) {
+		if (decompressed !== null) {
 			return decompressed;
 		}
 	}
