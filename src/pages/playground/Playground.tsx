@@ -42,12 +42,11 @@ export default () => {
 	const [output, setOutput] = React.useState("");
 
 	const examplesDir = useBaseUrl("playground-examples/src/");
-
 	async function setInputToExample(name: string) {
-		return getExampleCode(examplesDir, name).then(exampleCode => setInput(exampleCode));
+		return getExampleCode(examplesDir, name).then(code => setInput(code));
 	}
 
-	// set input from url hash on start
+	// update input from url hash on start
 	React.useEffect(() => {
 		const code = getCodeFromHash(location.hash);
 		if (code) {
@@ -57,16 +56,19 @@ export default () => {
 		}
 	}, []);
 
-	// set input when editor text changes
+	// update input when editor text changes
 	const tsEditorDidMount: EditorDidMount = (getEditorValue, editor) => {
 		editor.onDidChangeModelContent(() => {
-			const editorValue = getEditorValue();
-			location.hash = getHashFromCode(editorValue);
-			setInput(editorValue);
+			setInput(getEditorValue());
 		});
 	};
 
-	// set output when input changes
+	// update hash when input changes
+	React.useEffect(() => {
+		location.hash = getHashFromCode(input);
+	}, [input]);
+
+	// update output when input changes
 	React.useEffect(() => setOutput(input), [input]);
 
 	const editorTheme = useThemeContext().isDarkTheme ? "dark" : "light";
