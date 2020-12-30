@@ -44,7 +44,7 @@ export default () => {
 	const examplesDir = useBaseUrl("playground-examples/src/");
 
 	async function setInputToExample(name: string) {
-		return getExampleCode(examplesDir, EXAMPLES[0]).then(exampleCode => setInput(exampleCode));
+		return getExampleCode(examplesDir, name).then(exampleCode => setInput(exampleCode));
 	}
 
 	// set input from url hash on start
