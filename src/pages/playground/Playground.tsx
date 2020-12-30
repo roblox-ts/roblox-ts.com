@@ -49,7 +49,7 @@ export default () => {
 
 	// set input from url hash on start
 	React.useEffect(() => {
-		const code = getCodeFromHash(window.location.hash);
+		const code = getCodeFromHash(location.hash);
 		if (code) {
 			setInput(code);
 		} else {
@@ -61,7 +61,7 @@ export default () => {
 	const tsEditorDidMount: EditorDidMount = (getEditorValue, editor) => {
 		editor.onDidChangeModelContent(() => {
 			const editorValue = getEditorValue();
-			window.location.hash = getHashFromCode(editorValue);
+			location.hash = getHashFromCode(editorValue);
 			setInput(editorValue);
 		});
 	};
