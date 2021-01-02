@@ -14,6 +14,7 @@
     "@rbxts/types": "^1.0.431"
   },
   "dependencies": {
+    "@rbxts/roact": "^1.3.0-ts.7",
     "@rbxts/services": "^1.1.2",
     "@rbxts/t": "^2.1.0"
   }

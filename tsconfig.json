@@ -3,6 +3,8 @@
 	"include": ["src/"],
 	"compilerOptions": {
 		"strict": true,
-		"noEmitOnError": true
+		"noEmitOnError": true,
+		"downlevelIteration": true,
+		"lib": ["ES2020.String", "ES2020.Promise"]
 	}
 }

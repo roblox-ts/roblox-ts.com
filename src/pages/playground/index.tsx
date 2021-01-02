@@ -1,6 +1,6 @@
 import Layout from "@theme/Layout";
 import React from "react";
-import Playground from "./Playground";
+import Playground from "../../components/Playground";
 
 export default () => {
 	return (

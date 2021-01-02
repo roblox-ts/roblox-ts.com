@@ -15,6 +15,9 @@ jobs:
       - name: Install NPM dependencies
         uses: bahmutov/npm-install@v1.4.5
 
+      - name: Build Worker
+        run: npm run build:rbxts-worker
+
       - name: Build
         run: npm run build
 

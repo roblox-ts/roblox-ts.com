@@ -13,7 +13,7 @@ import usePrismTheme from "@theme/hooks/usePrismTheme";
 import styles from "./styles.module.css";
 import { useThemeConfig } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { getHashFromCode } from "../../utils/hash";
+import { getHashFromCode } from "../../util/hash";
 
 const highlightLinesRangeRegex = /{([\d,-]+)}/;
 
