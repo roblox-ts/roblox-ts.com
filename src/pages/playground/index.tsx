@@ -4,8 +4,10 @@ import Playground from "../../components/Playground";
 
 export default () => {
 	return (
-		<Layout noFooter>
-			<Playground />
-		</Layout>
+		<div style={{ overflow: "hidden" }}>
+			<Layout noFooter>
+				<Playground />
+			</Layout>
+		</div>
 	);
 };
