@@ -5,6 +5,8 @@ import Editor, { EditorDidMount, monaco } from "@monaco-editor/react";
 import useThemeContext from "@theme/hooks/useThemeContext";
 import type { editor } from "monaco-editor";
 import path from "path";
+import prettier from "prettier";
+import parserTypeScript from "prettier/parser-typescript";
 import React from "react";
 import styles from "../pages/playground/styles.module.css";
 import { getCodeFromHash, getHashFromCode } from "../util/hash";
@@ -25,6 +27,19 @@ const EXAMPLES = ["Lava", "t", "Roact"];
 const CORE_PACKAGES = ["types", "compiler-types"];
 
 const COMPILE_DELAY_MS = 300;
+
+const PRETTIER_OPTIONS: prettier.Options = {
+	parser: "typescript",
+	plugins: [parserTypeScript],
+
+	semi: true,
+	trailingComma: "all",
+	singleQuote: false,
+	printWidth: 120,
+	tabWidth: 4,
+	useTabs: true,
+	arrowParens: "avoid",
+};
 
 async function getExampleCode(examplesDir: string, exampleName: string): Promise<string> {
 	return fetch(`${examplesDir}/${exampleName}.tsx`).then(response => response.text());
@@ -207,6 +222,21 @@ export default () => {
 			const model = monaco.editor.getModel(uri) || monaco.editor.createModel(input, "typescript", uri);
 			editor.setModel(model);
 			const modelContentChangedConn = editor.onDidChangeModelContent(() => setInput(getEditorValue()));
+
+			editor.addCommand(monaco.KeyCode.Alt | monaco.KeyCode.Shift | monaco.KeyCode.KEY_F, () => {
+				const cursorOffset = model.getOffsetAt(
+					editor.getPosition() || monaco.Position.lift({ lineNumber: 0, column: 0 }),
+				);
+				const formatResult = prettier.formatWithCursor(input, {
+					...PRETTIER_OPTIONS,
+					cursorOffset,
+					rangeStart: undefined,
+					rangeEnd: undefined,
+				});
+				editor.setPosition(model.getPositionAt(formatResult.cursorOffset));
+				model.setValue(formatResult.formatted);
+			});
+
 			setInputModel(model);
 			setInput(model.getValue());
 			return () => modelContentChangedConn.dispose();
@@ -259,6 +289,18 @@ export default () => {
 			}
 		});
 	}, []);
+
+	// shift+alt+f to format
+	// React.useEffect(() => {
+	// 	const eventListener = (event: KeyboardEvent) => {
+	// 		if (event.shiftKey && event.altKey && event.code === "KeyF") {
+	// 			formatWithPrettier();
+	// 			event.preventDefault();
+	// 		}
+	// 	};
+	// 	window.addEventListener("keydown", eventListener);
+	// 	return () => window.removeEventListener("keydown", eventListener);
+	// }, [input]);
 
 	const { isDarkTheme } = useThemeContext();
 	const editorTheme = isDarkTheme ? "dark" : "light";
