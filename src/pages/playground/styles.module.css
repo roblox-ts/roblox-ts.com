@@ -1,0 +1,65 @@
+:global .monaco-editor .button {
+	background-color: inherit;
+	border: inherit;
+	box-sizing: inherit;
+	color: inherit;
+	cursor: inherit;
+	display: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+	outline: inherit;
+	padding: inherit;
+	text-align: inherit;
+	text-decoration: inherit;
+	transition: inherit;
+	user-select: inherit;
+	vertical-align: inherit;
+	white-space: inherit;
+}
+
+:global .monaco-editor .button {
+	list-style-type: inherit;
+	font-size: inherit;
+	margin-bottom: inherit;
+	padding-bottom: inherit;
+	padding-top: inherit;
+}
+
+:global .monaco-hover {
+	z-index: 999 !important;
+}
+
+:root {
+	--playground-navbar-height: 40px;
+}
+
+.subNavBar {
+	box-sizing: border-box;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	--ifm-navbar-background-color: var(--ifm-color-emphasis-200);
+	height: var(--playground-navbar-height);
+}
+
+.playground {
+	height: calc(
+		100vh - var(--ifm-navbar-height) - var(--playground-navbar-height)
+	);
+}
+
+.editorWrapper {
+	display: inline-block;
+	height: 100%;
+	width: 50%;
+}
+
+.editor {
+	display: inline-block;
+}
+
+.pointer {
+	cursor: pointer;
+}

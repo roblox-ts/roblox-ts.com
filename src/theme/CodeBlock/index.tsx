@@ -12,7 +12,8 @@ import rangeParser from "parse-numeric-range";
 import usePrismTheme from "@theme/hooks/usePrismTheme";
 import styles from "./styles.module.css";
 import { useThemeConfig } from "@docusaurus/theme-common";
-import lzstring from "lz-string";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { getHashFromCode } from "../../util/hash";
 
 const highlightLinesRangeRegex = /{([\d,-]+)}/;
 
@@ -175,9 +176,8 @@ export default ({ children, className: languageClassName, metastring }) => {
 		setTimeout(() => setShowCopied(false), 2000);
 	};
 
-	const handleCompileCode = () => {
-		window.open(`https://roblox-ts.com/playground/#code/${lzstring.compressToEncodedURIComponent(code)}`);
-	};
+	const playgroundPrefix = useBaseUrl("playground/");
+	const handleCompileCode = () => open(playgroundPrefix + getHashFromCode(code));
 
 	return (
 		<Highlight {...defaultProps} key={String(mounted)} theme={prismTheme} code={code} language={language}>

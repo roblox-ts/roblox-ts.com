@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"declaration": true,
+		"strict": true,
+		"noEmitOnError": true,
+		"rootDir": "src",
+		"outDir": "out",
+		"esModuleInterop": true
+	}
+}

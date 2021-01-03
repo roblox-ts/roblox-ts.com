@@ -1,14 +1,13 @@
-# Dependencies
-/node_modules
+node_modules
+out
 
-# Production
 /build
+/static/rbxts-worker.js
+/static/rbxts-worker.LICENSE.txt
 
-# Generated files
 .docusaurus
 .cache-loader
 
-# Misc
 .DS_Store
 .env.local
 .env.development.local
