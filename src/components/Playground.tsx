@@ -223,11 +223,9 @@ export default () => {
 			editor.setModel(model);
 			const modelContentChangedConn = editor.onDidChangeModelContent(() => setInput(getEditorValue()));
 
-			editor.addCommand(monaco.KeyCode.Alt | monaco.KeyCode.Shift | monaco.KeyCode.KEY_F, () => {
-				const cursorOffset = model.getOffsetAt(
-					editor.getPosition() || monaco.Position.lift({ lineNumber: 0, column: 0 }),
-				);
-				const formatResult = prettier.formatWithCursor(input, {
+			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KEY_F, () => {
+				const cursorOffset = model.getOffsetAt(editor.getPosition() || new monaco.Position(0, 0));
+				const formatResult = prettier.formatWithCursor(model.getValue(), {
 					...PRETTIER_OPTIONS,
 					cursorOffset,
 					rangeStart: undefined,
