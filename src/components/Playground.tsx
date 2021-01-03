@@ -223,6 +223,7 @@ export default () => {
 			editor.setModel(model);
 			const modelContentChangedConn = editor.onDidChangeModelContent(() => setInput(getEditorValue()));
 
+			// shift+alt+f to format
 			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KEY_F, () => {
 				const cursorOffset = model.getOffsetAt(editor.getPosition() || new monaco.Position(0, 0));
 				const formatResult = prettier.formatWithCursor(model.getValue(), {
@@ -287,18 +288,6 @@ export default () => {
 			}
 		});
 	}, []);
-
-	// shift+alt+f to format
-	// React.useEffect(() => {
-	// 	const eventListener = (event: KeyboardEvent) => {
-	// 		if (event.shiftKey && event.altKey && event.code === "KeyF") {
-	// 			formatWithPrettier();
-	// 			event.preventDefault();
-	// 		}
-	// 	};
-	// 	window.addEventListener("keydown", eventListener);
-	// 	return () => window.removeEventListener("keydown", eventListener);
-	// }, [input]);
 
 	const { isDarkTheme } = useThemeContext();
 	const editorTheme = isDarkTheme ? "dark" : "light";
