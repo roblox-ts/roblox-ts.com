@@ -47,5 +47,3 @@ addEventListener("message", (event: MessageEvent<PlaygroundEvent>) => {
 });
 
 console.log(`roblox-ts@${COMPILER_VERSION}`);
-// @ts-expect-error
-postMessage({ ready: true });
