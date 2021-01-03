@@ -4,11 +4,11 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import Editor, { EditorDidMount, monaco } from "@monaco-editor/react";
 import useThemeContext from "@theme/hooks/useThemeContext";
 import type { editor } from "monaco-editor";
+import path from "path";
 import React from "react";
 import styles from "../pages/playground/styles.module.css";
 import { getCodeFromHash, getHashFromCode } from "../util/hash";
 import { Lazy } from "../util/Lazy";
-import path from "path";
 
 const SHARED_EDITOR_OPTIONS: editor.IEditorConstructionOptions = {
 	minimap: { enabled: false },
@@ -248,6 +248,16 @@ export default () => {
 	// load core packages
 	React.useEffect(() => {
 		void Promise.allSettled(CORE_PACKAGES.map(v => downloadPackage(v))).then(() => setCorePackagesLoaded(true));
+	}, []);
+
+	// ctrl+s to save
+	React.useEffect(() => {
+		window.addEventListener("keydown", event => {
+			if ((event.ctrlKey || event.metaKey) && event.code === "KeyS") {
+				event.preventDefault();
+				void navigator.clipboard.writeText(location.href);
+			}
+		});
 	}, []);
 
 	const { isDarkTheme } = useThemeContext();
