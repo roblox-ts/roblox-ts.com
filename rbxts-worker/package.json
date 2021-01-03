@@ -9,7 +9,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"roblox-ts": "file:../../roblox-ts"
+		"roblox-ts": "^1.0.0-beta.12"
 	},
 	"devDependencies": {
 		"webpack": "^5.11.1",
