@@ -5,12 +5,14 @@ import Playground from "../../components/Playground";
 
 export default () => {
 	return (
-		<BrowserOnly>
-			<div style={{ overflow: "hidden" }}>
-				<Layout noFooter>
-					<Playground />
-				</Layout>
-			</div>
-		</BrowserOnly>
+		<div style={{ overflow: "hidden" }}>
+			<BrowserOnly fallback={<div>roblox-ts playground</div>}>
+				{() => (
+					<Layout noFooter>
+						<Playground />
+					</Layout>
+				)}
+			</BrowserOnly>
+		</div>
 	);
 };
