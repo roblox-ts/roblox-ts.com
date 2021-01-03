@@ -18,3 +18,15 @@ jobs:
 
       - name: Run ESLint
         run: npm run eslint
+
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install NPM dependencies
+        uses: bahmutov/npm-install@v1.4.5
+
+      - name: Run Build
+        run: npm run build
