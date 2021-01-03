@@ -57,6 +57,11 @@ interface PackageJson {
 }
 
 async function downloadFile(filePath: string) {
+	const parts = filePath.split("/");
+	if (!parts[1].includes("@")) {
+		parts[1] += "@latest";
+	}
+	filePath = parts.join("/");
 	return fetch(`${JS_DELIVR}/${filePath}`);
 }
 
