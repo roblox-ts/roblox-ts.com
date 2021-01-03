@@ -1,4 +1,4 @@
-name: Lint
+name: CI
 
 on:
   pull_request:
@@ -19,7 +19,7 @@ jobs:
       - name: Run ESLint
         run: npm run eslint
 
-  ci:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -27,6 +27,14 @@ jobs:
 
       - name: Install NPM dependencies
         uses: bahmutov/npm-install@v1.4.5
+
+      - name: Update roblox-ts
+        run: |
+          cd rbxts-worker
+          npm install roblox-ts@latest
+
+      - name: Build Worker
+        run: npm run build:rbxts-worker
 
       - name: Run Build
         run: npm run build
