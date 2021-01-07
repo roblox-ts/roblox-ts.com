@@ -23,7 +23,8 @@
 				"guides/lua-tuple",
 				"guides/callbacks-vs-methods",
 				"guides/lua-packages",
-				"guides/typescript-packages"
+				"guides/typescript-packages",
+				"guides/typescript-transformers"
 			]
 		}
 	]
