@@ -1,0 +1,17 @@
+---
+id: datatype-math
+title: DataType Math
+---
+
+[Roblox features a bunch of "DataType" classes](https://developer.roblox.com/en-us/api-reference/data-types) and many of these use operator overloading for math operations. i.e. `Vector2`, `Vector3`, `CFrame`
+
+Unfortunately, TypeScript does not have a way to describe operator overloading with types.
+
+To get around this, roblox-ts adds four macro methods `.add()`, `.sub()`, `.mul()`, and `.div()` to DataType classes which support math operators.
+
+- `a.add(b)` compiles to `a + b`
+- `a.sub(b)` compiles to `a - b`
+- `a.mul(b)` compiles to `a * b`
+- `a.div(b)` compiles to `a / b`
+
+[You can see an up to date list of classes which support math operators here.](https://github.com/roblox-ts/types/blob/master/include/macro_math.d.ts)
