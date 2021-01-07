@@ -25,10 +25,23 @@ print(v3.X, v3.Y, v3.Z); // 1 2 3
 
 Every Roblox class (`Instance`, `Part`, `Humanoid`, `Workspace`, etc.) is provided as a global/ambient type. You can use these types to describe variables, function parameters, function return types, and just about anything else in your code.
 
-For example:
 ```ts
 const part: Part = new Instance("Part");
 print(part.Size);
+```
+
+```ts
+function takesBasePart(basePart: BasePart) {
+    return basePart.Size.X + basePart.Size.Y + basePart.Size.Z;
+}
+
+// we can use any type which inherits from BasePart!
+takesBasePart(new Instance("Seat"));
+takesBasePart(new Instance("Part"));
+takesBasePart(new Instance("WedgePart"));
+
+// Humanoid does not inherit from BasePart, so this will error!
+// takesBasePart(new Instance("Humanoid"));
 ```
 
 ### Exceptions
@@ -37,7 +50,6 @@ Deprecated types are usually not provided. Exceptions to this rule are made for 
 
 One notable exception: `Instance.Changed` is not provided as it conflicts with inheritance. Usually, you want to use `Instance.GetPropertyChangedSignal()` instead.
 
-For example,
 ```ts
 import { Workspace } from "@rbxts/services";
 Workspace.GetPropertyChangedSignal("DistributedGameTime").Connect(() => {
@@ -155,7 +167,6 @@ type AllInstances = Instances[keyof Instances];
 
 You can use any of these utility interfaces with generic functions. This is useful for taking an argument string and returning a matching instance type.
 
-For example:
 ```ts
 import { Workspace } from "@rbxts/services";
 
