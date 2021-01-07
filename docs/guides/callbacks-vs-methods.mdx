@@ -14,14 +14,14 @@ However, in TypeScript, all functions inside of objects are called as simply `fo
 
 ## Callbacks
 
-1. Function declarations are considered **callbacks**.
+- Function declarations are considered **callbacks**.
 ```ts
 function foo(bar: number) {}
 const obj = { foo: foo };
 obj.foo(123); // obj.foo(123)
 ```
 
-2. Arrow function expressions are considered **callbacks**.
+- Arrow function expressions are considered **callbacks**.
 ```ts
 const obj = {
 	foo: (bar: number) => {}
@@ -31,7 +31,7 @@ obj.foo(123); // obj.foo(123)
 
 ## Methods
 
-3. Method declarations are considered **methods**.
+- Method declarations are considered **methods**.
 ```ts
 const obj = {
 	foo(bar: number) {}
@@ -39,7 +39,7 @@ const obj = {
 obj.foo(123); // obj:foo(123)
 ```
 
-4. Function expressions inside of object literals are considered **methods**.
+- Function expressions inside of object literals are considered **methods**.
 ```ts
 const obj = {
 	foo: function (bar: number) {}
@@ -49,7 +49,7 @@ obj.foo(123); // obj:foo(123)
 
 ## Overrides
 
-5. If a function has a parameter `this: void`, it is _always_ considered to be a **callback**.
+- If a function has a parameter `this: void`, it is _always_ considered to be a **callback**.
 ```ts
 const obj = {
 	foo(this: void, bar: number) {}
@@ -57,7 +57,7 @@ const obj = {
 obj.foo(123); // obj.foo(123)
 ```
 
-6. If a function has a parameter `this` which is typed as anything except `void`, it is _always_ considered to be a **method**.
+- If a function has a parameter `this` which is typed as anything except `void`, it is _always_ considered to be a **method**.
 ```ts
 declare const obj: {
     foo: (this: typeof obj, bar: number) => void;
