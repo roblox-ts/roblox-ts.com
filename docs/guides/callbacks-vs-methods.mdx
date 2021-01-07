@@ -1,6 +1,6 @@
 ---
-id: methods-vs-callbacks
-title: Methods vs Callbacks
+id: callbacks-vs-methods
+title: Callbacks vs Methods
 ---
 
 To begin, let's quickly define two Luau terms:
@@ -10,6 +10,9 @@ To begin, let's quickly define two Luau terms:
 	- The parameter `self` is implicitly passed as the value of `foo`.
 
 However, in TypeScript, all functions inside of objects are called as simply `foo.bar()`. To decide whether or not a function call should compile using `.` or `:`, roblox-ts follows a simple set of rules:
+
+
+### Callbacks
 
 1. Function declarations are considered **callbacks**.
 ```ts
@@ -26,6 +29,8 @@ const obj = {
 obj.foo(123); // obj.foo(123)
 ```
 
+### Methods
+
 3. Method declarations are considered **methods**.
 ```ts
 const obj = {
@@ -41,6 +46,8 @@ const obj = {
 }
 obj.foo(123); // obj:foo(123)
 ```
+
+### Overrides
 
 5. If a function has a parameter `this: void`, it is _always_ considered to be a **callback**.
 ```ts

@@ -18,7 +18,7 @@
 			"label": "Guides",
 			"items": [
 				"guides/indexing-children",
-				"guides/methods-vs-callbacks",
+				"guides/callbacks-vs-methods",
 				"guides/lua-tuple"
 			]
 		}
