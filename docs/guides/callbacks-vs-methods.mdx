@@ -12,7 +12,7 @@ To begin, let's quickly define two Luau terms:
 However, in TypeScript, all functions inside of objects are called as simply `foo.bar()`. To decide whether or not a function call should compile using `.` or `:`, roblox-ts follows a simple set of rules:
 
 
-### Callbacks
+## Callbacks
 
 1. Function declarations are considered **callbacks**.
 ```ts
@@ -29,7 +29,7 @@ const obj = {
 obj.foo(123); // obj.foo(123)
 ```
 
-### Methods
+## Methods
 
 3. Method declarations are considered **methods**.
 ```ts
@@ -47,7 +47,7 @@ const obj = {
 obj.foo(123); // obj:foo(123)
 ```
 
-### Overrides
+## Overrides
 
 5. If a function has a parameter `this: void`, it is _always_ considered to be a **callback**.
 ```ts
