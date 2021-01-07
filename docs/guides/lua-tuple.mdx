@@ -4,7 +4,7 @@ title: LuaTuple<T>
 ---
 
 
-### The Problem
+## The Problem
 
 Given the following Luau code, how do we type it?
 
@@ -23,7 +23,7 @@ declare function foo(): [string, number];
 
 However, this is not correct! TypeScript tuples are arrays, not multiple returns. It would expect the Luau to be `return { "abc", 123 }`.
 
-### The Solution
+## The Solution
 
 To solve this problem, roblox-ts introduces a special type called `LuaTuple<T>`. This is typed as:
 ```ts
@@ -36,7 +36,7 @@ When the compiler sees this type as a function return type, it can infer that it
 
 In general, this type is used for typing existing Luau modules or the Roblox API.
 
-### Examples
+## Examples
 
 If you immediately destructure the result, it will be compiled into a simple variable declaration from a multiple return.
 ```ts
@@ -59,7 +59,7 @@ import { Players } from "@rbxts/services";
 const character = Players.LocalPlayer.Character || Players.LocalPlayer.CharacterAdded.Wait()[0];
 ```
 
-### Using `LuaTuple<T>` in Your Own Code
+## Using `LuaTuple<T>` in Your Own Code
 
 The compiler supports using `LuaTuple<T>` in outside of type definitions, but it's generally not recommended. However, if you're writing code that is consumed by an existing Luau module this can be useful!
 
