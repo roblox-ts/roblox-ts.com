@@ -65,7 +65,6 @@ The compiler supports using `LuaTuple<T>` in outside of type definitions, but it
 
 Unfortunately, you have to assert the type of your return because of the `LUA_TUPLE` tag.
 
-For example:
 ```ts
 function hasMultipleReturns(): LuaTuple<[string, number]> {
 	// this will compile into `return "abc", 123`

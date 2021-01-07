@@ -13,7 +13,6 @@ All global values from the Roblox API are present in roblox-ts typings.
 
 However, for `.new()` functions like `Vector3.new()` or `CFrame.new()`, these should instead be called with the `new` operator. `new T(...)` will always compile to `T.new(...)`.
 
-For example:
 ```ts
 const v3 = new Vector3(1, 2, 3); // compiles to Vector3.new(1, 2, 3)
 print(v3.X, v3.Y, v3.Z); // 1 2 3

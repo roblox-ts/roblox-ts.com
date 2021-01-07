@@ -55,7 +55,6 @@ function foo(value: Instance) {
 ### `opcall()`
 While `pcall` is available, it returns the type `LuaTuple<[false, string] | [true, T]>` which is difficult to use!
 
-For example,
 ```ts
 const [success, valueOrError] = pcall(() => 123);
 // valueOrError is string | number
