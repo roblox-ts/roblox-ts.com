@@ -29,6 +29,20 @@ coroutine.wrap(() => {
 })();
 ```
 
+You can find a list of available globals on the Roblox Developer Hub:
+- [Lua Globals](https://developer.roblox.com/api-reference/lua-docs/Lua-Globals)
+- [Roblox Globals](https://developer.roblox.com/api-reference/lua-docs/Roblox-Globals)
+- [bit32](https://developer.roblox.com/api-reference/lua-docs/bit32)
+- [coroutine](https://developer.roblox.com/api-reference/lua-docs/coroutine)
+- [debug](https://developer.roblox.com/api-reference/lua-docs/debug)
+- [math](https://developer.roblox.com/api-reference/lua-docs/math)
+- [os](https://developer.roblox.com/api-reference/lua-docs/os)
+- [string](https://developer.roblox.com/api-reference/lua-docs/string)
+- [table](https://developer.roblox.com/api-reference/lua-docs/table)
+- [utf8](https://developer.roblox.com/api-reference/lua-docs/utf8)
+
+Parts of `table` and `string` have been intentionally omitted.
+
 ### Constructors
 
 `.new()` functions (like `Vector3.new()` or `CFrame.new()`) should instead be called with the `new` operator. `new T(...)` will always compile to `T.new(...)`.
@@ -54,8 +68,7 @@ print(part.Color);
 Every Roblox class (`Instance`, `Part`, `Humanoid`, `Workspace`, etc.) is provided as a global/ambient type. You can use these types to describe variables, function parameters, function return types, and just about anything else in your code.
 
 ```ts
-let part: Part | undefined;
-part = new Instance("Part");
+const part: Part = new Instance("Part");
 print(part.Size);
 ```
 
