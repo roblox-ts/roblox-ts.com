@@ -13,11 +13,34 @@ In general, everything from the Roblox API is available for use, unless it is de
 
 All global values from the Roblox API are present in roblox-ts typings.
 
-However, for `.new()` functions like `Vector3.new()` or `CFrame.new()`, these should instead be called with the `new` operator. `new T(...)` will always compile to `T.new(...)`.
+```ts
+print("Hello World!");
+```
+
+```ts
+const zero = math.sin(math.pi);
+```
+
+```ts
+coroutine.wrap(() => {
+    print("A");
+    wait(1);
+    print("B");
+})();
+```
+
+### Constructors
+
+`.new()` functions (like `Vector3.new()` or `CFrame.new()`) should instead be called with the `new` operator. `new T(...)` will always compile to `T.new(...)`.
 
 ```ts
 const v3 = new Vector3(1, 2, 3); // compiles to Vector3.new(1, 2, 3)
 print(v3.X, v3.Y, v3.Z); // 1 2 3
+```
+
+```ts
+const part = new Instance("Part");
+print(part.Color);
 ```
 
 ### nil
@@ -31,7 +54,8 @@ print(v3.X, v3.Y, v3.Z); // 1 2 3
 Every Roblox class (`Instance`, `Part`, `Humanoid`, `Workspace`, etc.) is provided as a global/ambient type. You can use these types to describe variables, function parameters, function return types, and just about anything else in your code.
 
 ```ts
-const part: Part = new Instance("Part");
+let part: Part | undefined;
+part = new Instance("Part");
 print(part.Size);
 ```
 
