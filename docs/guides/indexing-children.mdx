@@ -11,7 +11,7 @@ The problem here is that you are making an assumption that `Zombie` is something
 
 The simplest solution to this problem is to extend the types of your services to describe the state of your DataModel.
 
-We can do this through "ambient type declarations". An ambient type definition file is a `.d.ts` file which contains no imports or exports. This file becomes global and the types can be used anywhere in your code.
+We can do this through "ambient type declarations". An ambient type definition file is a `.d.ts` file which contains no imports or exports. This file becomes global and the types are available in every file without importing.
 
 We can name this file anything and put it anywhere in `src`, but for this example we'll stick to `src/services.d.ts`.
 
@@ -21,6 +21,12 @@ For example:
 interface Workspace extends Instance {
 	Zombie: Model;
 }
+```
+
+```ts
+// some other file
+import { Workspace } from "@rbxts/services";
+print(Workspace.Zombie);
 ```
 
 [playground-friendly example](https://roblox-ts.com/playground/#code/KYDwDg9gTgLgBAbwL4G4BQATYBjANgQymDgHNcIAjfXRNOeuASwDsZgoAzfbYgdWgDWAZzDdioNswxC4ASWZCY+Zj1oN1cAFoQAthUbAAXHACyELLnTqkaG2mwQF8AF679xALyl8O4ADp+KGFRHj9tPQN0MCgWGAAKVwjgAEp0IA)
@@ -33,6 +39,12 @@ interface Workspace extends Instance {
 		Humanoid: Humanoid;
 	};
 }
+```
+
+```ts
+// some other file
+import { Workspace } from "@rbxts/services";
+print(Workspace.Zombie.Humanoid);
 ```
 
 [playground-friendly example](https://roblox-ts.com/playground/#code/KYDwDg9gTgLgBAbwL4G4BQATYBjANgQymDgHNcIAjfXRNASAEsA7GYKAM322IHVoBrAM5guxUKyYZBcAJJNBMfE2606dAFoQAthQbAAXHACyELDQBkqtQAkArlqUQGGQ3YdMnGdGtT0kafzRsCHl4AAt7R2c4AF5SfC1gADo+KCERbiTNHT0ktyivNDAoZhgACgj3TwBKdCA)
