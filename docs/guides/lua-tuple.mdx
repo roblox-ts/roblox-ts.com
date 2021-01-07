@@ -2,3 +2,73 @@
 id: lua-tuple
 title: LuaTuple<T>
 ---
+
+
+### The Problem
+
+Given the following Luau code, how do we type it?
+
+```lua
+local function foo()
+	return "abc", 123
+end
+```
+
+Multiple returns are a common occurrence in Luau, but not really a concept in TypeScript. [TypeScript does have a feature called "tuples"](https://www.typescriptlang.org/docs/handbook/basic-types.html#tuple) which allow for fixed length array types with an individual type for each index.
+
+So we might type this as:
+```ts
+declare function foo(): [string, number];
+```
+
+However, this is not correct! TypeScript tuples are arrays, not multiple returns. It would expect the Luau to be `return { "abc", 123 }`.
+
+### The Solution
+
+To solve this problem, roblox-ts introduces a special type called `LuaTuple<T>`. This is typed as:
+```ts
+type LuaTuple<T extends Array<any>> = T & { readonly LUA_TUPLE: never };
+```
+
+`LUA_TUPLE` is used to ensure the type name is not lost or cast into an `Array<T>` accidentally.
+
+When the compiler sees this type as a function return type, it can infer that it's meant to be a multiple return.
+
+In general, this type is used for typing existing Luau modules or the Roblox API.
+
+### Examples
+
+If you immediately destructure the result, it will be compiled into a simple variable declaration from a multiple return.
+```ts
+const [actualTimeYielded, totalTime] = wait(1);
+```
+
+If you do _not_ destructure the result, the compiler will wrap the return in `{ }` and turn the result into an array object.
+```ts
+const result = wait(1);
+const actualTimeYielded = result[0];
+const totalTime = result[1];
+```
+
+You can also index the result immediately after the function call and receive an optimized emit:
+```ts
+import { Players } from "@rbxts/services";
+
+// .Wait() here returns LuaTuple<[character: Model]>,
+// so we need to use `[0]` to grab the first (and only) element.
+const character = Players.LocalPlayer.Character || Players.LocalPlayer.CharacterAdded.Wait()[0];
+```
+
+### Using `LuaTuple<T>` in Your Own Code
+
+The compiler supports using `LuaTuple<T>` in outside of type definitions, but it's generally not recommended. However, if you're writing code that is consumed by an existing Luau module this can be useful!
+
+Unfortunately, you have to assert the type of your return because of the `LUA_TUPLE` tag.
+
+For example:
+```ts
+function hasMultipleReturns(): LuaTuple<[number, string]> {
+	// this will compile into `return "abc", 123`
+	return ["abc", 123] as unknown as LuaTuple<[number, string]>
+}
+```
