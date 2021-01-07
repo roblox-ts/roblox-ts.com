@@ -21,9 +21,7 @@
 		"editor.wordWrap": "bounded",
 		"editor.wordWrapColumn": 120
 	},
-	"cSpell.enableFiletypes": [
-		"mdx"
-	],
+	"cSpell.enableFiletypes": ["mdx"],
 	"cSpell.words": [
 		"destructure",
 		"evaera",
@@ -32,6 +30,7 @@
 		"roblox",
 		"rojo",
 		"tada",
-		"validark"
+		"validark",
+		"simplesignals"
 	]
 }
