@@ -15,5 +15,21 @@
 		"editor.formatOnSave": false,
 		"editor.wordWrap": "bounded",
 		"editor.wordWrapColumn": 120
-	}
+	},
+	"[mdx]": {
+		"editor.formatOnSave": false,
+		"editor.wordWrap": "bounded",
+		"editor.wordWrapColumn": 120
+	},
+	"cSpell.enableFiletypes": [
+		"mdx"
+	],
+	"cSpell.words": [
+		"destructure",
+		"rbxts",
+		"rbxtsc",
+		"roblox",
+		"rojo",
+		"tada"
+	]
 }
