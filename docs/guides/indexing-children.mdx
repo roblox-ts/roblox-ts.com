@@ -17,13 +17,13 @@ We can name this file anything and put it anywhere in `src`, but for this exampl
 
 For example:
 
-```ts
+```ts title="src/services.d.ts"
 interface Workspace extends Instance {
 	Zombie: Model;
 }
 ```
 
-```ts
+```ts {3}
 // some other file
 import { Workspace } from "@rbxts/services";
 print(Workspace.Zombie);
@@ -33,7 +33,7 @@ print(Workspace.Zombie);
 
 If you want to define children inside of Zombie, you can do this with an intersection object type:
 
-```ts
+```ts title="src/services.d.ts"
 interface Workspace extends Instance {
 	Zombie: Model & {
 		Humanoid: Humanoid;
@@ -41,7 +41,7 @@ interface Workspace extends Instance {
 }
 ```
 
-```ts
+```ts {3}
 // some other file
 import { Workspace } from "@rbxts/services";
 print(Workspace.Zombie.Humanoid);
@@ -72,7 +72,7 @@ https://www.roblox.com/library/3379119778/rbxts-object-to-tree
 
 ![](../../static/img/guides/indexing-children/type-definition.png)
 
-```ts
+```ts title="types/ReplicatedStorage.d.ts"
 interface ReplicatedStorage extends Instance {
 	Zombie: Model & {
 		["Left Leg"]: Part;
