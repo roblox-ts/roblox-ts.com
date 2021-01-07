@@ -7,7 +7,7 @@ New roblox-ts users often ask, "How can I index a child in the game like `game.W
 
 The problem here is that you are making an assumption that `Zombie` is something that exists inside `Workspace`. In Roblox, if you try to index the child of an instance that does not exist, it results in an error. Even if roblox-ts allowed you to do this, `Zombie` would be of type `Instance` which is not particularly helpful!
 
-### Creating `services.d.ts`
+## Creating `services.d.ts`
 
 The simplest solution to this problem is to extend the types of your services to describe the state of your DataModel.
 
@@ -38,7 +38,9 @@ interface Workspace extends Instance {
 [playground-friendly example](https://roblox-ts.com/playground/#code/KYDwDg9gTgLgBAbwL4G4BQATYBjANgQymDgHNcIAjfXRNASAEsA7GYKAM322IHVoBrAM5guxUKyYZBcAJJNBMfE2606dAFoQAthQbAAXHACyELDQBkqtQAkArlqUQGGQ3YdMnGdGtT0kafzRsCHl4AAt7R2c4AF5SfC1gADo+KCERbiTNHT0ktyivNDAoZhgACgj3TwBKdCA)
 
 
-### "rbxts-object-to-tree" plugin by Validark
+## "rbxts-object-to-tree" plugin by Validark
+
+### Usage
 
 Writing out long `services.d.ts` files is tedious! And a mismatch between your type definition files and actual game could be dangerous.
 
@@ -48,15 +50,15 @@ https://www.roblox.com/library/3379119778/rbxts-object-to-tree
 
 1. Simply select the service you want to generate typings for in the Explorer pane.
 
-![](https://i.imgur.com/0JZNhRX.png)
+![](../../static/img/guides/indexing-children/ReplicatedStorage.png)
 
 2. Click "TS types" and "GENERATE"
 
-![](https://i.imgur.com/kqZlRbe.png)
+![](../../static/img/guides/indexing-children/rbxts-object-to-tree.png)
 
 3. Your type definition file will be created in Lighting and you can copy that over into `src/services.d.ts`
 
-![](https://i.imgur.com/TLlAF3g.png)
+![](../../static/img/guides/indexing-children/type-definition.png)
 
 ```ts
 interface ReplicatedStorage extends Instance {
@@ -77,4 +79,12 @@ interface ReplicatedStorage extends Instance {
 }
 ```
 
-io-serve?
+### io-serve
+
+Alternatively, to make things even more automatic you can use [io-serve](https://www.npmjs.com/package/io-serve) by Evaera to automatically write the .d.ts files to your filesystem.
+
+First, make sure HTTP requests are enabled for your game in Game Settings or by running `game.HttpService.HttpEnabled = true` in the command bar.
+
+Then, simply just run `npx io-serve` in your project folder before hitting "GENERATE" in rbxts-object-to-tree. `npx` will automatically download and then run io-serve for you.
+
+This will generate a file located at `types/ReplicatedStorage.d.ts`.
