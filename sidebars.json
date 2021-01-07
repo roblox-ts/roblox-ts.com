@@ -20,7 +20,9 @@
 				"guides/indexing-children",
 				"guides/datatype-math",
 				"guides/lua-tuple",
-				"guides/callbacks-vs-methods"
+				"guides/callbacks-vs-methods",
+				"guides/lua-packages",
+				"guides/typescript-packages"
 			]
 		}
 	]
