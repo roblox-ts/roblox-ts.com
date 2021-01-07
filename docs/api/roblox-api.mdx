@@ -43,6 +43,31 @@ takesBasePart(new Instance("WedgePart"));
 // takesBasePart(new Instance("Humanoid"));
 ```
 
+### RemoteEvent Types
+
+New roblox-ts users are usually confused why `RemoteEvent.OnServerEvent` only allows `unknown` arguments.
+
+```ts
+const remoteEvent = new Instance("RemoteEvent");
+
+// this works fine
+remoteEvent.OnClientEvent.Connect((points: number) => {});
+
+// changing unknown to number causes an error!
+remoteEvent.OnServerEvent.Connect((player: Player, points: unknown) => {});
+```
+
+The reason for this is because client-to-server networking _cannot_ be trusted. Exploiters or cheaters in your game can fire your RemoteEvent functions with whatever data they want.
+
+If your code is expecting `points` to be a `number`, but the client sends a `nil` value, the server will error. By sending a large number of requests very quickly which result in errors, an exploiter could crash your game server and disconnect all of your players.
+
+Instead, you should assume your inputs can be any possible value. You can verify the arguments with a type validation package like [`@rbxts/t`](https://www.npmjs.com/package/@rbxts/t).
+
+Alternatively, the community has created a few networking libraries which make the experience much nicer!
+- [@rbxts/net](https://www.npmjs.com/package/@rbxts/net)
+- [@rbxts/networked-signals](https://www.npmjs.com/package/@rbxts/networked-signals)
+- [@rbxts/simplesignals](https://www.npmjs.com/package/@rbxts/simplesignals)
+
 ### Exceptions
 
 Deprecated types are usually not provided. Exceptions to this rule are made for API members which do not have a non-deprecated functional equivalent.
