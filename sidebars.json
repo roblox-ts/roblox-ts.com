@@ -11,7 +11,8 @@
 				"api/roblox-api",
 				"api/identifiers",
 				"api/constructors",
-				"api/functions"
+				"api/functions",
+				"api/utility-types"
 			]
 		},
 		{
