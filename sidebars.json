@@ -17,9 +17,10 @@
 			"type": "category",
 			"label": "Guides",
 			"items": [
-				"guides/callbacks-vs-methods",
 				"guides/indexing-children",
-				"guides/lua-tuple"
+				"guides/datatype-math",
+				"guides/lua-tuple",
+				"guides/callbacks-vs-methods"
 			]
 		}
 	]
