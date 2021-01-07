@@ -2,3 +2,58 @@
 id: methods-vs-callbacks
 title: Methods vs Callbacks
 ---
+
+To begin, let's quickly define two Luau terms:
+
+1. A "callback" is a function that is called in the form of `foo.bar()`.
+1. A "method" is a function that is called in the form of `foo:bar()`.
+	- The parameter `self` is implicitly passed as the value of `foo`.
+
+However, in TypeScript, all functions inside of objects are called as simply `foo.bar()`. To decide whether or not a function call should compile using `.` or `:`, roblox-ts follows a simple set of rules:
+
+1. Function declarations are considered **callbacks**.
+```ts
+function foo(bar: number) {}
+const obj = { foo: foo };
+obj.foo(123); // obj.foo(123)
+```
+
+2. Arrow function expressions are considered **callbacks**.
+```ts
+const obj = {
+	foo: (bar: number) => {}
+}
+obj.foo(123); // obj.foo(123)
+```
+
+3. Method declarations are considered **methods**.
+```ts
+const obj = {
+	foo(bar: number) {}
+}
+obj.foo(123); // obj:foo(123)
+```
+
+4. Function expressions inside of object literals are considered **methods**.
+```ts
+const obj = {
+	foo: function (bar: number) {}
+}
+obj.foo(123); // obj:foo(123)
+```
+
+5. If a function has a parameter `this: void`, it is _always_ considered to be a **callback**.
+```ts
+const obj = {
+	foo(this: void, bar: number) {}
+}
+obj.foo(123); // obj.foo(123)
+```
+
+6. If a function has a parameter `this` which is typed as anything except `void`, it is _always_ considered to be a **method**.
+```ts
+declare const obj: {
+    foo: (this: typeof obj, bar: number) => void;
+}
+obj.foo(123); // obj:foo(123)
+```
