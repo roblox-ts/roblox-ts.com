@@ -24,13 +24,19 @@
 	"cSpell.enableFiletypes": ["mdx"],
 	"cSpell.words": [
 		"destructure",
+		"errored",
 		"evaera",
+		"opcall",
+		"pcall",
 		"rbxts",
 		"rbxtsc",
 		"roblox",
 		"rojo",
+		"setmetatable",
+		"simplesignals",
 		"tada",
-		"validark",
-		"simplesignals"
+		"ts",
+		"ts's",
+		"validark"
 	]
 }
