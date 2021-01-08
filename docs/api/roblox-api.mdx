@@ -45,7 +45,9 @@ Parts of `table` and `string` have been intentionally omitted.
 
 ### Constructors
 
-`.new()` functions (like `Vector3.new()` or `CFrame.new()`) should instead be called with the `new` operator. `new T(...)` will always compile to `T.new(...)`.
+`.new()` functions (like `Vector3.new()` or `CFrame.new()`) should instead be called with the `new` operator.
+
+`new T(...)` will always compile to `T.new(...)`.
 
 ```ts
 const v3 = new Vector3(1, 2, 3); // compiles to Vector3.new(1, 2, 3)
