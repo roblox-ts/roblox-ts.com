@@ -12,7 +12,9 @@ Enter your npm username below and you will be added to the "@rbxts" npm organiza
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<script>{`function onSubmit(token) { document.getElementById("org-form").submit(); }`}</script>
+<>{(()=>{
+	globalThis.onSubmit = (token) => document.getElementById("org-form").submit()
+})()}</>
 
 <form
 	id="org-form"
