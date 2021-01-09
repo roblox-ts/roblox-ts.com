@@ -1,0 +1,35 @@
+---
+title: Join Org
+---
+
+# Join Org
+
+Enter your npm username below and you will be added to our npm organization.
+
+See [our guide](/docs/guides/typescript-packages) on publishing packages for more information.
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>{`const onSubmit = token => document.getElementById("org-form").submit();`}</script>
+
+<form
+	id="org-form"
+	className="package-search"
+	action="https://us-central1-roblox-ts.cloudfunctions.net/org-invite"
+	method="post"
+>
+	<input
+		type="text"
+		className="no-bottom"
+		name="username"
+		placeholder="npm username"
+		required
+	/>
+	<button
+		className="g-recaptcha"
+		data-sitekey="6LeJpLIUAAAAANNNvHEWfIBZR08Tamp06xD4yIBy"
+		data-callback="onSubmit"
+	>
+		Submit
+	</button>
+</form>
