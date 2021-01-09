@@ -10,7 +10,7 @@ See [our guide](/docs/guides/typescript-packages) on publishing packages for mor
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<script>{`const onSubmit = token => document.getElementById("org-form").submit();`}</script>
+<script>{`function onSubmit(token) { document.getElementById("org-form").submit(); }`}</script>
 
 <form
 	id="org-form"
