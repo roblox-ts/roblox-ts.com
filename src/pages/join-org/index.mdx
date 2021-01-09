@@ -4,9 +4,11 @@ title: Join Org
 
 # Join Org
 
-Enter your npm username below and you will be added to our npm organization.
+:::note
+See the [guide on publishing packages](/docs/guides/typescript-packages) for more information.
+:::
 
-See [our guide](/docs/guides/typescript-packages) on publishing packages for more information.
+Enter your npm username below and you will be added to the "@rbxts" npm organization.
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
@@ -14,13 +16,11 @@ See [our guide](/docs/guides/typescript-packages) on publishing packages for mor
 
 <form
 	id="org-form"
-	className="package-search"
 	action="https://us-central1-roblox-ts.cloudfunctions.net/org-invite"
 	method="post"
 >
 	<input
 		type="text"
-		className="no-bottom"
 		name="username"
 		placeholder="npm username"
 		required
