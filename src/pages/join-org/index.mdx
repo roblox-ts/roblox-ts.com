@@ -12,21 +12,19 @@ Enter your npm username below and you will be added to the "@rbxts" npm organiza
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<>{(()=>{
-	globalThis.onSubmit = (token) => document.getElementById("org-form").submit()
-})()}</>
+<>
+	{(() => {
+		globalThis.onSubmit = (token) =>
+			document.getElementById("org-form").submit();
+	})()}
+</>
 
 <form
 	id="org-form"
 	action="https://us-central1-roblox-ts.cloudfunctions.net/org-invite"
 	method="post"
 >
-	<input
-		type="text"
-		name="username"
-		placeholder="npm username"
-		required
-	/>
+	<input type="text" name="username" placeholder="npm username" required />
 	<button
 		className="g-recaptcha"
 		data-sitekey="6LeJpLIUAAAAANNNvHEWfIBZR08Tamp06xD4yIBy"
