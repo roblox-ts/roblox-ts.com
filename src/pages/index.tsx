@@ -71,7 +71,7 @@ for (const obj of CollectionService.GetTagged("Lava")) {
 
 function Feature({ title, description }: FeatureProps) {
 	return (
-		<div className={`col col--4`}>
+		<div className={`col col--4 ${styles.featureWrapper}`}>
 			<div className={`card ${styles.feature}`}>
 				<div className="card__header">
 					<h3>{title}</h3>
