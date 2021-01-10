@@ -36,9 +36,13 @@
 		"setmetatable",
 		"simplesignals",
 		"tada",
+		"textbutton",
+		"textlabel",
 		"ts",
 		"ts's",
+		"uilistlayout",
 		"unioned",
-		"validark"
+		"validark",
+		"viewportframe"
 	]
 }

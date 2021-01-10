@@ -19,10 +19,11 @@
 			"type": "category",
 			"label": "Guides",
 			"items": [
-				"guides/indexing-children",
-				"guides/datatype-math",
-				"guides/lua-tuple",
 				"guides/callbacks-vs-methods",
+				"guides/datatype-math",
+				"guides/indexing-children",
+				"guides/lua-tuple",
+				"guides/roact-jsx",
 				"guides/lua-packages",
 				"guides/typescript-packages",
 				"guides/typescript-transformers"

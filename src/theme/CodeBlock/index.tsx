@@ -15,6 +15,8 @@ import { useThemeConfig } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { getHashFromCode } from "../../util/hash";
 
+const TYPESCRIPT_LANGUAGE_IDS = new Set(["typescript", "ts", "typescriptreact", "tsx"]);
+
 const highlightLinesRangeRegex = /{([\d,-]+)}/;
 
 const getHighlightDirectiveRegex = (languages = ["js", "jsBlock", "jsx", "python", "html"]) => {
@@ -117,8 +119,7 @@ export default ({ children, className: languageClassName, metastring }) => {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		languageClassName.replace(/language-/, "");
 
-	const languageLower = language && language.toLowerCase();
-	const isTypeScript = languageLower === "ts" || languageLower === "typescript";
+	const isTypeScript = typeof language === "string" && TYPESCRIPT_LANGUAGE_IDS.has(language.toLowerCase());
 
 	if (!language && prism.defaultLanguage) {
 		language = prism.defaultLanguage;
