@@ -214,11 +214,12 @@ const element = <frame>{...listItems}</frame>;
 ## Using Values as Children
 
 You can use values for children using the form `{exp}`. This is useful for programmatically creating children. The allowed values are:
-- `Roact.Element`
-- `ReadonlyArray<T>`
-- `ReadonlyMap<K, V>`
-- `boolean`
-- `undefined`
+
+-   `Roact.Element`
+-   `ReadonlyArray<T>`
+-   `ReadonlyMap<K, V>`
+-   `boolean`
+-   `undefined`
 
 `boolean` and `undefined` values do not actually get put into the children props, but allowing the values here is useful for creating conditional children values.
 
