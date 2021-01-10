@@ -24,6 +24,7 @@
 				"guides/indexing-children",
 				"guides/lua-tuple",
 				"guides/roact-jsx",
+				"guides/using-existing-luau",
 				"guides/lua-packages",
 				"guides/typescript-packages",
 				"guides/typescript-transformers"
