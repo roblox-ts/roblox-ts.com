@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import Editor, { EditorDidMount, monaco } from "@monaco-editor/react";
+import Editor, { OnMount, loader } from "@monaco-editor/react";
 import useThemeContext from "@theme/hooks/useThemeContext";
 import type { editor } from "monaco-editor";
 import path from "path";
@@ -86,7 +86,7 @@ async function downloadFileText(filePath: string) {
 
 async function writeFile(filePath: string, content: string) {
 	worker.get().postMessage({ type: "writeFile", filePath: `/node_modules/${filePath}`, content });
-	(await monaco.init()).languages.typescript.typescriptDefaults.addExtraLib(content, filePath);
+	(await loader.init()).languages.typescript.typescriptDefaults.addExtraLib(content, filePath);
 }
 
 const loaded = new Set<string>();
@@ -110,7 +110,7 @@ async function downloadDefinition(pkgName: string, filePath: string, isPkgTyping
 	await writeFile(filePath, content);
 
 	if (isPkgTypingsPath) {
-		(await monaco.init()).languages.typescript.typescriptDefaults.addExtraLib(
+		(await loader.init()).languages.typescript.typescriptDefaults.addExtraLib(
 			content,
 			path.join(pkgName, "index.d.ts"),
 		);
@@ -197,8 +197,8 @@ export default () => {
 	}, [inputModel]);
 
 	// update input when editor text changes
-	const tsEditorDidMount: EditorDidMount = (getEditorValue, editor) => {
-		void monaco.init().then(monaco => {
+	const tsEditorOnMount: OnMount = editor => {
+		void loader.init().then(monaco => {
 			monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
 				allowNonTsExtensions: true,
 				allowSyntheticDefaultImports: true,
@@ -216,12 +216,13 @@ export default () => {
 
 				jsx: monaco.languages.typescript.JsxEmit.React,
 				jsxFactory: "Roact.createElement",
+				jsxFragmentFactory: "Roact.Fragment",
 			});
 
 			const uri = monaco.Uri.file("input.tsx");
 			const model = monaco.editor.getModel(uri) || monaco.editor.createModel(input, "typescript", uri);
 			editor.setModel(model);
-			const modelContentChangedConn = editor.onDidChangeModelContent(() => setInput(getEditorValue()));
+			const modelContentChangedConn = editor.onDidChangeModelContent(() => setInput(editor.getValue()));
 
 			// shift+alt+f to format
 			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KEY_F, () => {
@@ -290,7 +291,7 @@ export default () => {
 	}, []);
 
 	const { isDarkTheme } = useThemeContext();
-	const editorTheme = isDarkTheme ? "dark" : "light";
+	const editorTheme = isDarkTheme ? "vs-dark" : "light";
 
 	return (
 		<>
@@ -314,7 +315,7 @@ export default () => {
 						language="typescript"
 						options={TS_EDITOR_OPTIONS}
 						theme={editorTheme}
-						editorDidMount={tsEditorDidMount}
+						onMount={tsEditorOnMount}
 					/>
 				</div>
 				<div className={styles.editorWrapper}>
