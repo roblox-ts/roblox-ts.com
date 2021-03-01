@@ -233,8 +233,9 @@ export default () => {
 					rangeStart: undefined,
 					rangeEnd: undefined,
 				});
-				editor.setPosition(model.getPositionAt(formatResult.cursorOffset));
+
 				model.setValue(formatResult.formatted);
+				editor.setPosition(model.getPositionAt(formatResult.cursorOffset));
 			});
 
 			setInputModel(model);
