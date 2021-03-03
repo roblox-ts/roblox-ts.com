@@ -25,7 +25,7 @@
 				"guides/lua-tuple",
 				"guides/roact-jsx",
 				"guides/using-existing-luau",
-				"guides/lua-packages",
+				"guides/luau-packages",
 				"guides/typescript-packages",
 				"guides/typescript-transformers"
 			]
