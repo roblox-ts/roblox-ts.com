@@ -62,8 +62,8 @@ module.exports = {
 			copyright: undefined,
 		},
 		metadatas: [
-			{ name: "twitter:card", content: "" },
-			{ name: "og:description", content: "" },
+			{ name: "twitter:card", content: " " },
+			{ name: "og:description", content: " " },
 		],
 	},
 	presets: [
