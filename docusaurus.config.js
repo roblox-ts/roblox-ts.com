@@ -35,11 +35,6 @@ module.exports = {
 					position: "left",
 				},
 				{
-					label: "Discussions",
-					href: "https://github.com/roblox-ts/roblox-ts/discussions",
-					position: "left",
-				},
-				{
 					href: "https://discord.gg/f6Rn6RY",
 					className: "header-discord-link",
 					position: "right",
