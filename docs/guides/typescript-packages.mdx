@@ -2,4 +2,24 @@
 title: TypeScript Packages
 ---
 
-TODO
+:::note
+To publish roblox-ts packages, you'll need to join the "@rbxts" npm organization. [You can do that here.](../../join-org)
+:::
+
+## Getting Started
+
+Creating packages with roblox-ts is super easy!
+
+To start, just create an empty folder and run `rbxtsc init package` inside of it. This will generate a project scaffolding for your package. You can author your `.ts` files inside of the `src` folder.
+
+In `package.json`, you can edit a few different fields to configure your package:
+
+- "name" - This _must_ begin with `@rbxts/` to be considered a valid roblox-ts package.
+- "description"
+- "main" - This should point to a `.lua` file in `out` which represents your package's entrypoint.
+- "typings" - This should point to a `.d.ts` file in `out` which represents your package's entrypoint.
+- "files" - An array of globs for what should be published to npm. Defaults to `["out"]`.
+
+## Testing Your Package
+
+The simplest way to test your package is with `npm pack`. This command will generate a `.tgz` file which can then be used from another project via `npm install ../../path/to/package.tgz`.
