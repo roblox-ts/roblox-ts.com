@@ -1,0 +1,19 @@
+---
+title: PowerShell errors with "running scripts is disabled on this system"
+---
+
+Attempting to run `rbxtsc` in PowerShell results in an error like this:
+
+![image](https://i.imgur.com/0e2RGHE.png)
+
+This happens if PowerShell is not configured to run scripts downloaded from the internet (like roblox-ts).
+
+You can allow this by running the following command in PowerShell as an administrator:
+
+`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+
+You can run PowerShell as an administrator by right-clicking the Windows logo in the bottom left corner and selecting "Windows PowerShell (Admin)"
+
+![image](https://i.imgur.com/G9T20og.png)
+
+[More information here](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.1)
