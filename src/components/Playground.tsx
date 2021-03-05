@@ -48,9 +48,10 @@ async function getExampleCode(examplesDir: string, exampleName: string): Promise
 const worker = new Lazy(() => new Worker("../rbxts-worker.js"));
 const packages = new Set<string>();
 
-const IMPORT_REGEX = /["']@rbxts\/([^"']+)["']/g;
+const INPUT_IMPORT_REGEX = /["']@rbxts\/([^"']+)["']/g;
 const REFERENCE_PATH_REGEX = /\/\/\/\s*<reference path=["']([^"']+)["']\s*\/>/g;
 const REFERENCE_TYPES_REGEX = /\/\/\/\s*<reference types=["']@rbxts\/([^"']+)["']\s*\/>/g;
+const IMPORT_EXPORT_REGEX = /(?:import|export) {[^}]+} from ['"]([^'"]+)['"]/g;
 
 function getMatches(regex: RegExp, str: string) {
 	const result = new Array<string>();
@@ -100,6 +101,11 @@ async function downloadDefinition(pkgName: string, filePath: string, isPkgTyping
 
 	for (const ref of getMatches(REFERENCE_PATH_REGEX, content)) {
 		const refPath = path.resolve(path.dirname(filePath), ref).substr(1);
+		jobs.push(downloadDefinition(pkgName, refPath));
+	}
+
+	for (const ref of getMatches(IMPORT_EXPORT_REGEX, content)) {
+		const refPath = path.resolve(path.dirname(filePath), ref).substr(1) + ".d.ts";
 		jobs.push(downloadDefinition(pkgName, refPath));
 	}
 
@@ -259,7 +265,7 @@ export default () => {
 		}
 		setTimerHandle(
 			window.setTimeout(() => {
-				void Promise.allSettled(getMatches(IMPORT_REGEX, input).map(downloadPackage)).then(() => {
+				void Promise.allSettled(getMatches(INPUT_IMPORT_REGEX, input).map(downloadPackage)).then(() => {
 					worker.get().postMessage({ type: "compile", source: input });
 				});
 			}, COMPILE_DELAY_MS),
