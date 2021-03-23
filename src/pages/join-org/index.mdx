@@ -24,11 +24,41 @@ Enter your npm username below and you will be added to the "@rbxts" npm organiza
 	action="https://us-central1-roblox-ts.cloudfunctions.net/org-invite"
 	method="post"
 >
-	<input type="text" name="username" placeholder="npm username" required />
+	<input
+		type="text"
+		name="username"
+		placeholder="npm username"
+		style={{
+			borderRadius: '0.4rem',
+			borderWidth: 0,
+			height: '2rem',
+			padding: '1rem',
+			marginRight: '0.4rem',
+			verticalAlign: 'middle',
+			fontFamily: 'var(--ifm-font-family-base)',
+			width: 'calc(100% - 5.4rem)',
+			maxWidth: '15rem',
+			background: '#ebedf0'
+		}}
+		required
+	/>
 	<button
 		className="g-recaptcha"
 		data-sitekey="6LeJpLIUAAAAANNNvHEWfIBZR08Tamp06xD4yIBy"
 		data-callback="onSubmit"
+		style={{
+			borderRadius: '0.4rem',
+			border: '1px solid white',
+			boxSizing: 'border-box',
+			height: '2rem',
+			padding: '1rem',
+			verticalAlign: 'middle',
+			lineHeight: 0,
+			fontFamily: 'var(--ifm-font-family-base)',
+			background: 'transparent',
+			color: 'white',
+			width: '5rem'
+		}}
 	>
 		Submit
 	</button>
