@@ -51,7 +51,7 @@ const packages = new Set<string>();
 const INPUT_IMPORT_REGEX = /["']@rbxts\/([^"']+)["']/g;
 const REFERENCE_PATH_REGEX = /\/\/\/\s*<reference path=["']([^"']+)["']\s*\/>/g;
 const REFERENCE_TYPES_REGEX = /\/\/\/\s*<reference types=["']@rbxts\/([^"']+)["']\s*\/>/g;
-const IMPORT_EXPORT_REGEX = /(?:import|export) {[^}]+} from ['"]([^'"]+)['"]/g;
+const IMPORT_EXPORT_REGEX = /(?:import|export)\s+.+\s+from\s+['"]([^'"]+)['"]/g;
 
 function getMatches(regex: RegExp, str: string) {
 	const result = new Array<string>();
@@ -81,10 +81,6 @@ async function downloadFile(filePath: string) {
 	return fetch(`${JS_DELIVR}/${filePath}`);
 }
 
-async function downloadFileText(filePath: string) {
-	return downloadFile(filePath).then(response => response.text());
-}
-
 async function writeFile(filePath: string, content: string) {
 	worker.get().postMessage({ type: "writeFile", filePath: `/node_modules/${filePath}`, content });
 	(await loader.init()).languages.typescript.typescriptDefaults.addExtraLib(content, filePath);
@@ -95,7 +91,15 @@ async function downloadDefinition(pkgName: string, filePath: string, isPkgTyping
 	if (loaded.has(filePath)) return Promise.resolve();
 	loaded.add(filePath);
 
-	const content = await downloadFileText(filePath);
+	const content = await downloadFile(filePath)
+		.then(response => {
+			if (response.status === 404) {
+				filePath = filePath.slice(0, -".d.ts".length) + "/index.d.ts";
+				return downloadFile(filePath);
+			}
+			return response;
+		})
+		.then(response => response.text());
 
 	const jobs = new Array<Promise<unknown>>();
 
@@ -104,7 +108,11 @@ async function downloadDefinition(pkgName: string, filePath: string, isPkgTyping
 		jobs.push(downloadDefinition(pkgName, refPath));
 	}
 
-	for (const ref of getMatches(IMPORT_EXPORT_REGEX, content)) {
+	for (let ref of getMatches(IMPORT_EXPORT_REGEX, content)) {
+		// assume paths ending with `.` or `..` are pointing to folders, and need a /index.d.ts suffix
+		if (ref.endsWith(".") || ref.endsWith("..")) {
+			ref += "/index";
+		}
 		const refPath = path.resolve(path.dirname(filePath), ref).substr(1) + ".d.ts";
 		jobs.push(downloadDefinition(pkgName, refPath));
 	}
