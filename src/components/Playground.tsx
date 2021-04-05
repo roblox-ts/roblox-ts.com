@@ -51,7 +51,7 @@ const packages = new Set<string>();
 const INPUT_IMPORT_REGEX = /["']@rbxts\/([^"']+)["']/g;
 const REFERENCE_PATH_REGEX = /\/\/\/\s*<reference path=["']([^"']+)["']\s*\/>/g;
 const REFERENCE_TYPES_REGEX = /\/\/\/\s*<reference types=["']@rbxts\/([^"']+)["']\s*\/>/g;
-const IMPORT_EXPORT_REGEX = /(?:import|export) {[^}]+} from ['"]([^'"]+)['"]/g;
+const IMPORT_EXPORT_REGEX = /(?:import|export) (?:{[^}]+}|\*) from ['"]([^'"]+)['"]/g;
 
 function getMatches(regex: RegExp, str: string) {
 	const result = new Array<string>();
