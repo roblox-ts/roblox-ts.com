@@ -15,6 +15,19 @@ import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
 <Tabs defaultValue="tsx" values={[{ label: "JSX", value: "tsx", }, { label: "Normal", value: "ts", }]} >
+<TabItem value="tsx">
+
+```tsx
+import Roact from "@rbxts/roact";
+
+const element = (
+	<frame Size={new UDim2(1, 0, 1, 0)}>
+		<frame Key="Child" Size={new UDim2(1, 0, 1, 0)} />
+	</frame>
+);
+```
+
+</TabItem>
 <TabItem value="ts">
 
 ```ts
@@ -30,19 +43,6 @@ const element = Roact.createElement(
 			Size: new UDim2(1, 0, 1, 0),
 		}),
 	}
-);
-```
-
-</TabItem>
-<TabItem value="tsx">
-
-```tsx
-import Roact from "@rbxts/roact";
-
-const element = (
-	<frame Size={new UDim2(1, 0, 1, 0)}>
-		<frame Key="Child" Size={new UDim2(1, 0, 1, 0)} />
-	</frame>
 );
 ```
 
