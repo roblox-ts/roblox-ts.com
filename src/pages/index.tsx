@@ -95,7 +95,7 @@ export default () => {
 					<p className="hero__subtitle">
 						A <TextLink url="https://www.typescriptlang.org/">TypeScript</TextLink>
 						-to-
-						<TextLink url="https://roblox.github.io/luau/">Luau</TextLink> Compiler for{" "}
+						<TextLink url="https://luau-lang.org/">Luau</TextLink> Compiler for{" "}
 						<TextLink url="https://www.roblox.com/">Roblox</TextLink>
 					</p>
 					<div className={styles.buttons}>
