@@ -12,15 +12,17 @@ import styles from "../pages/playground/styles.module.css";
 import { getCodeFromHash, getHashFromCode } from "../util/hash";
 import { Lazy } from "../util/Lazy";
 
-const SHARED_EDITOR_OPTIONS: editor.IEditorConstructionOptions = {
+const SHARED_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = {
 	minimap: { enabled: false },
 	scrollbar: { useShadows: false },
 	scrollBeyondLastLine: false,
+	insertSpaces: false,
+	tabSize: 4,
 };
 
-const TS_EDITOR_OPTIONS: editor.IEditorConstructionOptions = { ...SHARED_EDITOR_OPTIONS };
+const TS_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = { ...SHARED_EDITOR_OPTIONS };
 
-const LUA_EDITOR_OPTIONS: editor.IEditorConstructionOptions = { ...SHARED_EDITOR_OPTIONS, readOnly: true };
+const LUA_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = { ...SHARED_EDITOR_OPTIONS, readOnly: true };
 
 const EXAMPLES = ["Lava", "t", "Roact"];
 
