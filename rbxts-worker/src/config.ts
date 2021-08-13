@@ -23,6 +23,7 @@ const config: Configuration = {
 		"universal-analytics": "{}",
 		uuid: "{}",
 		perf_hooks: "{}",
+		inspector: "{}",
 	},
 	performance: { hints: false },
 };
