@@ -67,6 +67,6 @@ Unfortunately, you have to assert the type of your return because of the `LUA_TU
 ```ts
 function hasMultipleReturns(): LuaTuple<[string, number]> {
 	// this will compile into `return "abc", 123`
-	return ["abc", 123] as unknown as LuaTuple<[string, number]>
+	return ["abc", 123] as LuaTuple<[string, number]>
 }
 ```
