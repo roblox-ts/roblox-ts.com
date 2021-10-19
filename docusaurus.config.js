@@ -68,7 +68,7 @@ module.exports = {
 				docs: {
 					sidebarPath: require.resolve("./sidebars.json"),
 					editUrl:
-						"https://github.com/roblox-ts/roblox-ts.github.io/blob/master/",
+						"https://github.com/roblox-ts/roblox-ts.com/blob/master/",
 				},
 				theme: {
 					customCss: require.resolve("./src/css/custom.css"),
