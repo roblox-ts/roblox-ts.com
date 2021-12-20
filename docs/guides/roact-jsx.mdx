@@ -252,3 +252,23 @@ import Roact from "@rbxts/roact";
 
 const fragment = <></>;
 ```
+
+## Extending the default JSX elements
+
+By default the JSX supports all gui objects, however this may be limiting in cases where you want to manage other instances using Roact.
+Which elements are supported by JSX is determined by a global ``JSX`` namespace, to allow for more instances to be created this way you need to extend this global namespace.
+It is recommended to define this extension of the namespace in one central place for all instances.
+
+**Note the ``JSX.IntrinsicElement<T extends Instance>`` expects the type for an instance to be passed into it to allow for the properties & events to be typed correctly.**
+**Also note that, by convention, all Roblox instances should be lowercased.**
+```tsx
+declare global {
+	namespace JSX {
+		interface IntrinsicElements {
+			// Your instances into here
+			proximityprompt: JSX.IntrinsicElement<ProximityPrompt>;
+			folder: JSX.IntrinsicElement<Folder>;
+		}
+	}
+}
+```
