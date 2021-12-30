@@ -22,7 +22,10 @@ The workflow should look like this:
 
 import DownArrow from "../components/downArrow";
 
-<div style={{ fontSize: "20px" }}>
+<div className="card" style={{ fontSize: "20px", width: "350px"}}>
+<div className="card__body">
+
+<center>
 
 `.ts` files in `src`
 
@@ -42,7 +45,18 @@ Rojo via `rojo build` or `rojo serve`
 
 Roblox Studio :tada:
 
+</center>
 </div>
+</div>
+
+<br/>
+
+roblox-ts will use your `project.json` file to understand how TypeScript (`.ts`) files eventually end up inside of Roblox Studio. This is primarily used for compiling import statements.
+
+To use a different `project.json` file instead of `default.project.json` for compiling, you can use the `--rojo` flag:
+```bash
+rbxtsc --rojo other.project.json
+```
 
 ## Customization
 
