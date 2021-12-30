@@ -90,3 +90,30 @@ By default, the `default.project.json` file should look something like this (tru
 
 [You can find the full version here.](https://github.com/roblox-ts/roblox-ts/blob/master/templates/game/default.project.json)
 
+### Example
+
+Suppose you wanted to add scripts to `StarterPlayer.StarterCharacterScripts`.
+
+To do this, we'll need to add a folder to `src` (so that when we compile it will have a matching folder in `out`). We'll call this `src/character`.
+
+Then, we need to update our `default.project.json`:
+
+```json
+"StarterPlayer": {
+	"$className": "StarterPlayer",
+	"StarterPlayerScripts": {
+		"$className": "StarterPlayerScripts",
+		"TS": {
+			"$path": "out/client"
+		}
+	},
+	// highlight-start
+	"StarterCharacterScripts": {
+		"$className": "StarterCharacterScripts",
+		"TS": {
+			"$path": "out/character"
+		}
+	}
+	// highlight-end
+}
+```
