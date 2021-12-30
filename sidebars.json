@@ -20,6 +20,7 @@
 			"type": "category",
 			"label": "Guides",
 			"items": [
+				"guides/syncing-with-rojo",
 				"guides/callbacks-vs-methods",
 				"guides/datatype-math",
 				"guides/indexing-children",

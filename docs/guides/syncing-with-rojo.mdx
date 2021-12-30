@@ -1,0 +1,92 @@
+---
+title: Syncing with Rojo
+---
+
+## Introduction
+
+The role of roblox-ts is to turn TypeScript (`.ts`) files into Luau files (`.lua`). That alone isn't very useful! You need to move the files into Roblox Studio to be able to use them for a game, plugin, model, etc.
+
+To do this, you can use [Rojo](https://rojo.space/)!
+
+Rojo takes files from your local filesystem and will either:
+- turn them into a single Roblox file (`.rbxm`, `.rbxl`, `.rbxmx`, or `.rbxlx`) via `rojo build`
+- sync them into an open Roblox Studio session via `rojo serve`
+
+Rojo uses a `default.project.json` file to describe how files should be organized within a Roblox file.
+
+:::note Heads up!
+Your `default.project.json` file should have all `"$path"` fields relative to your `outDir` (which is the `"out"` folder by default).
+:::
+
+The workflow should look like this:
+
+import DownArrow from "../components/downArrow";
+
+<div style={{ fontSize: "20px" }}>
+
+`.ts` files (in `src`)
+
+<DownArrow />
+
+roblox-ts (`rbxtsc`)
+
+<DownArrow />
+
+`.lua` files (in `out`)
+
+<DownArrow />
+
+Rojo (`rojo build` or `rojo serve`)
+
+<DownArrow />
+
+Roblox Studio :tada:
+
+</div>
+
+## Customization
+
+Like any other Rojo project, you can organize a roblox-ts project however you'd like with a few restrictions:
+- The `include` folder and `node_modules` folder must be in a place that is visible to both the client and server
+- All `"$path"` fields should be relative to your `outDir` (which is the `"out"` folder by default)
+
+By default, the `default.project.json` file should look something like this (truncated):
+```json
+{
+	"name": "roblox-ts-game",
+	"tree": {
+		"$className": "DataModel",
+		"ServerScriptService": {
+			"$className": "ServerScriptService",
+			"TS": {
+				"$path": "out/server" // server folder goes in ServerScriptService.TS
+			}
+		},
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+			// this _must_ stay the same (except for the name)
+			"rbxts_include": {
+				"$path": "include",
+				"node_modules": {
+					"$path": "node_modules/@rbxts"
+				}
+			},
+			"TS": {
+				"$path": "out/shared" // shared folder goes in ReplicatedStorage.TS
+			}
+		},
+		"StarterPlayer": {
+			"$className": "StarterPlayer",
+			"StarterPlayerScripts": {
+				"$className": "StarterPlayerScripts",
+				"TS": {
+					"$path": "out/client" // client folder goes in StarterPlayer.StarterPlayerScripts.TS
+				}
+			}
+		}
+	}
+}
+```
+
+[You can find the full version here.](https://github.com/roblox-ts/roblox-ts/blob/master/templates/game/default.project.json)
+
