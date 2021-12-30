@@ -8,6 +8,7 @@ module.exports = {
 	favicon: "img/favicon.ico",
 	organizationName: "roblox-ts",
 	projectName: "roblox-ts",
+	plugins: ["docusaurus-node-polyfills"],
 	themeConfig: {
 		colorMode: {
 			defaultMode: "dark",
@@ -56,7 +57,7 @@ module.exports = {
 			links: undefined,
 			copyright: undefined,
 		},
-		metadatas: [
+		metadata: [
 			{ name: "twitter:card", content: " " },
 			{ name: "og:description", content: " " },
 		],

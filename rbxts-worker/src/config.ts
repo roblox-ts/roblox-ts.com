@@ -1,5 +1,6 @@
-import { Configuration } from "webpack";
+import NodePolyfillPlugin from "node-polyfill-webpack-plugin";
 import path from "path";
+import { Configuration } from "webpack";
 
 const config: Configuration = {
 	mode: "production",
@@ -8,6 +9,7 @@ const config: Configuration = {
 		path: path.resolve(__dirname, "../../static"),
 		filename: "rbxts-worker.js",
 	},
+	plugins: [new NodePolyfillPlugin()],
 	externals: {
 		fs: "{}",
 		module: "{}",

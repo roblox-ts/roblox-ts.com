@@ -15,15 +15,15 @@
 		"start:playground": "npm run build:rbxts-worker && npm run start"
 	},
 	"dependencies": {
-		"@docusaurus/core": "2.0.0-alpha.72",
-		"@docusaurus/preset-classic": "2.0.0-alpha.72",
-		"@mdx-js/react": "^1.6.22",
-		"@monaco-editor/react": "^4.1.0",
-		"clsx": "^1.1.1",
-		"lz-string": "^1.4.4",
-		"monaco-editor": "^0.23.0",
-		"react": "^17.0.2",
-		"react-dom": "^17.0.2"
+		"@docusaurus/core": "2.0.0-beta.14",
+		"@docusaurus/preset-classic": "2.0.0-beta.14",
+		"@mdx-js/react": "1.6.22",
+		"@monaco-editor/react": "4.3.1",
+		"clsx": "1.1.1",
+		"lz-string": "1.4.4",
+		"monaco-editor": "0.31.1",
+		"react": "17.0.2",
+		"react-dom": "17.0.2"
 	},
 	"browserslist": {
 		"production": [
@@ -38,21 +38,22 @@
 		]
 	},
 	"devDependencies": {
-		"@docusaurus/module-type-aliases": "^2.0.0-alpha.72",
-		"@tsconfig/docusaurus": "^1.0.2",
+		"@docusaurus/module-type-aliases": "^2.0.0-beta.14",
+		"@tsconfig/docusaurus": "^1.0.4",
 		"@types/lz-string": "^1.3.34",
 		"@types/parse-numeric-range": "0.0.1",
-		"@types/prettier": "^2.2.3",
-		"@types/react": "^17.0.3",
-		"@types/react-helmet": "^6.1.0",
-		"@types/react-router-dom": "^5.1.7",
-		"@typescript-eslint/eslint-plugin": "^4.19.0",
-		"@typescript-eslint/parser": "^4.19.0",
-		"eslint": "^7.22.0",
-		"eslint-config-prettier": "^8.1.0",
-		"eslint-plugin-prettier": "^3.3.1",
-		"prettier": "^2.2.1",
-		"typescript": "^4.2.3",
-		"webpack-cli": "^4.5.0"
+		"@types/prettier": "^2.4.2",
+		"@types/react": "^17.0.38",
+		"@types/react-helmet": "^6.1.5",
+		"@types/react-router-dom": "^5.3.2",
+		"@typescript-eslint/eslint-plugin": "^5.8.1",
+		"@typescript-eslint/parser": "^5.8.1",
+		"docusaurus-node-polyfills": "^1.0.0",
+		"eslint": "^8.5.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"prettier": "^2.5.1",
+		"typescript": "^4.5.4",
+		"webpack-cli": "^4.9.1"
 	}
 }

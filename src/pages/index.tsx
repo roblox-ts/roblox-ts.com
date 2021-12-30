@@ -38,7 +38,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, children }) => (
 
 export default () => {
 	const context = useDocusaurusContext();
-	const { siteConfig = {} } = context;
+	const { siteConfig } = context;
 	return (
 		<Layout noFooter>
 			<header className={`hero ${styles.heroBanner}`}>
