@@ -240,18 +240,28 @@ export default () => {
 			editor.setModel(model);
 			const modelContentChangedConn = editor.onDidChangeModelContent(() => setInput(editor.getValue()));
 
-			// shift+alt+f to format
-			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KEY_F, () => {
-				const cursorOffset = model.getOffsetAt(editor.getPosition() || new monaco.Position(0, 0));
+			// alt+shift+f to format
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | (monaco.KeyCode as any).KEY_F, () => {
 				const formatResult = prettier.formatWithCursor(model.getValue(), {
 					...PRETTIER_OPTIONS,
-					cursorOffset,
+					cursorOffset: model.getOffsetAt(editor.getPosition() || new monaco.Position(0, 0)),
 					rangeStart: undefined,
 					rangeEnd: undefined,
 				});
 
-				model.setValue(formatResult.formatted);
-				editor.setPosition(model.getPositionAt(formatResult.cursorOffset));
+				editor.pushUndoStop();
+				editor.executeEdits(
+					"prettier",
+					[
+						{
+							range: model.getFullModelRange(),
+							text: formatResult.formatted,
+						},
+					],
+					() => [monaco.Selection.fromPositions(model.getPositionAt(formatResult.cursorOffset))],
+				);
+				editor.pushUndoStop();
 			});
 
 			setInputModel(model);
