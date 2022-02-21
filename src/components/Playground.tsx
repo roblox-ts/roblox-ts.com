@@ -226,6 +226,8 @@ export default () => {
 				target: monaco.languages.typescript.ScriptTarget.ESNext,
 				typeRoots: [`node_modules/${SCOPE}`],
 				noEmit: true,
+				resolveJsonModule: true,
+				experimentalDecorators: true,
 
 				baseUrl: ".",
 				rootDir: ".",
