@@ -18,24 +18,12 @@
 		"@docusaurus/core": "2.0.0-beta.14",
 		"@docusaurus/preset-classic": "2.0.0-beta.14",
 		"@mdx-js/react": "1.6.22",
-		"@monaco-editor/react": "4.3.1",
+		"@monaco-editor/react": "4.4.5",
 		"clsx": "1.1.1",
 		"lz-string": "1.4.4",
-		"monaco-editor": "0.31.1",
+		"monaco-editor": "0.33.0",
 		"react": "17.0.2",
 		"react-dom": "17.0.2"
-	},
-	"browserslist": {
-		"production": [
-			">0.5%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
 	},
 	"devDependencies": {
 		"@docusaurus/module-type-aliases": "^2.0.0-beta.14",
@@ -55,5 +43,17 @@
 		"prettier": "^2.5.1",
 		"typescript": "^4.5.4",
 		"webpack-cli": "^4.9.1"
+	},
+	"browserslist": {
+		"production": [
+			">0.5%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	}
 }

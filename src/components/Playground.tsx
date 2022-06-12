@@ -215,6 +215,8 @@ export default () => {
 	// update input when editor text changes
 	const tsEditorOnMount: OnMount = editor => {
 		void loader.init().then(monaco => {
+			console.log(`typescript@${monaco.languages.typescript.typescriptVersion}`);
+
 			monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
 				allowNonTsExtensions: true,
 				allowSyntheticDefaultImports: true,
