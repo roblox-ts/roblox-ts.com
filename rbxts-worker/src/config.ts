@@ -1,4 +1,3 @@
-import NodePolyfillPlugin from "node-polyfill-webpack-plugin";
 import path from "path";
 import { Configuration } from "webpack";
 
@@ -9,7 +8,15 @@ const config: Configuration = {
 		path: path.resolve(__dirname, "../../static"),
 		filename: "rbxts-worker.js",
 	},
-	plugins: [new NodePolyfillPlugin()],
+	optimization: {
+		minimize: true,
+	},
+	resolve: {
+		fallback: {
+			path: require.resolve("path-browserify"),
+			os: require.resolve("os-browserify/browser"),
+		},
+	},
 	externals: {
 		fs: "{}",
 		module: "{}",
