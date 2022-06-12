@@ -1,5 +1,5 @@
 import path from "path";
-import { Configuration } from "webpack";
+import { Configuration, ProvidePlugin } from "webpack";
 
 const config: Configuration = {
 	mode: "production",
@@ -11,6 +11,14 @@ const config: Configuration = {
 	optimization: {
 		minimize: true,
 	},
+	stats: {
+		errorDetails: true,
+	},
+	plugins: [
+		new ProvidePlugin({
+			process: require.resolve("process/browser"),
+		}),
+	],
 	resolve: {
 		fallback: {
 			path: require.resolve("path-browserify"),

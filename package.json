@@ -11,7 +11,7 @@
 		"serve": "docusaurus serve",
 		"clear": "docusaurus clear",
 		"eslint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0",
-		"build:rbxts-worker": "tsc -p ./rbxts-worker && webpack --config ./rbxts-worker/out/config.js",
+		"build:rbxts-worker": "cd ./rbxts-worker && npm run build",
 		"start:playground": "npm run build:rbxts-worker && npm run start"
 	},
 	"dependencies": {
