@@ -2,7 +2,7 @@
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Editor, { OnMount, loader } from "@monaco-editor/react";
-import useThemeContext from "@theme/hooks/useThemeContext";
+import { useColorMode } from "@docusaurus/theme-common";
 import type { editor } from "monaco-editor";
 import path from "path";
 import prettier from "prettier";
@@ -321,8 +321,8 @@ export default () => {
 		});
 	}, []);
 
-	const { isDarkTheme } = useThemeContext();
-	const editorTheme = isDarkTheme ? "vs-dark" : "light";
+	const { colorMode } = useColorMode();
+	const editorTheme = colorMode === "dark" ? "vs-dark" : "light";
 
 	return (
 		<>

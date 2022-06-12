@@ -15,8 +15,8 @@
 		"start:playground": "npm run build:rbxts-worker && npm run start"
 	},
 	"dependencies": {
-		"@docusaurus/core": "2.0.0-beta.14",
-		"@docusaurus/preset-classic": "2.0.0-beta.14",
+		"@docusaurus/core": "2.0.0-beta.21",
+		"@docusaurus/preset-classic": "2.0.0-beta.21",
 		"@mdx-js/react": "1.6.22",
 		"@monaco-editor/react": "4.4.5",
 		"clsx": "1.1.1",
@@ -26,23 +26,23 @@
 		"react-dom": "17.0.2"
 	},
 	"devDependencies": {
-		"@docusaurus/module-type-aliases": "^2.0.0-beta.14",
-		"@tsconfig/docusaurus": "^1.0.4",
+		"@docusaurus/module-type-aliases": "^2.0.0-beta.21",
+		"@tsconfig/docusaurus": "^1.0.6",
 		"@types/lz-string": "^1.3.34",
 		"@types/parse-numeric-range": "0.0.1",
-		"@types/prettier": "^2.4.2",
-		"@types/react": "^17.0.38",
+		"@types/prettier": "^2.6.3",
+		"@types/react": "^18.0.12",
 		"@types/react-helmet": "^6.1.5",
-		"@types/react-router-dom": "^5.3.2",
-		"@typescript-eslint/eslint-plugin": "^5.8.1",
-		"@typescript-eslint/parser": "^5.8.1",
+		"@types/react-router-dom": "^5.3.3",
+		"@typescript-eslint/eslint-plugin": "^5.27.1",
+		"@typescript-eslint/parser": "^5.27.1",
 		"docusaurus-node-polyfills": "^1.0.0",
-		"eslint": "^8.5.0",
-		"eslint-config-prettier": "^8.3.0",
+		"eslint": "^8.17.0",
+		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.0.0",
-		"prettier": "^2.5.1",
-		"typescript": "^4.5.4",
-		"webpack-cli": "^4.9.1"
+		"prettier": "^2.6.2",
+		"typescript": "^4.7.3",
+		"webpack-cli": "^4.9.2"
 	},
 	"browserslist": {
 		"production": [

@@ -9,7 +9,7 @@ import clsx from "clsx";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import copy from "copy-text-to-clipboard";
 import rangeParser from "parse-numeric-range";
-import usePrismTheme from "@theme/hooks/usePrismTheme";
+import { usePrismTheme } from "@docusaurus/theme-common";
 import styles from "./styles.module.css";
 import { useThemeConfig } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
