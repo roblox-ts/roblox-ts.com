@@ -245,8 +245,7 @@ export default () => {
 			const modelContentChangedConn = editor.onDidChangeModelContent(() => setInput(editor.getValue()));
 
 			// alt+shift+f to format
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | (monaco.KeyCode as any).KEY_F, () => {
+			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KeyF, () => {
 				const formatResult = prettier.formatWithCursor(model.getValue(), {
 					...PRETTIER_OPTIONS,
 					cursorOffset: model.getOffsetAt(editor.getPosition() || new monaco.Position(0, 0)),
