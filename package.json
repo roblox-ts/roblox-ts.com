@@ -12,7 +12,8 @@
 		"clear": "docusaurus clear",
 		"eslint": "eslint 'src/**/*.{ts,tsx}' --max-warnings 0",
 		"build:rbxts-worker": "cd ./rbxts-worker && npm run build",
-		"start:playground": "npm run build:rbxts-worker && npm run start"
+		"start:playground": "npm run build:rbxts-worker && npm run start",
+		"postinstall": "cd rbxts-worker && npm install"
 	},
 	"dependencies": {
 		"@docusaurus/core": "2.0.0-beta.21",
