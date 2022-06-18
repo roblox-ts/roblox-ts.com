@@ -36,7 +36,7 @@ module.exports = {
 					position: "left",
 				},
 				{
-					href: "https://discord.gg/f6Rn6RY",
+					href: "https://discord.gg/JFvZY5JSBT",
 					className: "header-discord-link",
 					position: "right",
 				},
