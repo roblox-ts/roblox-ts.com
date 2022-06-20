@@ -30,6 +30,8 @@ const CORE_PACKAGES = ["types", "compiler-types"];
 
 const COMPILE_DELAY_MS = 300;
 
+const PRETTIER_MAX_PRINT_WIDTH = 120;
+
 const PRETTIER_OPTIONS: prettier.Options = {
 	parser: "typescript",
 	plugins: [parserTypeScript],
@@ -37,7 +39,6 @@ const PRETTIER_OPTIONS: prettier.Options = {
 	semi: true,
 	trailingComma: "all",
 	singleQuote: false,
-	printWidth: 120,
 	tabWidth: 4,
 	useTabs: true,
 	arrowParens: "avoid",
@@ -248,6 +249,7 @@ export default () => {
 			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KeyF, () => {
 				const formatResult = prettier.formatWithCursor(model.getValue(), {
 					...PRETTIER_OPTIONS,
+					printWidth: Math.min(PRETTIER_MAX_PRINT_WIDTH, editor.getLayoutInfo().viewportColumn),
 					cursorOffset: model.getOffsetAt(editor.getPosition() || new monaco.Position(0, 0)),
 					rangeStart: undefined,
 					rangeEnd: undefined,
