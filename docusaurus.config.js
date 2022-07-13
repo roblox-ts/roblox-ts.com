@@ -17,7 +17,7 @@ module.exports = {
 			title: "roblox-ts",
 			logo: {
 				alt: "roblox-ts",
-				src: "img/roblox-ts-128.png",
+				src: "img/roblox-ts.svg",
 			},
 			items: [
 				{
