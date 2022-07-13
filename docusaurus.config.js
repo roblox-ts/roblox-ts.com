@@ -5,7 +5,7 @@ module.exports = {
 	baseUrl: "/",
 	onBrokenLinks: "throw",
 	onBrokenMarkdownLinks: "warn",
-	favicon: "img/favicon.ico",
+	favicon: "img/roblox-ts.svg",
 	organizationName: "roblox-ts",
 	projectName: "roblox-ts",
 	plugins: ["docusaurus-node-polyfills"],
