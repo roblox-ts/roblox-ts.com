@@ -1,0 +1,74 @@
+---
+title: Open with VSCode MacOS
+---
+
+:::info
+This guide teaches you how to add "Open with VSCode" as an option when you *right-click* on a folder in MacOS.
+:::
+
+To be able to add a "Open with VSCode" option for a right click, follow these steps:
+
+<!-- Unfortunately, we need to explicitly number these steps because there are images between them :( -->
+
+1. Launch Automator
+   1. Open Spotlight Search by pressing `Cmd+Space` on your keyboard
+   2. Type in "Automator" and press ENTER to open the app
+   3. You can also launch Automator through the Applications folder
+
+<center><img width="250px" height="auto" src={require("../../static/img/open-with-vscode-macos/automator-app.png").default} /></center>
+
+2. Create a New Document
+
+<center><img width="500px" height="auto" src={require("../../static/img/open-with-vscode-macos/new-document.png").default} /></center>
+
+3. Create a Quick Action
+
+<center><img width="500px" height="auto" src={require("../../static/img/open-with-vscode-macos/quick-action.png").default} /></center>
+
+4. You should be in the correct window represented in the image below.
+
+<center><img width="700px" height="auto" src={require("../../static/img/open-with-vscode-macos/starting-workflow.png").default} /></center>
+
+5. Change "Automatic (text)" to "files or folders" for the "Workflow receives current..."
+
+<center><img src={require("../../static/img/open-with-vscode-macos/files-or-folders.png").default} /></center>
+
+6. Change "any application" to "Finder" for the "Workflow receives current..."
+
+<center><img src={require("../../static/img/open-with-vscode-macos/finder-workflow.png").default} /></center>
+
+7. In the "Actions," you will see a search bar, and then search up "Run Shell Script." After, drag it into the empty window on the right, like shown in this video:
+
+<center><img width="600px" height="auto" src={require("../../static/img/open-with-vscode-macos/run-shell-script.gif").default} /></center>
+
+8. In the "Run Shell Script" you dragged in, configure the "Pass input:" to "as arguments."
+
+<center><img src={require("../../static/img/open-with-vscode-macos/as-arguments.png").default} /></center>
+
+:::important
+Make sure to do step 8 or else the folder will not open in VSCode.
+:::
+
+9. Paste the following Shell Script code in the input box in the "Run Shell Script."
+
+```zsh
+open -n -b "com.microsoft.VSCode" --args "$*"
+```
+
+<br />
+
+10. The "Run Shell Script" should look like the image below.
+
+<center><img width="600px" height="auto" src={require("../../static/img/open-with-vscode-macos/ending-workflow.png").default} /></center>
+
+11. Now, save the action, by pressing `Cmd+S` or going to `File > Save` on the top menu window of Automator.
+
+<center><img src={require("../../static/img/open-with-vscode-macos/file-save.png").default} /></center>
+
+12. Name the action to whatever. We've named it "Open with Code."
+
+<center><img width="400px" height="auto" src={require("../../static/img/open-with-vscode-macos/save-action.png").default} /></center>
+
+You're finished! Right click on a folder, go to `Quick Actions > Open with Code` (or whatever the name you saved the action with)! :tada:
+
+<center><img width="250px" height="auto" src={require("../../static/img/open-with-vscode-macos/right-click.png").default} /></center>
