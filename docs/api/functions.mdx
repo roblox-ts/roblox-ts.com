@@ -51,37 +51,6 @@ function foo(value: Instance) {
 }
 ```
 
-### `opcall()`
-While `pcall` is available, it returns the type `LuaTuple<[false, string] | [true, T]>` which is difficult to use!
-
-```ts
-const [success, valueOrError] = pcall(() => 123);
-// valueOrError is string | number
-// if it worked -> number
-// if it errored -> string
-
-if (success) {
-    print(valueOrError); // string | number
-} else {
-    print(valueOrError); // string | number
-}
-```
-
-The problem here is that `success` and `valueOrError` are not linked after the destructure happens. You _can_ avoid destructuring the result, [but that makes things very hard to read](https://roblox-ts.com/playground/#code/MYewdgzgLgBATgUwgVwDawLwwA7AIaqoAURAlDBgHwwCMATAMykDcAUKwJYBmMRiK6ANoAGALrkA3qxgyYoSLABuBZAgrwkaKIJqi2snHA5goRZalUsYAemswwyALYAjBHFYBfGAlQQ1Ug3loGHNVdX4tHT1pWWwjEzMVBCtbGGh4gHNPIA).
-
-To get around this, you can use `opcall` which works the same as `pcall`, but returns an object instead of the `LuaTuple<T>`.
-
-```ts
-// result is { success: true; value: T; } | { success: false; error: string; }
-const result = opcall(() => 123);
-
-if (result.success) {
-    print(result.value); // number
-} else {
-    print(result.error); // string
-}
-```
-
 ### `identity()`
 
 The `identity` macro compiles to just the inner value you pass into it, allowing for a zero-cost type constraint abstraction. This is useful for verifying that a given value is the type you expect:
