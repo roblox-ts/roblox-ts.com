@@ -10,7 +10,7 @@ Run `yarn` so it upgrades the lockfiles, once upgraded you can remove the old `.
 
 If you opened the project in vscode you should see it error out as typescript panics, to fix this you have to add [sdks](https://yarnpkg.com/getting-started/editor-sdks).
 
-`yarn dlx @yarnpkg/sdks` 
+`yarn dlx @yarnpkg/sdks vscode` 
 
 Once added you also need to fix types as the project no longer use `node-modules`. Go to `tsconfig.json` and comment out or remove
 
