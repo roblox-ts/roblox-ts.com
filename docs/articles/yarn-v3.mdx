@@ -6,8 +6,7 @@ Set the version to 'stable'
 
 `yarn set verion stable`
 
-Run `yarn` so it upgrades the lockfiles, once upgraded you can remove the old `.yarnrc` file, while in the new `.yarnrc.yml` you can remove `nodeLinker: node-modules`.
-Once done you should run `yarn` so it updates to PNP.
+Run `yarn` so it upgrades the lockfiles, once upgraded you can remove the old `.yarnrc` file, while in the new `.yarnrc.yml` make sure `nodeLinker: node-modules` exist as roblox-ts does **not** support PNP.
 
 If you opened the project in vscode you should see it error out as typescript panics, to fix this you have to add [sdks](https://yarnpkg.com/getting-started/editor-sdks).
 
