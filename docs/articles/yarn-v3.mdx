@@ -12,14 +12,4 @@ If you opened the project in vscode you should see it error out as typescript pa
 
 `yarn dlx @yarnpkg/sdks vscode` 
 
-Once added you also need to fix types as the project no longer use `node-modules`. Go to `tsconfig.json` and comment out or remove
-
-`"typeRoots": ["packages/@rbxts"],`
-
-And add a new file inside `src/` named `rbxts-env.d.ts` then add this on the file
-
-`/// <reference types="@rbxts/types" />`
-
-This will re-add typings into the workspace
-
 You may also add [plugins](https://yarnpkg.com/features/plugins/) such as [upgrade-interactive](https://yarnpkg.com/cli/upgrade-interactive) to easily upgrade dependencies
