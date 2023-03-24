@@ -62,7 +62,7 @@ const character = Players.LocalPlayer.Character || Players.LocalPlayer.Character
 
 The compiler supports using `LuaTuple<T>` in outside of type definitions, but it's generally not recommended. However, if you're writing code that is consumed by an existing Luau module this can be useful!
 
-Fortunately, we have a specific macro that covers multiple returns so that you don't need to type assert the function return yourself every time you want it to be a tuple.
+Fortunately, we have a macro called `$tuple` that covers multiple returns so that you don't need to type assert the function return yourself every time you want it to be a tuple.
 
 ```ts
 function hasMultipleReturns() {
