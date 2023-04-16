@@ -24,10 +24,6 @@ const TS_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = { ...SHAR
 
 const LUA_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = { ...SHARED_EDITOR_OPTIONS, readOnly: true };
 
-const EXAMPLES = ["Lava", "t", "Roact"];
-
-const CORE_PACKAGES = ["types", "compiler-types"];
-
 const COMPILE_DELAY_MS = 300;
 
 const PRETTIER_MAX_PRINT_WIDTH = 120;
@@ -51,7 +47,8 @@ async function getExampleCode(examplesDir: string, exampleName: string): Promise
 const worker = new Lazy(() => new Worker("../rbxts-worker.js"));
 const packages = new Set<string>();
 
-const INPUT_IMPORT_REGEX = /["']@rbxts\/([^"']+)["']/g;
+const INPUT_IMPORT_REGEX = /["'](@rbxts\/[^"']+)["']/g;
+const GITHUB_IMPORT_REGEX = /["']github:([^"']+\/[^"']+)["']/g;
 const REFERENCE_PATH_REGEX = /\/\/\/\s*<reference path=["']([^"']+)["']\s*\/>/g;
 const REFERENCE_TYPES_REGEX = /\/\/\/\s*<reference types=["']@rbxts\/([^"']+)["']\s*\/>/g;
 const IMPORT_EXPORT_REGEX = /(?:import|export)\s+.+\s+from\s+['"]([^'"]+)['"]/g;
@@ -65,9 +62,19 @@ function getMatches(regex: RegExp, str: string) {
 }
 
 const SCOPE = "@rbxts";
-const JS_DELIVR = "https://cdn.jsdelivr.net/npm";
+const JS_DELIVR = "https://cdn.jsdelivr.net";
+const JS_DELIVR_NPM = `${JS_DELIVR}/npm`;
+const JS_DELIVR_GH = `${JS_DELIVR}/gh`;
+
+const EXAMPLES = ["Lava", "t", "Roact"];
+
+const CORE_PACKAGES = [
+	["@rbxts/types", JS_DELIVR_NPM],
+	["@rbxts/compiler-types", JS_DELIVR_NPM],
+];
 
 interface PackageJson {
+	name: string;
 	version: string;
 	main?: string;
 	typings?: string;
@@ -76,21 +83,18 @@ interface PackageJson {
 }
 
 async function downloadFile(filePath: string) {
-	const parts = filePath.split("/");
-	if (!parts[1].includes("@")) {
-		parts[1] += "@latest";
-	}
-	filePath = parts.join("/");
-	return fetch(`${JS_DELIVR}/${filePath}`);
+	console.log("Downloading", filePath, JS_DELIVR_GH, filePath.startsWith(JS_DELIVR_GH));
+	return fetch(filePath);
 }
 
 async function writeFile(filePath: string, content: string) {
+	console.log("Writing to", filePath);
 	worker.get().postMessage({ type: "writeFile", filePath: `/node_modules/${filePath}`, content });
 	(await loader.init()).languages.typescript.typescriptDefaults.addExtraLib(content, filePath);
 }
 
 const loaded = new Set<string>();
-async function downloadDefinition(pkgName: string, filePath: string, isPkgTypingsPath = false) {
+async function downloadDefinition(pkgName: string, from: string, filePath: string, isPkgTypingsPath = false) {
 	if (loaded.has(filePath)) return Promise.resolve();
 	loaded.add(filePath);
 
@@ -98,7 +102,7 @@ async function downloadDefinition(pkgName: string, filePath: string, isPkgTyping
 		.then(response => {
 			if (response.status === 404) {
 				filePath = filePath.slice(0, -".d.ts".length) + "/index.d.ts";
-				return downloadFile(filePath);
+				return downloadFile(`${from}/${filePath}`);
 			}
 			return response;
 		})
@@ -108,7 +112,7 @@ async function downloadDefinition(pkgName: string, filePath: string, isPkgTyping
 
 	for (const ref of getMatches(REFERENCE_PATH_REGEX, content)) {
 		const refPath = path.resolve(path.dirname(filePath), ref).substr(1);
-		jobs.push(downloadDefinition(pkgName, refPath));
+		jobs.push(downloadDefinition(pkgName, from, refPath));
 	}
 
 	for (let ref of getMatches(IMPORT_EXPORT_REGEX, content)) {
@@ -117,11 +121,11 @@ async function downloadDefinition(pkgName: string, filePath: string, isPkgTyping
 			ref += "/index";
 		}
 		const refPath = path.resolve(path.dirname(filePath), ref).substr(1) + ".d.ts";
-		jobs.push(downloadDefinition(pkgName, refPath));
+		jobs.push(downloadDefinition(pkgName, from, refPath));
 	}
 
 	for (const ref of getMatches(REFERENCE_TYPES_REGEX, content)) {
-		jobs.push(downloadPackage(ref));
+		jobs.push(downloadPackage(ref, JS_DELIVR_NPM));
 	}
 
 	await writeFile(filePath, content);
@@ -136,15 +140,14 @@ async function downloadDefinition(pkgName: string, filePath: string, isPkgTyping
 	return Promise.allSettled(jobs);
 }
 
-async function downloadPackage(name: string) {
-	if (!packages.has(name)) {
-		packages.add(name);
-		const pkgName = `${SCOPE}/${name}`;
-		const pkgJsonPath = `${pkgName}/package.json`;
-		const pkgJsonResponse = await downloadFile(pkgJsonPath);
+async function downloadPackage(pkgName: string, from: string) {
+	if (!packages.has(pkgName)) {
+		packages.add(pkgName);
+		const pkgJsonResponse = await downloadFile(`${from}/${pkgName}/package.json`);
 		if (pkgJsonResponse.status === 200) {
 			const pkgJson = (await pkgJsonResponse.json()) as PackageJson;
-			await writeFile(pkgJsonPath, JSON.stringify(pkgJson));
+			pkgName = pkgJson.name;
+			await writeFile(`${pkgName}/package.json`, JSON.stringify(pkgJson));
 			console.log(`${pkgName}@${pkgJson.version}`);
 			// remove leading / after resolve
 			const mainPath = path.resolve(`/${pkgName}`, pkgJson.main ?? "").substr(1);
@@ -154,7 +157,7 @@ async function downloadPackage(name: string) {
 				typingsPath: `/node_modules/${typingsPath}`,
 				mainPath: `/node_modules/${mainPath}`,
 			});
-			await downloadDefinition(pkgName, typingsPath, true);
+			await downloadDefinition(pkgName, from, typingsPath, true);
 		} else {
 			console.warn(`failed to download ${pkgName}`);
 		}
@@ -290,7 +293,10 @@ export default () => {
 		}
 		setTimerHandle(
 			window.setTimeout(() => {
-				void Promise.allSettled(getMatches(INPUT_IMPORT_REGEX, input).map(downloadPackage)).then(() => {
+				void Promise.allSettled([
+					...getMatches(INPUT_IMPORT_REGEX, input).map(m => downloadPackage(m, JS_DELIVR_NPM)),
+					...getMatches(GITHUB_IMPORT_REGEX, input).map(m => downloadPackage(m, JS_DELIVR_GH)),
+				]).then(() => {
 					worker.get().postMessage({ type: "compile", source: input });
 				});
 			}, COMPILE_DELAY_MS),
@@ -309,7 +315,9 @@ export default () => {
 
 	// load core packages
 	React.useEffect(() => {
-		void Promise.allSettled(CORE_PACKAGES.map(v => downloadPackage(v))).then(() => setCorePackagesLoaded(true));
+		void Promise.allSettled(CORE_PACKAGES.map(([v, from]) => downloadPackage(v, from))).then(() =>
+			setCorePackagesLoaded(true),
+		);
 	}, []);
 
 	// ctrl+s to save
