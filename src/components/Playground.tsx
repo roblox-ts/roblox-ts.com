@@ -116,8 +116,13 @@ async function downloadDefinition(pkgName: string, filePath: string, isPkgTyping
 		if (ref.endsWith(".") || ref.endsWith("..")) {
 			ref += "/index";
 		}
-		const refPath = path.resolve(path.dirname(filePath), ref).substr(1) + ".d.ts";
-		jobs.push(downloadDefinition(pkgName, refPath));
+		const packageRef = getMatches(INPUT_IMPORT_REGEX)[0];
+		if (packageRef) {
+			jobs.push(downloadPackage(packageRef));
+		} else {
+			const refPath = path.resolve(path.dirname(filePath), ref).substr(1) + ".d.ts";
+			jobs.push(downloadDefinition(pkgName, refPath));
+		}
 	}
 
 	for (const ref of getMatches(REFERENCE_TYPES_REGEX, content)) {
