@@ -116,8 +116,13 @@ async function downloadDefinition(pkgName: string, filePath: string, isPkgTyping
 		if (ref.endsWith(".") || ref.endsWith("..")) {
 			ref += "/index";
 		}
-		const refPath = path.resolve(path.dirname(filePath), ref).substr(1) + ".d.ts";
-		jobs.push(downloadDefinition(pkgName, refPath));
+		if (ref.startsWith(SCOPE)) {
+			// Cut off scope and slash, which are both added back in downloadPackage
+			jobs.push(downloadPackage(ref.substr(SCOPE.length + 1)));
+		} else {
+			const refPath = path.resolve(path.dirname(filePath), ref).substr(1) + ".d.ts";
+			jobs.push(downloadDefinition(pkgName, refPath));
+		}
 	}
 
 	for (const ref of getMatches(REFERENCE_TYPES_REGEX, content)) {
