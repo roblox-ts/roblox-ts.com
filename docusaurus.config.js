@@ -36,7 +36,7 @@ module.exports = {
 					position: "left",
 				},
 				{
-					href: "https://discord.gg/JFvZY5JSBT",
+					href: "https://discord.roblox-ts.com",
 					className: "header-discord-link",
 					position: "right",
 				},
