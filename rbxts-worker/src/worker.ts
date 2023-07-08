@@ -5,9 +5,6 @@ import { VirtualProject, COMPILER_VERSION } from "roblox-ts";
 
 const project = new VirtualProject();
 
-// @ts-ignore
-project.data.projectOptions.optimizedLoops = true;
-
 interface CompileEvent {
 	type: "compile";
 	source: string;
