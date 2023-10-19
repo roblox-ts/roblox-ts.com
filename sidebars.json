@@ -10,7 +10,6 @@
 			"label": "API",
 			"items": [
 				"api/roblox-api",
-				"api/identifiers",
 				"api/constructors",
 				"api/functions",
 				"api/utility-types"
