@@ -113,7 +113,19 @@ The reason for this is because client-to-server networking _cannot_ be trusted. 
 
 If your code is expecting `points` to be a `number`, but the client sends a `nil` value, the server will error. By sending a large number of requests very quickly which result in errors, an exploiter could crash your game server and disconnect all of your players.
 
-Instead, you should assume your inputs can be any possible value. You can verify the arguments with a type validation package like [`@rbxts/t`](https://www.npmjs.com/package/@rbxts/t).
+Instead, you should assume your inputs can be any possible value and validate the type at runtime using the `typeIs` macro:
+```ts
+const remoteEvent = new Instance("RemoteEvent");
+
+remoteEvent.OnServerEvent.Connect((player: Player, points: unknown) => {
+	if (!typeIs(points, "number")) {
+		return;
+	}
+	// do something with points
+});
+```
+
+You can also verify the arguments with a type validation package like [`@rbxts/t`](https://www.npmjs.com/package/@rbxts/t).
 
 Alternatively, the community has created a few networking libraries which make the experience much nicer!
 - [@rbxts/net](https://www.npmjs.com/package/@rbxts/net)
