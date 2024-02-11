@@ -1,16 +1,17 @@
 /* eslint-disable no-console */
 
+import { useColorMode } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Editor, { OnMount, loader } from "@monaco-editor/react";
-import { useColorMode } from "@docusaurus/theme-common";
 import type { editor } from "monaco-editor";
 import path from "path";
 import prettier from "prettier";
-import parserTypeScript from "prettier/parser-typescript";
+import estreePlugin from "prettier/plugins/estree";
+import typescriptPlugin from "prettier/plugins/typescript";
 import React from "react";
 import styles from "../pages/playground/styles.module.css";
-import { getCodeFromHash, getHashFromCode } from "../util/hash";
 import { Lazy } from "../util/Lazy";
+import { getCodeFromHash, getHashFromCode } from "../util/hash";
 
 const SHARED_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = {
 	minimap: { enabled: false },
@@ -34,7 +35,7 @@ const PRETTIER_MAX_PRINT_WIDTH = 120;
 
 const PRETTIER_OPTIONS: prettier.Options = {
 	parser: "typescript",
-	plugins: [parserTypeScript],
+	plugins: [estreePlugin, typescriptPlugin],
 
 	semi: true,
 	trailingComma: "all",
@@ -251,27 +252,32 @@ export default () => {
 			const modelContentChangedConn = editor.onDidChangeModelContent(() => setInput(editor.getValue()));
 
 			// alt+shift+f to format
-			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KeyF, () => {
-				const formatResult = prettier.formatWithCursor(model.getValue(), {
-					...PRETTIER_OPTIONS,
-					printWidth: Math.min(PRETTIER_MAX_PRINT_WIDTH, editor.getLayoutInfo().viewportColumn),
-					cursorOffset: model.getOffsetAt(editor.getPosition() || new monaco.Position(0, 0)),
-					rangeStart: undefined,
-					rangeEnd: undefined,
-				});
+			let debounce = false;
+			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KeyF, async () => {
+				if (!debounce) {
+					debounce = true;
+					const formatResult = await prettier.formatWithCursor(model.getValue(), {
+						...PRETTIER_OPTIONS,
+						printWidth: Math.min(PRETTIER_MAX_PRINT_WIDTH, editor.getLayoutInfo().viewportColumn),
+						cursorOffset: model.getOffsetAt(editor.getPosition() || new monaco.Position(0, 0)),
+						rangeStart: undefined,
+						rangeEnd: undefined,
+					});
 
-				editor.pushUndoStop();
-				editor.executeEdits(
-					"prettier",
-					[
-						{
-							range: model.getFullModelRange(),
-							text: formatResult.formatted,
-						},
-					],
-					() => [monaco.Selection.fromPositions(model.getPositionAt(formatResult.cursorOffset))],
-				);
-				editor.pushUndoStop();
+					editor.pushUndoStop();
+					editor.executeEdits(
+						"prettier",
+						[
+							{
+								range: model.getFullModelRange(),
+								text: formatResult.formatted,
+							},
+						],
+						() => [monaco.Selection.fromPositions(model.getPositionAt(formatResult.cursorOffset))],
+					);
+					editor.pushUndoStop();
+					debounce = false;
+				}
 			});
 
 			setInputModel(model);

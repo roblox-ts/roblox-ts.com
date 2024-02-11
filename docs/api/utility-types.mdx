@@ -119,7 +119,7 @@ type InstanceType<T extends new (...args: Array<any>) => any> = T extends new (.
 ```
 
 ### `Reconstruct<T>`
-Combines a series of intersections into one object, e.g. { x: number } & { y: number } becomes { x: number, y: number }
+Combines a series of intersections into one object, e.g. \{ x: number } & \{ y: number } becomes \{ x: number, y: number }
 ```ts
 type Reconstruct<T> = _<{ [K in keyof T]: T[K] }>;
 ```

@@ -32,7 +32,8 @@ addEventListener("message", (event: MessageEvent<PlaygroundEvent>) => {
 		} catch (e) {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			luaSource = ((e as any).toString() as string)
-				.replace(/(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]/g, "")
+				// eslint-disable-next-line no-control-regex
+				.replace(/(\x9B|\x1B\[)[0-?]*[ -/]*[@-~]/g, "")
 				.split("\n")
 				.filter(v => v.length > 0)
 				.map((v: string) => `-- ${v}`)

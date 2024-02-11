@@ -1,10 +1,10 @@
-import React from "react";
-import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import styles from "./styles.module.css";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import CodeBlock from "@theme/CodeBlock";
+import Layout from "@theme/Layout";
+import React from "react";
+import styles from "./styles.module.css";
 
 const EXAMPLE_CODE = `
 import { CollectionService } from "@rbxts/services";
@@ -23,6 +23,8 @@ for (const obj of CollectionService.GetTagged("Lava")) {
 
 interface FeatureCardProps {
 	title: string;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	children: any;
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, children }) => (
@@ -80,7 +82,7 @@ export default () => {
 						<div className="row row--no-gutters">
 							<div className="col col--2" />
 							<div className="col col--8">
-								<CodeBlock className="ts">{EXAMPLE_CODE}</CodeBlock>
+								<CodeBlock language="ts">{EXAMPLE_CODE}</CodeBlock>
 							</div>
 							<div className="col col--2" />
 						</div>
