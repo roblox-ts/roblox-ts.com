@@ -7,13 +7,10 @@
 		"sourceType": "module",
 		"project": "tsconfig.json"
 	},
-	"plugins": ["@typescript-eslint"],
-	"extends": [
-		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended",
-		"prettier"
-	],
+	"plugins": ["@typescript-eslint", "@typescript-eslint/eslint-plugin", "prettier"],
+	"extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
 	"rules": {
+		"prettier/prettier": "warn",
 		"@typescript-eslint/array-type": [
 			"warn",
 			{
@@ -21,10 +18,7 @@
 				"readonly": "generic"
 			}
 		],
-		"@typescript-eslint/no-floating-promises": [
-			"error",
-			{ "ignoreVoid": true }
-		],
+		"@typescript-eslint/no-floating-promises": ["error", { "ignoreVoid": true }],
 		"@typescript-eslint/no-unused-vars": "off",
 		"@typescript-eslint/explicit-function-return-type": "off",
 		"@typescript-eslint/interface-name-prefix": "off",
