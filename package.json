@@ -14,7 +14,7 @@
 		"write-heading-ids": "docusaurus write-heading-ids",
 		"typecheck": "tsc",
 		"eslint": "eslint src/**/*.{ts,tsx} --max-warnings 0",
-		"prettier": "prettier --check src/**/*.{ts,tsx}",
+		"prettier": "prettier --check src/**/*.{ts,tsx,css}",
 		"build:rbxts-worker": "cd ./rbxts-worker && npm run build",
 		"start:playground": "npm run build:rbxts-worker && npm run start",
 		"postinstall": "cd rbxts-worker && npm install"
