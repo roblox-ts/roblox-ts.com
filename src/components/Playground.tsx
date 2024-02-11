@@ -49,13 +49,8 @@ const PRETTIER_OPTIONS: prettier.Options = {
 	arrowParens: "avoid",
 };
 
-async function getExampleCode(
-	examplesDir: string,
-	exampleName: string,
-): Promise<string> {
-	return fetch(`${examplesDir}/${exampleName}.tsx`).then((response) =>
-		response.text(),
-	);
+async function getExampleCode(examplesDir: string, exampleName: string): Promise<string> {
+	return fetch(`${examplesDir}/${exampleName}.tsx`).then(response => response.text());
 }
 
 const worker = new Lazy(() => new Worker("../rbxts-worker.js"));
@@ -63,8 +58,7 @@ const packages = new Set<string>();
 
 const INPUT_IMPORT_REGEX = /["']@rbxts\/([^"']+)["']/g;
 const REFERENCE_PATH_REGEX = /\/\/\/\s*<reference path=["']([^"']+)["']\s*\/>/g;
-const REFERENCE_TYPES_REGEX =
-	/\/\/\/\s*<reference types=["']@rbxts\/([^"']+)["']\s*\/>/g;
+const REFERENCE_TYPES_REGEX = /\/\/\/\s*<reference types=["']@rbxts\/([^"']+)["']\s*\/>/g;
 const IMPORT_EXPORT_REGEX = /(?:import|export)\s+.+\s+from\s+['"]([^'"]+)['"]/g;
 
 function getMatches(regex: RegExp, str: string) {
@@ -101,30 +95,23 @@ async function writeFile(filePath: string, content: string) {
 		filePath: `/node_modules/${filePath}`,
 		content,
 	});
-	(await loader.init()).languages.typescript.typescriptDefaults.addExtraLib(
-		content,
-		filePath,
-	);
+	(await loader.init()).languages.typescript.typescriptDefaults.addExtraLib(content, filePath);
 }
 
 const loaded = new Set<string>();
-async function downloadDefinition(
-	pkgName: string,
-	filePath: string,
-	isPkgTypingsPath = false,
-) {
+async function downloadDefinition(pkgName: string, filePath: string, isPkgTypingsPath = false) {
 	if (loaded.has(filePath)) return Promise.resolve();
 	loaded.add(filePath);
 
 	const content = await downloadFile(filePath)
-		.then((response) => {
+		.then(response => {
 			if (response.status === 404) {
 				filePath = filePath.slice(0, -".d.ts".length) + "/index.d.ts";
 				return downloadFile(filePath);
 			}
 			return response;
 		})
-		.then((response) => response.text());
+		.then(response => response.text());
 
 	const jobs = new Array<Promise<unknown>>();
 
@@ -142,8 +129,7 @@ async function downloadDefinition(
 			// Cut off scope and slash, which are both added back in downloadPackage
 			jobs.push(downloadPackage(ref.substr(SCOPE.length + 1)));
 		} else {
-			const refPath =
-				path.resolve(path.dirname(filePath), ref).substr(1) + ".d.ts";
+			const refPath = path.resolve(path.dirname(filePath), ref).substr(1) + ".d.ts";
 			jobs.push(downloadDefinition(pkgName, refPath));
 		}
 	}
@@ -155,9 +141,7 @@ async function downloadDefinition(
 	await writeFile(filePath, content);
 
 	if (isPkgTypingsPath) {
-		(
-			await loader.init()
-		).languages.typescript.typescriptDefaults.addExtraLib(
+		(await loader.init()).languages.typescript.typescriptDefaults.addExtraLib(
 			content,
 			path.join(pkgName, "index.d.ts"),
 		);
@@ -177,15 +161,8 @@ async function downloadPackage(name: string) {
 			await writeFile(pkgJsonPath, JSON.stringify(pkgJson));
 			console.log(`${pkgName}@${pkgJson.version}`);
 			// remove leading / after resolve
-			const mainPath = path
-				.resolve(`/${pkgName}`, pkgJson.main ?? "")
-				.substr(1);
-			const typingsPath = path
-				.resolve(
-					`/${pkgName}`,
-					pkgJson.types ?? pkgJson.typings ?? "index.d.ts",
-				)
-				.substr(1);
+			const mainPath = path.resolve(`/${pkgName}`, pkgJson.main ?? "").substr(1);
+			const typingsPath = path.resolve(`/${pkgName}`, pkgJson.types ?? pkgJson.typings ?? "index.d.ts").substr(1);
 			worker.get().postMessage({
 				type: "setMapping",
 				typingsPath: `/node_modules/${typingsPath}`,
@@ -203,13 +180,10 @@ interface ExampleProps {
 	onClick: () => void;
 }
 
-const Example: React.FunctionComponent<ExampleProps> = (props) => {
+const Example: React.FunctionComponent<ExampleProps> = props => {
 	return (
 		<li>
-			<a
-				className={`${styles.pointer} dropdown__link`}
-				onClick={props.onClick}
-			>
+			<a className={`${styles.pointer} dropdown__link`} onClick={props.onClick}>
 				{props.name}
 			</a>
 		</li>
@@ -231,7 +205,7 @@ export default () => {
 	}
 
 	async function setInputToExample(name: string) {
-		return getExampleCode(examplesDir, name).then((code) => {
+		return getExampleCode(examplesDir, name).then(code => {
 			setInputModelValue(code);
 			setInput(code);
 		});
@@ -241,7 +215,7 @@ export default () => {
 	React.useEffect(() => {
 		if (inputModel) {
 			if (location.hash !== "") {
-				void getCodeFromHash(location.hash).then((code) => {
+				void getCodeFromHash(location.hash).then(code => {
 					if (code) {
 						setInputModelValue(code);
 						setInput(code);
@@ -254,19 +228,16 @@ export default () => {
 	}, [inputModel]);
 
 	// update input when editor text changes
-	const tsEditorOnMount: OnMount = (editor) => {
-		void loader.init().then((monaco) => {
-			console.log(
-				`typescript@${monaco.languages.typescript.typescriptVersion}`,
-			);
+	const tsEditorOnMount: OnMount = editor => {
+		void loader.init().then(monaco => {
+			console.log(`typescript@${monaco.languages.typescript.typescriptVersion}`);
 
 			monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
 				allowNonTsExtensions: true,
 				allowSyntheticDefaultImports: true,
 				downlevelIteration: true,
 				module: monaco.languages.typescript.ModuleKind.CommonJS,
-				moduleResolution:
-					monaco.languages.typescript.ModuleResolutionKind.NodeJs,
+				moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
 				noLib: true,
 				strict: true,
 				target: monaco.languages.typescript.ScriptTarget.ESNext,
@@ -284,53 +255,33 @@ export default () => {
 			});
 
 			const uri = monaco.Uri.file("input.tsx");
-			const model =
-				monaco.editor.getModel(uri) ||
-				monaco.editor.createModel(input, "typescript", uri);
+			const model = monaco.editor.getModel(uri) || monaco.editor.createModel(input, "typescript", uri);
 			editor.setModel(model);
-			const modelContentChangedConn = editor.onDidChangeModelContent(() =>
-				setInput(editor.getValue()),
-			);
+			const modelContentChangedConn = editor.onDidChangeModelContent(() => setInput(editor.getValue()));
 
 			// alt+shift+f to format
-			editor.addCommand(
-				monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KeyF,
-				() => {
-					const formatResult = prettier.formatWithCursor(
-						model.getValue(),
-						{
-							...PRETTIER_OPTIONS,
-							printWidth: Math.min(
-								PRETTIER_MAX_PRINT_WIDTH,
-								editor.getLayoutInfo().viewportColumn,
-							),
-							cursorOffset: model.getOffsetAt(
-								editor.getPosition() ||
-									new monaco.Position(0, 0),
-							),
-							rangeStart: undefined,
-							rangeEnd: undefined,
-						},
-					);
+			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KeyF, () => {
+				const formatResult = prettier.formatWithCursor(model.getValue(), {
+					...PRETTIER_OPTIONS,
+					printWidth: Math.min(PRETTIER_MAX_PRINT_WIDTH, editor.getLayoutInfo().viewportColumn),
+					cursorOffset: model.getOffsetAt(editor.getPosition() || new monaco.Position(0, 0)),
+					rangeStart: undefined,
+					rangeEnd: undefined,
+				});
 
-					editor.pushUndoStop();
-					editor.executeEdits(
-						"prettier",
-						[
-							{
-								range: model.getFullModelRange(),
-								text: formatResult.formatted,
-							},
-						],
-						() => [
-							monaco.Selection.fromPositions(
-								model.getPositionAt(formatResult.cursorOffset),
-							),
-						],
-					);
-					editor.pushUndoStop();
-				},
-			);
+				editor.pushUndoStop();
+				editor.executeEdits(
+					"prettier",
+					[
+						{
+							range: model.getFullModelRange(),
+							text: formatResult.formatted,
+						},
+					],
+					() => [monaco.Selection.fromPositions(model.getPositionAt(formatResult.cursorOffset))],
+				);
+				editor.pushUndoStop();
+			});
 
 			setInputModel(model);
 			setInput(model.getValue());
@@ -353,12 +304,8 @@ export default () => {
 		}
 		setTimerHandle(
 			window.setTimeout(() => {
-				void Promise.allSettled(
-					getMatches(INPUT_IMPORT_REGEX, input).map(downloadPackage),
-				).then(() => {
-					worker
-						.get()
-						.postMessage({ type: "compile", source: input });
+				void Promise.allSettled(getMatches(INPUT_IMPORT_REGEX, input).map(downloadPackage)).then(() => {
+					worker.get().postMessage({ type: "compile", source: input });
 				});
 			}, COMPILE_DELAY_MS),
 		);
@@ -366,7 +313,7 @@ export default () => {
 
 	// listen for rbxts-worker compile results
 	React.useEffect(() => {
-		worker.get().addEventListener("message", (e) => {
+		worker.get().addEventListener("message", e => {
 			const source = e.data.source;
 			if (typeof source === "string") {
 				setOutput(source);
@@ -376,14 +323,12 @@ export default () => {
 
 	// load core packages
 	React.useEffect(() => {
-		void Promise.allSettled(
-			CORE_PACKAGES.map((v) => downloadPackage(v)),
-		).then(() => setCorePackagesLoaded(true));
+		void Promise.allSettled(CORE_PACKAGES.map(v => downloadPackage(v))).then(() => setCorePackagesLoaded(true));
 	}, []);
 
 	// ctrl+s to save
 	React.useEffect(() => {
-		window.addEventListener("keydown", (event) => {
+		window.addEventListener("keydown", event => {
 			if ((event.ctrlKey || event.metaKey) && event.code === "KeyS") {
 				event.preventDefault();
 				void navigator.clipboard.writeText(location.href);
@@ -399,19 +344,11 @@ export default () => {
 			<nav className={`${styles.subNavBar} navbar`}>
 				<div className="navbar__inner">
 					<div className="navbar__items">
-						<div
-							className={`navbar__item dropdown dropdown--hoverable ${styles.pointer}`}
-						>
-							<a className={`navbar__link ${styles.pointer}`}>
-								Examples
-							</a>
+						<div className={`navbar__item dropdown dropdown--hoverable ${styles.pointer}`}>
+							<a className={`navbar__link ${styles.pointer}`}>Examples</a>
 							<ul className="dropdown__menu">
 								{EXAMPLES.map((name, idx) => (
-									<Example
-										key={idx}
-										name={name}
-										onClick={() => setInputToExample(name)}
-									/>
+									<Example key={idx} name={name} onClick={() => setInputToExample(name)} />
 								))}
 							</ul>
 						</div>
@@ -428,12 +365,7 @@ export default () => {
 					/>
 				</div>
 				<div className={styles.editorWrapper}>
-					<Editor
-						language="lua"
-						options={LUA_EDITOR_OPTIONS}
-						theme={editorTheme}
-						value={output}
-					/>
+					<Editor language="lua" options={LUA_EDITOR_OPTIONS} theme={editorTheme} value={output} />
 				</div>
 			</div>
 		</>

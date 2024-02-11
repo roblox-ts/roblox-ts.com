@@ -45,9 +45,7 @@
 }
 
 .playground {
-	height: calc(
-		100vh - var(--ifm-navbar-height) - var(--playground-navbar-height)
-	);
+	height: calc(100vh - var(--ifm-navbar-height) - var(--playground-navbar-height));
 }
 
 .editorWrapper {

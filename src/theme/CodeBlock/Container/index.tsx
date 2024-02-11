@@ -16,11 +16,7 @@ export default function CodeBlockContainer<T extends "div" | "pre">({
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			{...(props as any)}
 			style={prismCssVariables}
-			className={clsx(
-				props.className,
-				styles.codeBlockContainer,
-				ThemeClassNames.common.codeBlock,
-			)}
+			className={clsx(props.className, styles.codeBlockContainer, ThemeClassNames.common.codeBlock)}
 		/>
 	);
 }

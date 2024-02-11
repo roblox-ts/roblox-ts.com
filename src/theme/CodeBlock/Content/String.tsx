@@ -35,9 +35,7 @@ export default function CodeBlockString({
 	const {
 		prism: { defaultLanguage, magicComments },
 	} = useThemeConfig();
-	const language = normalizeLanguage(
-		languageProp ?? parseLanguage(blockClassName) ?? defaultLanguage,
-	);
+	const language = normalizeLanguage(languageProp ?? parseLanguage(blockClassName) ?? defaultLanguage);
 
 	const isTypescript = language === "ts" || language === "tsx";
 
@@ -54,8 +52,7 @@ export default function CodeBlockString({
 		language,
 		magicComments,
 	});
-	const showLineNumbers =
-		showLineNumbersProp ?? containsLineNumbers(metastring);
+	const showLineNumbers = showLineNumbersProp ?? containsLineNumbers(metastring);
 
 	// I don't know why, but 5 spaces = 4 spaces rendered
 	const codeWithSpaces = code.replace(/\t/g, new Array(5).join(" "));
@@ -65,40 +62,23 @@ export default function CodeBlockString({
 			as="div"
 			className={clsx(
 				blockClassName,
-				language &&
-					!blockClassName.includes(`language-${language}`) &&
-					`language-${language}`,
+				language && !blockClassName.includes(`language-${language}`) && `language-${language}`,
 			)}
 		>
 			{title && <div className={styles.codeBlockTitle}>{title}</div>}
 			<div className={styles.codeBlockContent}>
-				<Highlight
-					theme={prismTheme}
-					code={codeWithSpaces}
-					language={(language ?? "text") as Language}
-				>
-					{({
-						className,
-						style,
-						tokens,
-						getLineProps,
-						getTokenProps,
-					}) => (
+				<Highlight theme={prismTheme} code={codeWithSpaces} language={(language ?? "text") as Language}>
+					{({ className, style, tokens, getLineProps, getTokenProps }) => (
 						<pre
 							tabIndex={0}
 							ref={wordWrap.codeBlockRef}
-							className={clsx(
-								className,
-								styles.codeBlock,
-								"thin-scrollbar",
-							)}
+							className={clsx(className, styles.codeBlock, "thin-scrollbar")}
 							style={style}
 						>
 							<code
 								className={clsx(
 									styles.codeBlockLines,
-									showLineNumbers &&
-										styles.codeBlockLinesWithNumbering,
+									showLineNumbers && styles.codeBlockLinesWithNumbering,
 								)}
 							>
 								{tokens.map((line, i) => (
@@ -124,12 +104,7 @@ export default function CodeBlockString({
 						/>
 					)}
 					<CopyButton className={styles.codeButton} code={code} />
-					{isTypescript && (
-						<PlaygroundButton
-							className={styles.codeButton}
-							code={code}
-						/>
-					)}
+					{isTypescript && <PlaygroundButton className={styles.codeButton} code={code} />}
 				</div>
 			</div>
 		</Container>
