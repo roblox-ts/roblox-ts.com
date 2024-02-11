@@ -6,7 +6,8 @@ import Editor, { OnMount, loader } from "@monaco-editor/react";
 import type { editor } from "monaco-editor";
 import path from "path";
 import prettier from "prettier";
-import parserTypeScript from "prettier/parser-typescript";
+import estreePlugin from "prettier/plugins/estree";
+import typescriptPlugin from "prettier/plugins/typescript";
 import React from "react";
 import styles from "../pages/playground/styles.module.css";
 import { Lazy } from "../util/Lazy";
@@ -34,7 +35,7 @@ const PRETTIER_MAX_PRINT_WIDTH = 120;
 
 const PRETTIER_OPTIONS: prettier.Options = {
 	parser: "typescript",
-	plugins: [parserTypeScript],
+	plugins: [estreePlugin, typescriptPlugin],
 
 	semi: true,
 	trailingComma: "all",
