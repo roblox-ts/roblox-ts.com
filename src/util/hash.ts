@@ -3,9 +3,13 @@ import lzstring from "lz-string";
 const CODE_PREFIX = "#code/";
 const GIST_PREFIX = "#gist/";
 
-export async function getCodeFromHash(hash: string): Promise<string | undefined> {
+export async function getCodeFromHash(
+	hash: string,
+): Promise<string | undefined> {
 	if (hash.startsWith(CODE_PREFIX)) {
-		const decompressed = lzstring.decompressFromEncodedURIComponent(hash.substr(CODE_PREFIX.length));
+		const decompressed = lzstring.decompressFromEncodedURIComponent(
+			hash.substr(CODE_PREFIX.length),
+		);
 		if (decompressed !== null) {
 			return decompressed;
 		}

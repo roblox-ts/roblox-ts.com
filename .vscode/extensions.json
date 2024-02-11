@@ -2,6 +2,7 @@
 	"recommendations": [
 		"dbaeumer.vscode-eslint",
 		"editorconfig.editorconfig",
-		"silvenon.mdx"
+		"silvenon.mdx",
+		"esbenp.prettier-vscode"
 	]
 }

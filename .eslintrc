@@ -7,28 +7,13 @@
 		"sourceType": "module",
 		"project": "tsconfig.json"
 	},
-	"plugins": [
-		"@typescript-eslint",
-		"@typescript-eslint/eslint-plugin",
+	"plugins": ["@typescript-eslint"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
 		"prettier"
 	],
-	"extends": [
-		"plugin:@typescript-eslint/recommended",
-		"plugin:prettier/recommended"
-	],
 	"rules": {
-		"prettier/prettier": [
-			"warn",
-			{
-				"semi": true,
-				"trailingComma": "all",
-				"singleQuote": false,
-				"printWidth": 120,
-				"tabWidth": 4,
-				"useTabs": true,
-				"arrowParens": "avoid"
-			}
-		],
 		"@typescript-eslint/array-type": [
 			"warn",
 			{

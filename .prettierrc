@@ -1,0 +1,10 @@
+{
+	"overrides": [
+		{
+			"files": ["*.json", ".eslintrc"],
+			"options": {
+				"trailingComma": "none"
+			}
+		}
+	]
+}

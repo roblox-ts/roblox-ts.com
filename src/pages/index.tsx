@@ -1,10 +1,10 @@
-import React from "react";
-import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import styles from "./styles.module.css";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import CodeBlock from "@theme/CodeBlock";
+import Layout from "@theme/Layout";
+import React from "react";
+import styles from "./styles.module.css";
 
 const EXAMPLE_CODE = `
 import { CollectionService } from "@rbxts/services";
@@ -23,6 +23,8 @@ for (const obj of CollectionService.GetTagged("Lava")) {
 
 interface FeatureCardProps {
 	title: string;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	children: any;
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, children }) => (
@@ -43,10 +45,15 @@ export default () => {
 		<Layout noFooter>
 			<header className={`hero ${styles.heroBanner}`}>
 				<div className="container">
-					<h1 className={`hero__title ${styles.title}`}>{siteConfig.title}</h1>
+					<h1 className={`hero__title ${styles.title}`}>
+						{siteConfig.title}
+					</h1>
 					<p className="hero__subtitle">
 						A{" "}
-						<a href="https://www.typescriptlang.org/" target="_blank">
+						<a
+							href="https://www.typescriptlang.org/"
+							target="_blank"
+						>
 							TypeScript
 						</a>
 						-to-
@@ -80,7 +87,9 @@ export default () => {
 						<div className="row row--no-gutters">
 							<div className="col col--2" />
 							<div className="col col--8">
-								<CodeBlock className="ts">{EXAMPLE_CODE}</CodeBlock>
+								<CodeBlock language="ts">
+									{EXAMPLE_CODE}
+								</CodeBlock>
 							</div>
 							<div className="col col--2" />
 						</div>
@@ -90,24 +99,35 @@ export default () => {
 					<div className="container">
 						<div className="row">
 							<FeatureCard title="Type Safety">
-								With static types, you'll never run into errors caused by typos, indexing an undefined
-								value, or passing the wrong type of value into a function ever again.
+								With static types, you'll never run into errors
+								caused by typos, indexing an undefined value, or
+								passing the wrong type of value into a function
+								ever again.
 							</FeatureCard>
 							<FeatureCard title="Community & Ecosystem">
-								An active community with an ecosystem consisting of a growing number of community-made{" "}
-								<a href="https://www.npmjs.com/org/rbxts" target="_blank">
+								An active community with an ecosystem consisting
+								of a growing number of community-made{" "}
+								<a
+									href="https://www.npmjs.com/org/rbxts"
+									target="_blank"
+								>
 									packages
 								</a>
-								. Many popular modules for Roblox already have typings written for roblox-ts.
+								. Many popular modules for Roblox already have
+								typings written for roblox-ts.
 							</FeatureCard>
 							<FeatureCard title="Unparalleled Tooling">
-								Allows access to a large number of existing tools made for TypeScript. Use industry
-								standard tools like{" "}
+								Allows access to a large number of existing
+								tools made for TypeScript. Use industry standard
+								tools like{" "}
 								<a href="https://eslint.org/" target="_blank">
 									ESLint
 								</a>
 								,{" "}
-								<a href="https://code.visualstudio.com/" target="_blank">
+								<a
+									href="https://code.visualstudio.com/"
+									target="_blank"
+								>
 									VSCode
 								</a>
 								,{" "}
