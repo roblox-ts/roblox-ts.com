@@ -251,27 +251,32 @@ export default () => {
 			const modelContentChangedConn = editor.onDidChangeModelContent(() => setInput(editor.getValue()));
 
 			// alt+shift+f to format
-			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KeyF, () => {
-				const formatResult = prettier.formatWithCursor(model.getValue(), {
-					...PRETTIER_OPTIONS,
-					printWidth: Math.min(PRETTIER_MAX_PRINT_WIDTH, editor.getLayoutInfo().viewportColumn),
-					cursorOffset: model.getOffsetAt(editor.getPosition() || new monaco.Position(0, 0)),
-					rangeStart: undefined,
-					rangeEnd: undefined,
-				});
+			let debounce = false;
+			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KeyF, async () => {
+				if (!debounce) {
+					debounce = true;
+					const formatResult = await prettier.formatWithCursor(model.getValue(), {
+						...PRETTIER_OPTIONS,
+						printWidth: Math.min(PRETTIER_MAX_PRINT_WIDTH, editor.getLayoutInfo().viewportColumn),
+						cursorOffset: model.getOffsetAt(editor.getPosition() || new monaco.Position(0, 0)),
+						rangeStart: undefined,
+						rangeEnd: undefined,
+					});
 
-				editor.pushUndoStop();
-				editor.executeEdits(
-					"prettier",
-					[
-						{
-							range: model.getFullModelRange(),
-							text: formatResult.formatted,
-						},
-					],
-					() => [monaco.Selection.fromPositions(model.getPositionAt(formatResult.cursorOffset))],
-				);
-				editor.pushUndoStop();
+					editor.pushUndoStop();
+					editor.executeEdits(
+						"prettier",
+						[
+							{
+								range: model.getFullModelRange(),
+								text: formatResult.formatted,
+							},
+						],
+						() => [monaco.Selection.fromPositions(model.getPositionAt(formatResult.cursorOffset))],
+					);
+					editor.pushUndoStop();
+					debounce = false;
+				}
 			});
 
 			setInputModel(model);
