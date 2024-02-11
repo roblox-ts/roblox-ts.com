@@ -28,21 +28,18 @@ addEventListener("message", (event: MessageEvent<PlaygroundEvent>) => {
 	if (event.data.type === "compile") {
 		let luaSource;
 		try {
-			luaSource = project.compileSource(
-				event.data.source + "\n;export {};",
-			);
+			luaSource = project.compileSource(event.data.source + "\n;export {};");
 		} catch (e) {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			luaSource = ((e as any).toString() as string)
 				.replace(/(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]/g, "")
 				.split("\n")
-				.filter((v) => v.length > 0)
+				.filter(v => v.length > 0)
 				.map((v: string) => `-- ${v}`)
 				.join("\n");
 		}
 		postMessage({ source: luaSource });
 	} else if (event.data.type === "writeFile") {
-		console.log(event.data.filePath);
 		project.vfs.writeFile(event.data.filePath, event.data.content);
 	} else if (event.data.type === "setMapping") {
 		project.setMapping(event.data.typingsPath, event.data.mainPath);

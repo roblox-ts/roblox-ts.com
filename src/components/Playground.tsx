@@ -20,14 +20,9 @@ const SHARED_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = {
 	tabSize: 4,
 };
 
-const TS_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = {
-	...SHARED_EDITOR_OPTIONS,
-};
+const TS_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = { ...SHARED_EDITOR_OPTIONS };
 
-const LUA_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = {
-	...SHARED_EDITOR_OPTIONS,
-	readOnly: true,
-};
+const LUA_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = { ...SHARED_EDITOR_OPTIONS, readOnly: true };
 
 const EXAMPLES = ["Lava", "t", "Roact"];
 
@@ -90,11 +85,7 @@ async function downloadFile(filePath: string) {
 }
 
 async function writeFile(filePath: string, content: string) {
-	worker.get().postMessage({
-		type: "writeFile",
-		filePath: `/node_modules/${filePath}`,
-		content,
-	});
+	worker.get().postMessage({ type: "writeFile", filePath: `/node_modules/${filePath}`, content });
 	(await loader.init()).languages.typescript.typescriptDefaults.addExtraLib(content, filePath);
 }
 
