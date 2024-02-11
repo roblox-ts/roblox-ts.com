@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkroblox_ts=self.webpackChunkroblox_ts||[]).push([[304],{3564:(e,r,s)=>{s.r(r),s.d(r,{default:()=>n});s(1504);var c=s(5456),t=s(5756),u=s(5864),a=s(5464),l=s(9012),o=s(7624);function n(e){return(0,o.jsx)(t.cr,{className:(0,c.c)(u.W.wrapper.docsPages),children:(0,o.jsx)(l.c,{children:(0,a.k)(e.route.routes)})})}}}]);
