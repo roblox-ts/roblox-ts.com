@@ -13,17 +13,6 @@ In order to start using roblox-ts, you'll need to have the following software al
 - A code editor. We recommend [VSCode](https://code.visualstudio.com/).
 - [Rojo 6+](https://rojo.space/). The easiest way to install it is through the [Rojo VSCode plugin](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo).
 
-## Installation
-
-Once you have NodeJS properly installed, it should come with an `npm` command for your command line.
-
-To install the latest version of roblox-ts, simply run:
-```bash
-npm install -g roblox-ts
-```
-
-This command will install roblox-ts globally on your system. You can now use `rbxtsc` in your command line.
-
 ## Project Setup
 
 To start using roblox-ts to create a game project, follow these steps:
@@ -38,9 +27,7 @@ To start using roblox-ts to create a game project, follow these steps:
 
 <center><img src={require("../static/img/setup-guide/open-with-vscode.png").default} /></center>
 
-3. Run `npm init roblox-ts game` in your command line to start the interactive project setup.
-
-<center><img src={require("../static/img/setup-guide/rbxtsc-init-game.png").default} /></center>
+3. Run `npm init roblox-ts` in your command line to start the interactive project setup.
 
 :::caution PowerShell
 If you're using PowerShell for the first time, you may get an error about "running scripts is disabled on this system". You can fix this by running the following in PowerShell as an administrator:
@@ -50,7 +37,7 @@ If you're using PowerShell for the first time, you may get an error about "runni
 [More info here](./articles/powershell)
 :::
 
-4. Start roblox-ts in watch mode via `rbxtsc -w`. You can exit watch mode later by clicking on the command line and pressing `Ctrl+C` on your keyboard.
+4. Start roblox-ts in watch mode via `npx rbxtsc -w`. You can exit watch mode later by clicking on the command line and pressing `Ctrl+C` on your keyboard.
 
 <center><img src={require("../static/img/setup-guide/rbxtsc-watch.png").default} /></center>
 
