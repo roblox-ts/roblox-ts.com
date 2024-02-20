@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
@@ -57,6 +59,7 @@ const config: Config = {
 				docs: {
 					sidebarPath: "./sidebars.ts",
 					editUrl: "https://github.com/roblox-ts/roblox-ts.com/blob/master/",
+					remarkPlugins: [[require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }]],
 				},
 				theme: {
 					customCss: "./src/css/custom.css",
