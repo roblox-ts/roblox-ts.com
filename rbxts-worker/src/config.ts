@@ -41,6 +41,8 @@ const config: Configuration = {
 		uuid: "{}",
 		perf_hooks: "{}",
 		inspector: "{}",
+		child_process: "{}",
+		util: "{}",
 	},
 	performance: { hints: false },
 };
