@@ -2,68 +2,63 @@
 title: Setup Guide
 ---
 
-:::note
-This guide assumes you know how to use the command line. You can find tutorials on YouTube for [Windows](https://www.youtube.com/watch?v=FiTZgpRpWv0) or [MacOS](https://www.youtube.com/watch?v=aKRYQsKR46I).
+:::info[Prerequisites]
+- Familiarity with the command line. You can find tutorials on YouTube for [Windows](https://www.youtube.com/watch?v=FiTZgpRpWv0) or [MacOS](https://www.youtube.com/watch?v=aKRYQsKR46I)
+- [NodeJS 18+](https://nodejs.org/)
+- A code editor such as [VSCode](https://code.visualstudio.com/)
+- [Rojo 7+](https://rojo.space/) which can be installed through the [Rojo VSCode plugin](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo).
 :::
-
-## Before You Begin
-
-In order to start using roblox-ts, you'll need to have the following software already installed:
-- [NodeJS 14+](https://nodejs.org/)
-- A code editor. We recommend [VSCode](https://code.visualstudio.com/).
-- [Rojo 6+](https://rojo.space/). The easiest way to install it is through the [Rojo VSCode plugin](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo).
-
-## Installation
-
-Once you have NodeJS properly installed, it should come with an `npm` command for your command line.
-
-To install the latest version of roblox-ts, simply run:
-```bash
-npm install -g roblox-ts
-```
-
-This command will install roblox-ts globally on your system. You can now use `rbxtsc` in your command line.
-
-## Project Setup
-
-To start using roblox-ts to create a game project, follow these steps:
-
-<!-- Unfortunately, we need to explicitly number these steps because there are images between them :( -->
-
-1. Create a new folder and give it a name. The folder name cannot contain spaces. We are going to name ours `my-project`.
-
-<center><img src={require("../static/img/setup-guide/new-folder.png").default} /></center>
-
-2. Open the folder using your code editor (or your command line if your code editor does not have one integrated).
-
-<center><img src={require("../static/img/setup-guide/open-with-vscode.png").default} /></center>
-
-3. Run `npm init roblox-ts game` in your command line to start the interactive project setup.
-
-<center><img src={require("../static/img/setup-guide/rbxtsc-init-game.png").default} /></center>
 
 :::caution PowerShell
 If you're using PowerShell for the first time, you may get an error about "running scripts is disabled on this system". You can fix this by running the following in PowerShell as an administrator:
 
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
-[More info here](./articles/powershell)
+[More info here](./articles/powershell.mdx)
 :::
 
-4. Start roblox-ts in watch mode via `rbxtsc -w`. You can exit watch mode later by clicking on the command line and pressing `Ctrl+C` on your keyboard.
+## Project Setup
 
-<center><img src={require("../static/img/setup-guide/rbxtsc-watch.png").default} /></center>
+In this guide, we will introduce how to create a roblox-ts game.
 
-5. Next, start up a Rojo server. If you are using the Rojo VSCode extension, simply hit `Ctrl+Shift+P` and select `Rojo: Start Server`.
+Make sure you have an up-to-date version of Node.js installed and your current working directory is the one where you intend to create a project. Run the following command in your command line:
 
-<center><img src={require("../static/img/setup-guide/rojo-extension.png").default} /></center>
+```bash npm2yarn
+npm init roblox-ts
+```
 
-Otherwise, open a new terminal with the same working directory and start Rojo via `rojo serve`. In VSCode a new terminal can be opened by pressing the `+` button.
+The tool will guide you through some questions to set up your project:
+1. `Project directory` - What is the name of the folder you want to put your project in? This folder shouldn't exist yet, the tool will create it for you!
+2. `Select template` -  What type of roblox-ts project is this? roblox-ts can be used to build plugins and packages too, but in this case we want to make a game, so press `Enter` once.
+3. `Configure Git` - Do you want to use [Git](https://git-scm.com/) for version control? Press `Y` or `N` to make your choise.
+4. `Configure ESLint` - Do you want to use [ESLint](https://eslint.org/) to check your code for correctness?
+5. `Configure Prettier` - Do you want to use [Prettier](https://prettier.io/) to format your code?
+6. `Configure VSCode Project Settings` - Do you want the tool to create a `.vscode` folder with settings optimized for roblox-ts development? If you're using VSCode to write code, you should use this.
 
-<center><img src={require("../static/img/setup-guide/rojo-serve.png").default} /></center>
+:::tip
+To use ESLint and Prettier within VSCode, you can install their VSCode extensions which directly integrate their features into VSCode.
+- [ESLint VSCode extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+:::
 
-6. Open a new place in Roblox Studio where you wish to sync your compiled code into. Open up the Rojo plugin in Studio and hit `Connect`.
+Then, open your project in your code editor of choice, such as VSCode:
 
-<center><img src={require("../static/img/setup-guide/rojo-plugin.png").default} /></center>
+```bash title="Terminal"
+code project-name
+```
 
-7. Write code! :tada:
+## Running Your Code
+
+roblox-ts has a feature called "watch mode" where it will continuously build your code as you write it. You can start watch mode with:
+
+```bash npm2yarn
+npm run watch
+```
+
+Once roblox-ts is running, you need to start Rojo to start syncing your code into Roblox studio you can do this from the VSCode extension or via the command line:
+
+```bash title="Terminal"
+rojo serve
+```
+
+You're all set up, go write some code :tada:
