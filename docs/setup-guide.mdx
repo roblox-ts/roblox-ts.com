@@ -21,22 +21,24 @@ If you're using PowerShell for the first time, you may get an error about "runni
 
 In this guide, we will introduce how to create a roblox-ts game.
 
-Make sure you have an up-to-date version of Node.js installed and your current working directory is the one where you intend to create a project. Run the following command in your command line:
+Make sure you have an up-to-date version of Node.js installed and your current working directory is an empty folder that you intend to create your project in. Run the following command in your command line:
 
-```bash npm2yarn
+```bash title="Terminal"
 npm init roblox-ts
 ```
 
 The tool will guide you through some questions to set up your project:
-1. `Project directory` - What is the name of the folder you want to put your project in? This folder shouldn't exist yet, the tool will create it for you!
+1. `Project directory` - Since you're already in the directory you want to create a project in, just enter a period (`.`) to select your current directory and press `Enter`.
 2. `Select template` -  What type of roblox-ts project is this? roblox-ts can be used to build plugins and packages too, but in this case we want to make a game, so press `Enter` once.
 3. `Configure Git` - Do you want to use [Git](https://git-scm.com/) for version control? Press `Y` or `N` to make your choise.
 4. `Configure ESLint` - Do you want to use [ESLint](https://eslint.org/) to check your code for correctness?
 5. `Configure Prettier` - Do you want to use [Prettier](https://prettier.io/) to format your code?
 6. `Configure VSCode Project Settings` - Do you want the tool to create a `.vscode` folder with settings optimized for roblox-ts development? If you're using VSCode to write code, you should use this.
+7. `Multiple package managers detected. Select package manager:` - Which package manager do you want to use with this project? roblox-ts works best with `npm` and support for alternative package managers is not gauranteed. (If you don't have other package managers installed, this step won't appear!)
 
 :::tip
-To use ESLint and Prettier within VSCode, you can install their VSCode extensions which directly integrate their features into VSCode.
+Many of the tools used here can be directly integrated into VSCode with extensions. We highly reccommend the roblox-ts extension to improve your editing experience. The roblox-ts extension not only provides extra diagnostic information, but also lets you build your code with one click.
+- [roblox-ts VSCode extension](https://marketplace.visualstudio.com/items?itemName=Roblox-TS.vscode-roblox-ts)
 - [ESLint VSCode extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Prettier VSCode extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 :::
@@ -49,13 +51,13 @@ code project-name
 
 ## Running Your Code
 
-roblox-ts has a feature called "watch mode" where it will continuously build your code as you write it. You can start watch mode with:
+roblox-ts has a feature called "watch mode" where it will continuously build your code as you write it. You can start watch mode from the [VSCode extension](https://marketplace.visualstudio.com/items?itemName=Roblox-TS.vscode-roblox-ts) or via the command line:
 
-```bash npm2yarn
+```bash title="Terminal"
 npm run watch
 ```
 
-Once roblox-ts is running, you need to start Rojo to start syncing your code into Roblox studio you can do this from the VSCode extension or via the command line:
+Once roblox-ts is running, you need to start Rojo to start syncing your code into Roblox studio you can do this from the [VSCode extension](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo) or via the command line:
 
 ```bash title="Terminal"
 rojo serve

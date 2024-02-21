@@ -59,7 +59,6 @@ const config: Config = {
 				docs: {
 					sidebarPath: "./sidebars.ts",
 					editUrl: "https://github.com/roblox-ts/roblox-ts.com/blob/master/",
-					remarkPlugins: [[require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }]],
 				},
 				theme: {
 					customCss: "./src/css/custom.css",
