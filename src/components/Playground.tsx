@@ -252,32 +252,33 @@ export default () => {
 			const modelContentChangedConn = editor.onDidChangeModelContent(() => setInput(editor.getValue()));
 
 			// alt+shift+f to format
-			let debounce = false;
-			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KeyF, async () => {
-				if (!debounce) {
-					debounce = true;
-					const formatResult = await prettier.formatWithCursor(model.getValue(), {
+			let lastFormatId = 0;
+			editor.addCommand(monaco.KeyMod.Alt | monaco.KeyMod.Shift | monaco.KeyCode.KeyF, () => {
+				const formatId = ++lastFormatId;
+				prettier
+					.formatWithCursor(model.getValue(), {
 						...PRETTIER_OPTIONS,
 						printWidth: Math.min(PRETTIER_MAX_PRINT_WIDTH, editor.getLayoutInfo().viewportColumn),
 						cursorOffset: model.getOffsetAt(editor.getPosition() || new monaco.Position(0, 0)),
 						rangeStart: undefined,
 						rangeEnd: undefined,
-					});
-
-					editor.pushUndoStop();
-					editor.executeEdits(
-						"prettier",
-						[
-							{
-								range: model.getFullModelRange(),
-								text: formatResult.formatted,
-							},
-						],
-						() => [monaco.Selection.fromPositions(model.getPositionAt(formatResult.cursorOffset))],
-					);
-					editor.pushUndoStop();
-					debounce = false;
-				}
+					})
+					.then(formatResult => {
+						if (formatId !== lastFormatId) return;
+						editor.pushUndoStop();
+						editor.executeEdits(
+							"prettier",
+							[
+								{
+									range: model.getFullModelRange(),
+									text: formatResult.formatted,
+								},
+							],
+							() => [monaco.Selection.fromPositions(model.getPositionAt(formatResult.cursorOffset))],
+						);
+						editor.pushUndoStop();
+					})
+					.catch(reason => console.warn(`Prettier failed: ${reason}`));
 			});
 
 			setInputModel(model);
