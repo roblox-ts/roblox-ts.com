@@ -1,0 +1,19 @@
+---
+title: npm publish errors with "npm error 404 Not Found"
+---
+
+When publishing a package for the first time, you might encounter an error like this:
+
+```sh
+npm error code E404
+npm error 404 Not Found - PUT https://registry.npmjs.org/@rbxts%2package - Not found
+npm error 404
+npm error 404  '@rbxts/package@1.0.0' is not in this registry.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+```
+
+This is due to a bug with our npm join-org page. We are working on a fix for this issue.
+
+In the mean time, please reach out to Osyris on Discord with your npm username.
