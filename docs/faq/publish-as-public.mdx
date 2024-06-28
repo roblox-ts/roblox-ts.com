@@ -1,0 +1,40 @@
+---
+title: npm publish errors with "npm error 402 Payment Required"
+---
+
+When publishing a package for the first time, you might encounter an error like this:
+
+```sh
+npm error code E402
+npm error 402 Payment Required - PUT https://registry.npmjs.org/@rbxts%2fpackage - You must sign up for private packages
+```
+
+This happens because if you're publishing to a new package to an organization, it's private by default.
+However, private packages require a paid npm org (which we don't have).
+
+There are two ways to fix this issue:
+
+### 1. `package.json` `publishConfig` setting
+
+Add the following to your `package.json`.
+
+```js
+{
+	"name": "@rbxts/package", // your package name goes here
+	"version": "1.0.0",
+	"publishConfig": {
+		"access": "public"
+	}
+	// other fields
+}
+```
+
+:::note
+If you're using the [`npm init roblox-ts package` command](../guides/typescript-packages), this will be done for you automatically.
+:::
+
+### 2. `npm publish` CLI flag
+
+```sh
+npm publish --access public
+```
