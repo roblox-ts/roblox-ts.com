@@ -108,7 +108,7 @@ const config: Config = {
 		prism: {
 			theme: prismThemes.vsLight,
 			darkTheme: prismThemes.vsDark,
-			additionalLanguages: ["lua", "bash"],
+			additionalLanguages: ["lua", "bash", "json"],
 		},
 	} satisfies Preset.ThemeConfig,
 };
