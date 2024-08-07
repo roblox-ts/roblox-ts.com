@@ -9,3 +9,10 @@ See the [guide on publishing packages](/docs/guides/typescript-packages) for mor
 :::
 
 Sorry, something went wrong. Please contact a developer by [opening an issue](https://github.com/roblox-ts/roblox-ts.com/issues).
+
+### Error
+
+import BrowserOnly from "@docusaurus/BrowserOnly";
+import CodeBlock from "@theme/CodeBlock";
+
+<BrowserOnly>{() => <CodeBlock>{new URLSearchParams(location.search).get("reason")}</CodeBlock>}</BrowserOnly>

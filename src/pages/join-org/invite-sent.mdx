@@ -1,14 +1,12 @@
 ---
-title: Join Org
+title: Invite Sent
 ---
 
-# Join Org
+# Invite Sent
 
-:::note
-See the [guide on publishing packages](/docs/guides/typescript-packages) for more information.
-:::
+Please check your email for an invite to the organization. If you don't see it, check your spam folder.
 
-Enter your npm username below and you will be added to the "@rbxts" npm organization.
+Once you have accepted the invite, click the button below to continue.
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
@@ -18,32 +16,19 @@ Enter your npm username below and you will be added to the "@rbxts" npm organiza
 	})()}
 </>
 
+import BrowserOnly from "@docusaurus/BrowserOnly";
+
 <form
 	id="org-form"
-	action="https://roblox-ts-org-invite-production.up.railway.app/invite-to-org"
+	action="https://roblox-ts-org-invite-production.up.railway.app/add-to-team"
 	method="post"
 	style={{
 		display: "flex",
 	}}
 >
-	<input
-		type="text"
-		name="username"
-		placeholder="npm username"
-		style={{
-			borderRadius: "0.4rem",
-			borderWidth: 0,
-			height: "2rem",
-			padding: "1rem",
-			marginRight: "0.4rem",
-			verticalAlign: "middle",
-			fontFamily: "var(--ifm-font-family-base)",
-			width: "calc(100% - 5.4rem)",
-			maxWidth: "15rem",
-			background: "#ebedf0",
-		}}
-		required
-	/>
+	<BrowserOnly>
+		{() => <input type="hidden" name="username" value={new URLSearchParams(location.search).get("username")} />}
+	</BrowserOnly>
 	<button
 		className="g-recaptcha"
 		data-sitekey="6LeJpLIUAAAAANNNvHEWfIBZR08Tamp06xD4yIBy"
@@ -62,6 +47,6 @@ Enter your npm username below and you will be added to the "@rbxts" npm organiza
 			width: "5rem",
 		}}
 	>
-		Submit
+		Done
 	</button>
 </form>
