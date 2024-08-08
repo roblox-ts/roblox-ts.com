@@ -12,7 +12,8 @@ Sorry, something went wrong. Please contact a developer by [opening an issue](ht
 
 ### Error
 
-import BrowserOnly from "@docusaurus/BrowserOnly";
 import CodeBlock from "@theme/CodeBlock";
 
-<BrowserOnly>{() => <CodeBlock>{new URLSearchParams(location.search).get("reason")}</CodeBlock>}</BrowserOnly>
+<CodeBlock>
+	{new URLSearchParams(globalThis.location?.search).get("reason")}
+</CodeBlock>

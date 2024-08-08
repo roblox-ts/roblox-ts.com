@@ -8,15 +8,11 @@ Please check your email for an invite to the organization. If you don't see it, 
 
 Once you have accepted the invite, click the button below to continue.
 
-<script src="https://www.google.com/recaptcha/api.js"></script>
+import RecaptchaLoader from "../../components/RecaptchaLoader";
 
-<>
-	{(() => {
-		globalThis.onSubmit = token => document.getElementById("org-form").submit();
-	})()}
-</>
+<RecaptchaLoader />
 
-import BrowserOnly from "@docusaurus/BrowserOnly";
+<>{(() => globalThis.onSubmit = token => document.getElementById("org-form").submit())()}</>
 
 <form
 	id="org-form"
@@ -26,9 +22,7 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 		display: "flex",
 	}}
 >
-	<BrowserOnly>
-		{() => <input type="hidden" name="username" value={new URLSearchParams(location.search).get("username")} />}
-	</BrowserOnly>
+	<input type="hidden" name="username" value={new URLSearchParams(globalThis.location?.search).get("username")} />
 	<button
 		className="g-recaptcha"
 		data-sitekey="6LeJpLIUAAAAANNNvHEWfIBZR08Tamp06xD4yIBy"
@@ -50,3 +44,5 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 		Done
 	</button>
 </form>
+
+<script src="https://www.google.com/recaptcha/api.js"></script>

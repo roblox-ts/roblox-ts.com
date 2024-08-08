@@ -10,13 +10,11 @@ See the [guide on publishing packages](/docs/guides/typescript-packages) for mor
 
 Enter your npm username below and you will be added to the "@rbxts" npm organization.
 
-<script src="https://www.google.com/recaptcha/api.js"></script>
+import RecaptchaLoader from "../../components/RecaptchaLoader";
 
-<>
-	{(() => {
-		globalThis.onSubmit = token => document.getElementById("org-form").submit();
-	})()}
-</>
+<RecaptchaLoader />
+
+<>{(() => globalThis.onSubmit = token => document.getElementById("org-form").submit())()}</>
 
 <form
 	id="org-form"
