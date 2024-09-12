@@ -1,11 +1,11 @@
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
 interface GreetingProps {
 	name: string;
 }
 
-class Greeting extends Roact.Component<GreetingProps> {
-	public render(): Roact.Element {
+class Greeting extends React.Component<GreetingProps> {
+	public render(): React.Element {
 		return (
 			<textbutton
 				Text={`Hello, ${this.props.name}`}

@@ -25,7 +25,7 @@ const TS_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = { ...SHAR
 
 const LUA_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = { ...SHARED_EDITOR_OPTIONS, readOnly: true };
 
-const EXAMPLES = ["Lava", "t", "Roact"];
+const EXAMPLES = ["Lava", "t", "React"];
 
 const CORE_PACKAGES = ["types", "compiler-types"];
 
@@ -242,8 +242,8 @@ export default () => {
 				rootDir: ".",
 
 				jsx: monaco.languages.typescript.JsxEmit.React,
-				jsxFactory: "Roact.createElement",
-				jsxFragmentFactory: "Roact.Fragment",
+				jsxFactory: "React.createElement",
+				jsxFragmentFactory: "React.Fragment",
 			});
 
 			const uri = monaco.Uri.file("input.tsx");
