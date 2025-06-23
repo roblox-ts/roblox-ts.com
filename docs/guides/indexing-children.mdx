@@ -15,12 +15,12 @@ We can do this through "ambient type declarations". An ambient type definition f
 We can name this file anything and put it anywhere in `src`, but for this example we'll stick to `src/services.d.ts`.
 
 ```ts title="src/services.d.ts"
-interface Workspace extends Instance {
-	Zombie: Model;
+declare global {
+	interface Workspace extends Instance {
+		Zombie: Model;
+	}
 }
-```
 
-```ts
 // some other file
 import { Workspace } from "@rbxts/services";
 // highlight-start
@@ -30,27 +30,24 @@ print(Workspace.Zombie);
 :::note Heads up!
 This example needs the `@rbxts/services` package, which is not included by default. If you haven't already, run `npm install @rbxts/services` to install it.
 :::
-[playground-friendly example](https://roblox-ts.com/playground/#code/KYDwDg9gTgLgBAbwL4G4BQATYBjANgQymDgHNcIAjfXRNOeuASwDsZgoAzfbYgdWgDWAZzDdioNswxC4ASWZCY+Zj1oN1cAFoQAthUbAAXHACyELLnTqkaG2mwQF8AF679xALyl8O4ADp+KGFRHj9tPQN0MCgWGAAKVwjgAEp0IA)
 
 If you want to define children inside of Zombie, you can do this with an intersection object type:
 
 ```ts title="src/services.d.ts"
-interface Workspace extends Instance {
-	Zombie: Model & {
-		Humanoid: Humanoid;
-	};
+declare global {
+	interface Workspace extends Instance {
+		Zombie: Model & {
+			Humanoid: Humanoid;
+		};
+	}
 }
-```
 
-```ts
 // some other file
 import { Workspace } from "@rbxts/services";
 // highlight-start
 print(Workspace.Zombie.Humanoid);
 // highlight-end
 ```
-
-[playground-friendly example](https://roblox-ts.com/playground/#code/KYDwDg9gTgLgBAbwL4G4BQATYBjANgQymDgHNcIAjfXRNASAEsA7GYKAM322IHVoBrAM5guxUKyYZBcAJJNBMfE2606dAFoQAthQbAAXHACyELDQBkqtQAkArlqUQGGQ3YdMnGdGtT0kafzRsCHl4AAt7R2c4AF5SfC1gADo+KCERbiTNHT0ktyivNDAoZhgACgj3TwBKdCA)
 
 :::note
 If you're having compiler errors where the property is still not defined on an object, even after creating a types file, you might need to restart the compiler!
