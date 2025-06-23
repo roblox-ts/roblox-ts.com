@@ -1,15 +1,15 @@
 ---
-title: Roact JSX
+title: React JSX
 ---
 
 :::note
-The following guide assumes that you are already familiar with Roact. <br/>
-Please refer to the [Roact documentation](https://roblox.github.io/roact/) for more information.
+The following guide assumes that you are already familiar with React. <br/>
+Please refer to [@rbxts/react](https://github.com/littensy/rbxts-react) and [@rbxts/react-roblox] for more information.
 :::
 
 ## Introduction
 
-While roblox-ts allows you to use Roact just like you would in Luau, it also supports a "JSX" shorthand form.
+While roblox-ts allows you to use React just like you would in Luau, it also supports a "JSX" shorthand form.
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -18,7 +18,7 @@ import TabItem from "@theme/TabItem";
 <TabItem value="tsx">
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
 const element = (
 	<frame Size={new UDim2(1, 0, 1, 0)}>
@@ -31,15 +31,15 @@ const element = (
 <TabItem value="ts">
 
 ```ts
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
-const element = Roact.createElement(
+const element = React.createElement(
 	"Frame",
 	{
 		Size: new UDim2(1, 0, 1, 0),
 	},
 	{
-		Child: Roact.createElement("Frame", {
+		Child: React.createElement("Frame", {
 			Size: new UDim2(1, 0, 1, 0),
 		}),
 	}
@@ -68,7 +68,7 @@ Tag names can also be custom class components or functional components.
 **Custom components must use PascalCase.**
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
 interface MyComponentProps {
 	value: string;
@@ -84,7 +84,7 @@ const element = <MyComponent value="foobar" />;
 Tag names can also be a property access expression to use components which are nested inside of objects or namespaces.
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
 interface MyComponentProps {
 	value: string;
@@ -108,13 +108,13 @@ const element = <Components.MyComponent value="foobar" />;
 The `Key` attribute controls what your UI Instance will be named in the DataModel. This is the same as the `"Child"` key in this Luau example:
 
 ```lua
-Roact.createElement("Frame", {
-	Child = Roact.createElement("Frame", {}),
+React.createElement("Frame", {
+	Child = React.createElement("Frame", {}),
 })
 ```
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
 const element = (
 	<frame>
@@ -123,22 +123,22 @@ const element = (
 );
 ```
 
-If an element is given the `Key` attribute and it **not** a child of another element, it will be wrapped in a `Roact.Fragment`.
+If an element is given the `Key` attribute and it **not** a child of another element, it will be wrapped in a `React.Fragment`.
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
 const element = <frame Key="Child" />;
 ```
 
 ### `Ref` Attribute
 
-The `Ref` attribute directly maps to the `[Roact.Ref]` key in Luau.
+The `Ref` attribute directly maps to the `[React.Ref]` key in Luau.
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
-const ref = Roact.createRef<Frame>();
+const ref = React.createRef<Frame>();
 const element = <frame Ref={ref} />;
 ```
 
@@ -149,7 +149,7 @@ The `Change` attribute takes an object which maps property name -> changed funct
 **Note the double curly braces `{{` and `}}`.**
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
 const element = (
 	<frame
@@ -167,7 +167,7 @@ The `Event` attribute takes an object which maps property name -> event connecti
 **Note the double curly braces `{{` and `}}`.**
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
 const element = (
 	<textbutton
@@ -185,7 +185,7 @@ You can spread objects into attributes using the form `{...exp}` where `exp` is 
 This is useful for creating reusable preset lists of properties.
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
 const MyStyle: Partial<WritableInstanceProperties<Frame>> = {
 	BackgroundColor3: new Color3(0, 0, 0),
@@ -200,9 +200,9 @@ const element = <frame {...MyStyle} />;
 You can spread arrays into children using the form `{...exp}` where `exp` is a `ReadonlyArray<T>`.
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
-const listItems = new Array<Roact.Element>();
+const listItems = new Array<React.Element>();
 for (let i = 0; i < 10; i++) {
 	listItems.push(<textbutton Text={`Button ${i}`} />);
 }
@@ -214,7 +214,7 @@ const element = <frame>{...listItems}</frame>;
 
 You can use values for children using the form `{exp}`. This is useful for programmatically creating children. The allowed values are:
 
--   `Roact.Element`
+-   `React.Element`
 -   `ReadonlyArray<T>`
 -   `ReadonlyMap<K, V>`
 -   `boolean`
@@ -223,7 +223,7 @@ You can use values for children using the form `{exp}`. This is useful for progr
 `boolean` and `undefined` values do not actually get put into the children props, but allowing the values here is useful for creating conditional children values.
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
 let condition = false;
 
@@ -237,25 +237,25 @@ const element = (
 
 ## Fragments
 
-To create a Fragment with JSX you can either use the tag name `Roact.Fragment`
+To create a Fragment with JSX you can either use the tag name `React.Fragment`
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
-const fragment = <Roact.Fragment></Roact.Fragment>;
+const fragment = <React.Fragment></React.Fragment>;
 ```
 
 Or, you can use the shorthand form:
 
 ```tsx
-import Roact from "@rbxts/roact";
+import React from "@rbxts/react";
 
 const fragment = <></>;
 ```
 
 ## Extending the default JSX elements
 
-By default the JSX supports all gui objects, however this may be limiting in cases where you want to manage other instances using Roact.
+By default the JSX supports all gui objects, however this may be limiting in cases where you want to manage other instances using React.
 Which elements are supported by JSX is determined by a global ``JSX`` namespace, to allow for more instances to be created this way you need to extend this global namespace.
 It is recommended to define this extension of the namespace in one central place for all instances.
 

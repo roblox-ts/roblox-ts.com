@@ -26,7 +26,7 @@ const sidebars: SidebarsConfig = {
         "guides/datatype-math",
         "guides/indexing-children",
         "guides/lua-tuple",
-        "guides/roact-jsx",
+        "guides/react-jsx",
         "guides/using-existing-luau",
         "guides/luau-packages",
         "guides/typescript-packages",
