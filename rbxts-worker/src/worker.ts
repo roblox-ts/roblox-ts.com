@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 
 import { VirtualProject, COMPILER_VERSION } from "roblox-ts";
 
