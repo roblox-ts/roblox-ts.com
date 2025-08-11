@@ -12,15 +12,15 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"roblox-ts": "^2.3.0"
+		"roblox-ts": "^3.0.0"
 	},
 	"devDependencies": {
-		"@types/node": "^18.11.18",
+		"@types/node": "^24.2.1",
 		"os-browserify": "^0.3.0",
 		"path-browserify": "^1.0.1",
 		"process": "^0.11.10",
-		"typescript": "^4.7.3",
-		"webpack": "^5.65.0",
-		"webpack-cli": "^4.9.1"
+		"typescript": "^5.9.2",
+		"webpack": "^5.101.0",
+		"webpack-cli": "^6.0.1"
 	}
 }
