@@ -20,8 +20,8 @@
 		"postinstall": "cd rbxts-worker && npm install"
 	},
 	"dependencies": {
-		"@docusaurus/core": "3.1.1",
-		"@docusaurus/preset-classic": "3.1.1",
+		"@docusaurus/core": "^3.8.1",
+		"@docusaurus/preset-classic": "^3.8.1",
 		"@mdx-js/react": "^3.0.0",
 		"@monaco-editor/react": "^4.6.0",
 		"@types/path-browserify": "^1.0.2",
@@ -35,9 +35,9 @@
 		"react-dom": "^18.0.0"
 	},
 	"devDependencies": {
-		"@docusaurus/module-type-aliases": "3.1.1",
-		"@docusaurus/tsconfig": "3.1.1",
-		"@docusaurus/types": "3.1.1",
+		"@docusaurus/module-type-aliases": "^3.8.1",
+		"@docusaurus/tsconfig": "^3.8.1",
+		"@docusaurus/types": "^3.8.1",
 		"@typescript-eslint/eslint-plugin": "^6.21.0",
 		"@typescript-eslint/parser": "^6.21.0",
 		"eslint": "^8.56.0",
