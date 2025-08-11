@@ -22,6 +22,10 @@ import RecaptchaLoader from "../../components/RecaptchaLoader";
 	method="post"
 	style={{
 		display: "flex",
+		alignItems: "stretch",
+		gap: "0.5rem",
+		maxWidth: "400px",
+		margin: "0 0",
 	}}
 >
 	<input
@@ -29,36 +33,38 @@ import RecaptchaLoader from "../../components/RecaptchaLoader";
 		name="username"
 		placeholder="npm username"
 		style={{
-			borderRadius: "0.4rem",
-			borderWidth: 0,
-			height: "2rem",
-			padding: "1rem",
-			marginRight: "0.4rem",
-			verticalAlign: "middle",
+			borderRadius: "6px",
+			border: "2px solid var(--ifm-color-emphasis-300)",
+			height: "44px",
+			padding: "0 12px",
 			fontFamily: "var(--ifm-font-family-base)",
-			width: "calc(100% - 5.4rem)",
-			maxWidth: "15rem",
-			background: "var(--ifm-color-emphasis-200)",
-			color: "var(--ifm-color-content)",
+			fontSize: "14px",
+			flex: "1",
+			minWidth: "0",
+			background: "var(--ifm-background-color)",
+			color: "var(--ifm-font-color-base)",
+			outline: "none",
+			transition: "border-color 0.15s ease",
+		}}
+		onFocus={(e) => {
+			e.target.style.borderColor = "var(--ifm-color-primary)";
+		}}
+		onBlur={(e) => {
+			e.target.style.borderColor = "var(--ifm-color-emphasis-300)";
 		}}
 		required
 	/>
 	<button
-		className="g-recaptcha"
+		className="g-recaptcha button button--primary"
 		data-sitekey="6LeJpLIUAAAAANNNvHEWfIBZR08Tamp06xD4yIBy"
 		data-callback="onSubmit"
 		style={{
-			borderRadius: "0.4rem",
-			border: "1px solid white",
-			boxSizing: "border-box",
-			height: "2rem",
-			padding: "1rem",
-			verticalAlign: "middle",
-			lineHeight: 0,
-			fontFamily: "var(--ifm-font-family-base)",
-			background: "transparent",
+			height: "44px",
+			lineHeight: "44px",
+			padding: "0 20px",
+			fontSize: "14px",
+			whiteSpace: "nowrap",
 			color: "white",
-			width: "5rem",
 		}}
 	>
 		Submit
