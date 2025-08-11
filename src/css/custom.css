@@ -11,7 +11,29 @@
 	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-:root[data-theme="dark"] {
+html[data-theme="light"] {
+	--ifm-background-color: #f6f6f6;
+	--ifm-background-surface-color: #eeeeee;
+	--ifm-color-content: #111111;
+	--ifm-color-content-secondary: #404040;
+	--ifm-navbar-background-color: #f0f0f0;
+	--ifm-footer-background-color: #e8e8e8;
+	--ifm-color-emphasis-0: #e8e8e8;
+	--ifm-color-emphasis-100: #d8d8d8;
+	--ifm-color-emphasis-200: #c8c8c8;
+	--ifm-color-emphasis-300: #b8b8b8;
+	--ifm-color-emphasis-400: #a0a0a0;
+	--ifm-color-emphasis-500: #888888;
+	--ifm-color-emphasis-600: #707070;
+	--ifm-color-emphasis-700: #585858;
+	--ifm-color-emphasis-800: #404040;
+	--ifm-color-emphasis-900: #282828;
+
+	--ifm-pre-background: #f0f0f0;
+	--ifm-code-background: #ebebeb;
+}
+
+html[data-theme="dark"] {
 	--docusaurus-highlighted-code-line-bg: rgba(66, 66, 66, 0.3);
 }
 
@@ -19,8 +41,65 @@ pre {
 	--ifm-code-font-size: 100%;
 }
 
+html[data-theme="light"] pre {
+	--prism-background-color: #f0f0f0 !important;
+}
+
 .hero__subtitle a {
 	color: var(--ifm-hero-text-color);
+}
+
+html[data-theme="light"] .card {
+	background-color: var(--ifm-background-surface-color);
+	border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+html[data-theme="light"] .menu {
+	background-color: var(--ifm-background-surface-color);
+}
+
+html[data-theme="light"] .navbar__item,
+html[data-theme="light"] .navbar__link {
+	color: var(--ifm-color-content);
+}
+
+html[data-theme="light"] .theme-doc-sidebar-container {
+	background-color: var(--ifm-background-surface-color);
+	border-right: 1px solid var(--ifm-color-emphasis-300);
+}
+
+html[data-theme="light"] .main-wrapper {
+	background-color: var(--ifm-background-color);
+}
+
+html[data-theme="light"] article {
+	background-color: var(--ifm-background-color);
+}
+
+html[data-theme="light"] .theme-code-block {
+	border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+html[data-theme="light"] .theme-admonition {
+	border-left-width: 4px;
+}
+
+html[data-theme="light"] .button--outline.button--secondary {
+	border: var(--ifm-button-border-width) solid var(--ifm-color-emphasis-600);
+	color: var(--ifm-color-emphasis-900);
+	background-color: transparent;
+}
+
+html[data-theme="light"] .button--outline.button--secondary:hover {
+	border: var(--ifm-button-border-width) solid var(--ifm-color-emphasis-700);
+	background-color: var(--ifm-color-emphasis-700);
+	color: #ffffff;
+}
+
+html[data-theme="light"] .button--outline.button--secondary:active {
+	border: var(--ifm-button-border-width) solid var(--ifm-color-emphasis-800);
+	background-color: var(--ifm-color-emphasis-800);
+	color: #ffffff;
 }
 
 .header-github-link:hover {
