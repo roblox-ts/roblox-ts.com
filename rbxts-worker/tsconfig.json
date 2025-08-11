@@ -5,6 +5,7 @@
 		"noEmitOnError": true,
 		"rootDir": "src",
 		"outDir": "out",
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"typeRoots": ["./node_modules/@types"]
 	}
 }
