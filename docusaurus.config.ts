@@ -94,6 +94,11 @@ const config: Config = {
 					position: "left",
 				},
 				{
+					label: "Join @rbxts",
+					to: "/join-org",
+					position: "left",
+				},
+				{
 					href: "https://discord.roblox-ts.com",
 					className: "header-discord-link",
 					position: "right",
