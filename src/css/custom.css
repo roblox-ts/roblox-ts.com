@@ -37,6 +37,11 @@ html[data-theme="dark"] {
 	--docusaurus-highlighted-code-line-bg: rgba(66, 66, 66, 0.3);
 }
 
+html[data-theme="dark"] .button--primary:not(.button--outline),
+html[data-theme="dark"] .button--primary.button--outline:is(:hover, :active, .button--active) {
+	--ifm-button-color: #ffffff;
+}
+
 pre {
 	--ifm-code-font-size: 100%;
 }
