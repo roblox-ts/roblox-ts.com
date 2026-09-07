@@ -3,6 +3,7 @@
 import { useColorMode } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Editor, { OnMount, loader } from "@monaco-editor/react";
+import * as monaco from "monaco-editor";
 import type { editor } from "monaco-editor";
 import path from "path";
 import prettier from "prettier";
@@ -12,6 +13,17 @@ import React from "react";
 import styles from "../pages/playground/styles.module.css";
 import { Lazy } from "../util/Lazy";
 import { getCodeFromHash, getHashFromCode } from "../util/hash";
+
+self.MonacoEnvironment = {
+	getWorker: (_moduleId, label) => {
+		if (label === "typescript" || label === "javascript") {
+			return new Worker(new URL("monaco-editor/languages/features/typescript/ts.worker.js", import.meta.url));
+		}
+		return new Worker(new URL("monaco-editor/editor/editor.worker.js", import.meta.url));
+	},
+};
+
+loader.config({ monaco });
 
 const SHARED_EDITOR_OPTIONS: editor.IStandaloneEditorConstructionOptions = {
 	minimap: { enabled: false },
@@ -87,7 +99,7 @@ async function downloadFile(filePath: string) {
 
 async function writeFile(filePath: string, content: string) {
 	worker.get().postMessage({ type: "writeFile", filePath: `/node_modules/${filePath}`, content });
-	(await loader.init()).languages.typescript.typescriptDefaults.addExtraLib(content, filePath);
+	(await loader.init()).typescript.typescriptDefaults.addExtraLib(content, filePath);
 }
 
 const loaded = new Set<string>();
@@ -133,10 +145,7 @@ async function downloadDefinition(pkgName: string, filePath: string, isPkgTyping
 	await writeFile(filePath, content);
 
 	if (isPkgTypingsPath) {
-		(await loader.init()).languages.typescript.typescriptDefaults.addExtraLib(
-			content,
-			path.join(pkgName, "index.d.ts"),
-		);
+		(await loader.init()).typescript.typescriptDefaults.addExtraLib(content, path.join(pkgName, "index.d.ts"));
 	}
 
 	return Promise.allSettled(jobs);
@@ -222,17 +231,17 @@ export default () => {
 	// update input when editor text changes
 	const tsEditorOnMount: OnMount = editor => {
 		void loader.init().then(monaco => {
-			console.log(`typescript@${monaco.languages.typescript.typescriptVersion}`);
+			console.log(`typescript@${monaco.typescript.typescriptVersion}`);
 
-			monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+			monaco.typescript.typescriptDefaults.setCompilerOptions({
 				allowNonTsExtensions: true,
 				allowSyntheticDefaultImports: true,
 				downlevelIteration: true,
-				module: monaco.languages.typescript.ModuleKind.CommonJS,
-				moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
+				module: monaco.typescript.ModuleKind.CommonJS,
+				moduleResolution: monaco.typescript.ModuleResolutionKind.NodeJs,
 				noLib: true,
 				strict: true,
-				target: monaco.languages.typescript.ScriptTarget.ESNext,
+				target: monaco.typescript.ScriptTarget.ESNext,
 				typeRoots: [`node_modules/${SCOPE}`],
 				noEmit: true,
 				resolveJsonModule: true,
@@ -241,7 +250,7 @@ export default () => {
 				baseUrl: ".",
 				rootDir: ".",
 
-				jsx: monaco.languages.typescript.JsxEmit.React,
+				jsx: monaco.typescript.JsxEmit.React,
 				jsxFactory: "React.createElement",
 				jsxFragmentFactory: "React.Fragment",
 			});
